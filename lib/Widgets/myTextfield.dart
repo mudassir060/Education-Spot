@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 class myTextfield extends StatelessWidget {
   final String titel;
   final String hint;
-  final textcontroler;
-  const myTextfield({Key? key, required this.titel, required this.hint, required this.textcontroler}) : super(key: key);
+  final TextEditingController textcontroler;
+  const myTextfield({Key? key, required this.titel, required this.hint, required this. textcontroler,}) : super(key: key);
 
 
   @override

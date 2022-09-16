@@ -39,7 +39,7 @@ class _homeScreenState extends State<homeScreen> {
                 style: TextStyle(
                     color: primaryColor,
                     fontWeight: FontWeight.bold,
-                    fontSize: 20),
+                    fontSize: 25),
               ),
               IconButton(
                   onPressed: () {},

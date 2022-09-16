@@ -36,6 +36,8 @@ class _BottomNavigBarState extends State<BottomNavigBar> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -57,6 +59,7 @@ class _BottomNavigBarState extends State<BottomNavigBar> {
         currentIndex: _selectedIndex,
         selectedItemColor: primaryColor,
         unselectedItemColor: Colors.grey,
+
         onTap: _onItemTapped,
       ),
     );

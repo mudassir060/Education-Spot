@@ -3,6 +3,9 @@ import 'package:education_spot/constants/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../constants/images.dart';
+import 'imageButton.dart';
+
 class homeScreen extends StatefulWidget {
   const homeScreen({Key? key}) : super(key: key);
 
@@ -13,6 +16,8 @@ class homeScreen extends StatefulWidget {
 class _homeScreenState extends State<homeScreen> {
   @override
   Widget build(BuildContext context) {
+    var vwidth = MediaQuery.of(context).size.width;
+    var vheight = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
           body: Column(
@@ -45,9 +50,39 @@ class _homeScreenState extends State<homeScreen> {
             ],
           ),
           // // // // // // // // // // // Banner Ad // // // // // // // //
-
+          Image.asset(Banner_Ad ),
           // // // // // // // // // // // Gridview Button // // // // // // // // //
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              imageButton(
+                img: Scholarships,
+                titel: 'Scholarships',
+                fun: () {},
+              ),
+              imageButton(
+                img: Admassions,
+                titel: 'Admassion',
+                fun: () {},
+              ),
+            ],
+          ),
 
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              imageButton(
+                img: Quizz,
+                titel: 'Quizz',
+                fun: () {},
+              ),
+              imageButton(
+                img: Available_Jobs,
+                titel: 'JObs',
+                fun: () {},
+              )
+            ],
+          ),
         ],
       )),
     );

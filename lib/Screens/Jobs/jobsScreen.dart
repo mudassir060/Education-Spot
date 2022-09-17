@@ -1,5 +1,6 @@
 import 'package:education_spot/Widgets/mySpacer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../../constants/images.dart';
 import '../../constants/style.dart';
@@ -114,6 +115,29 @@ class _jobsScreenState extends State<jobsScreen> {
                       smallbutton("Full-Time", () {}),
                       smallbutton("Product", () {}),
                     ],
+                  ),
+                  mySpacer(10.0, 0.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon( Icons.location_on, color: Colors.white,),
+                          Text(
+                            "Bali, Indonesia",
+                            style: TextStyle(fontSize: 16, color: Colors.white),
+                          ),
+                        ],
+                      ),  Row(
+                        children: [
+                          Text(
+                            "1600-2000/Years",
+                            style: TextStyle(fontSize: 16, color: Colors.white),
+                          ),
+                          Icon( Icons.payment, color: Colors.white,),
+                        ],
+                      ),
+                    ],
                   )
                 ],
               ),
@@ -140,7 +164,7 @@ Widget smallbutton(titel, fun) {
       child: Center(
           child: Text(
         titel,
-        style: TextStyle( color: Colors.white, fontSize: 16),
+        style: TextStyle(color: Colors.white, fontSize: 16),
       )),
     ),
   );

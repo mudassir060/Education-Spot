@@ -1,3 +1,4 @@
+import 'package:education_spot/Screens/Profile/profileScreen.dart';
 import 'package:flutter/material.dart';
 
 import 'Screens/authentication/signUp.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const BottomNavigBar(),
+      home: const profileScreen(),
     );
   }
 }

@@ -25,6 +25,9 @@ const String Jobs = "assets/images/Jobs.png";
 const String CommonRoom = "assets/images/CommonRoom.png";
 const String Scholarships2 = "assets/images/Scholarships (2).png";
 const String Discussion = "assets/images/Discussion.png";
+const String Admissions = "assets/images/Admissions.png";
+const String Others = "assets/images/Others.png";
+
 // const String logo = "assets/images/Logo.png";
 // const String logo = "assets/images/Logo.png";
 // const String logo = "assets/images/Logo.png";

@@ -35,7 +35,6 @@ class _profileScreenState extends State<profileScreen> {
     } else {
       data = quot;
     }
-    print(data.toString());
     var vwidth = MediaQuery.of(context).size.width;
     var vheight = MediaQuery.of(context).size.height;
     return Scaffold(

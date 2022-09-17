@@ -1,7 +1,6 @@
 import 'package:education_spot/Screens/Profile/profileScreen.dart';
 import 'package:flutter/material.dart';
 
-import 'Screens/Notification/notificationScreen.dart';
 import 'Screens/authentication/signUp.dart';
 import 'Widgets/BottomNavigationBar.dart';
 
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const notificationScreen(),
+      home: const BottomNavigBar(),
     );
   }
 }

@@ -13,7 +13,7 @@ class profileScreen extends StatefulWidget {
 }
 
 class _profileScreenState extends State<profileScreen> {
-  var Skills = ["Programming", "SEO", "Marketing"];
+  var Skills = ["Programming", "SEO", "Marketing", "afds"];
   var Imgs = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOfULawGx7OIMmrO9F2jShe9MqvLgR5-RyUQ&usqp=CAU",
     "https://www.unigreet.com/wp-content/uploads/2021/10/Cute-baby-dp-877x1024.jpg",
@@ -23,123 +23,136 @@ class _profileScreenState extends State<profileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var data = Imgs.length;
+    var  quot  = (data / 3) .floor();
+    var rem = data.remainder(3);
+    if (rem >=1){
+      data = quot+1;
+    }else{
+      data = quot;
+    }
+    print(data.toString());
     var vwidth = MediaQuery.of(context).size.width;
     var vheight = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // // // // // // // // // // // Top Bar // // // // // // // // //
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image.asset(settingCurve),
-              mySpacer(0.0, 0.0),
-              Column(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // // // // // // // // // // // Top Bar // // // // // // // // //
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset(settingCurve),
+                mySpacer(0.0, 0.0),
+                Column(
+                  children: [
+                    const Text(
+                      "My Profile",
+                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    ),
+                    mySpacer(10.0, 0.0),
+                    Container(
+                      width: 200,
+                      height: 2,
+                      color: primaryColor,
+                    )
+                  ],
+                ),
+                mySpacer(0.0, 0.0),
+              ],
+            ),
+            // // // // // // // // // // // About // // // // // // // // //
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Row(
                 children: [
-                  const Text(
-                    "My Profile",
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  SizedBox(
+                    width: vwidth - 180,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Mudassir Mukhtar",
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          "mudassir4@gmail.com",
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                        Text("Hello. I'm Mudassir Mukhtar Welcome to my profile")
+                      ],
+                    ),
                   ),
-                  mySpacer(10.0, 0.0),
-                  Container(
-                    width: 200,
-                    height: 2,
-                    color: primaryColor,
+                  CircleAvatar(
+                    radius: 70,
+                    child: CircleAvatar(
+                      radius: 65,
+                      backgroundImage: AssetImage(Profile),
+                    ),
                   )
                 ],
               ),
-              mySpacer(0.0, 0.0),
-            ],
-          ),
-          // // // // // // // // // // // About // // // // // // // // //
-          Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: vwidth - 180,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Mudassir Mukhtar",
-                        style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        "mudassir4@gmail.com",
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                      Text("Hello. I'm Mudassir Mukhtar Welcome to my profile")
-                    ],
-                  ),
-                ),
-                CircleAvatar(
-                  radius: 70,
-                  child: CircleAvatar(
-                    radius: 65,
-                    backgroundImage: AssetImage(Profile),
-                  ),
-                )
-              ],
             ),
-          ),
-          // // // // // // // // // // // Skill // // // // // // // // //
-          Padding(
-            padding: const EdgeInsets.only(left: 18.0),
-            child: Text(
-              "Skills",
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            ),
-          ),
-
-          Expanded(
-            flex: 2,
-            child: ListView.builder(
-                itemCount: Skills.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 38.0, right: 8.0),
-                        child: Icon(Icons.star),
-                      ),
-                      Text(
-                        Skills[index],
-                        style: TextStyle(fontSize: 18),
-                      ),
-                    ],
-                  );
-                }),
-          ),
-          // // // // // // // // // // // profile History // // // // // // // // //
-          Expanded(
-            flex: 5,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: GridView.count(
-                crossAxisCount: 3,
-                crossAxisSpacing: 4.0,
-                mainAxisSpacing: 8.0,
-                children: List.generate(Imgs.length, (index) {
-                  return Container(
-                    // alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      image: DecorationImage(
-                        image: NetworkImage(Imgs[index]),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  );
-                }),
+            // // // // // // // // // // // Skill // // // // // // // // //
+            Padding(
+              padding: const EdgeInsets.only(left: 18.0),
+              child: Text(
+                "Skills",
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
             ),
-          )
-        ],
+
+            Container(
+              height: 32*Skills.length.toDouble(),
+              child: ListView.builder(
+                  physics: const  NeverScrollableScrollPhysics() ,
+                  itemCount: Skills.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Row(
+                      children: [
+                      const  Padding(
+                          padding:  EdgeInsets.only(left: 38.0, right: 8.0),
+                          child: Icon(Icons.star),
+                        ),
+                        Text(
+                          Skills[index],
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ],
+                    );
+                  }),
+            ),
+            // // // // // // // // // // // profile History // // // // // // // // //
+            Container(
+              height: 155*data.toDouble(),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                child: GridView.count(
+                  primary: false,
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 4.0,
+                  mainAxisSpacing: 8.0,
+                  children: List.generate(Imgs.length, (index) {
+                    return Container(
+                      // alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        image: DecorationImage(
+                          image: NetworkImage(Imgs[index]),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    );
+                  }),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

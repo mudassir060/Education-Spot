@@ -15,5 +15,4 @@ For help getting started with Flutter development, view the
 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
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-# Education-Spot
-# Education-Spot
+

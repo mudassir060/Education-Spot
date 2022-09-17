@@ -86,7 +86,7 @@ class _communityScreenState extends State<communityScreen> {
                             ),
                             hintText: "Enter your hint",
                             hintStyle: TextStyle(color: Colors.white),
-                            border: null),
+                            border:  InputBorder.none),
                       ),
                     ),
                   )

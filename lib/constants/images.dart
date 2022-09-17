@@ -28,7 +28,8 @@ const String Discussion = "assets/images/Discussion.png";
 const String Admissions = "assets/images/Admissions.png";
 const String Others = "assets/images/Others.png";
 
-// const String logo = "assets/images/Logo.png";
+// // // // // // // // // // // Communities // // // // // // // // //
+const String images = "assets/images/images.png";
 // const String logo = "assets/images/Logo.png";
 // const String logo = "assets/images/Logo.png";
 // // // // // // // // // // // Skill // // // // // // // // //

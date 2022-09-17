@@ -14,6 +14,10 @@ class profileScreen extends StatefulWidget {
 
 class _profileScreenState extends State<profileScreen> {
   var Skills = ["Programming", "SEO", "Marketing", "afds"];
+  var education = [
+    {"name": "Matric", "start": "2016", "end": "2019"},
+    {"name": "BSCS", "start": "2019", "end": "2023"},
+  ];
   var Imgs = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOfULawGx7OIMmrO9F2jShe9MqvLgR5-RyUQ&usqp=CAU",
     "https://www.unigreet.com/wp-content/uploads/2021/10/Cute-baby-dp-877x1024.jpg",
@@ -24,11 +28,11 @@ class _profileScreenState extends State<profileScreen> {
   @override
   Widget build(BuildContext context) {
     var data = Imgs.length;
-    var  quot  = (data / 3) .floor();
+    var quot = (data / 3).floor();
     var rem = data.remainder(3);
-    if (rem >=1){
-      data = quot+1;
-    }else{
+    if (rem >= 1) {
+      data = quot + 1;
+    } else {
       data = quot;
     }
     print(data.toString());
@@ -49,7 +53,8 @@ class _profileScreenState extends State<profileScreen> {
                   children: [
                     const Text(
                       "My Profile",
-                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
                     mySpacer(10.0, 0.0),
                     Container(
@@ -83,7 +88,8 @@ class _profileScreenState extends State<profileScreen> {
                             fontSize: 16,
                           ),
                         ),
-                        Text("Hello. I'm Mudassir Mukhtar Welcome to my profile")
+                        Text(
+                            "Hello. I'm Mudassir Mukhtar Welcome to my profile")
                       ],
                     ),
                   ),
@@ -107,15 +113,15 @@ class _profileScreenState extends State<profileScreen> {
             ),
 
             Container(
-              height: 32*Skills.length.toDouble(),
+              height: 32 * Skills.length.toDouble(),
               child: ListView.builder(
-                  physics: const  NeverScrollableScrollPhysics() ,
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: Skills.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Row(
                       children: [
-                      const  Padding(
-                          padding:  EdgeInsets.only(left: 38.0, right: 8.0),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 38.0, right: 8.0),
                           child: Icon(Icons.star),
                         ),
                         Text(
@@ -126,9 +132,38 @@ class _profileScreenState extends State<profileScreen> {
                     );
                   }),
             ),
+            // // // // // // // // // // // Skill // // // // // // // // //
+            Padding(
+              padding: const EdgeInsets.only(left: 18.0),
+              child: Text(
+                "Educarion",
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
+            ),
+
+            Container(
+              height: 35 * education.length.toDouble(),
+              child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: education.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Row(
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(left: 38.0, right: 8.0),
+                          child: Icon(Icons.star),
+                        ),
+                        Text(
+                          "${education[index]["name"]}  (${education[index]["start"]} To ${education[index]["end"]})",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ],
+                    );
+                  }),
+            ),
             // // // // // // // // // // // profile History // // // // // // // // //
             Container(
-              height: 155*data.toDouble(),
+              height: 155 * data.toDouble(),
               child: Padding(
                 padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                 child: GridView.count(

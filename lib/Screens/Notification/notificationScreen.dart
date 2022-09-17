@@ -66,7 +66,7 @@ class _notificationScreenState extends State<notificationScreen> {
             )
           ],
         ),
-        // // // // // // // // // // // Top Bar // // // // // // // // //
+        // // // // // // // // // // // Notifaction List // // // // // // // // //
         Expanded(
           child: ListView.builder(
               itemCount: 10,

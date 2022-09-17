@@ -17,10 +17,14 @@ const String settingCurve = "assets/images/setting.png";
 // // // // // // // // // // // Profile // // // // // // // // //
 const String backCurve = "assets/images/back.png";
 const String Profile = "assets/images/profile.png";
-// const String logo = "assets/images/Logo.png";
-// const String logo = "assets/images/Logo.png";
-// const String logo = "assets/images/Logo.png";
-// const String logo = "assets/images/Logo.png";
+
+
+
+// // // // // // // // // // // Communities // // // // // // // // //
+const String Jobs = "assets/images/Jobs.png";
+const String CommonRoom = "assets/images/CommonRoom.png";
+const String Scholarships2 = "assets/images/Scholarships (2).png";
+const String Discussion = "assets/images/Discussion.png";
 // const String logo = "assets/images/Logo.png";
 // const String logo = "assets/images/Logo.png";
 // const String logo = "assets/images/Logo.png";

@@ -13,6 +13,13 @@ class communityScreen extends StatefulWidget {
 }
 
 class _communityScreenState extends State<communityScreen> {
+  var Community = [
+    {"name":"Common Rome", "image":""},
+    {"name":"Discussion", "image":""},
+    {"name":"Scholarships", "image":""},
+    {"name":"Jobs", "image":""},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,15 +90,26 @@ class _communityScreenState extends State<communityScreen> {
           // // // // // // // // // // // Community List // // // // // // // // //
 
           Container(
-            width: 300,
-            height: 40,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: primaryColor,
+            height: 215,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+              child: GridView.count(
+                primary: false,
+                crossAxisCount: 2,
+                crossAxisSpacing: 12.0,
+                mainAxisSpacing: 12.0,
+                children: List.generate(4, (index) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: primaryColor,
+                    ), 
+                    child: Image.asset(name),
+                  );
+                }),
+              ),
             ),
-            padding: const EdgeInsets.only(left: 15.0),
-
-          ),
+          )
         ],
       ),
     );

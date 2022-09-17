@@ -67,9 +67,27 @@ class _notificationScreenState extends State<notificationScreen> {
           ],
         ),
         // // // // // // // // // // // Top Bar // // // // // // // // //
-
-        Center(
-          child: Text("notificationS"),
+        Expanded(
+          child: ListView.builder(
+              itemCount: 10,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                    leading: CircleAvatar(
+                      radius: 30,
+                    ),
+                    title: const Text("Trix's airplane"),
+                    subtitle: const Text('The airplane is only in Act II.'),
+                    trailing: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Icon(Icons.more_horiz),
+                        Text("${3+index}m ago")
+                      ],
+                    ),
+                    onTap: () {
+                      /* react to the tile being tapped */
+                    });
+              }),
         ),
       ],
     ));

@@ -16,7 +16,7 @@ const String settingCurve = "assets/images/setting.png";
 
 // // // // // // // // // // // Profile // // // // // // // // //
 const String backCurve = "assets/images/back.png";
-const String Profile = "assets/images/profile.png";
+const String Profile = "assets/images/profile.jpg";
 
 
 

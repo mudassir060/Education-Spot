@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../Widgets/mySpacer.dart';
+import '../../Widgets/smallButton.dart';
 import '../../constants/images.dart';
 import '../../constants/style.dart';
 
@@ -68,9 +69,9 @@ class featuredCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              smallbutton("Design", () {}),
-              smallbutton("Full-Time", () {}),
-              smallbutton("Product", () {}),
+              smallButton("Design", () {}),
+              smallButton("Full-Time", () {}),
+              smallButton("Product", () {}),
             ],
           ),
           mySpacer(10.0, 0.0),
@@ -105,27 +106,4 @@ class featuredCard extends StatelessWidget {
       ),
     );
   }
-}
-
-// // // // // // // // // // // smallbutton // // // // // // // // //
-
-Widget smallbutton(titel, fun) {
-  return InkWell(
-    onTap: () {
-      fun;
-    },
-    child: Container(
-      width: 100,
-      height: 40,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Colors.white.withOpacity(0.5),
-      ),
-      child: Center(
-          child: Text(
-        titel,
-        style: TextStyle(color: Colors.white, fontSize: 16),
-      )),
-    ),
-  );
 }

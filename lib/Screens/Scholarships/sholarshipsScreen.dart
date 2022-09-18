@@ -20,86 +20,110 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
     return SafeArea(
         child: Scaffold(
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: Column(
-            children: [
-              // // // // // // // // // // // Titel // // // // // // // // //
-              Padding(
-                padding: const EdgeInsets.only(top: 25),
-                child: Text(
-                  "Available Sholarships",
-                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+        child: Column(
+          children: [
+            // // // // // // // // // // // Top Bar // // // // // // // // //
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Image.asset(backCurve)),
+                mySpacer(0.0, 0.0),
+                Column(
+                  children: [
+                    const Text(
+                      "Available Sholarships",
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    ),
+                    mySpacer(10.0, 0.0),
+                    Container(
+                      width: 200,
+                      height: 2,
+                      color: primaryColor,
+                    )
+                  ],
                 ),
-              ),
-              mySpacer(10.0, 0.0),
-              // // // // // // // // // // // Search Box // // // // // // // // //
-              Container(
-                width: 350,
-                height: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Colors.white,
-                ),
-                padding: const EdgeInsets.only(left: 15.0),
-                child: const TextField(
-                  // controller: textcontroler,
-                  style: TextStyle(color: Colors.grey),
-                  decoration: InputDecoration(
-                      icon: Icon(
-                        Icons.search,
-                        color: Colors.grey,
-                      ),
-                      hintText: "Search for a scholarships",
-                      hintStyle: TextStyle(color: Colors.grey),
-                      border: InputBorder.none),
-                ),
-              ),
-              mySpacer(10.0, 0.0),
-              // // // // // // // // // // // Featured sholarships // // // // // // // // //
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mySpacer(0.0, 0.0),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Column(
                 children: [
-                  smallButton("Matric", () {}, false),
-                  smallButton("Intermediate", () {}, false),
-                  smallButton("University", () {}, false),
+                  // // // // // // // // // // // Search Box // // // // // // // // //
+                  Container(
+                    width: 350,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Colors.white,
+                    ),
+                    padding: const EdgeInsets.only(left: 15.0),
+                    child: const TextField(
+                      // controller: textcontroler,
+                      style: TextStyle(color: Colors.grey),
+                      decoration: InputDecoration(
+                          icon: Icon(
+                            Icons.search,
+                            color: Colors.grey,
+                          ),
+                          hintText: "Search for a scholarships",
+                          hintStyle: TextStyle(color: Colors.grey),
+                          border: InputBorder.none),
+                    ),
+                  ),
+                  mySpacer(10.0, 0.0),
+                  // // // // // // // // // // // Featured sholarships // // // // // // // // //
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      smallButton("Matric", () {}, false),
+                      smallButton("Intermediate", () {}, false),
+                      smallButton("University", () {}, false),
+                    ],
+                  ),
+                  mySpacer(10.0, 0.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      smallButton("Merit base", () {}, false),
+                      smallButton("Need base", () {}, false),
+                      smallButton("Others", () {}, false),
+                    ],
+                  ),
+                  // // // // // // // // // // // Featured CArd // // // // // // // // //
+                  sholarshipCard(
+                    img: images,
+                    titel: "HEC Need Base Scholarship",
+                    subTitel: "GOVERNMENT UNIVERSITIES",
+                    type: 'Need base',
+                    date: '11 Sep 2022',
+                    dagre: 'Bachelor',
+                  ),
+                  sholarshipCard(
+                    img: images,
+                    titel: "HEC Need Base Scholarship",
+                    subTitel: "GOVERNMENT UNIVERSITIES",
+                    type: 'Need base',
+                    date: '11 Sep 2022',
+                    dagre: 'Bachelor',
+                  ),
+                  sholarshipCard(
+                    img: images,
+                    titel: "HEC Need Base Scholarship",
+                    subTitel: "GOVERNMENT UNIVERSITIES",
+                    type: 'Need base',
+                    date: '11 Sep 2022',
+                    dagre: 'Bachelor',
+                  ),
                 ],
               ),
-              mySpacer(10.0, 0.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  smallButton("Merit base", () {}, false),
-                  smallButton("Need base", () {}, false),
-                  smallButton("Others", () {}, false),
-                ],
-              ),
-              // // // // // // // // // // // Featured CArd // // // // // // // // //
-              sholarshipCard(
-                img: images,
-                titel: "HEC Need Base Scholarship",
-                subTitel: "GOVERNMENT UNIVERSITIES",
-                type: 'Need base',
-                date: '11 Sep 2022',
-                dagre: 'Bachelor',
-              ),
-              sholarshipCard(
-                img: images,
-                titel: "HEC Need Base Scholarship",
-                subTitel: "GOVERNMENT UNIVERSITIES",
-                type: 'Need base',
-                date: '11 Sep 2022',
-                dagre: 'Bachelor',
-              ),  sholarshipCard(
-                img: images,
-                titel: "HEC Need Base Scholarship",
-                subTitel: "GOVERNMENT UNIVERSITIES",
-                type: 'Need base',
-                date: '11 Sep 2022',
-                dagre: 'Bachelor',
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     ));

@@ -14,6 +14,8 @@ class communityChatScreen extends StatefulWidget {
 class _communityChatScreenState extends State<communityChatScreen> {
   @override
   Widget build(BuildContext context) {
+    var vwidth = MediaQuery.of(context).size.width;
+    var vheight = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -29,8 +31,8 @@ class _communityChatScreenState extends State<communityChatScreen> {
                     children: [
                       const Text(
                         "Community Name",
-                        style:
-                        TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.bold),
                       ),
                       mySpacer(10.0, 0.0),
                       Container(
@@ -44,7 +46,41 @@ class _communityChatScreenState extends State<communityChatScreen> {
                 ],
               ),
               // // // // // // // // // // // Chats // // // // // // // // //
-              Container(),
+              Container(
+                height: 300,
+                width: vwidth-50,
+                padding: EdgeInsets.all(20.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "       QUESTION",
+                          style: TextStyle( fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          "Azeem        ",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    mySpacer(5.0, 0.0),
+                    Container(
+                      height: 2,
+                        width: vwidth-100,
+                      color: Colors.grey,
+                    ),
+                    mySpacer(15.0, 0.0),
+
+                  ],
+                ),
+              ),
             ],
           ),
         ),

@@ -27,13 +27,12 @@ class sholarshipCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      // height: 170,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: secondery2Color,
       ),
-      padding: const EdgeInsets.all(15.0),
-      margin: const EdgeInsets.only(top: 15.0, bottom: 10.0),
+      padding: const EdgeInsets.all(10.0),
+      margin: const EdgeInsets.only(top: 10.0, bottom: 5.0),
       child: Column(
         children: [
           Row(
@@ -72,12 +71,11 @@ class sholarshipCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              smallButton(type, () {}),
-              smallButton(date, () {}),
-              smallButton(dagre, () {}),
+              smallButton(type, () {}, false),
+              smallButton(date, () {}, false),
+              smallButton(dagre, () {}, false),
             ],
           ),
-          mySpacer(10.0, 0.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [

@@ -69,9 +69,9 @@ class featuredCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              smallButton("Design", () {}),
-              smallButton("Full-Time", () {}),
-              smallButton("Product", () {}),
+              smallButton("Design", () {}, true),
+              smallButton("Full-Time", () {}, true),
+              smallButton("Product", () {}, true),
             ],
           ),
           mySpacer(10.0, 0.0),

@@ -1,5 +1,6 @@
 import 'package:education_spot/Screens/Scholarships/sholarshipCard.dart';
 import 'package:education_spot/Widgets/mySpacer.dart';
+import 'package:education_spot/Widgets/smallButton.dart';
 import 'package:flutter/material.dart';
 import '../../constants/images.dart';
 import '../../constants/style.dart';
@@ -27,7 +28,7 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
               Padding(
                 padding: const EdgeInsets.only(top: 25, left: 15.0),
                 child: Text(
-                  "Discover your dream sholarships",
+                  "Available sholarships",
                   style: TextStyle(fontSize: 44, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -49,7 +50,7 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
                         Icons.search,
                         color: Colors.white,
                       ),
-                      hintText: "Search a sholarships or a position",
+                      hintText: "Search for a scholarships",
                       hintStyle: TextStyle(color: Colors.white),
                       border: InputBorder.none),
                 ),
@@ -58,14 +59,12 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
               // // // // // // // // // // // Featured sholarships // // // // // // // // //
               Row(
                 children: [
-                  Text(
-                    "Featured sholarships",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
+                  smallButton("Matric", (){}, false),
+                  smallButton("Intermediate", (){}, false),
+                  smallButton("University", (){}, false),
                 ],
               ),
               // // // // // // // // // // // Featured CArd // // // // // // // // //
-
               sholarshipCard(
                 img: images,
                 titel: "HEC Need Base Scholarship",
@@ -73,8 +72,14 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
                 type: 'Need base',
                 date: '11 Sep 2022',
                 dagre: 'Bachelor',
+              ),    sholarshipCard(
+                img: images,
+                titel: "HEC Need Base Scholarship",
+                subTitel: "GOVERNMENT UNIVERSITIES",
+                type: 'Need base',
+                date: '11 Sep 2022',
+                dagre: 'Bachelor',
               ),
-              // // // // // // // // // // // Recomended titel // // // // // // // // //
             ],
           ),
         ),

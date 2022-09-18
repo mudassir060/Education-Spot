@@ -1,6 +1,7 @@
+import 'package:education_spot/constants/style.dart';
 import 'package:flutter/material.dart';
 
-Widget smallButton(titel, fun) {
+Widget smallButton(titel, fun, color) {
   return InkWell(
     onTap: () {
       fun;
@@ -10,7 +11,7 @@ Widget smallButton(titel, fun) {
       height: 40,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Colors.white.withOpacity(0.5),
+        color: color? Colors.white.withOpacity(0.5):seconderyColor,
       ),
       child: Center(
           child: Text(

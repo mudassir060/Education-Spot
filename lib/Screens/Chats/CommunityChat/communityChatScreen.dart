@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../Widgets/mySpacer.dart';
 import '../../../constants/images.dart';
 import '../../../constants/style.dart';
+import '../ChatReply.dart';
+import 'Replys.dart';
 
 class communityChatScreen extends StatefulWidget {
   const communityChatScreen({Key? key}) : super(key: key);
@@ -12,6 +14,8 @@ class communityChatScreen extends StatefulWidget {
 }
 
 class _communityChatScreenState extends State<communityChatScreen> {
+  TextEditingController replyController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     var vwidth = MediaQuery.of(context).size.width;
@@ -46,41 +50,7 @@ class _communityChatScreenState extends State<communityChatScreen> {
                 ],
               ),
               // // // // // // // // // // // Chats // // // // // // // // //
-              Container(
-                height: 300,
-                width: vwidth-50,
-                padding: EdgeInsets.all(20.0),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "       QUESTION",
-                          style: TextStyle( fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          "Azeem        ",
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    mySpacer(5.0, 0.0),
-                    Container(
-                      height: 2,
-                        width: vwidth-100,
-                      color: Colors.grey,
-                    ),
-                    mySpacer(15.0, 0.0),
 
-                  ],
-                ),
-              ),
             ],
           ),
         ),
@@ -88,3 +58,4 @@ class _communityChatScreenState extends State<communityChatScreen> {
     );
   }
 }
+

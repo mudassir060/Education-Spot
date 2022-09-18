@@ -15,3 +15,5 @@ const Color grey = Color(0xffAAAAAA);
 // AppBar background Color
 const Color primaryColor = Color(0xff764AF1);
 const Color seconderyColor = Color(0xffFEB06A);
+const Color secondery2Color = Color(0xffFF7F57);
+

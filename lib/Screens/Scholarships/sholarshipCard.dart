@@ -8,17 +8,19 @@ class sholarshipCard extends StatelessWidget {
   final String img;
   final String titel;
   final String subTitel;
-  final String location;
-  final String sallery;
+  final String type;
+  final String date;
+  final String dagre;
 
-  const sholarshipCard(
-      {Key? key,
-      required this.img,
-      required this.titel,
-      required this.subTitel,
-      required this.location,
-      required this.sallery})
-      : super(key: key);
+  const sholarshipCard({
+    Key? key,
+    required this.img,
+    required this.titel,
+    required this.subTitel,
+    required this.type,
+    required this.date,
+    required this.dagre,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class sholarshipCard extends StatelessWidget {
       // height: 170,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: primaryColor,
+        color: secondery2Color,
       ),
       padding: const EdgeInsets.all(15.0),
       margin: const EdgeInsets.only(top: 15.0, bottom: 10.0),
@@ -69,36 +71,24 @@ class sholarshipCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              smallbutton("Design", () {}),
-              smallbutton("Full-Time", () {}),
-              smallbutton("Product", () {}),
+              smallbutton(type, () {}),
+              smallbutton(date, () {}),
+              smallbutton(dagre, () {}),
             ],
           ),
           mySpacer(10.0, 0.0),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Row(
-                children: [
-                  Icon(
-                    Icons.location_on,
-                    color: Colors.white,
-                  ),
-                  Text(
-                    location,
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                ],
-              ),
-              Text(
-                "$sallery \$",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  "Details",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
               ),
             ],
           ),

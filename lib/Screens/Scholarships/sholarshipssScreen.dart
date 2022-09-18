@@ -68,14 +68,13 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
 
               sholarshipCard(
                 img: images,
-                titel: "Senior, Graphic Design",
-                subTitel: "WINGMAN CO.",
-                location: "Bali, Indonesia",
-                sallery: "1600-2000/Years",
+                titel: "HEC Need Base Scholarship",
+                subTitel: "GOVERNMENT UNIVERSITIES",
+                type: 'Need base',
+                date: '11 Sep 2022',
+                dagre: 'Bachelor',
               ),
               // // // // // // // // // // // Recomended titel // // // // // // // // //
-
-
             ],
           ),
         ),

@@ -7,21 +7,17 @@ import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
 import 'widget/backDesgin.dart';
 
-class signUp extends StatefulWidget {
-  const signUp({Key? key}) : super(key: key);
+class signInScreen extends StatefulWidget {
+  const signInScreen({Key? key}) : super(key: key);
 
   @override
-  State<signUp> createState() => _signUpState();
+  State<signInScreen> createState() => _signInScreenState();
 }
 
-class _signUpState extends State<signUp> {
-  TextEditingController namecontroller = TextEditingController();
-
+class _signInScreenState extends State<signInScreen> {
   TextEditingController emailcontroller = TextEditingController();
 
   TextEditingController passwordcontroller = TextEditingController();
-
-  TextEditingController phnocontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +33,12 @@ class _signUpState extends State<signUp> {
               children: [
                 mySpacer(30.0, vwidth),
                 const Text(
-                  "Create new Account",
+                  "Login",
                   style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
                 ),
                 mySpacer(5.0, vwidth),
                 const Text(
-                  "Already not Registered? Sign up here",
+                  "Already Registered? Sign in here",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 mySpacer(30.0, vwidth),
@@ -58,31 +54,58 @@ class _signUpState extends State<signUp> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                       myTextfield(
-                        titel: 'NAME',
-                        hint: 'name',
-                        textcontroler: namecontroller,
-                      ),
-                       myTextfield(
+                      myTextfield(
                         titel: 'EMAIL',
                         hint: 'email',
                         textcontroler: emailcontroller,
                       ),
-                       myTextfield(
-                        titel: 'PASSWORD',
-                        hint: 'password',
-                        textcontroler: passwordcontroller,
+                      Column(
+                        children: [
+                          myTextfield(
+                            titel: 'PASSWORD',
+                            hint: 'password',
+                            textcontroler: passwordcontroller,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              TextButton(
+                                  onPressed: () {},
+                                  child: const Text("Forgot Password?", style: TextStyle(color: primaryColor),)),
+                            ],
+                          ),
+                        ],
                       ),
-                       myTextfield(
-                        titel: 'MOBILE NUMBER',
-                        hint: 'mobile number',
-                        textcontroler: phnocontroller,
+
+                      myButton(
+                          width: vwidth,
+                          function: () {},
+                          name: "Sign In",
+                          loading: false),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            height: 1,
+                            width: 110,
+                            color: primaryColor,
+                          ),
+                          const Text(
+                            "OR",
+                            style: TextStyle(color: primaryColor),
+                          ),
+                          Container(
+                            height: 1,
+                            width: 110,
+                            color: primaryColor,
+                          ),
+                        ],
                       ),
                       myButton(
                           width: vwidth,
                           function: () {},
                           name: "Sign Up",
-                          loading: false)
+                          loading: false),
                     ],
                   ),
                 ),

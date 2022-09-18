@@ -7,17 +7,21 @@ import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
 import 'widget/backDesgin.dart';
 
-class signIn extends StatefulWidget {
-  const signIn({Key? key}) : super(key: key);
+class sigupScreen extends StatefulWidget {
+  const sigupScreen({Key? key}) : super(key: key);
 
   @override
-  State<signIn> createState() => _signInState();
+  State<sigupScreen> createState() => _sigupScreenState();
 }
 
-class _signInState extends State<signIn> {
+class _sigupScreenState extends State<sigupScreen> {
+  TextEditingController namecontroller = TextEditingController();
+
   TextEditingController emailcontroller = TextEditingController();
 
   TextEditingController passwordcontroller = TextEditingController();
+
+  TextEditingController phnocontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +37,12 @@ class _signInState extends State<signIn> {
               children: [
                 mySpacer(30.0, vwidth),
                 const Text(
-                  "Login",
+                  "Create new Account",
                   style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
                 ),
                 mySpacer(5.0, vwidth),
                 const Text(
-                  "Already Registered? Sign in here",
+                  "Already not Registered? Sign up here",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 mySpacer(30.0, vwidth),
@@ -54,58 +58,31 @@ class _signInState extends State<signIn> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      myTextfield(
+                       myTextfield(
+                        titel: 'NAME',
+                        hint: 'name',
+                        textcontroler: namecontroller,
+                      ),
+                       myTextfield(
                         titel: 'EMAIL',
                         hint: 'email',
                         textcontroler: emailcontroller,
                       ),
-                      Column(
-                        children: [
-                          myTextfield(
-                            titel: 'PASSWORD',
-                            hint: 'password',
-                            textcontroler: passwordcontroller,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              TextButton(
-                                  onPressed: () {},
-                                  child: const Text("Forgot Password?", style: TextStyle(color: primaryColor),)),
-                            ],
-                          ),
-                        ],
+                       myTextfield(
+                        titel: 'PASSWORD',
+                        hint: 'password',
+                        textcontroler: passwordcontroller,
                       ),
-
-                      myButton(
-                          width: vwidth,
-                          function: () {},
-                          name: "Sign In",
-                          loading: false),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            height: 1,
-                            width: 110,
-                            color: primaryColor,
-                          ),
-                          const Text(
-                            "OR",
-                            style: TextStyle(color: primaryColor),
-                          ),
-                          Container(
-                            height: 1,
-                            width: 110,
-                            color: primaryColor,
-                          ),
-                        ],
+                       myTextfield(
+                        titel: 'MOBILE NUMBER',
+                        hint: 'mobile number',
+                        textcontroler: phnocontroller,
                       ),
                       myButton(
                           width: vwidth,
                           function: () {},
                           name: "Sign Up",
-                          loading: false),
+                          loading: false)
                     ],
                   ),
                 ),

@@ -1,3 +1,4 @@
+import 'package:education_spot/Screens/Chats/CommunityChat/QuestionCard.dart';
 import 'package:flutter/material.dart';
 
 import '../../../Widgets/mySpacer.dart';
@@ -14,8 +15,6 @@ class communityChatScreen extends StatefulWidget {
 }
 
 class _communityChatScreenState extends State<communityChatScreen> {
-  TextEditingController replyController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     var vwidth = MediaQuery.of(context).size.width;
@@ -50,7 +49,28 @@ class _communityChatScreenState extends State<communityChatScreen> {
                 ],
               ),
               // // // // // // // // // // // Chats // // // // // // // // //
-
+              QuestionCard(
+                  vwidth, "Azeem", "What topics do you want to discuss?", [
+                {
+                  "name": "Mudassir",
+                  "reply": "I don't discuss on any topic with you"
+                },
+                {
+                  "name": "Haseeb",
+                  "reply": "I want to discuss your secret to beauty"
+                },
+              ]),
+              QuestionCard(
+                  vwidth, "Azeem", "What topics do you want to discuss?", [
+                {
+                  "name": "Mudassir",
+                  "reply": "I don't discuss on any topic with you"
+                },
+                {
+                  "name": "Haseeb",
+                  "reply": "I want to discuss your secret to beauty"
+                },
+              ]),
             ],
           ),
         ),
@@ -58,4 +78,3 @@ class _communityChatScreenState extends State<communityChatScreen> {
     );
   }
 }
-

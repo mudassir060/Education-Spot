@@ -26,10 +26,10 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
             children: [
               // // // // // // // // // // // Titel // // // // // // // // //
               Padding(
-                padding: const EdgeInsets.only(top: 25, left: 15.0),
+                padding: const EdgeInsets.only(top: 25),
                 child: Text(
-                  "Available sholarships",
-                  style: TextStyle(fontSize: 44, fontWeight: FontWeight.bold),
+                  "Available Sholarships",
+                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
                 ),
               ),
               mySpacer(10.0, 0.0),
@@ -58,10 +58,20 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
               mySpacer(10.0, 0.0),
               // // // // // // // // // // // Featured sholarships // // // // // // // // //
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   smallButton("Matric", () {}, false),
                   smallButton("Intermediate", () {}, false),
                   smallButton("University", () {}, false),
+                ],
+              ),
+              mySpacer(10.0, 0.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  smallButton("Merit base", () {}, false),
+                  smallButton("Need base", () {}, false),
+                  smallButton("Others", () {}, false),
                 ],
               ),
               // // // // // // // // // // // Featured CArd // // // // // // // // //
@@ -74,6 +84,13 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
                 dagre: 'Bachelor',
               ),
               sholarshipCard(
+                img: images,
+                titel: "HEC Need Base Scholarship",
+                subTitel: "GOVERNMENT UNIVERSITIES",
+                type: 'Need base',
+                date: '11 Sep 2022',
+                dagre: 'Bachelor',
+              ),  sholarshipCard(
                 img: images,
                 titel: "HEC Need Base Scholarship",
                 subTitel: "GOVERNMENT UNIVERSITIES",

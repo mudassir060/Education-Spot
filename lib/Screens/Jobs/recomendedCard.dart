@@ -32,6 +32,7 @@ class recomendedCard extends StatelessWidget {
         color: Colors.white,
       ),
       padding: const EdgeInsets.all(15.0),
+      margin: const EdgeInsets.only(left: 15.0),
       child: Column(
         children: [
           Row(
@@ -70,6 +71,7 @@ class recomendedCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
@@ -104,7 +106,7 @@ class recomendedCard extends StatelessWidget {
                   Row(
                     children: [
                       Icon(
-                        Icons.location_on,
+                        Icons.badge,
                         color: Colors.grey,
                       ),
                       Text(

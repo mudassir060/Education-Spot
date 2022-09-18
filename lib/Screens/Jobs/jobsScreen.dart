@@ -100,10 +100,20 @@ class _jobsScreenState extends State<jobsScreen> {
               ),
               // // // // // // // // // // // Recomended Jobs // // // // // // // // //
 
-              SingleChildScrollView(
-                child: Row(
-                  children: [
-                    const recomendedCard(
+              Container(
+                height: 180,
+                width: vwidth,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children:const [
+                    recomendedCard(
+                      img: images,
+                      titel: 'UX Writte',
+                      subTitel: 'WINGMAN CO.',
+                      location: 'California',
+                      timing: 'Full Time',
+                      sallery: '20/Hours',
+                    ), recomendedCard(
                       img: images,
                       titel: 'UX Writte',
                       subTitel: 'WINGMAN CO.',

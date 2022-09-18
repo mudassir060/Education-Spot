@@ -40,7 +40,7 @@ class featuredCard extends StatelessWidget {
                 width: 70,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(images),
+                    image: AssetImage(img),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -50,14 +50,14 @@ class featuredCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Senior, Graphic Design",
+                    titel,
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
                   Text(
-                    "WINGMAN CO.",
+                    subTitel,
                     style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ],
@@ -84,7 +84,7 @@ class featuredCard extends StatelessWidget {
                     color: Colors.white,
                   ),
                   Text(
-                    "Bali, Indonesia",
+                    location,
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -92,20 +92,12 @@ class featuredCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  Text(
-                    "1600-2000/Years \$",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  Icon(
-                    Icons.payment,
-                    color: Colors.white,
-                  ),
-                ],
+              Text(
+                "$sallery \$",
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
             ],
           ),

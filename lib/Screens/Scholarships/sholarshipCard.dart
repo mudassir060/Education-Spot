@@ -4,14 +4,14 @@ import '../../Widgets/mySpacer.dart';
 import '../../constants/images.dart';
 import '../../constants/style.dart';
 
-class featuredCard extends StatelessWidget {
+class sholarshipCard extends StatelessWidget {
   final String img;
   final String titel;
   final String subTitel;
   final String location;
   final String sallery;
 
-  const featuredCard(
+  const sholarshipCard(
       {Key? key,
       required this.img,
       required this.titel,
@@ -39,6 +39,7 @@ class featuredCard extends StatelessWidget {
                 height: 70,
                 width: 70,
                 decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
                     image: AssetImage(img),
                     fit: BoxFit.cover,

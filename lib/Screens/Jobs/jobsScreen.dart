@@ -1,9 +1,11 @@
+import 'package:education_spot/Screens/Jobs/recomendedCard.dart';
 import 'package:education_spot/Widgets/mySpacer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../constants/images.dart';
 import '../../constants/style.dart';
+import 'featuredCard.dart';
 
 class jobsScreen extends StatefulWidget {
   const jobsScreen({Key? key}) : super(key: key);
@@ -65,97 +67,14 @@ class _jobsScreenState extends State<jobsScreen> {
                   ),
                 ],
               ),
+              // // // // // // // // // // // Featured CArd // // // // // // // // //
 
-              Container(
-                width: vwidth,
-                // height: 170,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: primaryColor,
-                ),
-                padding: const EdgeInsets.all(15.0),
-                margin: const EdgeInsets.only(top: 15.0, bottom: 10.0),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: 70,
-                          width: 70,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(images),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        mySpacer(0.0, 15.0),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Senior, Graphic Design",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                            Text(
-                              "WINGMAN CO.",
-                              style:
-                                  TextStyle(fontSize: 16, color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    mySpacer(10.0, 0.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        smallbutton("Design", () {}),
-                        smallbutton("Full-Time", () {}),
-                        smallbutton("Product", () {}),
-                      ],
-                    ),
-                    mySpacer(10.0, 0.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.location_on,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              "Bali, Indonesia",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "1600-2000/Years",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                            Icon(
-                              Icons.payment,
-                              color: Colors.white,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+              featuredCard(
+                img: images,
+                titel: "Senior, Graphic Design",
+                subTitel: "WINGMAN CO.",
+                location: "Bali, Indonesia",
+                sallery: "1600-2000/Years",
               ),
               // // // // // // // // // // // Recomended titel // // // // // // // // //
 
@@ -181,34 +100,24 @@ class _jobsScreenState extends State<jobsScreen> {
               ),
               // // // // // // // // // // // Recomended Jobs // // // // // // // // //
 
-
+              SingleChildScrollView(
+                child: Row(
+                  children: [
+                    const recomendedCard(
+                      img: images,
+                      titel: 'UX Writte',
+                      subTitel: 'WINGMAN CO.',
+                      location: 'California',
+                      timing: 'Full Time',
+                      sallery: '20/Hours',
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),
       ),
     ));
   }
-}
-
-// // // // // // // // // // // smallbutton // // // // // // // // //
-
-Widget smallbutton(titel, fun) {
-  return InkWell(
-    onTap: () {
-      fun;
-    },
-    child: Container(
-      width: 100,
-      height: 40,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Colors.white.withOpacity(0.5),
-      ),
-      child: Center(
-          child: Text(
-        titel,
-        style: TextStyle(color: Colors.white, fontSize: 16),
-      )),
-    ),
-  );
 }

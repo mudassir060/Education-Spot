@@ -1,9 +1,26 @@
 import 'package:flutter/material.dart';
 
+import '../../Widgets/mySpacer.dart';
 import '../../constants/images.dart';
+import '../../constants/style.dart';
 
 class recomendedCard extends StatelessWidget {
-  const recomendedCard({Key? key}) : super(key: key);
+  final String img;
+  final String titel;
+  final String subTitel;
+  final String location;
+  final String timing;
+  final String sallery;
+
+  const recomendedCard(
+      {Key? key,
+      required this.titel,
+      required this.subTitel,
+      required this.location,
+      required this.timing,
+      required this.sallery,
+      required this.img})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +41,7 @@ class recomendedCard extends StatelessWidget {
                 width: 70,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(images),
+                    image: AssetImage(img),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -35,14 +52,14 @@ class recomendedCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "UX Writte",
+                    titel,
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
-                    "WINGMAN CO.",
+                    subTitel,
                     style: TextStyle(fontSize: 18),
                   ),
                 ],
@@ -61,7 +78,7 @@ class recomendedCard extends StatelessWidget {
                         color: Colors.grey,
                       ),
                       Text(
-                        "UX Writte",
+                        location,
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.grey,
@@ -76,7 +93,7 @@ class recomendedCard extends StatelessWidget {
                         color: Colors.grey,
                       ),
                       Text(
-                        "Full Time",
+                        timing,
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.grey,
@@ -91,7 +108,7 @@ class recomendedCard extends StatelessWidget {
                         color: Colors.grey,
                       ),
                       Text(
-                        "20/Hours",
+                        "\$ $sallery",
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.grey,
@@ -112,12 +129,12 @@ class recomendedCard extends StatelessWidget {
                   ),
                   child: Center(
                       child: Text(
-                        "Apply",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
-                      )),
+                    "Apply",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                  )),
                 ),
               ),
             ],

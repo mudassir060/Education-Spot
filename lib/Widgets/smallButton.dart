@@ -11,7 +11,7 @@ Widget smallButton(titel, fun, color) {
       height: 40,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: color? Colors.white.withOpacity(0.5):seconderyColor,
+        color: color? Colors.white.withOpacity(0.5):primaryColor,
       ),
       child: Center(
           child: Text(

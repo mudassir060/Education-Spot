@@ -39,19 +39,19 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
                 height: 50,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: primaryColor,
+                  color: Colors.white,
                 ),
                 padding: const EdgeInsets.only(left: 15.0),
                 child: const TextField(
                   // controller: textcontroler,
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.grey),
                   decoration: InputDecoration(
                       icon: Icon(
                         Icons.search,
-                        color: Colors.white,
+                        color: Colors.grey,
                       ),
                       hintText: "Search for a scholarships",
-                      hintStyle: TextStyle(color: Colors.white),
+                      hintStyle: TextStyle(color: Colors.grey),
                       border: InputBorder.none),
                 ),
               ),
@@ -59,9 +59,9 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
               // // // // // // // // // // // Featured sholarships // // // // // // // // //
               Row(
                 children: [
-                  smallButton("Matric", (){}, false),
-                  smallButton("Intermediate", (){}, false),
-                  smallButton("University", (){}, false),
+                  smallButton("Matric", () {}, false),
+                  smallButton("Intermediate", () {}, false),
+                  smallButton("University", () {}, false),
                 ],
               ),
               // // // // // // // // // // // Featured CArd // // // // // // // // //
@@ -72,7 +72,8 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
                 type: 'Need base',
                 date: '11 Sep 2022',
                 dagre: 'Bachelor',
-              ),    sholarshipCard(
+              ),
+              sholarshipCard(
                 img: images,
                 titel: "HEC Need Base Scholarship",
                 subTitel: "GOVERNMENT UNIVERSITIES",

@@ -71,9 +71,9 @@ class sholarshipCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              smallButton(type, () {}, false),
-              smallButton(date, () {}, false),
-              smallButton(dagre, () {}, false),
+              smallButton(type, () {}, true),
+              smallButton(date, () {}, true),
+              smallButton(dagre, () {}, true),
             ],
           ),
           Row(

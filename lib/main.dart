@@ -4,9 +4,9 @@ import 'package:education_spot/Screens/authentication/signInScreen.dart';
 import 'package:flutter/material.dart';
 
 import 'Screens/Chats/CommunityChat/communityChatScreen.dart';
-import 'Screens/Scholarships/sholarshipssScreen.dart';
+import 'Screens/Scholarships/sholarshipsScreen.dart';
 import 'Screens/authentication/sigupScreen.dart';
-import 'Widgets/BottomNavigationBar.dart';
+import 'Widgets/BottomNavigBar.dart';
 
 void main() {
   runApp(const MyApp());

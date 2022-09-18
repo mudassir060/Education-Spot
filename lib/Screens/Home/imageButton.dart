@@ -13,7 +13,9 @@ class imageButton extends StatelessWidget {
       width: 170,
 
       child: InkWell(
-        onTap: (){fun;},
+        onTap: (){
+          fun();
+          },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,

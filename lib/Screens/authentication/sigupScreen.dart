@@ -1,3 +1,4 @@
+import 'package:education_spot/Widgets/BottomNavigBar.dart';
 import 'package:education_spot/Widgets/myButton.dart';
 import 'package:education_spot/constants/style.dart';
 import 'package:flutter/cupertino.dart';
@@ -47,7 +48,7 @@ class _sigupScreenState extends State<sigupScreen> {
                 ),
                 mySpacer(30.0, vwidth),
                 Container(
-                  height: 500,
+                  height: 520,
                   width: vwidth - 50,
                   padding: const EdgeInsets.all(30),
                   decoration: BoxDecoration(
@@ -80,9 +81,20 @@ class _sigupScreenState extends State<sigupScreen> {
                       ),
                       myButton(
                           width: vwidth,
-                          function: () {},
+                          function: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BottomNavigBar()),
+                            );
+                          },
                           name: "Sign Up",
-                          loading: false)
+                          loading: false),
+                      TextButton(onPressed: (){   Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BottomNavigBar()),
+                      );}, child: Text("Already have an account"))
                     ],
                   ),
                 ),

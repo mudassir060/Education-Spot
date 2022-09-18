@@ -3,6 +3,8 @@ import 'package:education_spot/constants/style.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/images.dart';
+import '../Jobs/jobsScreen.dart';
+import '../Scholarships/sholarshipsScreen.dart';
 import 'imageButton.dart';
 
 class homeScreen extends StatefulWidget {
@@ -57,7 +59,14 @@ class _homeScreenState extends State<homeScreen> {
               imageButton(
                 img: Scholarships,
                 titel: 'Scholarships',
-                fun: () {},
+                fun: () {
+                  print("Scholarships");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => sholarshipsScreen()),
+                  );
+                },
               ),
               imageButton(
                 img: Admassions,
@@ -78,7 +87,13 @@ class _homeScreenState extends State<homeScreen> {
               imageButton(
                 img: Available_Jobs,
                 titel: 'JObs',
-                fun: () {},
+                fun: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => jobsScreen()),
+                  );
+                },
               )
             ],
           ),

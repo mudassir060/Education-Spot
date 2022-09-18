@@ -1,8 +1,10 @@
+import 'package:education_spot/Screens/authentication/sigupScreen.dart';
 import 'package:education_spot/Widgets/myButton.dart';
 import 'package:education_spot/constants/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../Widgets/BottomNavigBar.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
 import 'widget/backDesgin.dart';
@@ -71,15 +73,23 @@ class _signInScreenState extends State<signInScreen> {
                             children: [
                               TextButton(
                                   onPressed: () {},
-                                  child: const Text("Forgot Password?", style: TextStyle(color: primaryColor),)),
+                                  child: const Text(
+                                    "Forgot Password?",
+                                    style: TextStyle(color: primaryColor),
+                                  )),
                             ],
                           ),
                         ],
                       ),
-
                       myButton(
                           width: vwidth,
-                          function: () {},
+                          function: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BottomNavigBar()),
+                            );
+                          },
                           name: "Sign In",
                           loading: false),
                       Row(
@@ -103,7 +113,13 @@ class _signInScreenState extends State<signInScreen> {
                       ),
                       myButton(
                           width: vwidth,
-                          function: () {},
+                          function: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => sigupScreen()),
+                            );
+                          },
                           name: "Sign Up",
                           loading: false),
                     ],

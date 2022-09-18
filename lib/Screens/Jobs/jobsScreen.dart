@@ -19,135 +19,178 @@ class _jobsScreenState extends State<jobsScreen> {
     var vheight = MediaQuery.of(context).size.height;
     return SafeArea(
         child: Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(18.0),
-        child: Column(
-          children: [
-            // // // // // // // // // // // Titel // // // // // // // // //
-            Padding(
-              padding: const EdgeInsets.only(top: 25, left: 15.0),
-              child: Text(
-                "Discover your dream job",
-                style: TextStyle(fontSize: 44, fontWeight: FontWeight.bold),
-              ),
-            ),
-            mySpacer(10.0, 0.0),
-            // // // // // // // // // // // Search Box // // // // // // // // //
-            Container(
-              width: 350,
-              height: 50,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: primaryColor,
-              ),
-              padding: const EdgeInsets.only(left: 15.0),
-              child: const TextField(
-                // controller: textcontroler,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                    icon: Icon(
-                      Icons.search,
-                      color: Colors.white,
-                    ),
-                    hintText: "Search a job or a position",
-                    hintStyle: TextStyle(color: Colors.white),
-                    border: InputBorder.none),
-              ),
-            ),
-            mySpacer(10.0, 0.0),
-            // // // // // // // // // // // Featured Jobs // // // // // // // // //
-            Row(
-              children: [
-                Text(
-                  "Featured Jobs",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: Column(
+            children: [
+              // // // // // // // // // // // Titel // // // // // // // // //
+              Padding(
+                padding: const EdgeInsets.only(top: 25, left: 15.0),
+                child: Text(
+                  "Discover your dream job",
+                  style: TextStyle(fontSize: 44, fontWeight: FontWeight.bold),
                 ),
-              ],
-            ),
-
-            Container(
-              width: vwidth,
-              // height: 170,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: primaryColor,
               ),
-              padding: const EdgeInsets.all(15.0),
-              margin: const EdgeInsets.only(top: 15.0, bottom: 10.0),
-              child: Column(
+              mySpacer(10.0, 0.0),
+              // // // // // // // // // // // Search Box // // // // // // // // //
+              Container(
+                width: 350,
+                height: 50,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: primaryColor,
+                ),
+                padding: const EdgeInsets.only(left: 15.0),
+                child: const TextField(
+                  // controller: textcontroler,
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                      icon: Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
+                      hintText: "Search a job or a position",
+                      hintStyle: TextStyle(color: Colors.white),
+                      border: InputBorder.none),
+                ),
+              ),
+              mySpacer(10.0, 0.0),
+              // // // // // // // // // // // Featured Jobs // // // // // // // // //
+              Row(
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 70,
-                        width: 70,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(images),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      mySpacer(0.0, 15.0),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Senior, Graphic Design",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          ),
-                          Text(
-                            "WINGMAN CO.",
-                            style: TextStyle(fontSize: 16, color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ],
+                  Text(
+                    "Featured Jobs",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  mySpacer(10.0, 0.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      smallbutton("Design", () {}),
-                      smallbutton("Full-Time", () {}),
-                      smallbutton("Product", () {}),
-                    ],
-                  ),
-                  mySpacer(10.0, 0.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Icon( Icons.location_on, color: Colors.white,),
-                          Text(
-                            "Bali, Indonesia",
-                            style: TextStyle(fontSize: 16, color: Colors.white),
-                          ),
-                        ],
-                      ),  Row(
-                        children: [
-                          Text(
-                            "1600-2000/Years",
-                            style: TextStyle(fontSize: 16, color: Colors.white),
-                          ),
-                          Icon( Icons.payment, color: Colors.white,),
-                        ],
-                      ),
-                    ],
-                  )
                 ],
               ),
-            )
-          ],
+
+              Container(
+                width: vwidth,
+                // height: 170,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: primaryColor,
+                ),
+                padding: const EdgeInsets.all(15.0),
+                margin: const EdgeInsets.only(top: 15.0, bottom: 10.0),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          height: 70,
+                          width: 70,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(images),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        mySpacer(0.0, 15.0),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Senior, Graphic Design",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                            Text(
+                              "WINGMAN CO.",
+                              style:
+                                  TextStyle(fontSize: 16, color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    mySpacer(10.0, 0.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        smallbutton("Design", () {}),
+                        smallbutton("Full-Time", () {}),
+                        smallbutton("Product", () {}),
+                      ],
+                    ),
+                    mySpacer(10.0, 0.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.location_on,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              "Bali, Indonesia",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "1600-2000/Years",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                            Icon(
+                              Icons.payment,
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              // // // // // // // // // // // Recomended titel // // // // // // // // //
+
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Recomended",
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "See All",
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
+              // // // // // // // // // // // Recomended Jobs // // // // // // // // //
+
+
+            ],
+          ),
         ),
       ),
     ));
   }
 }
+
+// // // // // // // // // // // smallbutton // // // // // // // // //
 
 Widget smallbutton(titel, fun) {
   return InkWell(

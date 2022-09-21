@@ -1,3 +1,4 @@
+import 'package:education_spot/constants/style.dart';
 import 'package:flutter/material.dart';
 
 import '../../../Widgets/mySpacer.dart';
@@ -27,7 +28,7 @@ Widget QuestionCard(
             ),
             Text(
               "$sendername        ",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: primaryColor),
             ),
           ],
         ),

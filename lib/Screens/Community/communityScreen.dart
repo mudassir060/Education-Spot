@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../Widgets/mySpacer.dart';
 import '../../constants/images.dart';
 import '../../constants/style.dart';
+import '../Chats/CommunityChat/communityChatScreen.dart';
 
 class communityScreen extends StatefulWidget {
   const communityScreen({Key? key}) : super(key: key);
@@ -14,13 +15,12 @@ class communityScreen extends StatefulWidget {
 
 class _communityScreenState extends State<communityScreen> {
   var Community = [
-    {"name": "Common Rome", "image": CommonRoom},
+    {"name": "Common Room", "image": CommonRoom},
     {"name": "Discussion", "image": Discussion},
     {"name": "Scholarships", "image": Scholarships2},
     {"name": "Jobs", "image": Jobs},
     {"name": "Admissions", "image": Admissions},
     {"name": "Others", "image": Others},
-
   ];
 
   @override
@@ -64,78 +64,79 @@ class _communityScreenState extends State<communityScreen> {
                       mySpacer(0.0, 0.0),
                     ],
                   ),
-                  // // // // // // // // // // // TextField // // // // // // // // //
+                  // // // // // // // // // // // Text Heading // // // // // // // //
                   Positioned(
                     top: 100,
                     left: 60,
-                    child: Container(
-                      width: 300,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: primaryColor,
-                      ),
-                      padding: const EdgeInsets.only(left: 15.0),
-                      child: const TextField(
-                        // controller: textcontroler,
-                        style: TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                            icon: Icon(
-                              Icons.search,
-                              color: Colors.white,
-                            ),
-                            hintText: "Enter your hint",
-                            hintStyle: TextStyle(color: Colors.white),
-                            border:  InputBorder.none),
-                      ),
+                    child: Text(
+                      "Join the Community",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   )
                 ],
               ),
-              mySpacer(10.0, 0.0),
-
-              // // // // // // // // // // // Text Heading // // // // // // // // //
-              Text(
-                "Join the Community",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              mySpacer(10.0, 0.0),
               // // // // // // // // // // // Community List // // // // // // // // //
 
-              Container(
-                height: 215*data.toDouble(),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                  child: GridView.count(
-                    primary: false,
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 12.0,
-                    mainAxisSpacing: 12.0,
-                    children: List.generate(Community.length, (index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: primaryColor,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Center(
-                                child: Image.asset(
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Container(
+                  height: 190 * data.toDouble(),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+                    child: GridView.count(
+                      primary: false,
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 10.0,
+                      mainAxisSpacing: 10.0,
+                      children: List.generate(Community.length, (index) {
+                        return InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => communityChatScreen(name:Community[index]["name"]!)),
+                            );
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(25),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 5,
+                                  blurRadius: 17,
+                                  offset: const Offset(
+                                      0, 3), // changes position of shadow
+                                ),
+                              ],
+                              // color: primaryColor,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Center(
+                                    child: Image.asset(
                                   Community[index]["image"]!,
-                              height: 130,
-                            )),
-                            Text(
-                              Community[index]["name"]!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 25,
-                                  color: Colors.white),
-                            )
-                          ],
-                        ),
-                      );
-                    }),
+                                  height: 80,
+                                )),
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 6.0),
+                                  child: Text(
+                                    Community[index]["name"]!,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                        color: Colors.black),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
                   ),
                 ),
               )

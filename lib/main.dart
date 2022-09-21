@@ -1,12 +1,6 @@
-import 'package:education_spot/Screens/Jobs/jobsScreen.dart';
-import 'package:education_spot/Screens/Profile/profileScreen.dart';
 import 'package:education_spot/Screens/authentication/signInScreen.dart';
 import 'package:flutter/material.dart';
 
-import 'Screens/Chats/CommunityChat/communityChatScreen.dart';
-import 'Screens/Scholarships/sholarshipsScreen.dart';
-import 'Screens/authentication/sigupScreen.dart';
-import 'Widgets/BottomNavigBar.dart';
 
 void main() {
   runApp(const MyApp());

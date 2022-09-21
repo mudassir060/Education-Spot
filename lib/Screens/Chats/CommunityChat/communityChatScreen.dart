@@ -8,7 +8,8 @@ import '../ChatReply.dart';
 import 'Replys.dart';
 
 class communityChatScreen extends StatefulWidget {
-  const communityChatScreen({Key? key}) : super(key: key);
+  final String name;
+  const communityChatScreen({Key? key, required this.name}) : super(key: key);
 
   @override
   State<communityChatScreen> createState() => _communityChatScreenState();
@@ -28,12 +29,14 @@ class _communityChatScreenState extends State<communityChatScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.asset(communitCurve),
+                  InkWell(onTap: (){
+                    Navigator.pop(context);
+                  }, child: Image.asset(backCurve)),
                   mySpacer(0.0, 0.0),
                   Column(
                     children: [
-                      const Text(
-                        "Community Name",
+                       Text(
+                        widget.name,
                         style: TextStyle(
                             fontSize: 30, fontWeight: FontWeight.bold),
                       ),

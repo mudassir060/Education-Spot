@@ -83,31 +83,31 @@ class _communityScreenState extends State<communityScreen> {
                 child: Container(
                   height: 190 * data.toDouble(),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+                    padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                     child: GridView.count(
                       primary: false,
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 10.0,
-                      mainAxisSpacing: 10.0,
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 25.0,
+                      mainAxisSpacing: 25.0,
                       children: List.generate(Community.length, (index) {
                         return InkWell(
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => communityChatScreen(name:Community[index]["name"]!)),
+                                  builder: (context) => communityChatScreen(name:"${Community[index]["name"]!}")),
                             );
                           },
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(25),
+                              borderRadius: BorderRadius.circular(30),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 5,
-                                  blurRadius: 17,
-                                  offset: const Offset(
+                                  blurRadius: 7,
+                                  offset: Offset(
                                       0, 3), // changes position of shadow
                                 ),
                               ],
@@ -119,10 +119,10 @@ class _communityScreenState extends State<communityScreen> {
                                 Center(
                                     child: Image.asset(
                                   Community[index]["image"]!,
-                                  height: 80,
+                                  height: 100,
                                 )),
                                 Padding(
-                                  padding: const EdgeInsets.only(bottom: 6.0),
+                                  padding: const EdgeInsets.all(8.0),
                                   child: Text(
                                     Community[index]["name"]!,
                                     style: TextStyle(

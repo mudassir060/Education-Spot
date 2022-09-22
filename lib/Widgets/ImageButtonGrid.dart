@@ -47,18 +47,17 @@ class ImageButtonGrid extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Center(
-                          child: Image.asset(
-                            Community[index]["image"]!,
-                            height: 100,
-                          )),
+                      Image.asset(
+                        Community[index]["image"]!,
+                        height: 110,
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           Community[index]["name"]!,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 20,
                               color: Colors.black),
                         ),
                       )

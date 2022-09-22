@@ -13,15 +13,16 @@ class homeScreen extends StatefulWidget {
 }
 
 class _homeScreenState extends State<homeScreen> {
-  var buttonList = [
-    {"name": "Scholarships", "image": CommonRoom},
-    {"name": "Admissions", "image": Discussion},
-    {"name": "Quiz", "image": Scholarships2},
-    {"name": "Jobs", "image": Jobs},
-  ];
+
 
   @override
   Widget build(BuildContext context) {
+    var buttonList = [
+      {"name": "Scholarships", "image": Scholarships2},
+      {"name": "Admissions", "image": Admissions},
+      {"name": "Quiz", "image": Quiz},
+      {"name": "Jobs", "image": Jobs},
+    ];
     var data = buttonList.length;
     var quot = (data / 2).floor();
     var rem = data.remainder(2);

@@ -50,7 +50,7 @@ class _communityScreenState extends State<communityScreen> {
                       Column(
                         children: [
                           const Text(
-                            "Notification",
+                            "Community",
                             style: TextStyle(
                                 fontSize: 30, fontWeight: FontWeight.bold),
                           ),
@@ -66,7 +66,7 @@ class _communityScreenState extends State<communityScreen> {
                     ],
                   ),
                   // // // // // // // // // // // Text Heading // // // // // // // //
-                  Positioned(
+                  const Positioned(
                     top: 100,
                     left: 60,
                     child: Text(

@@ -9,6 +9,7 @@ import 'Replys.dart';
 
 class communityChatScreen extends StatefulWidget {
   final String name;
+
   const communityChatScreen({Key? key, required this.name}) : super(key: key);
 
   @override
@@ -16,6 +17,12 @@ class communityChatScreen extends StatefulWidget {
 }
 
 class _communityChatScreenState extends State<communityChatScreen> {
+  var chatdata = [
+    {"name": "Mudassir", "reply": "I don't discuss on any topic with you"},
+    {"name": "Haseeb", "reply": "I want to discuss your secret to beauty"},
+  ];
+  TextEditingController replycontroller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     var vwidth = MediaQuery.of(context).size.width;
@@ -29,13 +36,15 @@ class _communityChatScreenState extends State<communityChatScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  InkWell(onTap: (){
-                    Navigator.pop(context);
-                  }, child: Image.asset(backCurve)),
+                  InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Image.asset(backCurve)),
                   mySpacer(0.0, 0.0),
                   Column(
                     children: [
-                       Text(
+                      Text(
                         widget.name,
                         style: TextStyle(
                             fontSize: 30, fontWeight: FontWeight.bold),
@@ -53,27 +62,18 @@ class _communityChatScreenState extends State<communityChatScreen> {
               ),
               // // // // // // // // // // // Chats // // // // // // // // //
               QuestionCard(
-                  vwidth, "Azeem", "What topics do you want to discuss?", [
-                {
-                  "name": "Mudassir",
-                  "reply": "I don't discuss on any topic with you"
-                },
-                {
-                  "name": "Haseeb",
-                  "reply": "I want to discuss your secret to beauty"
-                },
-              ]),
-              QuestionCard(
-                  vwidth, "Azeem", "What topics do you want to discuss?", [
-                {
-                  "name": "Mudassir",
-                  "reply": "I don't discuss on any topic with you"
-                },
-                {
-                  "name": "Haseeb",
-                  "reply": "I want to discuss your secret to beauty"
-                },
-              ]),
+                  vwidth,
+                  "Azeem",
+                  "What topics do you want to discuss?",
+                  chatdata,
+                  replycontroller, () {
+                setState(() {
+                  chatdata.add({
+                    "name": "Mudassir",
+                    "reply": replycontroller.text,
+                  });
+                });
+              }),
             ],
           ),
         ),

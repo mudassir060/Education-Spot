@@ -4,6 +4,7 @@ import '../../../constants/style.dart';
 
 Widget Replys(name, reply) {
   return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Row(
         children: [

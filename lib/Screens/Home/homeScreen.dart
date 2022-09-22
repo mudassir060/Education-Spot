@@ -69,8 +69,6 @@ class _homeScreenState extends State<homeScreen> {
             Image.asset(Banner_Ad ),
             // // // // // // // // // // // Gridview Button // // // // // // // // //
             ImageButtonGrid(vheight: data.toDouble(), Community: buttonList,)
-
-
         ],
       ),
           )),

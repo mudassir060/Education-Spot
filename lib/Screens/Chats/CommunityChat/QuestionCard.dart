@@ -5,10 +5,9 @@ import '../../../Widgets/mySpacer.dart';
 import '../ChatReply.dart';
 import 'Replys.dart';
 
-TextEditingController replyController = TextEditingController();
 
 Widget QuestionCard(
-    vwidth, sendername, question, List<Map<String, String>> list) {
+    vwidth, sendername, question, List<Map<String, String>> list, replycontroller, fun) {
   return Container(
     width: vwidth - 50,
     padding: EdgeInsets.all(20.0),
@@ -45,7 +44,7 @@ Widget QuestionCard(
         ),
         mySpacer(10.0, 0.0),
         Container(
-          height: 55 * list.length.toDouble(),
+          height: 45 * list.length.toDouble(),
           child: ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               itemCount: list.length,
@@ -54,7 +53,7 @@ Widget QuestionCard(
               }),
         ),
         mySpacer(10.0, 0.0),
-        ChatReply(replyController, "Type something ...", () {}),
+        ChatReply(replycontroller, "Type something ...", fun),
         mySpacer(10.0, 0.0),
       ],
     ),

@@ -33,17 +33,7 @@ class _sms_cardState extends State<sms_card> {
             crossAxisAlignment:
             CrossAxisAlignment.end,
             children: [
-              CircleAvatar(
-                radius: 20,
-                backgroundColor: active,
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: Image.asset(widget.profile, fit: BoxFit.contain),
-                ),),
-              SizedBox(
-                height: 2,
-              ),
-              Container(
+                    Container(
                 decoration: new BoxDecoration(
                   borderRadius:
                   BorderRadius.only(
@@ -85,16 +75,6 @@ class _sms_cardState extends State<sms_card> {
             crossAxisAlignment:
             CrossAxisAlignment.start,
             children: [
-              CircleAvatar(
-                radius: 20,
-                backgroundColor: Colors.blue,
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: Image.asset(widget.profile, fit: BoxFit.contain),
-                ),),
-              SizedBox(
-                height: 2,
-              ),
               Container(
                 decoration: new BoxDecoration(
                   borderRadius:

@@ -1,7 +1,6 @@
 import 'package:education_spot/Screens/authentication/signInScreen.dart';
 import 'package:flutter/material.dart';
 
-import 'Screens/Chats/PriviteChat/chat_screen.dart';
 import 'Screens/Chats/PriviteChat/inbox_screen.dart';
 
 

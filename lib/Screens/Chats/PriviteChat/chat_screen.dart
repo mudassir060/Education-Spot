@@ -1,10 +1,9 @@
-import 'package:education_spot/Screens/Chats/ChatReply.dart';
 import 'package:education_spot/Screens/Chats/PriviteChat/sms_card.dart';
 import 'package:education_spot/constants/images.dart';
 import 'package:education_spot/constants/style.dart';
 import 'package:flutter/material.dart';
 
-
+import '../../../Widgets/mySpacer.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -15,12 +14,22 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   TextEditingController textcontroler = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     var vwidth = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
-          title: Text('Inbox'),
+          title: Row(
+            children: [
+              CircleAvatar(
+                radius: 20,
+                backgroundColor: Colors.blue,
+                child: Image.asset(Profile, fit: BoxFit.contain),),
+              mySpacer(0.0,10.0),
+              Text('Inbox'),
+            ],
+          ),
           elevation: 0,
           backgroundColor: primaryColor,
           centerTitle: true,
@@ -68,34 +77,31 @@ class _ChatScreenState extends State<ChatScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        width: vwidth -70,
+                        width: vwidth - 70,
                         height: 50,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.grey.withOpacity(0.1),
                         ),
                         padding: const EdgeInsets.only(left: 15.0),
-                        child:  TextField(
+                        child: TextField(
                           controller: textcontroler,
-                          style: TextStyle(color: Colors.grey),
-                          decoration: InputDecoration(
+                          style: const TextStyle(color: Colors.grey),
+                          decoration: const InputDecoration(
                               hintText: "Write message...",
-                              hintStyle: TextStyle(color: Colors.grey,fontSize: 20,),
+                              hintStyle: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 20,
+                              ),
                               border: InputBorder.none),
                         ),
                       ),
-
                       CircleAvatar(
-                          radius: 22,
-                          backgroundColor: active,
-                          child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Image.asset(
-                              Quiz  ,
-                              fit: BoxFit.contain,
-                              color: Colors.cyan,
-                            ),
-                          )),
+                        radius: 22,
+                        backgroundColor: active,
+                        child: IconButton(
+                            onPressed: () {}, icon: Icon(Icons.send)),
+                      ),
                     ],
                   ),
                 ),

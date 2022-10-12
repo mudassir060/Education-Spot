@@ -5,11 +5,14 @@ import '../Screens/Chats/CommunityChat/communityChatScreen.dart';
 class ImageButtonGrid extends StatelessWidget {
   final double vheight;
   final List<Map<String, String>> Community;
-  const ImageButtonGrid({Key? key, required this.vheight, required this.Community}) : super(key: key);
+
+  const ImageButtonGrid(
+      {Key? key, required this.vheight, required this.Community})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: const EdgeInsets.all(18.0),
       child: Container(
         height: 190 * vheight,
@@ -26,7 +29,8 @@ class ImageButtonGrid extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => communityChatScreen(name:"${Community[index]["name"]!}")),
+                        builder: (context) => communityChatScreen(
+                            name: "${Community[index]["name"]!}")),
                   );
                 },
                 child: Container(
@@ -38,29 +42,40 @@ class ImageButtonGrid extends StatelessWidget {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 5,
                         blurRadius: 7,
-                        offset: Offset(
-                            0, 3), // changes position of shadow
+                        offset: Offset(0, 3), // changes position of shadow
                       ),
                     ],
                     // color: primaryColor,
                   ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Image.asset(
-                        Community[index]["image"]!,
-                        height: 110,
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 8.0,
+                          right: 8.0,
+                          top: 8.0,
+                          bottom: 8.0,
+                        ),
+                        child: Container(
+                          height: 80,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(Community[index]["image"]!),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(2.0),
                         child: Text(
                           Community[index]["name"]!,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
                               color: Colors.black),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../../Widgets/ImageButtonGrid.dart';
 import '../../constants/images.dart';
+import '../AvailableJob/availableJobScreen.dart';
+import '../Scholarships/sholarshipsScreen.dart';
 
 class homeScreen extends StatefulWidget {
   const homeScreen({Key? key}) : super(key: key);
@@ -13,15 +15,17 @@ class homeScreen extends StatefulWidget {
 }
 
 class _homeScreenState extends State<homeScreen> {
-
-
   @override
   Widget build(BuildContext context) {
     var buttonList = [
-      {"name": "Scholarships", "image": Scholarships2},
-      {"name": "Admissions", "image": Admissions},
-      {"name": "Quiz", "image": Quiz},
-      {"name": "Jobs", "image": Jobs},
+      {
+        "name": "Scholarships",
+        "image": Scholarships2,
+        "page": sholarshipsScreen()
+      },
+      {"name": "Admissions", "image": Admissions, "page": null},
+      {"name": "Quiz", "image": Quiz, "page": null},
+      {"name": "Jobs", "image": Jobs, "page": AvailableJobScreen()},
     ];
     var data = buttonList.length;
     var quot = (data / 2).floor();
@@ -36,8 +40,8 @@ class _homeScreenState extends State<homeScreen> {
     return SafeArea(
       child: Scaffold(
           body: SingleChildScrollView(
-            child: Column(
-        children: [
+        child: Column(
+          children: [
             mySpacer(10.0, 0.0),
             // // // // // // // // // // // Top Bar // // // // // // // // //
             Row(
@@ -66,12 +70,12 @@ class _homeScreenState extends State<homeScreen> {
               ],
             ),
             // // // // // // // // // // // Banner Ad // // // // // // // //
-            Image.asset(Banner_Ad ),
+            Image.asset(Banner_Ad),
             // // // // // // // // // // // Gridview Button // // // // // // // // //
-            ImageButtonGrid(vheight: data.toDouble(), Community: buttonList,)
-        ],
-      ),
-          )),
+            ImageButtonGrid(vheight: data.toDouble(), Community: buttonList)
+          ],
+        ),
+      )),
     );
   }
 }

@@ -4,7 +4,7 @@ import '../Screens/Chats/CommunityChat/communityChatScreen.dart';
 
 class ImageButtonGrid extends StatelessWidget {
   final double vheight;
-  final List<Map<String, String>> Community;
+  final List<Map> Community;
 
   const ImageButtonGrid(
       {Key? key, required this.vheight, required this.Community})
@@ -26,12 +26,24 @@ class ImageButtonGrid extends StatelessWidget {
             children: List.generate(Community.length, (index) {
               return InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
+                  if (Community[index]["page"] == null) {
+                    print("Community");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
                         builder: (context) => communityChatScreen(
-                            name: "${Community[index]["name"]!}")),
-                  );
+                            name: "${Community[index]["name"]!}"),
+                      ),
+                    );
+                  } else {
+                    print("Others");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Community[index]["page"],
+                      ),
+                    );
+                  }
                 },
                 child: Container(
                   decoration: BoxDecoration(

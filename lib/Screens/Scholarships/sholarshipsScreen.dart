@@ -73,7 +73,7 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
                   // // // // // // // // // // // Featured CArd // // // // // // // // //
                   sholarshipCard(
                     img: images,
-                    titel: "HEC Need Base Scholarship",
+                    titel: "HEC Need Base",
                     subTitel: "GOVERNMENT UNIVERSITIES",
                     type: 'Need base',
                     date: '11 Sep 2022',
@@ -81,7 +81,7 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
                   ),
                   sholarshipCard(
                     img: images,
-                    titel: "HEC Need Base Scholarship",
+                    titel: "HEC Need Base",
                     subTitel: "GOVERNMENT UNIVERSITIES",
                     type: 'Need base',
                     date: '11 Sep 2022',
@@ -89,7 +89,7 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
                   ),
                   sholarshipCard(
                     img: images,
-                    titel: "HEC Need Base Scholarship",
+                    titel: "HEC Need Base",
                     subTitel: "GOVERNMENT UNIVERSITIES",
                     type: 'Need base',
                     date: '11 Sep 2022',

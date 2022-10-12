@@ -7,7 +7,7 @@ Widget smallButton(titel, fun, color) {
       fun;
     },
     child: Container(
-      width: 100,
+      width: 80,
       height: 40,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),

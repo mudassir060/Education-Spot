@@ -44,7 +44,7 @@ Widget QuestionCard(
         ),
         mySpacer(10.0, 0.0),
         Container(
-          height: 45 * list.length.toDouble(),
+          height: 60 * list.length.toDouble(),
           child: ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               itemCount: list.length,

@@ -6,7 +6,7 @@ Widget ChatReply(textcontroler, hint, fun) {
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Container(
-        width: 220,
+        width: 190,
         height: 50,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -25,7 +25,7 @@ Widget ChatReply(textcontroler, hint, fun) {
       InkWell(
         onTap: fun,
         child: Container(
-            width: 90,
+            width: 70,
             height: 50,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),

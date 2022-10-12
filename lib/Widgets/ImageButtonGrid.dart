@@ -27,7 +27,6 @@ class ImageButtonGrid extends StatelessWidget {
               return InkWell(
                 onTap: () {
                   if (Community[index]["page"] == null) {
-                    print("Community");
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -36,7 +35,6 @@ class ImageButtonGrid extends StatelessWidget {
                       ),
                     );
                   } else {
-                    print("Others");
                     Navigator.push(
                       context,
                       MaterialPageRoute(

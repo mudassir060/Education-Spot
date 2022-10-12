@@ -1,4 +1,5 @@
 import 'package:education_spot/Screens/Scholarships/sholarshipCard.dart';
+import 'package:education_spot/Widgets/myAppBar.dart';
 import 'package:education_spot/Widgets/mySpacer.dart';
 import 'package:education_spot/Widgets/smallButton.dart';
 import 'package:flutter/material.dart';
@@ -23,33 +24,7 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
         child: Column(
           children: [
             // // // // // // // // // // // Top Bar // // // // // // // // //
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Image.asset(backCurve)),
-                mySpacer(0.0, 0.0),
-                Column(
-                  children: [
-                    const Text(
-                      "Available Sholarships",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                    ),
-                    mySpacer(10.0, 0.0),
-                    Container(
-                      width: 200,
-                      height: 2,
-                      color: primaryColor,
-                    )
-                  ],
-                ),
-                mySpacer(0.0, 0.0),
-              ],
-            ),
+            myAppBar(titel: "Available Sholarships"),
             Padding(
               padding: const EdgeInsets.all(18.0),
               child: Column(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../Widgets/myAppBar.dart';
+
 class AdmissionsScreen extends StatefulWidget {
   const AdmissionsScreen({Key? key}) : super(key: key);
 
@@ -13,7 +15,11 @@ class _AdmissionsScreenState extends State<AdmissionsScreen> {
     return SafeArea(
         child: Scaffold(
             body: SingleChildScrollView(
-      child: Center(child: Text("Admissions")),
-    )));
+                child: Column(
+                  children: [
+                    myAppBar(titel: "Admissions"),
+                    Text("Admissions"),
+                  ],
+                ))));
   }
 }

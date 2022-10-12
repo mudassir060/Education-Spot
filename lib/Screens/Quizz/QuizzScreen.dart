@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../Widgets/myAppBar.dart';
+
 class QuizzScreen extends StatefulWidget {
   const QuizzScreen({Key? key}) : super(key: key);
 
@@ -13,7 +15,11 @@ class _QuizzScreenState extends State<QuizzScreen> {
     return SafeArea(
         child: Scaffold(
             body: SingleChildScrollView(
-      child: Center(child: Text("Quizz")),
-    )));
+                child: Column(
+      children: [
+        myAppBar(titel: "Quizz"),
+        Text("Quizz"),
+      ],
+    ))));
   }
 }

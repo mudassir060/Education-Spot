@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../../Widgets/ImageButtonGrid.dart';
 import '../../constants/images.dart';
-import '../AvailableJob/availableJobScreen.dart';
 import '../Scholarships/sholarshipsScreen.dart';
 
 class homeScreen extends StatefulWidget {
@@ -25,7 +24,7 @@ class _homeScreenState extends State<homeScreen> {
       },
       {"name": "Admissions", "image": Admissions, "page": null},
       {"name": "Quiz", "image": Quiz, "page": null},
-      {"name": "Jobs", "image": Jobs, "page": AvailableJobScreen()},
+      {"name": "Jobs", "image": Jobs, "page": jobsScreen()},
     ];
     var data = buttonList.length;
     var quot = (data / 2).floor();

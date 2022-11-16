@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 
+import '../Data.dart';
+import '../QuizQuestion.dart';
+
 class rowCard extends StatelessWidget {
   final String img;
   final String title;
-  const rowCard({Key? key, required this.img, required this.title, required question}) : super(key: key);
+  final Map data;
+
+  const rowCard({Key? key, required this.img, required this.title, required question, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return   Padding(
-      padding: const EdgeInsets.only(left: 18.0,right: 18.0,bottom: 8),
+    return Padding(
+      padding: const EdgeInsets.only(left: 18.0, right: 18.0, bottom: 8),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -24,15 +29,20 @@ class rowCard extends StatelessWidget {
           // color: primaryColor,
         ),
         child: InkWell(
-          onTap: (){},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => QuizQuestion(data: data)),
+            );
+          },
           child: Row(
             children: [
               Padding(
-                padding:  EdgeInsets.all(8),
+                padding: EdgeInsets.all(8),
                 child: Container(
                   height: 70,
                   width: 80,
-                  decoration:  BoxDecoration(
+                  decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(img),
                       fit: BoxFit.fitHeight,
@@ -40,14 +50,11 @@ class rowCard extends StatelessWidget {
                   ),
                 ),
               ),
-               Padding(
+              Padding(
                 padding: EdgeInsets.all(2.0),
                 child: Text(
-                 title,
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 17,
-                      color: Colors.black),
+                  title,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17, color: Colors.black),
                 ),
               ),
             ],

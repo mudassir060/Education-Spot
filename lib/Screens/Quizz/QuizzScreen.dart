@@ -20,10 +20,28 @@ class _QuizzScreenState extends State<QuizzScreen> {
             body: SingleChildScrollView(
                 child: Column(
       children: [
-        const myAppBar(titel: "Quiz", linewidth: 75,),
-        rowCard(img:Quiz, title: 'MCAT',question:MCAT),
-        rowCard(img:Quiz, title: 'ECAT',question:ECAT),
-        rowCard(img:Quiz, title: 'PMS',question:PMS),
+        const myAppBar(
+          titel: "Quiz",
+          linewidth: 75,
+        ),
+        rowCard(
+          img: Quiz,
+          title: 'MCAT',
+          question: MCAT,
+          data: MCAT[0],
+        ),
+        rowCard(
+          img: Quiz,
+          title: 'ECAT',
+          question: ECAT,
+          data: ECAT[0],
+        ),
+        rowCard(
+          img: Quiz,
+          title: 'PMS',
+          question: PMS,
+          data: PMS[0],
+        ),
       ],
     ))));
   }

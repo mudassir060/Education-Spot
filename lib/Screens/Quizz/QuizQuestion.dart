@@ -2,18 +2,18 @@ import 'package:education_spot/Widgets/myAppBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'Data.dart';
 
 class QuizQuestion extends StatefulWidget {
-  const QuizQuestion({Key? key}) : super(key: key);
+  final Map data;
+  const QuizQuestion({Key? key, required this.data}) : super(key: key);
 
   @override
   State<QuizQuestion> createState() => _QuizQuestionState();
 }
 
 class _QuizQuestionState extends State<QuizQuestion> {
-  var color = Colors.white;
-  var val = "434";
+  TextEditingController d_controlle = TextEditingController(text: "0");
+
   @override
   Widget build(BuildContext context) {
     var vwidth = MediaQuery.of(context).size.width;
@@ -37,7 +37,7 @@ class _QuizQuestionState extends State<QuizQuestion> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        "${MCAT[0]["question"]}",
+                        "${widget.data["question"]}",
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -46,10 +46,10 @@ class _QuizQuestionState extends State<QuizQuestion> {
                     ),
                   ),
                 ),
-                OptionCard(option: "A: ${MCAT[0]["A"]}", index: 1,),
-                OptionCard(option: "B: ${MCAT[0]["B"]}", index: 2,),
-                OptionCard(option: "C: ${MCAT[0]["C"]}", index: 3,),
-                OptionCard(option: "D: ${MCAT[0]["D"]}", index: 4,),
+                OptionCard(option: "A: ${widget.data["A"]}", index: 1, d_controlle: d_controlle, C_index: widget.data["correctIndex"],),
+                OptionCard(option: "B: ${widget.data["B"]}", index: 2, d_controlle: d_controlle, C_index: widget.data["correctIndex"],),
+                OptionCard(option: "C: ${widget.data["C"]}", index: 3, d_controlle: d_controlle, C_index: widget.data["correctIndex"],),
+                OptionCard(option: "D: ${widget.data["D"]}", index: 4, d_controlle: d_controlle, C_index: widget.data["correctIndex"],),
                 const SizedBox(
                   height: 50,
                 ),
@@ -68,18 +68,15 @@ class _QuizQuestionState extends State<QuizQuestion> {
       ),
     ));
   }
-
-
-
-
 }
 
-
-
 class OptionCard extends StatefulWidget {
+  final TextEditingController d_controlle;
   final String option;
   final int index;
-  const OptionCard({Key? key, required this.option, required this.index}) : super(key: key);
+  final int C_index;
+
+  const OptionCard({Key? key, required this.option, required this.index, required this.d_controlle, required this.C_index}) : super(key: key);
 
   @override
   State<OptionCard> createState() => _OptionCardState();
@@ -87,19 +84,23 @@ class OptionCard extends StatefulWidget {
 
 class _OptionCardState extends State<OptionCard> {
   var color = Colors.white;
+
   @override
   Widget build(BuildContext context) {
     return Card(
       child: InkWell(
         onTap: () {
-          if (MCAT[0]["correctIndex"] == widget.index) {
-            setState(() {
-              color = Colors.greenAccent.shade100;
-            });
-          }else{
-            setState(() {
-              color = Colors.red.shade100;
-            });
+          if (widget.d_controlle.text == "0") {
+            widget.d_controlle.text = "1";
+            if (widget.C_index == widget.index) {
+              setState(() {
+                color = Colors.greenAccent.shade100;
+              });
+            } else {
+              setState(() {
+                color = Colors.red.shade100;
+              });
+            }
           }
         },
         child: Container(
@@ -111,7 +112,7 @@ class _OptionCardState extends State<OptionCard> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  widget. option,
+                  widget.option,
                   style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,

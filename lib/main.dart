@@ -1,3 +1,4 @@
+import 'package:education_spot/Screens/Quizz/QuizzScreen.dart';
 import 'package:education_spot/Screens/authentication/signInScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const         QuizQuestion()
+      home: const         QuizzScreen()
 
     );
   }

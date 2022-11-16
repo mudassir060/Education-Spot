@@ -7,7 +7,8 @@ import 'mySpacer.dart';
 
 class myAppBar extends StatelessWidget {
   final String titel;
-  const myAppBar({Key? key, required this.titel}) : super(key: key);
+  final double linewidth;
+  const myAppBar({Key? key, required this.titel, required this.linewidth}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,17 +26,19 @@ class myAppBar extends StatelessWidget {
              Text(
               titel,
               style:
-              TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
             mySpacer(10.0, 0.0),
             Container(
-              width: 200,
+              width: linewidth,
               height: 2,
               color: primaryColor,
             )
           ],
         ),
         mySpacer(0.0, 0.0),
+        mySpacer(0.0, 0.0),
+
       ],
     );
   }

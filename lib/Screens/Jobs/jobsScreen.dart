@@ -1,4 +1,5 @@
 import 'package:education_spot/Screens/Jobs/recomendedCard.dart';
+import 'package:education_spot/Widgets/myAppBar.dart';
 import 'package:education_spot/Widgets/mySpacer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,31 +26,32 @@ class _jobsScreenState extends State<jobsScreen> {
         child: Column(
           children: [
             // // // // // // // // // // // Top Bar // // // // // // // // //
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(onTap: (){
-                  Navigator.pop(context);
-                }, child: Image.asset(backCurve)),
-                mySpacer(0.0, 0.0),
-                Column(
-                  children: [
-                    const Text(
-                      "Discover job",
-                      style:
-                      TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                    ),
-                    mySpacer(10.0, 0.0),
-                    Container(
-                      width: 200,
-                      height: 2,
-                      color: primaryColor,
-                    )
-                  ],
-                ),
-                mySpacer(0.0, 0.0),
-              ],
-            ),
+            myAppBar(titel: "Discover job", linewidth: 150),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: [
+            //     InkWell(onTap: (){
+            //       Navigator.pop(context);
+            //     }, child: Image.asset(backCurve)),
+            //     mySpacer(0.0, 0.0),
+            //     Column(
+            //       children: [
+            //         const Text(
+            //           "Discover job",
+            //           style:
+            //           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            //         ),
+            //         mySpacer(10.0, 0.0),
+            //         Container(
+            //           width: 200,
+            //           height: 2,
+            //           color: primaryColor,
+            //         )
+            //       ],
+            //     ),
+            //     mySpacer(0.0, 0.0),
+            //   ],
+            // ),
             Padding(
               padding: const EdgeInsets.all(18.0),
               child: Column(

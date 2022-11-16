@@ -24,7 +24,7 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
         child: Column(
           children: [
             // // // // // // // // // // // Top Bar // // // // // // // // //
-            myAppBar(titel: "Available Sholarships"),
+            const myAppBar(titel: "Available Scholarships",linewidth:250),
             Padding(
               padding: const EdgeInsets.all(18.0),
               child: Column(
@@ -46,7 +46,7 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
                             Icons.search,
                             color: Colors.grey,
                           ),
-                          hintText: "Search for a scholarships",
+                          hintText: "Search for a scholarship",
                           hintStyle: TextStyle(color: Colors.grey),
                           border: InputBorder.none),
                     ),

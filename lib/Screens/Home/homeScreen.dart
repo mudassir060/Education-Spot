@@ -21,13 +21,13 @@ class _homeScreenState extends State<homeScreen> {
   Widget build(BuildContext context) {
     var buttonList = [
       {
-        "name": "Scholarships",
+        "name": "Scholarship",
         "image": Scholarships2,
         "page": sholarshipsScreen()
       },
-      {"name": "Admissions", "image": Admissions, "page": AdmissionsScreen()},
+      {"name": "Admission", "image": Admissions, "page": AdmissionsScreen()},
       {"name": "Quiz", "image": Quiz, "page": QuizzScreen()},
-      {"name": "Jobs", "image": Jobs, "page": jobsScreen()},
+      {"name": "Job", "image": Jobs, "page": jobsScreen()},
     ];
     var data = buttonList.length;
     var quot = (data / 2).floor();

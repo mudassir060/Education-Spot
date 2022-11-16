@@ -17,7 +17,7 @@ class _QuizzScreenState extends State<QuizzScreen> {
             body: SingleChildScrollView(
                 child: Column(
       children: [
-        myAppBar(titel: "Quizz"),
+        myAppBar(titel: "Quizz", linewidth: 75,),
         Text("Quizz"),
       ],
     ))));

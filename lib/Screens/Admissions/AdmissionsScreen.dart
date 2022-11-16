@@ -17,7 +17,7 @@ class _AdmissionsScreenState extends State<AdmissionsScreen> {
             body: SingleChildScrollView(
                 child: Column(
                   children: [
-                    myAppBar(titel: "Admissions"),
+                    myAppBar(titel: "Admissions", linewidth: 140,),
                     Text("Admissions"),
                   ],
                 ))));

@@ -32,7 +32,7 @@ class _sigupScreenState extends State<sigupScreen> {
       child: Scaffold(
         body: Stack(
           children: [
-            backDesgin(),
+            const backDesgin(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -93,8 +93,8 @@ class _sigupScreenState extends State<sigupScreen> {
                       TextButton(onPressed: (){   Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => BottomNavigBar()),
-                      );}, child: Text("Already have an account"))
+                            builder: (context) => const BottomNavigBar()),
+                      );}, child: const Text("Already have an account"))
                     ],
                   ),
                 ),

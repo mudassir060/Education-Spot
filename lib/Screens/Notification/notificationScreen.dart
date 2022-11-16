@@ -23,7 +23,7 @@ class _notificationScreenState extends State<notificationScreen> {
           // // // // // // // // // // // Top Bar // // // // // // // // //
           Stack(
             children: [
-             myAppBar(titel: "Notification", linewidth: 150),
+             myAppBar(titel: "Notifications", linewidth: 150),
               Positioned(
                 top: 90,
                 child: Container(

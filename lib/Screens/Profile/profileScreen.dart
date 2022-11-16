@@ -1,3 +1,4 @@
+import 'package:education_spot/Widgets/myAppBar.dart';
 import 'package:education_spot/Widgets/mySpacer.dart';
 import 'package:education_spot/constants/style.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,7 +14,7 @@ class profileScreen extends StatefulWidget {
 }
 
 class _profileScreenState extends State<profileScreen> {
-  var Skills = ["Programming", "SEO", "Marketing", "afds"];
+  var Skills = ["Programming", "SEO", "Marketing"];
   var education = [
     {"name": "Matric", "start": "2016", "end": "2019"},
     {"name": "BSCS", "start": "2019", "end": "2023"},
@@ -44,43 +45,22 @@ class _profileScreenState extends State<profileScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // // // // // // // // // // // Top Bar // // // // // // // // //
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset(settingCurve),
-                  mySpacer(0.0, 0.0),
-                  Column(
-                    children: [
-                      const Text(
-                        "My Profile",
-                        style:
-                            TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                      mySpacer(10.0, 0.0),
-                      Container(
-                        width: 200,
-                        height: 2,
-                        color: primaryColor,
-                      )
-                    ],
-                  ),
-                  mySpacer(0.0, 0.0),
-                ],
-              ),
+              myAppBar(titel: "My Profile", linewidth: 130),
               // // // // // // // // // // // About // // // // // // // // //
               Padding(
-                padding: const EdgeInsets.all(18.0),
+                padding: const EdgeInsets.only(top: 18.0,left: 18.0,right: 18.0,),
                 child: Row(
                   children: [
                     SizedBox(
                       width: vwidth - 180,
+                      height: 100,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text(
                             "Mudassir Mukhtar",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           Text(
                             "mudassir4@gmail.com",
@@ -88,32 +68,44 @@ class _profileScreenState extends State<profileScreen> {
                               fontSize: 16,
                             ),
                           ),
-                          Text(
-                              "Hello. I'm Mudassir Mukhtar Welcome to my profile")
+                          Text("Hello. I'm Mudassir Mukhtar Welcome to my profile")
                         ],
                       ),
                     ),
-                    CircleAvatar(
-                      radius: 70,
-                      child: CircleAvatar(
-                        radius: 65,
-                        backgroundImage: AssetImage(Profile),
-                      ),
+                    Stack(
+                      children: [
+                        CircleAvatar(
+                          radius: 70,
+                          child: CircleAvatar(
+                            radius: 65,
+                            backgroundImage: AssetImage(Profile),
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 3,
+                            right: 3,
+                            child: CircleAvatar(radius: 20,backgroundColor: Colors.white, child: IconButton(onPressed: () {}, icon: Icon(Icons.camera_alt)))),
+                      ],
                     )
                   ],
                 ),
               ),
               // // // // // // // // // // // Skill // // // // // // // // //
               Padding(
-                padding: const EdgeInsets.only(left: 18.0),
-                child: Text(
-                  "Skills",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                padding: const EdgeInsets.only(left: 18.0, bottom: 5),
+                child: Row(
+                  children: [
+                    Text(
+                      "Skills",
+                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    ),
+                    IconButton(onPressed: (){}, icon: Icon(Icons.edit, ))
+                  ],
                 ),
               ),
 
               Container(
-                height: 32 * Skills.length.toDouble(),
+                height: 23 * Skills.length.toDouble(),
                 child: ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: Skills.length,
@@ -122,7 +114,10 @@ class _profileScreenState extends State<profileScreen> {
                         children: [
                           const Padding(
                             padding: EdgeInsets.only(left: 38.0, right: 8.0),
-                            child: Icon(Icons.star),
+                            child: Icon(
+                              Icons.star,
+                              size: 18,
+                            ),
                           ),
                           Text(
                             Skills[index],
@@ -133,16 +128,21 @@ class _profileScreenState extends State<profileScreen> {
                     }),
               ),
               // // // // // // // // // // // Skill // // // // // // // // //
-              Padding(
-                padding: const EdgeInsets.only(left: 18.0),
-                child: Text(
-                  "Educarion",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+               Padding(
+                padding: EdgeInsets.only(left: 18.0, bottom: 5),
+                child: Row(
+                  children: [
+                    Text(
+                      "Education",
+                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    ),
+                    IconButton(onPressed: (){}, icon: Icon(Icons.edit, ))
+                  ],
                 ),
               ),
 
               Container(
-                height: 35 * education.length.toDouble(),
+                height: 30 * education.length.toDouble(),
                 child: ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: education.length,
@@ -151,10 +151,13 @@ class _profileScreenState extends State<profileScreen> {
                         children: [
                           const Padding(
                             padding: EdgeInsets.only(left: 38.0, right: 8.0),
-                            child: Icon(Icons.star),
+                            child: Icon(
+                              Icons.star,
+                              size: 18,
+                            ),
                           ),
                           Text(
-                            "${education[index]["name"]}  (${education[index]["start"]} To ${education[index]["end"]})",
+                            "${education[index]["name"]}  (${education[index]["start"]} - ${education[index]["end"]})",
                             style: TextStyle(fontSize: 18),
                           ),
                         ],

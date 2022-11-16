@@ -1,3 +1,4 @@
+import 'package:education_spot/Widgets/myAppBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,29 +23,7 @@ class _notificationScreenState extends State<notificationScreen> {
           // // // // // // // // // // // Top Bar // // // // // // // // //
           Stack(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset(backCurve),
-                  mySpacer(0.0, 0.0),
-                  Column(
-                    children: [
-                      const Text(
-                        "Notification",
-                        style:
-                            TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                      mySpacer(10.0, 0.0),
-                      Container(
-                        width: 200,
-                        height: 2,
-                        color: primaryColor,
-                      )
-                    ],
-                  ),
-                  mySpacer(0.0, 0.0),
-                ],
-              ),
+             myAppBar(titel: "Notification", linewidth: 150),
               Positioned(
                 top: 90,
                 child: Container(
@@ -52,6 +31,7 @@ class _notificationScreenState extends State<notificationScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
+                      mySpacer(0.0, 0.0),
                       TextButton(
                         onPressed: () {},
                         child: Text("Marks all read"),
@@ -61,6 +41,8 @@ class _notificationScreenState extends State<notificationScreen> {
                         onPressed: () {},
                         child: Text("Sort by time"),
                       ),
+                      mySpacer(0.0, 0.0),
+
                     ],
                   ),
                 ),

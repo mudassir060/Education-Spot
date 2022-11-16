@@ -1,6 +1,9 @@
+import 'package:education_spot/Screens/Quizz/widget/rowCard.dart';
 import 'package:flutter/material.dart';
 
 import '../../Widgets/myAppBar.dart';
+import '../../constants/images.dart';
+import 'Data.dart';
 
 class QuizzScreen extends StatefulWidget {
   const QuizzScreen({Key? key}) : super(key: key);
@@ -17,8 +20,10 @@ class _QuizzScreenState extends State<QuizzScreen> {
             body: SingleChildScrollView(
                 child: Column(
       children: [
-        myAppBar(titel: "Quizz", linewidth: 75,),
-        Text("Quizz"),
+        const myAppBar(titel: "Quiz", linewidth: 75,),
+        rowCard(img:Quiz, title: 'MCAT',question:MDCT),
+        rowCard(img:Quiz, title: 'ECAT',question:ECAT),
+        rowCard(img:Quiz, title: 'PMS',question:PMS),
       ],
     ))));
   }

@@ -2,6 +2,7 @@ import 'package:education_spot/Screens/authentication/signInScreen.dart';
 import 'package:flutter/material.dart';
 
 import 'Screens/Chats/PriviteChat/inbox_screen.dart';
+import 'Screens/Quizz/QuizQuestion.dart';
 import 'Widgets/BottomNavigBar.dart';
 
 
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const signInScreen(),
+      home: const         QuizQuestion()
+
     );
   }
 }

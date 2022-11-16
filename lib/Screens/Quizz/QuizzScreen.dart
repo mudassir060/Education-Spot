@@ -21,7 +21,7 @@ class _QuizzScreenState extends State<QuizzScreen> {
                 child: Column(
       children: [
         const myAppBar(titel: "Quiz", linewidth: 75,),
-        rowCard(img:Quiz, title: 'MCAT',question:MDCT),
+        rowCard(img:Quiz, title: 'MCAT',question:MCAT),
         rowCard(img:Quiz, title: 'ECAT',question:ECAT),
         rowCard(img:Quiz, title: 'PMS',question:PMS),
       ],

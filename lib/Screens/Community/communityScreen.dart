@@ -67,7 +67,7 @@ class _communityScreenState extends State<communityScreen> {
                   ),
                   // // // // // // // // // // // Text Heading // // // // // // // //
                   const Positioned(
-                    top: 100,
+                    top: 110,
                     left: 60,
                     child: Text(
                       "Join the Community",

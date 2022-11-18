@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../Data.dart';
 import '../QuizQuestion.dart';
+import '../QuizStart.dart';
 
 class rowCard extends StatelessWidget {
   final String img;
   final String title;
-  final Map data;
+  final List data;
 
   const rowCard({Key? key, required this.img, required this.title, required question, required this.data}) : super(key: key);
 
@@ -32,7 +33,7 @@ class rowCard extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => QuizQuestion(data: data)),
+              MaterialPageRoute(builder: (context) => QuizStart(data: data, questioNo: 0,)),
             );
           },
           child: Row(

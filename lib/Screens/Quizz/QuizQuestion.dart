@@ -2,10 +2,12 @@ import 'package:education_spot/Widgets/myAppBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class QuizQuestion extends StatefulWidget {
   final Map data;
-  const QuizQuestion({Key? key, required this.data}) : super(key: key);
+  final List all_data;
+  final int questioNo;
+
+  const QuizQuestion({Key? key, required this.data, required this.questioNo, required this.all_data}) : super(key: key);
 
   @override
   State<QuizQuestion> createState() => _QuizQuestionState();
@@ -46,15 +48,45 @@ class _QuizQuestionState extends State<QuizQuestion> {
                     ),
                   ),
                 ),
-                OptionCard(option: "A: ${widget.data["A"]}", index: 1, d_controlle: d_controlle, C_index: widget.data["correctIndex"],),
-                OptionCard(option: "B: ${widget.data["B"]}", index: 2, d_controlle: d_controlle, C_index: widget.data["correctIndex"],),
-                OptionCard(option: "C: ${widget.data["C"]}", index: 3, d_controlle: d_controlle, C_index: widget.data["correctIndex"],),
-                OptionCard(option: "D: ${widget.data["D"]}", index: 4, d_controlle: d_controlle, C_index: widget.data["correctIndex"],),
+                OptionCard(
+                  option: "A: ${widget.data["A"]}",
+                  index: 1,
+                  d_controlle: d_controlle,
+                  C_index: widget.data["correctIndex"],
+                ),
+                OptionCard(
+                  option: "B: ${widget.data["B"]}",
+                  index: 2,
+                  d_controlle: d_controlle,
+                  C_index: widget.data["correctIndex"],
+                ),
+                OptionCard(
+                  option: "C: ${widget.data["C"]}",
+                  index: 3,
+                  d_controlle: d_controlle,
+                  C_index: widget.data["correctIndex"],
+                ),
+                OptionCard(
+                  option: "D: ${widget.data["D"]}",
+                  index: 4,
+                  d_controlle: d_controlle,
+                  C_index: widget.data["correctIndex"],
+                ),
                 const SizedBox(
                   height: 50,
                 ),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => QuizQuestion(
+                                  data: widget.all_data[widget.questioNo+1],
+                                  questioNo: widget.questioNo+1,
+                                  all_data: widget.all_data,
+                                )),
+                      );
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
@@ -76,7 +108,8 @@ class OptionCard extends StatefulWidget {
   final int index;
   final int C_index;
 
-  const OptionCard({Key? key, required this.option, required this.index, required this.d_controlle, required this.C_index}) : super(key: key);
+  const OptionCard({Key? key, required this.option, required this.index, required this.d_controlle, required this.C_index})
+      : super(key: key);
 
   @override
   State<OptionCard> createState() => _OptionCardState();

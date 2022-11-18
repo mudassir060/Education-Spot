@@ -1,19 +1,30 @@
 var MCAT = [
   {
-    "question": "What is the scientific name of a butterfly?",
+    "question": "1What is the scientific name of a butterfly?",
     "A": "Apis",
     "B": "Coleoptera",
     "C": "Formicidae",
     "D": "Rhopalocera",
-    "correctIndex": 3,
+    "correctIndex": 1,
+  },
+  {
+    "question": "2What is the scientific name of a butterfly?",
+    "A": "Apis",
+    "B": "Coleoptera",
+    "C": "Formicidae",
+    "D": "Rhopalocera",
+    "correctIndex": 2,
   },
 ];
 
 var ECAT = [
   {
     "question": "What is the scientific name of a butterfly?",
-    "answers": ["Apis", "Coleoptera", "Formicidae", "Rhopalocera"],
-    "correctIndex": 3
+    "A": "Apis",
+    "B": "Coleoptera",
+    "C": "Formicidae",
+    "D": "Rhopalocera",
+    "correctIndex": 2,
   },
 ];
 var PMS = [
@@ -26,21 +37,30 @@ var PMS = [
 var CSS = [
   {
     "question": "What is the scientific name of a butterfly?",
-    "answers": ["Apis", "Coleoptera", "Formicidae", "Rhopalocera"],
-    "correctIndex": 3
+    "A": "Apis",
+    "B": "Coleoptera",
+    "C": "Formicidae",
+    "D": "Rhopalocera",
+    "correctIndex": 3,
   },
 ];
 var IELTS = [
   {
     "question": "What is the scientific name of a butterfly?",
-    "answers": ["Apis", "Coleoptera", "Formicidae", "Rhopalocera"],
-    "correctIndex": 3
+    "A": "Apis",
+    "B": "Coleoptera",
+    "C": "Formicidae",
+    "D": "Rhopalocera",
+    "correctIndex": 3,
   },
 ];
 var General = [
   {
     "question": "What is the scientific name of a butterfly?",
-    "answers": ["Apis", "Coleoptera", "Formicidae", "Rhopalocera"],
-    "correctIndex": 3
+    "A": "Apis",
+    "B": "Coleoptera",
+    "C": "Formicidae",
+    "D": "Rhopalocera",
+    "correctIndex": 3,
   },
 ];

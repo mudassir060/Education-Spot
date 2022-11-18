@@ -2,12 +2,18 @@ import 'package:education_spot/Widgets/myAppBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../Widgets/mySpacer.dart';
+import '../../constants/images.dart';
+import '../../constants/style.dart';
+
 class QuizQuestion extends StatefulWidget {
   final Map data;
   final List all_data;
   final int questioNo;
+  final int scoure;
 
-  const QuizQuestion({Key? key, required this.data, required this.questioNo, required this.all_data}) : super(key: key);
+  const QuizQuestion({Key? key, required this.data, required this.questioNo, required this.all_data, required this.scoure})
+      : super(key: key);
 
   @override
   State<QuizQuestion> createState() => _QuizQuestionState();
@@ -15,9 +21,11 @@ class QuizQuestion extends StatefulWidget {
 
 class _QuizQuestionState extends State<QuizQuestion> {
   TextEditingController d_controlle = TextEditingController(text: "0");
+  TextEditingController s_controlle = TextEditingController(text: "0");
 
   @override
   Widget build(BuildContext context) {
+    var scoure = widget.scoure;
     var vwidth = MediaQuery.of(context).size.width;
     return SafeArea(
         // appBar: AppBar(
@@ -27,7 +35,43 @@ class _QuizQuestionState extends State<QuizQuestion> {
         child: Scaffold(
       body: Column(
         children: [
-          const myAppBar(titel: "Question No: 1", linewidth: 180),
+          // // // // // // // // // // // Top Bar // // // // // // // // //
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Stack(
+                children: [
+                  Image.asset(curve),
+                  Positioned(
+                      top:25,
+                      left: 25,
+                      child: Text(
+                        "${widget.scoure}/10",
+                        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),
+                      ))
+                ],
+              ),
+              mySpacer(0.0, 0.0),
+              Column(
+                children: [
+                  Text(
+                    "Question ${widget.questioNo + 1}",
+                    style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                  mySpacer(10.0, 0.0),
+                  Container(
+                    width: 180,
+                    height: 2,
+                    color: primaryColor,
+                  )
+                ],
+              ),
+              mySpacer(0.0, 0.0),
+              mySpacer(0.0, 0.0),
+            ],
+          ),
+          // // // // // // // // // // // Question // // // // // // // // //
+
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
@@ -52,24 +96,28 @@ class _QuizQuestionState extends State<QuizQuestion> {
                   option: "A: ${widget.data["A"]}",
                   index: 1,
                   d_controlle: d_controlle,
+                  s_controlle: s_controlle,
                   C_index: widget.data["correctIndex"],
                 ),
                 OptionCard(
                   option: "B: ${widget.data["B"]}",
                   index: 2,
                   d_controlle: d_controlle,
+                  s_controlle: s_controlle,
                   C_index: widget.data["correctIndex"],
                 ),
                 OptionCard(
                   option: "C: ${widget.data["C"]}",
                   index: 3,
                   d_controlle: d_controlle,
+                  s_controlle: s_controlle,
                   C_index: widget.data["correctIndex"],
                 ),
                 OptionCard(
                   option: "D: ${widget.data["D"]}",
                   index: 4,
                   d_controlle: d_controlle,
+                  s_controlle: s_controlle,
                   C_index: widget.data["correctIndex"],
                 ),
                 const SizedBox(
@@ -77,13 +125,19 @@ class _QuizQuestionState extends State<QuizQuestion> {
                 ),
                 ElevatedButton(
                     onPressed: () {
+                      if (s_controlle.text == '1') {
+                        setState(() {
+                          scoure++;
+                        });
+                      }
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => QuizQuestion(
-                                  data: widget.all_data[widget.questioNo+1],
-                                  questioNo: widget.questioNo+1,
+                                  data: widget.all_data[widget.questioNo + 1],
+                                  questioNo: widget.questioNo + 1,
                                   all_data: widget.all_data,
+                                  scoure: scoure,
                                 )),
                       );
                     },
@@ -104,11 +158,13 @@ class _QuizQuestionState extends State<QuizQuestion> {
 
 class OptionCard extends StatefulWidget {
   final TextEditingController d_controlle;
+  final TextEditingController s_controlle;
   final String option;
   final int index;
   final int C_index;
 
-  const OptionCard({Key? key, required this.option, required this.index, required this.d_controlle, required this.C_index})
+  const OptionCard(
+      {Key? key, required this.option, required this.index, required this.d_controlle, required this.C_index, required this.s_controlle})
       : super(key: key);
 
   @override
@@ -126,6 +182,7 @@ class _OptionCardState extends State<OptionCard> {
           if (widget.d_controlle.text == "0") {
             widget.d_controlle.text = "1";
             if (widget.C_index == widget.index) {
+              widget.s_controlle.text = "1";
               setState(() {
                 color = Colors.greenAccent.shade100;
               });

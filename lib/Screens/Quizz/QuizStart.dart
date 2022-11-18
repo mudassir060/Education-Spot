@@ -58,7 +58,10 @@ class _QuizStartState extends State<QuizStart> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => QuizQuestion(
-                                  data: data, questioNo: widget.questioNo, all_data: widget.data,
+                                  data: data,
+                                  questioNo: widget.questioNo,
+                                  all_data: widget.data,
+                                  scoure: 0,
                                 )),
                       );
                     },

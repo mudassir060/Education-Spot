@@ -33,7 +33,7 @@ class rowCard extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => QuizStart(data: data, questioNo: 0,)),
+              MaterialPageRoute(builder: (context) => QuizStart(data: data,)),
             );
           },
           child: Row(

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:education_spot/Widgets/myAppBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,7 @@ import 'package:flutter/material.dart';
 import '../../Widgets/mySpacer.dart';
 import '../../constants/images.dart';
 import '../../constants/style.dart';
+import 'QuizEnd.dart';
 
 class QuizQuestion extends StatefulWidget {
   final Map data;
@@ -25,6 +28,13 @@ class _QuizQuestionState extends State<QuizQuestion> {
 
   @override
   Widget build(BuildContext context) {
+    Random rnd;
+    var que =widget.questioNo+1;
+    int min =que*10-10;
+    int max = que*10-1;
+    rnd = Random();
+    int r = min + rnd.nextInt(max - min);
+    print("=============>$min///$max /// $r");
     var scoure = widget.scoure;
     var vwidth = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -130,16 +140,22 @@ class _QuizQuestionState extends State<QuizQuestion> {
                           scoure++;
                         });
                       }
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => QuizQuestion(
-                                  data: widget.all_data[widget.questioNo + 1],
-                                  questioNo: widget.questioNo + 1,
-                                  all_data: widget.all_data,
-                                  scoure: scoure,
-                                )),
-                      );
+                     if(widget.questioNo !=9){
+                       Navigator.push(
+                         context,
+                         MaterialPageRoute(
+                             builder: (context) => QuizQuestion(
+                               data: widget.all_data[r],
+                               questioNo: widget.questioNo + 1,
+                               all_data: widget.all_data,
+                               scoure: scoure,
+                             )),
+                       );
+                     }else{Navigator.push(
+                       context,
+                       MaterialPageRoute(
+                           builder: (context) => QuizEnd(scoure: scoure,)),
+                     );}
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

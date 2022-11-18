@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:education_spot/Screens/Quizz/QuizQuestion.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +8,11 @@ import '../../Widgets/myAppBar.dart';
 
 class QuizStart extends StatefulWidget {
   final List data;
-  final int questioNo;
 
-  const QuizStart({Key? key, required this.data, required this.questioNo}) : super(key: key);
+  const QuizStart({
+    Key? key,
+    required this.data,
+  }) : super(key: key);
 
   @override
   State<QuizStart> createState() => _QuizStartState();
@@ -19,7 +23,13 @@ class _QuizStartState extends State<QuizStart> {
 
   @override
   Widget build(BuildContext context) {
-    var data = widget.data[widget.questioNo];
+    Random rnd;
+    int min = 0;
+    int max = 9;
+    rnd = Random();
+    int r = min + rnd.nextInt(max - min);
+    print("===================>${widget.data.length}");
+    var data = widget.data[r];
     return SafeArea(
         // appBar: AppBar(
         //   title: const Text("Question No: 1"),
@@ -59,7 +69,7 @@ class _QuizStartState extends State<QuizStart> {
                         MaterialPageRoute(
                             builder: (context) => QuizQuestion(
                                   data: data,
-                                  questioNo: widget.questioNo,
+                                  questioNo: 0,
                                   all_data: widget.data,
                                   scoure: 0,
                                 )),

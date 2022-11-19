@@ -38,26 +38,66 @@ class _QuizStartState extends State<QuizStart> {
         child: Scaffold(
       body: Column(
         children: [
-          const myAppBar(titel: "Question No: 1", linewidth: 180),
+          const myAppBar(titel: "Quiz", linewidth: 80),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
               children: [
-                const Card(
-                  child: SizedBox(
-                    height: 80,
-                    width: 200,
-                    child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        "question",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
+                Table(
+                  defaultColumnWidth: FixedColumnWidth(170.0),
+                  border: TableBorder.all(color: Colors.white, style: BorderStyle.solid, width: 2),
+                  children: [
+                    TableRow(children: [
+                      container(
+                        "TEST NAME",
+                        Colors.grey[300],
                       ),
-                    ),
-                  ),
+                      container(
+                        "ECAT",
+                        Colors.grey[300],
+                      ),
+                    ]),
+                    TableRow(children: [
+                      container(
+                        "TEST CATEGORY",
+                        Colors.grey[200],
+                      ),
+                      container(
+                        "MULTI",
+                        Colors.grey[200],
+                      ),
+                    ]),
+                    TableRow(children: [
+                      container(
+                        "TEST TYPE",
+                        Colors.grey[300],
+                      ),
+                      container(
+                        "MCQS",
+                        Colors.grey[300],
+                      ),
+                    ]),
+                    TableRow(children: [
+                      container(
+                        "TOTAL QUESTION",
+                        Colors.grey[200],
+                      ),
+                      container(
+                        "10",
+                        Colors.grey[200],
+                      ),
+                    ]),
+                    TableRow(children: [
+                      container(
+                        "TOTAL TIME",
+                        Colors.grey[300],
+                      ),
+                      container(
+                        "10",
+                        Colors.grey[300],
+                      ),
+                    ]),
+                  ],
                 ),
                 const SizedBox(
                   height: 50,
@@ -88,4 +128,18 @@ class _QuizStartState extends State<QuizStart> {
       ),
     ));
   }
+}
+
+Widget container(titel, color) {
+  return Container(
+    padding: const EdgeInsets.all(10.0),
+    color: color,
+    height: 50,
+    child: Center(
+        child: Row(
+      children: [
+        Text(titel, style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
+      ],
+    )),
+  );
 }

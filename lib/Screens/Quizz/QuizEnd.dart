@@ -13,7 +13,7 @@ class QuizEnd extends StatelessWidget {
         child: Scaffold(
       body: Column(
         children: [
-          const myAppBar(titel: "Result", linewidth: 180),
+          const myAppBar(titel: "Result", linewidth: 100),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(

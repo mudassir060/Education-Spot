@@ -29,19 +29,18 @@ class _QuizQuestionState extends State<QuizQuestion> {
   @override
   Widget build(BuildContext context) {
     Random rnd;
-    var que =widget.questioNo+1;
-    int min =que*10-10;
-    int max = que*10-1;
+    var que = widget.questioNo + 1;
+    int min = que * 10 - 10;
+    int max = que * 10 - 1;
     rnd = Random();
     int r = min + rnd.nextInt(max - min);
     print("=============>$min///$max /// $r");
     var scoure = widget.scoure;
     var vwidth = MediaQuery.of(context).size.width;
+    var target = DateTime.now().add(
+      Duration(seconds: 60),
+    );
     return SafeArea(
-        // appBar: AppBar(
-        //   title: const Text("Question No: 1"),
-        // ),
-
         child: Scaffold(
       body: Column(
         children: [
@@ -53,12 +52,25 @@ class _QuizQuestionState extends State<QuizQuestion> {
                 children: [
                   Image.asset(curve),
                   Positioned(
-                      top:25,
-                      left: 25,
-                      child: Text(
-                        "${widget.scoure}/10",
-                        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),
-                      ))
+                    top: 25,
+                    left: 25,
+                    child: StreamBuilder(
+                      stream: Stream.periodic(const Duration(seconds: 1)),
+                      builder: (context, snapshot) {
+                        var time = target.difference(DateTime.now());
+                        var seconds = time.inSeconds;
+                        return Column(
+                          children: [
+                            // Text('Time until ${DateFormat.Hms().format(target)}'),
+                            Text(
+                              seconds.toString(),
+                              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 35),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
                 ],
               ),
               mySpacer(0.0, 0.0),
@@ -70,7 +82,7 @@ class _QuizQuestionState extends State<QuizQuestion> {
                   ),
                   mySpacer(10.0, 0.0),
                   Container(
-                    width: 180,
+                    width: 140,
                     height: 2,
                     color: primaryColor,
                   )
@@ -140,22 +152,26 @@ class _QuizQuestionState extends State<QuizQuestion> {
                           scoure++;
                         });
                       }
-                     if(widget.questioNo !=9){
-                       Navigator.push(
-                         context,
-                         MaterialPageRoute(
-                             builder: (context) => QuizQuestion(
-                               data: widget.all_data[r],
-                               questioNo: widget.questioNo + 1,
-                               all_data: widget.all_data,
-                               scoure: scoure,
-                             )),
-                       );
-                     }else{Navigator.push(
-                       context,
-                       MaterialPageRoute(
-                           builder: (context) => QuizEnd(scoure: scoure,)),
-                     );}
+                      if (widget.questioNo != 9) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => QuizQuestion(
+                                    data: widget.all_data[r],
+                                    questioNo: widget.questioNo + 1,
+                                    all_data: widget.all_data,
+                                    scoure: scoure,
+                                  )),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => QuizEnd(
+                                    scoure: scoure,
+                                  )),
+                        );
+                      }
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

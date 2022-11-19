@@ -15,20 +15,20 @@ class rowCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 18.0, right: 18.0, bottom: 8),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(30),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 3), // changes position of shadow
-            ),
-          ],
-          // color: primaryColor,
-        ),
+      child: Card(
+        // decoration: BoxDecoration(
+        //   color: Colors.white,
+        //   borderRadius: BorderRadius.circular(30),
+        //   boxShadow: [
+        //     BoxShadow(
+        //       color: Colors.grey.withOpacity(0.5),
+        //       spreadRadius: 5,
+        //       blurRadius: 7,
+        //       offset: const Offset(0, 3), // changes position of shadow
+        //     ),
+        //   ],
+        //   // color: primaryColor,
+        // ),
         child: InkWell(
           onTap: () {
             Navigator.push(

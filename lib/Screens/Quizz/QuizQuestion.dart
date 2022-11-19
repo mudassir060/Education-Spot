@@ -40,6 +40,35 @@ class _QuizQuestionState extends State<QuizQuestion> {
     var target = DateTime.now().add(
       Duration(seconds: 60),
     );
+
+    nextPage() {
+      if (s_controlle.text == '1') {
+        setState(() {
+          scoure++;
+        });
+      }
+      if (widget.questioNo != 9) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => QuizQuestion(
+                    data: widget.all_data[r],
+                    questioNo: widget.questioNo + 1,
+                    all_data: widget.all_data,
+                    scoure: scoure,
+                  )),
+        );
+      } else {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => QuizEnd(
+                    scoure: scoure,
+                  )),
+        );
+      }
+    }
+
     return SafeArea(
         child: Scaffold(
       body: Column(
@@ -59,14 +88,17 @@ class _QuizQuestionState extends State<QuizQuestion> {
                       builder: (context, snapshot) {
                         var time = target.difference(DateTime.now());
                         var seconds = time.inSeconds;
-                        return Column(
-                          children: [
-                            // Text('Time until ${DateFormat.Hms().format(target)}'),
-                            Text(
-                              seconds.toString(),
-                              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 35),
-                            ),
-                          ],
+                        var nextquestion = false;
+
+                        if (seconds == 50) {
+                          nextquestion = true;
+                          if (nextquestion == true) {
+                            nextPage();
+                          }
+                        }
+                        return Text(
+                          seconds.toString(),
+                          style: TextStyle(color: seconds >= 10 ? Colors.white : Colors.red, fontWeight: FontWeight.bold, fontSize: 35),
                         );
                       },
                     ),
@@ -147,31 +179,7 @@ class _QuizQuestionState extends State<QuizQuestion> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      if (s_controlle.text == '1') {
-                        setState(() {
-                          scoure++;
-                        });
-                      }
-                      if (widget.questioNo != 9) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => QuizQuestion(
-                                    data: widget.all_data[r],
-                                    questioNo: widget.questioNo + 1,
-                                    all_data: widget.all_data,
-                                    scoure: scoure,
-                                  )),
-                        );
-                      } else {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => QuizEnd(
-                                    scoure: scoure,
-                                  )),
-                        );
-                      }
+                      nextPage();
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

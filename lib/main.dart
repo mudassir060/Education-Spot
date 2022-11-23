@@ -6,7 +6,6 @@ import 'Screens/Chats/PriviteChat/inbox_screen.dart';
 import 'Screens/Quizz/QuizQuestion.dart';
 import 'Widgets/BottomNavigBar.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -18,13 +17,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Education Spot',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const         QuizzScreen()
-
-    );
+        title: 'Education Spot',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const signInScreen());
   }
 }

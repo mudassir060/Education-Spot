@@ -34,40 +34,9 @@ class _QuizQuestionState extends State<QuizQuestion> {
     int max = que * 10 - 1;
     rnd = Random();
     int r = min + rnd.nextInt(max - min);
-    print("=============>$min///$max /// $r");
     var scoure = widget.scoure;
-    var vwidth = MediaQuery.of(context).size.width;
-    var target = DateTime.now().add(
-      Duration(seconds: 60),
-    );
 
-    nextPage() {
-      if (s_controlle.text == '1') {
-        setState(() {
-          scoure++;
-        });
-      }
-      if (widget.questioNo != 9) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => QuizQuestion(
-                    data: widget.all_data[r],
-                    questioNo: widget.questioNo + 1,
-                    all_data: widget.all_data,
-                    scoure: scoure,
-                  )),
-        );
-      } else {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => QuizEnd(
-                    scoure: scoure,
-                  )),
-        );
-      }
-    }
+    var vwidth = MediaQuery.of(context).size.width;
 
     return SafeArea(
         child: Scaffold(
@@ -83,24 +52,9 @@ class _QuizQuestionState extends State<QuizQuestion> {
                   Positioned(
                     top: 25,
                     left: 25,
-                    child: StreamBuilder(
-                      stream: Stream.periodic(const Duration(seconds: 1)),
-                      builder: (context, snapshot) {
-                        var time = target.difference(DateTime.now());
-                        var seconds = time.inSeconds;
-                        var nextquestion = false;
-
-                        if (seconds == 50) {
-                          nextquestion = true;
-                          if (nextquestion == true) {
-                            nextPage();
-                          }
-                        }
-                        return Text(
-                          seconds.toString(),
-                          style: TextStyle(color: seconds >= 10 ? Colors.white : Colors.red, fontWeight: FontWeight.bold, fontSize: 35),
-                        );
-                      },
+                    child: Text(
+                      "$scoure /10",
+                      style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),
                     ),
                   ),
                 ],
@@ -179,7 +133,31 @@ class _QuizQuestionState extends State<QuizQuestion> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      nextPage();
+                      if (s_controlle.text == '1') {
+                        setState(() {
+                          scoure++;
+                        });
+                      }
+                      if (widget.questioNo != 9) {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => QuizQuestion(
+                                    data: widget.all_data[r],
+                                    questioNo: widget.questioNo + 1,
+                                    all_data: widget.all_data,
+                                    scoure: scoure,
+                                  )),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => QuizEnd(
+                                    scoure: scoure,
+                                  )),
+                        );
+                      }
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

@@ -44,7 +44,7 @@ class _QuizStartState extends State<QuizStart> {
             child: Column(
               children: [
                 Table(
-                  defaultColumnWidth: FixedColumnWidth(170.0),
+                  defaultColumnWidth: const FixedColumnWidth(170.0),
                   border: TableBorder.all(color: Colors.white, style: BorderStyle.solid, width: 2),
                   children: [
                     TableRow(children: [

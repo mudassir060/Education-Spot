@@ -10,7 +10,7 @@ class featuredCard extends StatelessWidget {
   final String titel;
   final String subTitel;
   final String location;
-  final String sallery;
+  final String lastDates;
 
   const featuredCard(
       {Key? key,
@@ -18,7 +18,7 @@ class featuredCard extends StatelessWidget {
       required this.titel,
       required this.subTitel,
       required this.location,
-      required this.sallery})
+      required this.lastDates})
       : super(key: key);
 
   @override
@@ -94,7 +94,7 @@ class featuredCard extends StatelessWidget {
                 ],
               ),
               Text(
-                "$sallery \$",
+                "$lastDates ",
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

@@ -2,8 +2,8 @@ import 'package:education_spot/Screens/Jobs/recomendedCard.dart';
 import 'package:education_spot/Widgets/myAppBar.dart';
 import 'package:education_spot/Widgets/mySpacer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-
+import 'package:http/http.dart' as http;
+import 'package:html/dom.dart' as dom;
 import '../../constants/images.dart';
 import '../../constants/style.dart';
 import 'featuredCard.dart';
@@ -15,11 +15,93 @@ class jobsScreen extends StatefulWidget {
   State<jobsScreen> createState() => _jobsScreenState();
 }
 
+class Article {
+  final String title;
+  final String lastDate;
+  final String url;
+  final String posetion;
+  final String publishDate;
+  final String location;
+
+  const Article({
+    required this.title,
+    required this.lastDate,
+    required this.url,
+    required this.posetion,
+    required this.publishDate,
+    required this.location,
+  });
+}
+
 class _jobsScreenState extends State<jobsScreen> {
+  List<Article> articles = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getWebsiteData();
+  }
+
+  Future getWebsiteData() async {
+    final url = Uri.parse("https://dailyjobs.pk/");
+    final response = await http.get(url);
+    dom.Document html = dom.Document.html(response.body);
+    final titles = html.querySelectorAll("h2 > a").map((e) => e.innerHtml.trim()).toList();
+    final urls = html.querySelectorAll("h2 > a").map((e) => "$url${e.attributes["href"]}").toList();
+    final lastDates = html.querySelectorAll("div > b").map((e) => e.innerHtml).toList();
+    final publishDates = html.querySelectorAll("span.entry-time").map((e) => e.innerHtml).toList();
+    final posetions = html.querySelectorAll("p").map((e) => e.innerHtml).toList();
+    final locations = html.querySelectorAll("span.jb-location").map((e) => e.innerHtml).toList();
+    print(
+        "titles===> ${titles.length} lastDates===> ${lastDates.length} Url===> ${urls.length} posetions===> ${posetions.length} lastDates===> ${lastDates.length} location===> ${locations.length} publishDates===> ${publishDates.length}");
+    // for (final url in urls) {
+    //   debugPrint("=====>${url}");
+    // }
+    setState(() {
+      articles = List.generate(
+          titles.length,
+          (index) => Article(
+              title: titles[index],
+              lastDate: lastDates[index],
+              url: urls[index].toString(),
+              posetion: posetions[index],
+              publishDate: publishDates[index],
+              location: locations[index]));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var vwidth = MediaQuery.of(context).size.width;
     var vheight = MediaQuery.of(context).size.height;
+
+    // if (articles.length != 0) {
+    //   return Scaffold(
+    //     // height: vheight - 370,
+    //     body: ListView.builder(
+    //         itemCount: articles.length - 4,
+    //         itemBuilder: (context, index) {
+    //           final _title = articles[index + 4].title;
+    //           final _url = articles[index + 4].url;
+    //           return Card(
+    //             child: Column(
+    //               children: [
+    //                 Text("1=${articles[index].title}"),
+    //                 Text("2=${articles[index].lastDate}"),
+    //                 Text("3=${articles[index].url}"),
+    //                 Text("4=${articles[index].posetion}"),
+    //                 Text("5=${articles[index].publishDate}"),
+    //                 Text("6=${articles[index].location}"),
+    //               ],
+    //             ),
+    //           );
+    //         }),
+    //   );
+    // } else {
+    //   return const Center(child: Text("Null"));
+    // }
+
     return SafeArea(
         child: Scaffold(
       body: SingleChildScrollView(
@@ -89,14 +171,15 @@ class _jobsScreenState extends State<jobsScreen> {
                     ],
                   ),
                   // // // // // // // // // // // Featured CArd // // // // // // // // //
-
-                  featuredCard(
-                    img: images,
-                    titel: "Senior, Graphic Design",
-                    subTitel: "WINGMAN CO.",
-                    location: "Bali, Indonesia",
-                    sallery: "1600-2000/Years",
-                  ),
+                  articles.length != 0
+                      ? featuredCard(
+                          img: images,
+                          titel: articles[0].title,
+                          subTitel: articles[0].posetion,
+                          location: articles[0].location,
+                          lastDates: articles[0].lastDate,
+                        )
+                      : const Text('Loading'),
                   // // // // // // // // // // // Recomended titel // // // // // // // // //
 
                   Padding(
@@ -106,15 +189,11 @@ class _jobsScreenState extends State<jobsScreen> {
                       children: [
                         Text(
                           "Recomended",
-                          style:
-                              TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         Text(
                           "See All",
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 16, color: Colors.grey, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -124,26 +203,19 @@ class _jobsScreenState extends State<jobsScreen> {
                   Container(
                     height: 180,
                     width: vwidth,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children:const [
-                        recomendedCard(
-                          img: images,
-                          titel: 'UX Writte',
-                          subTitel: 'WINGMAN CO.',
-                          location: 'California',
-                          timing: 'Full Time',
-                          sallery: '20/Hours',
-                        ), recomendedCard(
-                          img: images,
-                          titel: 'UX Writte',
-                          subTitel: 'WINGMAN CO.',
-                          location: 'California',
-                          timing: 'Full Time',
-                          sallery: '20/Hours',
-                        ),
-                      ],
-                    ),
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: articles.length ,
+                        itemBuilder: (context, index) {
+                          return recomendedCard(
+                            img: images,
+                            titel: articles[index+1].title,
+                            subTitel: articles[index+1].posetion,
+                            location: articles[index+1].location,
+                            timing: articles[index+1].lastDate,
+                            sallery: "23",
+                          );
+                        }),
                   )
                 ],
               ),

@@ -55,7 +55,7 @@ class _jobsScreenState extends State<jobsScreen> {
     final publishDates = html.querySelectorAll("span.entry-time").map((e) => e.innerHtml).toList();
     final posetions = html.querySelectorAll("p").map((e) => e.innerHtml).toList();
     final locations = html.querySelectorAll("span.jb-location").map((e) => e.innerHtml).toList();
-    final imgs = html.querySelectorAll("span.jb-location").map((e) => e.innerHtml).toList();
+    final imgs = html.querySelectorAll("a > img").map((e) => e.attributes["data-src"]).toList();
     print("titles===> ${titles.length} lastDates===> ${lastDates.length} Url===> ${urls.length} posetions===> ${posetions.length}");
     print("lastDates===> ${lastDates.length} location===> ${locations.length} publishDates===> ${publishDates.length} img===> ${imgs.length}");
     // for (final url in urls) {
@@ -71,7 +71,7 @@ class _jobsScreenState extends State<jobsScreen> {
               posetion: posetions[index],
               publishDate: publishDates[index],
               location: locations[index],
-              img: imgs[index]));
+              img: imgs[index].toString()));
     });
   }
 
@@ -112,7 +112,7 @@ class _jobsScreenState extends State<jobsScreen> {
         child: Column(
           children: [
             // // // // // // // // // // // Top Bar // // // // // // // // //
-            myAppBar(titel: "Discover job", linewidth: 150),
+            const myAppBar(titel: "Discover job", linewidth: 150),
             // Row(
             //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
             //   children: [
@@ -190,9 +190,9 @@ class _jobsScreenState extends State<jobsScreen> {
                     padding: const EdgeInsets.all(12.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                      children: const [
                         Text(
-                          "Recomended",
+                          "Recommended",
                           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         Text(
@@ -212,7 +212,7 @@ class _jobsScreenState extends State<jobsScreen> {
                         itemCount: articles.length,
                         itemBuilder: (context, index) {
                           return recomendedCard(
-                            img: images,
+                            img: articles[index + 1].img,
                             titel: articles[index + 1].title,
                             subTitel: articles[index + 1].posetion,
                             location: articles[index + 1].location,

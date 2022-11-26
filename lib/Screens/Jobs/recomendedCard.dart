@@ -26,6 +26,7 @@ class recomendedCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("=========================>>>${img}");
     return Container(
       width: 300,
       // height: 170,
@@ -45,7 +46,7 @@ class recomendedCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
-                    image: AssetImage(img),
+                    image: NetworkImage(img),
                     fit: BoxFit.cover,
                   ),
                 ),

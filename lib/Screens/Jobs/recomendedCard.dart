@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../Widgets/mySpacer.dart';
+import '../../Widgets/webView.dart';
 import '../../constants/images.dart';
 import '../../constants/style.dart';
 
@@ -11,6 +12,7 @@ class recomendedCard extends StatelessWidget {
   final String location;
   final String timing;
   final String sallery;
+  final String url;
 
   const recomendedCard(
       {Key? key,
@@ -19,7 +21,7 @@ class recomendedCard extends StatelessWidget {
       required this.location,
       required this.timing,
       required this.sallery,
-      required this.img})
+      required this.img, required this.url})
       : super(key: key);
 
   @override
@@ -130,14 +132,23 @@ class recomendedCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     color: primaryColor,
                   ),
-                  child: Center(
-                      child: Text(
-                    "Apply",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
-                  )),
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => webView(url: url,)),
+                      );
+                    },
+                    child: const Center(
+                        child: Text(
+                      "Apply",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    )),
+                  ),
                 ),
               ),
             ],

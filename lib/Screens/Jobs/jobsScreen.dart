@@ -22,6 +22,7 @@ class Article {
   final String posetion;
   final String publishDate;
   final String location;
+  final String img;
 
   const Article({
     required this.title,
@@ -30,6 +31,7 @@ class Article {
     required this.posetion,
     required this.publishDate,
     required this.location,
+    required this.img,
   });
 }
 
@@ -48,13 +50,14 @@ class _jobsScreenState extends State<jobsScreen> {
     final response = await http.get(url);
     dom.Document html = dom.Document.html(response.body);
     final titles = html.querySelectorAll("h2 > a").map((e) => e.innerHtml.trim()).toList();
-    final urls = html.querySelectorAll("h2 > a").map((e) => "$url${e.attributes["href"]}").toList();
+    final urls = html.querySelectorAll("h2 > a").map((e) => "${e.attributes["href"]}").toList();
     final lastDates = html.querySelectorAll("div > b").map((e) => e.innerHtml).toList();
     final publishDates = html.querySelectorAll("span.entry-time").map((e) => e.innerHtml).toList();
     final posetions = html.querySelectorAll("p").map((e) => e.innerHtml).toList();
     final locations = html.querySelectorAll("span.jb-location").map((e) => e.innerHtml).toList();
-    print(
-        "titles===> ${titles.length} lastDates===> ${lastDates.length} Url===> ${urls.length} posetions===> ${posetions.length} lastDates===> ${lastDates.length} location===> ${locations.length} publishDates===> ${publishDates.length}");
+    final imgs = html.querySelectorAll("span.jb-location").map((e) => e.innerHtml).toList();
+    print("titles===> ${titles.length} lastDates===> ${lastDates.length} Url===> ${urls.length} posetions===> ${posetions.length}");
+    print("lastDates===> ${lastDates.length} location===> ${locations.length} publishDates===> ${publishDates.length} img===> ${imgs.length}");
     // for (final url in urls) {
     //   debugPrint("=====>${url}");
     // }
@@ -67,7 +70,8 @@ class _jobsScreenState extends State<jobsScreen> {
               url: urls[index].toString(),
               posetion: posetions[index],
               publishDate: publishDates[index],
-              location: locations[index]));
+              location: locations[index],
+              img: imgs[index]));
     });
   }
 
@@ -205,15 +209,16 @@ class _jobsScreenState extends State<jobsScreen> {
                     width: vwidth,
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: articles.length ,
+                        itemCount: articles.length,
                         itemBuilder: (context, index) {
                           return recomendedCard(
                             img: images,
-                            titel: articles[index+1].title,
-                            subTitel: articles[index+1].posetion,
-                            location: articles[index+1].location,
-                            timing: articles[index+1].lastDate,
+                            titel: articles[index + 1].title,
+                            subTitel: articles[index + 1].posetion,
+                            location: articles[index + 1].location,
+                            timing: articles[index + 1].lastDate,
                             sallery: "23",
+                            url: articles[index + 1].url,
                           );
                         }),
                   )

@@ -21,6 +21,7 @@ class webViewState extends State<webView> {
 
   @override
   Widget build(BuildContext context) {
+    print("${widget.url}");
     return WebView(
       initialUrl: widget.url,
     );

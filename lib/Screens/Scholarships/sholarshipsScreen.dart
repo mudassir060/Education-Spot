@@ -53,16 +53,11 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
     final response = await http.get(url);
     dom.Document html = dom.Document.html(response.body);
     final titles = html.querySelectorAll("h3 > b > a").map((e) => e.innerHtml.trim()).toList();
-    final urls = html.querySelectorAll("h3 > b > a").map((e) => "${e.attributes["href"]}").toList();
-    final imgs = html.querySelectorAll("a > img").map((e) => e.attributes["data-src"]).toList();
-    final Levels = html.querySelectorAll("b").map((e) => e.innerHtml).toList();
-    final Fields = html.querySelectorAll("b").map((e) => e.innerHtml).toList();
-    final Types = html.querySelectorAll("span").map((e) => e.innerHtml).toList();
-    final Categorys = html.querySelectorAll("span").map((e) => e.innerHtml).toList();
-    final Area = html.querySelectorAll("span").map((e) => e.innerHtml).toList();
-    final Deadlines = html.querySelectorAll("span").map((e) => e.innerHtml).toList();
-    print("titles===> ${titles.length} Url===> ${urls.length} img===> ${imgs.length} Level===> ${Levels.length} Fields===> ${Fields.length}");
-    print("Types===> ${Types.length} Categorys===> ${Categorys.length} Area===> ${Area.length} Deadlines===> ${Deadlines.length}");
+    final urls = html.querySelectorAll("h3 > b > a").map((e) => "$url${e.attributes["href"]}").toList();
+    final imgs = html.querySelectorAll("a > img").map((e) => e.attributes["src"]).toList();
+    final LevelsFields = html.querySelectorAll("p > b").map((e) => e.text).toList();
+    final span = html.querySelectorAll("span").map((e) => e.text).toList();
+    print("titles===> ${titles.length} Url===> ${urls.length} img===> ${imgs.length} LevelsFields===> ${LevelsFields.length}");
     // for (final url in urls) {
     //   debugPrint("=====>${url}");
     // }
@@ -73,12 +68,12 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
           title: titles[index],
           url: urls[index].toString(),
           img: imgs[index].toString(),
-          level: imgs[index].toString(),
-          field: imgs[index].toString(),
-          type: imgs[index].toString(),
-          category: imgs[index].toString(),
-          area: imgs[index].toString(),
-          deadline: imgs[index].toString(),
+          level: LevelsFields[index*2].toString(),
+          field: LevelsFields[index*2+1].toString(),
+          type: span[(index+1)*8-3].toString(),
+          category: span[(index+1)*8-5].toString(),
+          area: span[(index+1)*8-1].toString(),
+          deadline: span[(index+1)*8+1].toString(),
         ),
       );
     });
@@ -88,6 +83,37 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
   Widget build(BuildContext context) {
     var vwidth = MediaQuery.of(context).size.width;
     var vheight = MediaQuery.of(context).size.height;
+
+
+    // if (articles.isNotEmpty) {
+    //   return Scaffold(
+    //     // height: vheight - 370,
+    //     body: ListView.builder(
+    //         itemCount: articles.length ,
+    //         itemBuilder: (context, index) {
+    //           return Card(
+    //             child: Column(
+    //               children: [
+    //                 Text("1=${articles[index].title}"),
+    //                 Text("2=${articles[index].url}"),
+    //                 Text("3=${articles[index].img}"),
+    //                 Text("4=${articles[index].level}"),
+    //                 Text("5=${articles[index].field}"),
+    //                 Text("7=${articles[index].category}"),
+    //                 Text("8=${articles[index].type}"),
+    //                 Text("9=${articles[index].area}"),
+    //                 Text("10=${articles[index].deadline}"),
+    //               ],
+    //             ),
+    //           );
+    //         }),
+    //   );
+    // } else {
+    //   return const Center(child: Text("Null"));
+    // }
+
+
+
     return SafeArea(
         child: Scaffold(
       body: SingleChildScrollView(
@@ -141,30 +167,9 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
                     ],
                   ),
                   // // // // // // // // // // // Featured CArd // // // // // // // // //
-                  sholarshipCard(
-                    img: images,
-                    titel: "HEC Need Base",
-                    subTitel: "GOVERNMENT UNIVERSITIES",
-                    type: 'Need base',
-                    date: '11 Sep 2022',
-                    dagre: 'Bachelor',
-                  ),
-                  sholarshipCard(
-                    img: images,
-                    titel: "HEC Need Base",
-                    subTitel: "GOVERNMENT UNIVERSITIES",
-                    type: 'Need base',
-                    date: '11 Sep 2022',
-                    dagre: 'Bachelor',
-                  ),
-                  sholarshipCard(
-                    img: images,
-                    titel: "HEC Need Base",
-                    subTitel: "GOVERNMENT UNIVERSITIES",
-                    type: 'Need base',
-                    date: '11 Sep 2022',
-                    dagre: 'Bachelor',
-                  ),
+
+
+                 
                 ],
               ),
             ),

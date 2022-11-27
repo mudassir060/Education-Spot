@@ -26,7 +26,7 @@ class sholarshipCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(context).size.width-40,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: secondery2Color,
@@ -38,12 +38,12 @@ class sholarshipCard extends StatelessWidget {
           Row(
             children: [
               Container(
-                height: 70,
+                // height: 70,
                 width: 70,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
-                    image: AssetImage(img),
+                    image: NetworkImage(img),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -71,14 +71,21 @@ class sholarshipCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              smallButton(type, () {}, true),
-              smallButton(date, () {}, true),
+              smallButton(type.substring(1), () {}, true),
+              // smallButton(date, () {}, true),
               smallButton(dagre, () {}, true),
             ],
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Text(
+                "Last Date: $date",
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
               TextButton(
                 onPressed: () {},
                 child: Text(

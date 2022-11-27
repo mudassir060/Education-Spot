@@ -169,7 +169,23 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
                   // // // // // // // // // // // Featured CArd // // // // // // // // //
 
 
-                 
+                  Container(
+                    height: 195,
+                    width: vwidth,
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: articles.length,
+                        itemBuilder: (context, index) {
+                          return sholarshipCard(
+                            img: articles[index].img,
+                            titel: articles[index].title,
+                            subTitel: articles[index].type,
+                            type: articles[index].area,
+                            date: articles[index].deadline,
+                            dagre: articles[index].level,
+                          );
+                        }),
+                  )
                 ],
               ),
             ),

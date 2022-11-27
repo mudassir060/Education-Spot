@@ -209,7 +209,7 @@ class _jobsScreenState extends State<jobsScreen> {
                     width: vwidth,
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: articles.length,
+                        itemCount: articles.length-1,
                         itemBuilder: (context, index) {
                           return recomendedCard(
                             img: articles[index + 1].img,

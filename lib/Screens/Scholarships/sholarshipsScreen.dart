@@ -166,28 +166,28 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
                   // // // // // // // // // // // Featured CArd // // // // // // // // //
 
                   articles.length != 0
-                      ?    Container(
-                    width: vwidth,
-                    child: ListView.builder(
-                        // scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: articles.length,
-                        itemBuilder: (context, index) {
-                          return sholarshipCard(
-                            img: articles[index].img,
-                            titel: articles[index].title,
-                            type: articles[index].area,
-                            url: articles[index].url,
-                            field: articles[index].field,
-                            level: articles[index].level,
-                            category: articles[index].category,
-                            deadline: articles[index].deadline,
-                            area: articles[index].area,
-                          );
-                        }),
-                  )                  : const Center(child: Text("Loading...")),
-
+                      ? Container(
+                          width: vwidth,
+                          child: ListView.builder(
+                              // scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: articles.length,
+                              itemBuilder: (context, index) {
+                                return sholarshipCard(
+                                  img: articles[index].img,
+                                  titel: articles[index].title,
+                                  type: articles[index].area,
+                                  url: articles[index].url,
+                                  field: articles[index].field,
+                                  level: articles[index].level,
+                                  category: articles[index].category,
+                                  deadline: articles[index].deadline,
+                                  area: articles[index].area,
+                                );
+                              }),
+                        )
+                      : const Center(child: Text("Loading...")),
                 ],
               ),
             ),

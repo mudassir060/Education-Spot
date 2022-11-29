@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:education_spot/constants/style.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -22,7 +23,8 @@ class webViewState extends State<webView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Web View"),),
+      appBar: AppBar(title: const Text("Web View"),    backgroundColor: primaryColor,
+      ),
       body: WebView(
                 initialUrl: widget.url,
       ),

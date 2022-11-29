@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
 import '../../Widgets/myAppBar.dart';
+import 'AdmissionCard.dart';
 
 class AdmissionsScreen extends StatefulWidget {
   const AdmissionsScreen({Key? key}) : super(key: key);
@@ -54,14 +55,13 @@ class _AdmissionsScreenState extends State<AdmissionsScreen> {
       articles = List.generate(
           20,
           (index) => Article(
-              institute: textdata[(index *5+1)],
-              level: textdata[(index*5+2 )],
-              url: urls[(index )+126].toString(),
-              last_date: textdata[index*5+3],
-              discipline_type: textdata[(index*5+4 )],
-              img: imgs[(index )+4].toString(),
-          )
-      );
+                institute: textdata[(index * 5 + 1)],
+                level: textdata[(index * 5 + 2)],
+                url: urls[(index) + 126].toString(),
+                last_date: textdata[index * 5 + 4],
+                discipline_type: textdata[(index * 5 + 3)],
+                img: imgs[(index) + 4].toString(),
+              ));
     });
   }
 
@@ -70,44 +70,50 @@ class _AdmissionsScreenState extends State<AdmissionsScreen> {
     var vwidth = MediaQuery.of(context).size.width;
     var vheight = MediaQuery.of(context).size.height;
 
-    if (articles.length != 0) {
-      return Scaffold(
-        // height: vheight - 370,
-        body: ListView.builder(
-            itemCount: articles.length - 4,
-            itemBuilder: (context, index) {
-              return Card(
-                child: Column(
-                  children: [
-                    Text("1=${articles[index].institute}"),
-                    Text("2=${articles[index].level}"),
-                    Text("3=${articles[index].url}"),
-                    Text("4=${articles[index].last_date}"),
-                    Text("5=${articles[index].discipline_type}"),
-                    Text("6=${articles[index].img}"),
-                  ],
-                ),
-              );
-            }),
-      );
-    } else {
-      return const Center(child: Text("Null"));
-    }
-
-    // return SafeArea(
-    //   child: Scaffold(
-    //     body: SingleChildScrollView(
-    //       child: Column(
-    //         children: [
-    //           myAppBar(
-    //             titel: "Admissions",
-    //             linewidth: 140,
-    //           ),
-    //           Text("Admissions"),
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    // );
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              myAppBar(
+                titel: "Admissions",
+                linewidth: 140,
+              ),
+              articles.length != 0
+                  ? Container(
+                width: vwidth,
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: articles.length - 4,
+                        itemBuilder: (context, index) {
+                          return AdmissionCard(
+                            level: articles[index].level,
+                            last_date: articles[index].last_date,
+                            discipline_type: articles[index].discipline_type,
+                            institute: articles[index].institute,
+                            url: articles[index].url,
+                            img: articles[index].img,
+                          );
+                          //   Card(
+                          //   child: Column(
+                          //     children: [
+                          //       Text("1=${articles[index].institute}"),
+                          //       Text("2=${articles[index].level}"),
+                          //       Text("3=${articles[index].url}"),
+                          //       Text("4=${articles[index].last_date}"),
+                          //       Text("5=${articles[index].discipline_type}"),
+                          //       Text("6=${articles[index].img}"),
+                          //     ],
+                          //   ),
+                          // );
+                        }),
+                  )
+                  : const Center(child: Text("Null")),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

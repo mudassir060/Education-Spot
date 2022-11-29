@@ -6,22 +6,26 @@ import '../../constants/images.dart';
 import '../../constants/style.dart';
 
 class AdmissionCard extends StatelessWidget {
+  final String img;
   final String institute;
+  final String discipline_type;
   final String level;
   final String last_date;
-  final String discipline_type;
   final String url;
 
   const AdmissionCard(
       {Key? key,
+      required this.institute,
+      required this.discipline_type,
       required this.level,
       required this.last_date,
-      required this.discipline_type,
-      required this.institute, required this.url})
+      required this.img, required this.url})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var vwidth = MediaQuery.of(context).size.width;
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: Card(
@@ -43,7 +47,7 @@ class AdmissionCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
-                        image: NetworkImage(institute),
+                        image: NetworkImage(img),
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -54,9 +58,9 @@ class AdmissionCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        width: 220,
+                        width: 250,
                         child: Text(
-                          level,
+                          institute,
                           style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
@@ -69,8 +73,29 @@ class AdmissionCard extends StatelessWidget {
                 ],
               ),
               Text(
-                last_date,
-                style: TextStyle(fontSize: 16),
+                discipline_type,    maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 15),
+              ),
+              Row(
+                children: [
+                  const  Icon(
+                    Icons.school_outlined,
+                    color: Colors.grey,
+                  ),
+                  Container(
+                    width: vwidth-50,
+                    child: Text(
+                      level,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -78,32 +103,18 @@ class AdmissionCard extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+
                       Row(
                         children: [
-                          Icon(
-                            Icons.location_on,
-                            color: Colors.grey,
+                         const Icon(
+                            Icons.schedule,
+                            color: Colors.red,
                           ),
                           Text(
-                            discipline_type,
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.av_timer,
-                            color: Colors.grey,
-                          ),
-                          Text(
-                            "timing",
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.grey,
+                            last_date,
+                            style:const TextStyle(
+                              fontSize: 15,
+                              color: Colors.red,
                             ),
                           ),
                         ],
@@ -117,7 +128,7 @@ class AdmissionCard extends StatelessWidget {
                           Text(
                             "sallery",
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 15,
                               color: Colors.grey,
                             ),
                           ),

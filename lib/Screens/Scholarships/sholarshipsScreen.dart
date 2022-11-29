@@ -68,12 +68,12 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
           title: titles[index],
           url: urls[index].toString(),
           img: imgs[index].toString(),
-          level: LevelsFields[index*2].toString(),
-          field: LevelsFields[index*2+1].toString(),
-          type: span[(index+1)*8-3].toString(),
-          category: span[(index+1)*8-5].toString(),
-          area: span[(index+1)*8-1].toString(),
-          deadline: span[(index+1)*8+1].toString(),
+          level: LevelsFields[index * 2].toString(),
+          field: LevelsFields[index * 2 + 1].toString(),
+          type: span[(index + 1) * 8 - 3].toString(),
+          category: span[(index + 1) * 8 - 5].toString(),
+          area: span[(index + 1) * 8 - 1].toString(),
+          deadline: span[(index + 1) * 8 + 1].toString(),
         ),
       );
     });
@@ -83,7 +83,6 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
   Widget build(BuildContext context) {
     var vwidth = MediaQuery.of(context).size.width;
     var vheight = MediaQuery.of(context).size.height;
-
 
     // if (articles.isNotEmpty) {
     //   return Scaffold(
@@ -111,8 +110,6 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
     // } else {
     //   return const Center(child: Text("Null"));
     // }
-
-
 
     return SafeArea(
         child: Scaffold(
@@ -168,24 +165,29 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
                   ),
                   // // // // // // // // // // // Featured CArd // // // // // // // // //
 
-
-                  Container(
-                    height: 195,
+                  articles.length != 0
+                      ?    Container(
                     width: vwidth,
                     child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
+                        // scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
                         itemCount: articles.length,
                         itemBuilder: (context, index) {
                           return sholarshipCard(
                             img: articles[index].img,
                             titel: articles[index].title,
-                            subTitel: articles[index].type,
                             type: articles[index].area,
-                            date: articles[index].deadline,
-                            dagre: articles[index].level,
+                            url: articles[index].url,
+                            field: articles[index].field,
+                            level: articles[index].level,
+                            category: articles[index].category,
+                            deadline: articles[index].deadline,
+                            area: articles[index].area,
                           );
                         }),
-                  )
+                  )                  : const Center(child: Text("Loading...")),
+
                 ],
               ),
             ),

@@ -19,7 +19,8 @@ class AdmissionCard extends StatelessWidget {
       required this.discipline_type,
       required this.level,
       required this.last_date,
-      required this.img, required this.url})
+      required this.img,
+      required this.url})
       : super(key: key);
 
   @override
@@ -38,6 +39,7 @@ class AdmissionCard extends StatelessWidget {
           // ),
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
@@ -67,26 +69,26 @@ class AdmissionCard extends StatelessWidget {
                           ),
                         ),
                       ),
-
                     ],
                   ),
                 ],
               ),
               Text(
-                discipline_type,    maxLines: 2,
+                "Discipline Type: $discipline_type",
+                maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(fontSize: 15),
               ),
               Row(
                 children: [
-                  const  Icon(
+                  const Icon(
                     Icons.school_outlined,
                     color: Colors.grey,
                   ),
                   Container(
-                    width: vwidth-50,
+                    width: vwidth - 50,
                     child: Text(
-                      level,
+                      " $level",
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -103,65 +105,59 @@ class AdmissionCard extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-
                       Row(
                         children: [
-                         const Icon(
+                          const Icon(
                             Icons.schedule,
                             color: Colors.red,
                           ),
                           Text(
                             last_date,
-                            style:const TextStyle(
+                            style: const TextStyle(
                               fontSize: 15,
                               color: Colors.red,
                             ),
                           ),
                         ],
                       ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.badge,
-                            color: Colors.grey,
-                          ),
-                          Text(
-                            "sallery",
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ],
-                      ),
+                      // Row(
+                      //   children: [
+                      //     Icon(
+                      //       Icons.badge,
+                      //       color: Colors.grey,
+                      //     ),
+                      //     Text(
+                      //       "sallery",
+                      //       style: TextStyle(
+                      //         fontSize: 15,
+                      //         color: Colors.grey,
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
                     ],
                   ),
                   InkWell(
-                    onTap: () {},
-                    child: Container(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => webView(
+                              url: url,
+                            )),
+                      );
+                    },                    child: Container(
                       width: 100,
                       height: 40,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: primaryColor,
                       ),
-                      child: InkWell(
-                        onTap: (){
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => webView(url: url,)),
-                          );
-                        },
-                        child: const Center(
-                            child: Text(
-                          "Apply",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
-                        )),
-                      ),
+                      child: const Center(
+                          child: Text(
+                        "Apply",
+                        style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                      )),
                     ),
                   ),
                 ],

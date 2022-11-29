@@ -109,7 +109,7 @@ class _AdmissionsScreenState extends State<AdmissionsScreen> {
                           // );
                         }),
                   )
-                  : const Center(child: Text("Null")),
+                  : const Center(child: Text("Loading...")),
             ],
           ),
         ),

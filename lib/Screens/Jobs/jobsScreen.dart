@@ -4,9 +4,7 @@ import 'package:education_spot/Widgets/mySpacer.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
-import '../../constants/images.dart';
 import '../../constants/style.dart';
-import 'featuredCard.dart';
 
 class jobsScreen extends StatefulWidget {
   const jobsScreen({Key? key}) : super(key: key);
@@ -57,7 +55,8 @@ class _jobsScreenState extends State<jobsScreen> {
     final locations = html.querySelectorAll("span.jb-location").map((e) => e.innerHtml).toList();
     final imgs = html.querySelectorAll("a > img").map((e) => e.attributes["data-src"]).toList();
     print("titles===> ${titles.length} lastDates===> ${lastDates.length} Url===> ${urls.length} posetions===> ${posetions.length}");
-    print("lastDates===> ${lastDates.length} location===> ${locations.length} publishDates===> ${publishDates.length} img===> ${imgs.length}");
+    print(
+        "lastDates===> ${lastDates.length} location===> ${locations.length} publishDates===> ${publishDates.length} img===> ${imgs.length}");
     // for (final url in urls) {
     //   debugPrint("=====>${url}");
     // }
@@ -113,31 +112,7 @@ class _jobsScreenState extends State<jobsScreen> {
           children: [
             // // // // // // // // // // // Top Bar // // // // // // // // //
             const myAppBar(titel: "Discover job", linewidth: 150),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //   children: [
-            //     InkWell(onTap: (){
-            //       Navigator.pop(context);
-            //     }, child: Image.asset(backCurve)),
-            //     mySpacer(0.0, 0.0),
-            //     Column(
-            //       children: [
-            //         const Text(
-            //           "Discover job",
-            //           style:
-            //           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            //         ),
-            //         mySpacer(10.0, 0.0),
-            //         Container(
-            //           width: 200,
-            //           height: 2,
-            //           color: primaryColor,
-            //         )
-            //       ],
-            //     ),
-            //     mySpacer(0.0, 0.0),
-            //   ],
-            // ),
+
             Padding(
               padding: const EdgeInsets.all(18.0),
               child: Column(
@@ -165,25 +140,7 @@ class _jobsScreenState extends State<jobsScreen> {
                     ),
                   ),
                   mySpacer(10.0, 0.0),
-                  // // // // // // // // // // // Featured Jobs // // // // // // // // //
-                  Row(
-                    children: [
-                      Text(
-                        "Featured Jobs",
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  // // // // // // // // // // // Featured CArd // // // // // // // // //
-                  articles.length != 0
-                      ? featuredCard(
-                          img: images,
-                          titel: articles[0].title,
-                          subTitel: articles[0].posetion,
-                          location: articles[0].location,
-                          lastDates: articles[0].lastDate,
-                        )
-                      : const Text('Loading'),
+
                   // // // // // // // // // // // Recomended titel // // // // // // // // //
 
                   Padding(
@@ -192,7 +149,7 @@ class _jobsScreenState extends State<jobsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
                         Text(
-                          "Recommended",
+                          "Latest Jobs",
                           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         Text(
@@ -204,24 +161,26 @@ class _jobsScreenState extends State<jobsScreen> {
                   ),
                   // // // // // // // // // // // Recomended Jobs // // // // // // // // //
 
-                  Container(
-                    height: 180,
-                    width: vwidth,
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: articles.length-1,
-                        itemBuilder: (context, index) {
-                          return recomendedCard(
-                            img: articles[index + 1].img,
-                            titel: articles[index + 1].title,
-                            subTitel: articles[index + 1].posetion,
-                            location: articles[index + 1].location,
-                            timing: articles[index + 1].lastDate,
-                            sallery: "23",
-                            url: articles[index + 1].url,
-                          );
-                        }),
-                  )
+                  articles.length != 0
+                      ? Container(
+                          width: vwidth,
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: articles.length ,
+                              itemBuilder: (context, index) {
+                                return recomendedCard(
+                                  img: articles[index ].img,
+                                  titel: articles[index].title,
+                                  subTitel: articles[index].posetion,
+                                  location: articles[index].location,
+                                  timing: articles[index].lastDate,
+                                  sallery: "23",
+                                  url: articles[index].url,
+                                );
+                              }),
+                        )
+                      : const Text('Loading'),
                 ],
               ),
             ),

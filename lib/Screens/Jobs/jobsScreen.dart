@@ -50,7 +50,7 @@ class _jobsScreenState extends State<jobsScreen> {
     final titles = html.querySelectorAll("h2 > a").map((e) => e.innerHtml.trim()).toList();
     final urls = html.querySelectorAll("h2 > a").map((e) => "${e.attributes["href"]}").toList();
     final lastDates = html.querySelectorAll("div > b").map((e) => e.innerHtml).toList();
-    final publishDates = html.querySelectorAll("span.entry-time").map((e) => e.innerHtml).toList();
+    final publishDates = html.querySelectorAll("span.entry-time").map((e) => e.text).toList();
     final posetions = html.querySelectorAll("p").map((e) => e.innerHtml).toList();
     final locations = html.querySelectorAll("span.jb-location").map((e) => e.innerHtml).toList();
     final imgs = html.querySelectorAll("a > img").map((e) => e.attributes["data-src"]).toList();
@@ -167,20 +167,20 @@ class _jobsScreenState extends State<jobsScreen> {
                           child: ListView.builder(
                               shrinkWrap: true,
                               physics: NeverScrollableScrollPhysics(),
-                              itemCount: articles.length ,
+                              itemCount: articles.length,
                               itemBuilder: (context, index) {
                                 return recomendedCard(
-                                  img: articles[index ].img,
+                                  img: articles[index].img,
                                   titel: articles[index].title,
-                                  subTitel: articles[index].posetion,
                                   location: articles[index].location,
-                                  timing: articles[index].lastDate,
-                                  sallery: "23",
                                   url: articles[index].url,
+                                  posetion: articles[index].posetion,
+                                  publishDate: articles[index].publishDate,
+                                  lastDate: articles[index].lastDate,
                                 );
                               }),
                         )
-                      : const Text('Loading'),
+                      : const Text('Loading...'),
                 ],
               ),
             ),

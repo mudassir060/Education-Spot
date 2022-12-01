@@ -18,9 +18,10 @@ class signInScreen extends StatefulWidget {
 }
 
 class _signInScreenState extends State<signInScreen> {
-  TextEditingController emailcontroller = TextEditingController(text: "abc@gmail.com");
 
+  TextEditingController emailcontroller = TextEditingController(text: "abc@gmail.com");
   TextEditingController passwordcontroller = TextEditingController(text: "qwerty");
+
   bool looding = false;
   bool _obscureText = true;
 

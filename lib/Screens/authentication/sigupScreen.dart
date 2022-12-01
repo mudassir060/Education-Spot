@@ -1,9 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education_spot/Widgets/BottomNavigBar.dart';
 import 'package:education_spot/Widgets/myButton.dart';
-import 'package:education_spot/constants/style.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:intl/intl.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
 import 'widget/backDesgin.dart';
@@ -16,13 +17,74 @@ class sigupScreen extends StatefulWidget {
 }
 
 class _sigupScreenState extends State<sigupScreen> {
-  TextEditingController namecontroller = TextEditingController();
+  final TextEditingController usernamecontroller = TextEditingController();
+  final TextEditingController emailcontroller = TextEditingController();
+  final TextEditingController passwordcontroller = TextEditingController();
+  final TextEditingController phonenocontroller = TextEditingController();
 
-  TextEditingController emailcontroller = TextEditingController();
 
-  TextEditingController passwordcontroller = TextEditingController();
+  bool isCheck = false;
+  bool NoData = false;
+  bool looding = false;
 
-  TextEditingController phnocontroller = TextEditingController();
+  void register() async {
+    setState(() {
+      looding = true;
+    });
+    final String name = usernamecontroller.text;
+    final String email = emailcontroller.text.trim();
+    final String phoneNo = phonenocontroller.text;
+    final String password = passwordcontroller.text;
+
+
+
+    FirebaseAuth auth = FirebaseAuth.instance;
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    try {
+      if (name != '' &&
+          email != '' &&
+          phoneNo != '' &&
+          password != '') {
+        DateTime now = DateTime.now();
+        String formattedDate = DateFormat('EEE d MMM').format(now);
+        final UserCredential user = await auth.createUserWithEmailAndPassword(
+            email: email, password: password);
+        await firestore.collection("users").doc(user.user!.uid).set({
+          "UID": user.user!.uid,
+          "username": name,
+          "email": email,
+          "PhoneNo": phoneNo,
+          "password": password,
+          "JoinDate": formattedDate,
+        });
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => BottomNavigBar()),
+        );
+      } else {
+        // snackbar( "Please fill all text field");
+        setState(() {
+          NoData = true;
+        });
+      }
+    } catch (e) {
+      // snackbar( e.toString());
+    }
+    setState(() {
+      looding = false;
+    });
+  }
+
+  @override
+  bool _obscureText = true;
+
+  void _toggle() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +124,7 @@ class _sigupScreenState extends State<sigupScreen> {
                        myTextfield(
                         titel: 'NAME',
                         hint: 'name',
-                        textcontroler: namecontroller,
+                        textcontroler: usernamecontroller,
                       ),
                        myTextfield(
                         titel: 'EMAIL',
@@ -77,16 +139,12 @@ class _sigupScreenState extends State<sigupScreen> {
                        myTextfield(
                         titel: 'MOBILE NUMBER',
                         hint: 'mobile number',
-                        textcontroler: phnocontroller,
+                        textcontroler: phonenocontroller,
                       ),
                       myButton(
                           width: vwidth,
                           function: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => BottomNavigBar()),
-                            );
+                           register();
                           },
                           name: "Sign Up",
                           loading: false),

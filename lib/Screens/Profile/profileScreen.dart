@@ -1,3 +1,4 @@
+import 'package:education_spot/Screens/Profile/textUpdate.dart';
 import 'package:education_spot/Widgets/myAppBar.dart';
 import 'package:education_spot/Widgets/mySpacer.dart';
 import 'package:education_spot/constants/style.dart';
@@ -30,14 +31,6 @@ class _profileScreenState extends State<profileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var data = Imgs.length;
-    var quot = (data / 3).floor();
-    var rem = data.remainder(3);
-    if (rem >= 1) {
-      data = quot + 1;
-    } else {
-      data = quot;
-    }
     var vwidth = MediaQuery.of(context).size.width;
     var vheight = MediaQuery.of(context).size.height;
     return SafeArea(
@@ -59,7 +52,6 @@ class _profileScreenState extends State<profileScreen> {
                   children: [
                     SizedBox(
                       width: vwidth - 180,
-                      height: 100,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -87,9 +79,9 @@ class _profileScreenState extends State<profileScreen> {
                     Stack(
                       children: [
                         const CircleAvatar(
-                          radius: 70,
+                          radius: 55,
                           child: CircleAvatar(
-                            radius: 65,
+                            radius: 55,
                             backgroundImage: AssetImage(Profile),
                           ),
                         ),
@@ -115,7 +107,9 @@ class _profileScreenState extends State<profileScreen> {
                       style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          textUpdate(context, widget.UserData);
+                        },
                         icon: const Icon(
                           Icons.edit,
                         ))
@@ -188,8 +182,8 @@ class _profileScreenState extends State<profileScreen> {
               mySpacer(10.0, 0.0),
               // // // // // // // // // // // profile History // // // // // // // // //
               const Padding(
-                padding:  EdgeInsets.only(left: 18.0,bottom: 10.0),
-                child:  Text(
+                padding: EdgeInsets.only(left: 18.0, bottom: 10.0),
+                child: Text(
                   "Profile History",
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),

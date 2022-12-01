@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 import '../../constants/images.dart';
 
 class profileScreen extends StatefulWidget {
-  const profileScreen({Key? key}) : super(key: key);
+  final Map UserData;
+
+  const profileScreen({Key? key, required this.UserData}) : super(key: key);
 
   @override
   State<profileScreen> createState() => _profileScreenState();
@@ -48,7 +50,11 @@ class _profileScreenState extends State<profileScreen> {
               myAppBar(titel: "My Profile", linewidth: 130),
               // // // // // // // // // // // About // // // // // // // // //
               Padding(
-                padding: const EdgeInsets.only(top: 18.0,left: 18.0,right: 18.0,),
+                padding: const EdgeInsets.only(
+                  top: 18.0,
+                  left: 18.0,
+                  right: 18.0,
+                ),
                 child: Row(
                   children: [
                     SizedBox(
@@ -59,22 +65,28 @@ class _profileScreenState extends State<profileScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text(
-                            "Mudassir Mukhtar",
+                            widget.UserData["username"],
                             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            "mudassir4@gmail.com",
-                            style: TextStyle(
+                            widget.UserData["email"],
+                            style: const TextStyle(
                               fontSize: 16,
                             ),
                           ),
-                          Text("Hello. I'm Mudassir Mukhtar Welcome to my profile")
+                          Text(
+                            "Ph.No: ${widget.UserData["PhoneNo"]}",
+                            style: const TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                          Text("Hello. I'm ${widget.UserData["username"]} Welcome to my profile")
                         ],
                       ),
                     ),
                     Stack(
                       children: [
-                        CircleAvatar(
+                        const CircleAvatar(
                           radius: 70,
                           child: CircleAvatar(
                             radius: 65,
@@ -82,9 +94,12 @@ class _profileScreenState extends State<profileScreen> {
                           ),
                         ),
                         Positioned(
-                          bottom: 3,
+                            bottom: 3,
                             right: 3,
-                            child: CircleAvatar(radius: 20,backgroundColor: Colors.white, child: IconButton(onPressed: () {}, icon: Icon(Icons.camera_alt)))),
+                            child: CircleAvatar(
+                                radius: 20,
+                                backgroundColor: Colors.white,
+                                child: IconButton(onPressed: () {}, icon: const Icon(Icons.camera_alt)))),
                       ],
                     )
                   ],
@@ -95,98 +110,110 @@ class _profileScreenState extends State<profileScreen> {
                 padding: const EdgeInsets.only(left: 18.0, bottom: 5),
                 child: Row(
                   children: [
-                    Text(
+                    const Text(
                       "Skills",
                       style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    IconButton(onPressed: (){}, icon: Icon(Icons.edit, ))
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.edit,
+                        ))
                   ],
                 ),
               ),
 
-              Container(
-                height: 23 * Skills.length.toDouble(),
-                child: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: Skills.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(left: 38.0, right: 8.0),
-                            child: Icon(
-                              Icons.star,
-                              size: 18,
-                            ),
+              ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: Skills.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Row(
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(left: 38.0, right: 8.0),
+                          child: Icon(
+                            Icons.star,
+                            size: 18,
                           ),
-                          Text(
-                            Skills[index],
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        ],
-                      );
-                    }),
-              ),
+                        ),
+                        Text(
+                          Skills[index],
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ],
+                    );
+                  }),
               // // // // // // // // // // // Skill // // // // // // // // //
-               Padding(
-                padding: EdgeInsets.only(left: 18.0, bottom: 5),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 18.0,
+                ),
                 child: Row(
                   children: [
-                    Text(
+                    const Text(
                       "Education",
                       style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    IconButton(onPressed: (){}, icon: Icon(Icons.edit, ))
+                    IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.edit,
+                        ))
                   ],
                 ),
               ),
 
-              Container(
-                height: 30 * education.length.toDouble(),
-                child: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: education.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(left: 38.0, right: 8.0),
-                            child: Icon(
-                              Icons.star,
-                              size: 18,
-                            ),
-                          ),
-                          Text(
-                            "${education[index]["name"]}  (${education[index]["start"]} - ${education[index]["end"]})",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        ],
-                      );
-                    }),
-              ),
-              // // // // // // // // // // // profile History // // // // // // // // //
-              Container(
-                height: 155 * data.toDouble(),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                  child: GridView.count(
-                    primary: false,
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 4.0,
-                    mainAxisSpacing: 8.0,
-                    children: List.generate(Imgs.length, (index) {
-                      return Container(
-                        // alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                            image: NetworkImage(Imgs[index]),
-                            fit: BoxFit.cover,
+              ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: education.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Row(
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(left: 38.0, right: 8.0),
+                          child: Icon(
+                            Icons.star,
+                            size: 18,
                           ),
                         ),
-                      );
-                    }),
-                  ),
+                        Text(
+                          "${education[index]["name"]}  (${education[index]["start"]} - ${education[index]["end"]})",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ],
+                    );
+                  }),
+              mySpacer(10.0, 0.0),
+              // // // // // // // // // // // profile History // // // // // // // // //
+              const Padding(
+                padding:  EdgeInsets.only(left: 18.0,bottom: 10.0),
+                child:  Text(
+                  "Profile History",
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                child: GridView.count(
+                  shrinkWrap: true,
+                  primary: false,
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 4.0,
+                  mainAxisSpacing: 8.0,
+                  children: List.generate(Imgs.length, (index) {
+                    return Container(
+                      // alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        image: DecorationImage(
+                          image: NetworkImage(Imgs[index]),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    );
+                  }),
                 ),
               )
             ],

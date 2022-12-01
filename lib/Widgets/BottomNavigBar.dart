@@ -18,12 +18,7 @@ class BottomNavigBar extends StatefulWidget {
 
 class _BottomNavigBarState extends State<BottomNavigBar> {
   int _selectedIndex = 0;
- static const List<Widget> _widgetOptions = <Widget>[
-    homeScreen(),
-    communityScreen(),
-    notificationScreen(),
-    profileScreen()
-  ];
+
 
   void _onItemTapped(int index) {
     setState(() {
@@ -33,6 +28,12 @@ class _BottomNavigBarState extends State<BottomNavigBar> {
 
   @override
   Widget build(BuildContext context) {
+     List<Widget> _widgetOptions = <Widget>[
+      const homeScreen(),
+      communityScreen(UserData: widget.UserData,),
+      const notificationScreen(),
+      profileScreen(UserData:  widget.UserData,)
+    ];
     print("=======>${widget.UserData}");
     return Scaffold(
       body: Center(

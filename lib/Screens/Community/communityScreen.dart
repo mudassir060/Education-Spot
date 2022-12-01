@@ -5,10 +5,11 @@ import '../../Widgets/ImageButtonGrid.dart';
 import '../../Widgets/mySpacer.dart';
 import '../../constants/images.dart';
 import '../../constants/style.dart';
-import '../Chats/CommunityChat/communityChatScreen.dart';
 
 class communityScreen extends StatefulWidget {
-  const communityScreen({Key? key}) : super(key: key);
+  final Map UserData;
+
+  const communityScreen({Key? key, required this.UserData}) : super(key: key);
 
   @override
   State<communityScreen> createState() => _communityScreenState();

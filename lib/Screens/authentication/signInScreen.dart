@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education_spot/Screens/authentication/sigupScreen.dart';
 import 'package:education_spot/Widgets/myButton.dart';
 import 'package:education_spot/constants/style.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +22,50 @@ class _signInScreenState extends State<signInScreen> {
   TextEditingController emailcontroller = TextEditingController();
 
   TextEditingController passwordcontroller = TextEditingController();
+  bool looding = false;
+  bool _obscureText = true;
+
+  // FlutterSecureStorage storage = const FlutterSecureStorage();
+
+
+  void register() async {
+    setState(() {
+      looding = true;
+    });
+    var UserData;
+    FirebaseAuth auth = FirebaseAuth.instance;
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    final String useremail = emailcontroller.text.trim();
+    final String userpassword = passwordcontroller.text;
+    try {
+      if (
+      useremail != '' &&
+          userpassword != '') {
+        final UserCredential user = await auth.signInWithEmailAndPassword(
+            email: useremail, password: userpassword);
+        final DocumentSnapshot snapshot =
+        await firestore.collection("users").doc(user.user?.uid).get();
+        // storage.write(key: "UID", value: user.user?.uid);
+        final data = snapshot.data();
+        setState(() {
+          UserData = data;
+        });
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => BottomNavigBar()),
+        );
+      } else {
+        // snackbar("Please fill all text field");
+      }
+    } catch (e) {
+      // snackbar(e.toString());
+    }
+    setState(() {
+      looding = false;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {

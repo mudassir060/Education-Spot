@@ -1,7 +1,6 @@
-import 'package:education_spot/Screens/Profile/textUpdate.dart';
+import 'package:education_spot/Screens/Profile/skillUpdate.dart';
 import 'package:education_spot/Widgets/myAppBar.dart';
 import 'package:education_spot/Widgets/mySpacer.dart';
-import 'package:education_spot/constants/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +16,6 @@ class profileScreen extends StatefulWidget {
 }
 
 class _profileScreenState extends State<profileScreen> {
-  var Skills = ["Programming", "SEO", "Marketing"];
   var education = [
     {"name": "Matric", "start": "2016", "end": "2019"},
     {"name": "BSCS", "start": "2019", "end": "2023"},
@@ -31,6 +29,7 @@ class _profileScreenState extends State<profileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var Skills = widget.UserData["Skills"];
     var vwidth = MediaQuery.of(context).size.width;
     var vheight = MediaQuery.of(context).size.height;
     return SafeArea(
@@ -108,7 +107,7 @@ class _profileScreenState extends State<profileScreen> {
                     ),
                     IconButton(
                         onPressed: () {
-                          textUpdate(context, widget.UserData);
+                          skillUpdate(context, widget.UserData);
                         },
                         icon: const Icon(
                           Icons.edit,

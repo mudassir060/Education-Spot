@@ -49,6 +49,8 @@ class _sigupScreenState extends State<sigupScreen> {
           "PhoneNo": phoneNo,
           "password": password,
           "JoinDate": formattedDate,
+          "Skills":[],
+          "Education":[],
         });
 
         Navigator.push(

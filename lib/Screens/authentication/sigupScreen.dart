@@ -22,7 +22,6 @@ class _sigupScreenState extends State<sigupScreen> {
   final TextEditingController passwordcontroller = TextEditingController();
   final TextEditingController phonenocontroller = TextEditingController();
 
-
   bool isCheck = false;
   bool NoData = false;
   bool looding = false;
@@ -36,19 +35,13 @@ class _sigupScreenState extends State<sigupScreen> {
     final String phoneNo = phonenocontroller.text;
     final String password = passwordcontroller.text;
 
-
-
     FirebaseAuth auth = FirebaseAuth.instance;
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     try {
-      if (name != '' &&
-          email != '' &&
-          phoneNo != '' &&
-          password != '') {
+      if (name != '' && email != '' && phoneNo != '' && password != '') {
         DateTime now = DateTime.now();
         String formattedDate = DateFormat('EEE d MMM').format(now);
-        final UserCredential user = await auth.createUserWithEmailAndPassword(
-            email: email, password: password);
+        final UserCredential user = await auth.createUserWithEmailAndPassword(email: email, password: password);
         await firestore.collection("users").doc(user.user!.uid).set({
           "UID": user.user!.uid,
           "username": name,
@@ -61,7 +54,16 @@ class _sigupScreenState extends State<sigupScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => BottomNavigBar()),
+              builder: (context) => BottomNavigBar(
+                    UserData: {
+                      "UID": user.user!.uid,
+                      "username": name,
+                      "email": email,
+                      "PhoneNo": phoneNo,
+                      "password": password,
+                      "JoinDate": formattedDate,
+                    },
+                  )),
         );
       } else {
         // snackbar( "Please fill all text field");
@@ -121,22 +123,22 @@ class _sigupScreenState extends State<sigupScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                       myTextfield(
+                      myTextfield(
                         titel: 'NAME',
                         hint: 'name',
                         textcontroler: usernamecontroller,
                       ),
-                       myTextfield(
+                      myTextfield(
                         titel: 'EMAIL',
                         hint: 'email',
                         textcontroler: emailcontroller,
                       ),
-                       myTextfield(
+                      myTextfield(
                         titel: 'PASSWORD',
                         hint: 'password',
                         textcontroler: passwordcontroller,
                       ),
-                       myTextfield(
+                      myTextfield(
                         titel: 'MOBILE NUMBER',
                         hint: 'mobile number',
                         textcontroler: phonenocontroller,
@@ -144,15 +146,18 @@ class _sigupScreenState extends State<sigupScreen> {
                       myButton(
                           width: vwidth,
                           function: () {
-                           register();
+                            register();
                           },
                           name: "Sign Up",
                           loading: false),
-                      TextButton(onPressed: (){   Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const BottomNavigBar()),
-                      );}, child: const Text("Already have an account"))
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const sigupScreen()),
+                            );
+                          },
+                          child: const Text("Already have an account"))
                     ],
                   ),
                 ),

@@ -25,7 +25,7 @@ class QuizEnd extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const BottomNavigBar()),
+                          builder: (context) => const BottomNavigBar(UserData: {},)),
                     );
                   },
                   child: Image.asset(backCurve)),

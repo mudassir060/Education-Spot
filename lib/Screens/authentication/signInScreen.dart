@@ -5,7 +5,6 @@ import 'package:education_spot/constants/style.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../Widgets/BottomNavigBar.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
@@ -19,9 +18,9 @@ class signInScreen extends StatefulWidget {
 }
 
 class _signInScreenState extends State<signInScreen> {
-  TextEditingController emailcontroller = TextEditingController();
+  TextEditingController emailcontroller = TextEditingController(text: "abc@gmail.com");
 
-  TextEditingController passwordcontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController(text: "qwerty");
   bool looding = false;
   bool _obscureText = true;
 
@@ -53,7 +52,7 @@ class _signInScreenState extends State<signInScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => BottomNavigBar()),
+              builder: (context) => BottomNavigBar(UserData:UserData,)),
         );
       } else {
         // snackbar("Please fill all text field");
@@ -130,11 +129,7 @@ class _signInScreenState extends State<signInScreen> {
                       myButton(
                           width: vwidth,
                           function: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => BottomNavigBar()),
-                            );
+                           register();
                           },
                           name: "Sign In",
                           loading: false),

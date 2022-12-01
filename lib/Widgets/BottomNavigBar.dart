@@ -8,7 +8,9 @@ import 'package:flutter/material.dart';
 
 
 class BottomNavigBar extends StatefulWidget {
-  const BottomNavigBar({super.key});
+  final Map UserData;
+
+  const BottomNavigBar({super.key, required this.UserData});
 
   @override
   State<BottomNavigBar> createState() => _BottomNavigBarState();
@@ -31,6 +33,7 @@ class _BottomNavigBarState extends State<BottomNavigBar> {
 
   @override
   Widget build(BuildContext context) {
+    print("=======>${widget.UserData}");
     return Scaffold(
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),

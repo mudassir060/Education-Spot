@@ -25,7 +25,16 @@ skillUpdate(context, UserData) async {
                   });
                   textcontroler.clear();
                 },
-                child: const Text("Update"))
+                child: const Text("Update")),
+            ElevatedButton(
+                onPressed: () async {
+
+                },
+                child: const Text("Cancel")), ElevatedButton(
+                onPressed: () async {
+
+                },
+                child: const Text("Cancel")),
           ],
         ),
       );

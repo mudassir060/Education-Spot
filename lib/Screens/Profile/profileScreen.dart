@@ -1,3 +1,4 @@
+import 'package:education_spot/Screens/Profile/educationUpdate.dart';
 import 'package:education_spot/Screens/Profile/skillUpdate.dart';
 import 'package:education_spot/Widgets/myAppBar.dart';
 import 'package:education_spot/Widgets/mySpacer.dart';
@@ -16,10 +17,7 @@ class profileScreen extends StatefulWidget {
 }
 
 class _profileScreenState extends State<profileScreen> {
-  var education = [
-    {"name": "Matric", "start": "2016", "end": "2019"},
-    {"name": "BSCS", "start": "2019", "end": "2023"},
-  ];
+
   var Imgs = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOfULawGx7OIMmrO9F2jShe9MqvLgR5-RyUQ&usqp=CAU",
     "https://www.unigreet.com/wp-content/uploads/2021/10/Cute-baby-dp-877x1024.jpg",
@@ -30,6 +28,7 @@ class _profileScreenState extends State<profileScreen> {
   @override
   Widget build(BuildContext context) {
     var Skills = widget.UserData["Skills"];
+    var education = widget.UserData["Education"];
     var vwidth = MediaQuery.of(context).size.width;
     var vheight = MediaQuery.of(context).size.height;
     return SafeArea(
@@ -149,7 +148,8 @@ class _profileScreenState extends State<profileScreen> {
                       style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {                          educationUpdate(context, widget.UserData);
+                        },
                         icon: Icon(
                           Icons.edit,
                         ))

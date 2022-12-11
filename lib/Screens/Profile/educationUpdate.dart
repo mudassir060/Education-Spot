@@ -8,7 +8,7 @@ TextEditingController startcontroler = TextEditingController(text: "abc@gmail.co
 TextEditingController endcontroler = TextEditingController(text: "abc@gmail.com");
 
 educationUpdate(context, UserData) async {
-  var list = UserData["Skills"];
+  var list = UserData["Education"];
   // {"name": "Matric", "start": "2016", "end": "2019"},
 
   showModalBottomSheet(

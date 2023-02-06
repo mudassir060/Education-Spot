@@ -114,7 +114,7 @@ class _jobsScreenState extends State<jobsScreen> {
             const myAppBar(titel: "Discover job", linewidth: 150),
 
             Padding(
-              padding: const EdgeInsets.all(18.0),
+              padding: const EdgeInsets.only(left: 18.0,right: 18.0,bottom: 18.0,),
               child: Column(
                 children: [
                   // // // // // // // // // // // Search Box // // // // // // // // //
@@ -139,7 +139,7 @@ class _jobsScreenState extends State<jobsScreen> {
                           border: InputBorder.none),
                     ),
                   ),
-                  mySpacer(10.0, 0.0),
+                  // mySpacer(5.0, 0.0),
 
                   // // // // // // // // // // // Recomended titel // // // // // // // // //
 

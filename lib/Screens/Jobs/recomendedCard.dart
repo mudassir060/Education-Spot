@@ -61,11 +61,12 @@ class recomendedCard extends StatelessWidget {
                       width: 70,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                          image: NetworkImage(img),
-                          fit: BoxFit.fill,
-                        ),
+                        // image: DecorationImage(
+                        //   image: NetworkImage(img),
+                        //   fit: BoxFit.fitHeight,
+                        // ),
                       ),
+                      child: Image.network(img),
                     ),
                     mySpacer(0.0, 5.0),
                     Column(

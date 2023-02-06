@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import '../Screens/Chats/CommunityChat/communityChatScreen.dart';
 
 class ImageButtonGrid extends StatelessWidget {
-  final double vheight;
   final List<Map> Community;
 
   const ImageButtonGrid(
-      {Key? key, required this.vheight, required this.Community})
+      {Key? key, required this.Community})
       : super(key: key);
 
   @override
@@ -15,10 +14,10 @@ class ImageButtonGrid extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(18.0),
       child: Container(
-        height: 190 * vheight,
         child: Padding(
           padding: const EdgeInsets.only(left: 10.0, right: 10.0),
           child: GridView.count(
+            shrinkWrap: true,
             primary: false,
             crossAxisCount: 2,
             crossAxisSpacing: 25.0,

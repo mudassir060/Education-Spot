@@ -29,14 +29,6 @@ class _homeScreenState extends State<homeScreen> {
       {"name": "Quiz", "image": Quiz, "page": QuizzScreen()},
       {"name": "Job", "image": Jobs, "page": jobsScreen()},
     ];
-    var data = buttonList.length;
-    var quot = (data / 2).floor();
-    var rem = data.remainder(2);
-    if (rem >= 1) {
-      data = quot + 1;
-    } else {
-      data = quot;
-    }
     var vwidth = MediaQuery.of(context).size.width;
     var vheight = MediaQuery.of(context).size.height;
     return SafeArea(
@@ -74,7 +66,7 @@ class _homeScreenState extends State<homeScreen> {
             // // // // // // // // // // // Banner Ad // // // // // // // //
             Image.asset(Banner_Ad),
             // // // // // // // // // // // Gridview Button // // // // // // // // //
-            ImageButtonGrid(vheight: data.toDouble(), Community: buttonList)
+            ImageButtonGrid( Community: buttonList)
           ],
         ),
       )),

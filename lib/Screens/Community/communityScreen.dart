@@ -27,14 +27,6 @@ class _communityScreenState extends State<communityScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var data = Community.length;
-    var quot = (data / 2).floor();
-    var rem = data.remainder(2);
-    if (rem >= 1) {
-      data = quot + 1;
-    } else {
-      data = quot;
-    }
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -80,7 +72,7 @@ class _communityScreenState extends State<communityScreen> {
               ),
               // // // // // // // // // // // Community List // // // // // // // // //
 
-              ImageButtonGrid(vheight: data.toDouble(), Community: Community,)
+              ImageButtonGrid(Community: Community,)
             ],
           ),
         ),

@@ -38,13 +38,14 @@ class sholarshipCard extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8.0),
       child:   InkWell(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => webView(
-                  url: url,
-                )),
-          );
+          print(img);
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //       builder: (context) => webView(
+          //         url: url,
+          //       )),
+          // );
         },
         child: Card(
           child: Container(
@@ -61,7 +62,7 @@ class sholarshipCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
                           image: NetworkImage(img),
-                          fit: BoxFit.fill,
+                          fit: BoxFit.fitWidth,
                         ),
                       ),
                     ),
@@ -95,7 +96,7 @@ class sholarshipCard extends StatelessWidget {
                 mySpacer(10.0, 0.0),
 
                 Text(
-                  "Fields: $field",
+                  "Fields: $img",
                   style: TextStyle(fontSize: 15),
                 ),
                 mySpacer(10.0, 0.0),

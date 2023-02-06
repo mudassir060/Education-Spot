@@ -52,12 +52,22 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
     final url = Uri.parse("https://www.eduvision.edu.pk/scholarships/");
     final response = await http.get(url);
     dom.Document html = dom.Document.html(response.body);
-    final titles = html.querySelectorAll("h3 > b > a").map((e) => e.innerHtml.trim()).toList();
-    final urls = html.querySelectorAll("h3 > b > a").map((e) => "$url${e.attributes["href"]}").toList();
-    final imgs = html.querySelectorAll("a > img").map((e) => e.attributes["src"]).toList();
-    final LevelsFields = html.querySelectorAll("p > b").map((e) => e.text).toList();
+    final titles = html
+        .querySelectorAll("h3 > b > a")
+        .map((e) => e.innerHtml.trim())
+        .toList();
+    final urls = html
+        .querySelectorAll("h3 > b > a")
+        .map((e) => "$url${e.attributes["href"]}")
+        .toList();
+    final imgs = html
+        .querySelectorAll("a > img")
+        .map((e) => e.attributes["src"])
+        .toList();
+    final LevelsFields =
+        html.querySelectorAll("p > b").map((e) => e.text).toList();
     final span = html.querySelectorAll("span").map((e) => e.text).toList();
-    print("titles===> ${titles.length} Url===> ${urls.length} img===> ${imgs.length} LevelsFields===> ${LevelsFields.length}");
+    // print("titles===> ${titles.length} Url===> ${urls.length} img===> ${imgs.length} LevelsFields===> ${LevelsFields.length}");
     // for (final url in urls) {
     //   debugPrint("=====>${url}");
     // }
@@ -67,7 +77,9 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
         (index) => Article(
           title: titles[index],
           url: urls[index].toString(),
-          img: imgs[index].toString(),
+          img: imgs[index].toString().contains('https:') == true
+              ? imgs[index].toString()
+              : "https://www.eduvision.edu.pk/scholarships/${imgs[index].toString()}",
           level: LevelsFields[index * 2].toString(),
           field: LevelsFields[index * 2 + 1].toString(),
           type: span[(index + 1) * 8 - 3].toString(),

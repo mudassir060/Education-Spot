@@ -12,7 +12,9 @@ class communityChatScreen extends StatefulWidget {
   final Map UserData;
   final String name;
 
-  const communityChatScreen({Key? key, required this.name, required this.UserData}) : super(key: key);
+  const communityChatScreen(
+      {Key? key, required this.name, required this.UserData})
+      : super(key: key);
 
   @override
   State<communityChatScreen> createState() => _communityChatScreenState();
@@ -36,7 +38,7 @@ class _communityChatScreenState extends State<communityChatScreen> {
           foregroundColor: seconderyColor,
           mini: true,
           onPressed: () {
-            smsBox(context, );
+            smsBox(context, widget.UserData, widget.name);
           },
           child: Icon(Icons.add),
         ),

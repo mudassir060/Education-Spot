@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 
 import '../constants/style.dart';
 
-Widget myButton({required double width,
-  required Null Function() function,
-  required String name, required bool loading}) {
+Widget myButton(
+    {required double width,
+    required Null Function() function,
+    required String name,
+    required bool loading}) {
   return ElevatedButton(
     style: ButtonStyle(
       backgroundColor: MaterialStateProperty.all(seconderyColor),
@@ -24,9 +26,10 @@ Widget myButton({required double width,
           child: loading
               ? const CircularProgressIndicator(color: Colors.white)
               : Text(
-            name,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          )),
+                  name,
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
+                )),
     ),
   );
 }

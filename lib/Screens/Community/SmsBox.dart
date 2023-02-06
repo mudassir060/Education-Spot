@@ -7,15 +7,17 @@ smsBox(context, UserData, cType) {
   TextEditingController QCTRL = TextEditingController();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   DateTime now = DateTime.now();
+  var key ="$cType${now.microsecondsSinceEpoch}";
   sentQuestion() async {
     if (QCTRL.text != null) {
       String formattedDate = DateFormat('EEE d MMM').format(now);
-      await firestore.collection("Community").doc(UserData["UID"]).set({
+      await firestore.collection("Community").doc(key).set({
         "UID": UserData["UID"],
         "username": UserData["username"],
         "community": cType,
         "question": QCTRL.text,
         "answers": [],
+        "key":key,
         "JoinDate": formattedDate,
       });
     } else {}

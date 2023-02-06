@@ -7,7 +7,7 @@ import 'Replys.dart';
 
 
 Widget QuestionCard(
-    vwidth, sendername, question, List<Map<String, String>> list, replycontroller, fun) {
+    vwidth, sendername, question,  list, replycontroller, fun) {
   return Container(
     width: vwidth - 50,
     padding: EdgeInsets.all(20.0),
@@ -40,18 +40,15 @@ Widget QuestionCard(
         mySpacer(15.0, 0.0),
         Text(
           "$question",
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
         mySpacer(10.0, 0.0),
-        Container(
-          height: 60 * list.length.toDouble(),
-          child: ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
+        ListView.builder(
+            shrinkWrap: true,
               itemCount: list.length,
               itemBuilder: (BuildContext context, int index) {
                 return Replys(list[index]["name"], list[index]["reply"]);
               }),
-        ),
         mySpacer(10.0, 0.0),
         ChatReply(replycontroller, "Type something ...", fun),
         mySpacer(10.0, 0.0),

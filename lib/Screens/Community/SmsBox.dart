@@ -8,23 +8,23 @@ smsBox(context, UserData, cType) {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   DateTime now = DateTime.now();
   sentQuestion() async {
-
-    String formattedDate = DateFormat('EEE d MMM').format(now);
-    await firestore.collection("Community").doc(UserData["UID"]).set({
-      "UID": UserData["UID"],
-      "username": UserData["username"],
-      "community": cType,
-      "question": QCTRL.text,
-      "answers":[],
-      "JoinDate": formattedDate,
-    });
+    if (QCTRL.text != null) {
+      String formattedDate = DateFormat('EEE d MMM').format(now);
+      await firestore.collection("Community").doc(UserData["UID"]).set({
+        "UID": UserData["UID"],
+        "username": UserData["username"],
+        "community": cType,
+        "question": QCTRL.text,
+        "answers": [],
+        "JoinDate": formattedDate,
+      });
+    } else {}
   }
 
   showDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-
         title: const Text('Write Question'),
         content: SizedBox(
           height: 80,
@@ -37,9 +37,7 @@ smsBox(context, UserData, cType) {
         actions: [
           ElevatedButton(
             onPressed: () {
-              if (QCTRL.text != null) {
-                sentQuestion();
-              }
+              sentQuestion();
             },
             child: const Text("Sent Question"),
           ),

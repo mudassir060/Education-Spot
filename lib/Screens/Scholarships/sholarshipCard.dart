@@ -96,7 +96,7 @@ class sholarshipCard extends StatelessWidget {
                 mySpacer(10.0, 0.0),
 
                 Text(
-                  "Fields: $img",
+                  "Fields: $field",
                   style: TextStyle(fontSize: 15),
                 ),
                 mySpacer(10.0, 0.0),

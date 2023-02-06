@@ -29,12 +29,11 @@ class _BottomNavigBarState extends State<BottomNavigBar> {
   @override
   Widget build(BuildContext context) {
      List<Widget> _widgetOptions = <Widget>[
-      const homeScreen(),
+       homeScreen(UserData: widget.UserData,),
       communityScreen(UserData: widget.UserData,),
       const notificationScreen(),
       profileScreen(UserData:  widget.UserData,)
     ];
-    print("=======>${widget.UserData}");
     return Scaffold(
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),

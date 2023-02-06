@@ -72,7 +72,7 @@ class _communityScreenState extends State<communityScreen> {
               ),
               // // // // // // // // // // // Community List // // // // // // // // //
 
-              ImageButtonGrid(Community: Community,)
+              ImageButtonGrid(Community: Community, UserData: widget.UserData,)
             ],
           ),
         ),

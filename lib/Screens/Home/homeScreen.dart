@@ -10,7 +10,8 @@ import '../Quizz/QuizzScreen.dart';
 import '../Scholarships/sholarshipsScreen.dart';
 
 class homeScreen extends StatefulWidget {
-  const homeScreen({Key? key}) : super(key: key);
+  final Map UserData;
+  const homeScreen({Key? key, required this.UserData}) : super(key: key);
 
   @override
   State<homeScreen> createState() => _homeScreenState();
@@ -66,7 +67,7 @@ class _homeScreenState extends State<homeScreen> {
             // // // // // // // // // // // Banner Ad // // // // // // // //
             Image.asset(Banner_Ad),
             // // // // // // // // // // // Gridview Button // // // // // // // // //
-            ImageButtonGrid( Community: buttonList)
+            ImageButtonGrid( Community: buttonList, UserData: widget.UserData,)
           ],
         ),
       )),

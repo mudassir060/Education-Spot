@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import '../Screens/Chats/CommunityChat/communityChatScreen.dart';
 
 class ImageButtonGrid extends StatelessWidget {
+  final Map UserData;
   final List<Map> Community;
 
   const ImageButtonGrid(
-      {Key? key, required this.Community})
+      {Key? key, required this.Community, required this.UserData})
       : super(key: key);
 
   @override
@@ -30,7 +31,9 @@ class ImageButtonGrid extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => communityChatScreen(
-                            name: "${Community[index]["name"]!}"),
+                          name: "${Community[index]["name"]!}",
+                          UserData: UserData,
+                        ),
                       ),
                     );
                   } else {

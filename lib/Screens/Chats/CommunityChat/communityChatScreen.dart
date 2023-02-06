@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 import '../../../Widgets/mySpacer.dart';
 import '../../../constants/images.dart';
 import '../../../constants/style.dart';
+import '../../Community/SmsBox.dart';
 import '../ChatReply.dart';
 import 'Replys.dart';
 
 class communityChatScreen extends StatefulWidget {
+  final Map UserData;
   final String name;
 
-  const communityChatScreen({Key? key, required this.name}) : super(key: key);
+  const communityChatScreen({Key? key, required this.name, required this.UserData}) : super(key: key);
 
   @override
   State<communityChatScreen> createState() => _communityChatScreenState();
@@ -29,6 +31,15 @@ class _communityChatScreenState extends State<communityChatScreen> {
     var vheight = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: primaryColor,
+          foregroundColor: seconderyColor,
+          mini: true,
+          onPressed: () {
+            smsBox(context, );
+          },
+          child: Icon(Icons.add),
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: [

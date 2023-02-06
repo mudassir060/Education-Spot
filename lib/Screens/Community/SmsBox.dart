@@ -3,39 +3,47 @@ import 'package:flutter/material.dart';
 import '../../Widgets/myTextfield.dart';
 import 'package:intl/intl.dart';
 
-smsBox(context,UserData, cType) {
+smsBox(context, UserData, cType) {
   TextEditingController QCTRL = TextEditingController();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   DateTime now = DateTime.now();
-sentQuection() async {
-  String formattedDate = DateFormat('EEE d MMM').format(now);
-  await firestore.collection("users").doc(UserData["UID"]).set({
-    "UID": UserData["UID"],
-    "username": UserData["username"],
-    "community": cType,
-    "Question": QCTRL.text,
-    "JoinDate": formattedDate,
-  });
-}
+  sentQuestion() async {
+
+    String formattedDate = DateFormat('EEE d MMM').format(now);
+    await firestore.collection("Community").doc(UserData["UID"]).set({
+      "UID": UserData["UID"],
+      "username": UserData["username"],
+      "community": cType,
+      "question": QCTRL.text,
+      "answers":[],
+      "JoinDate": formattedDate,
+    });
+  }
+
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return SizedBox(
-        height: 200,
-        child: AlertDialog(
-          title: const Text('Write Question'),
-          content: myTextfield(
-            titel: 'Write Question',
-            hint: 'email',
+      return AlertDialog(
+
+        title: const Text('Write Question'),
+        content: SizedBox(
+          height: 80,
+          child: myTextfield(
+            titel: '',
+            hint: 'Question',
             textcontroler: QCTRL,
           ),
-          actions: [
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text("Sent Question"),
-            ),
-          ],
         ),
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              if (QCTRL.text != null) {
+                sentQuestion();
+              }
+            },
+            child: const Text("Sent Question"),
+          ),
+        ],
       );
     },
   );

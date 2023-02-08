@@ -21,7 +21,7 @@ Widget myButton(
     onPressed: function,
     child: SizedBox(
       width: width - 100,
-      height: 60,
+      height: 50,
       child: Center(
           child: loading
               ? const CircularProgressIndicator(color: Colors.white)

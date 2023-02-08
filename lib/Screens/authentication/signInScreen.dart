@@ -19,8 +19,8 @@ class signInScreen extends StatefulWidget {
 
 class _signInScreenState extends State<signInScreen> {
 
-  TextEditingController emailcontroller = TextEditingController(text: "abc@gmail.com");
-  TextEditingController passwordcontroller = TextEditingController(text: "qwerty");
+  TextEditingController emailCTRL = TextEditingController(text: "abc@gmail.com");
+  TextEditingController passwordCTRL = TextEditingController(text: "qwerty");
 
   bool looding = false;
   bool _obscureText = true;
@@ -35,8 +35,8 @@ class _signInScreenState extends State<signInScreen> {
     var UserData;
     FirebaseAuth auth = FirebaseAuth.instance;
     FirebaseFirestore firestore = FirebaseFirestore.instance;
-    final String useremail = emailcontroller.text.trim();
-    final String userpassword = passwordcontroller.text;
+    final String useremail = emailCTRL.text.trim();
+    final String userpassword = passwordCTRL.text;
     try {
       if (
       useremail != '' &&
@@ -105,14 +105,14 @@ class _signInScreenState extends State<signInScreen> {
                       myTextfield(
                         titel: 'EMAIL',
                         hint: 'email',
-                        textcontroler: emailcontroller,
+                        textcontroler: emailCTRL,
                       ),
                       Column(
                         children: [
                           myTextfield(
                             titel: 'PASSWORD',
                             hint: 'password',
-                            textcontroler: passwordcontroller,
+                            textcontroler: passwordCTRL,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -133,7 +133,7 @@ class _signInScreenState extends State<signInScreen> {
                            register();
                           },
                           name: "Sign In",
-                          loading: false),
+                          loading: looding),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [

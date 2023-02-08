@@ -151,7 +151,7 @@ class _sigupScreenState extends State<sigupScreen> {
                             register();
                           },
                           name: "Sign Up",
-                          loading: false),
+                          loading: looding),
                       TextButton(
                           onPressed: () {
                             Navigator.push(

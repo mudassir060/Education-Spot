@@ -17,24 +17,29 @@ skillUpdate(context, UserData) async {
           children: [
             const Text("Add Skill"),
             myTextfield(
-                titel: "Add Skill", hint: "hint", textcontroler: textcontroler),
-            ElevatedButton(
-                onPressed: () async {
-                  list.add(textcontroler.text);
-                  await firestore
-                      .collection("users")
-                      .doc(UserData["UID"])
-                      .update({
-                    "Skills": list,
-                  });
-                  textcontroler.clear();
-                },
-                child: const Text("Update")),
-            ElevatedButton(
-                onPressed: () async {
-                  Navigator.pop(context);
-                },
-                child: const Text("Cancel")),
+                titel: "", hint: "Enter Your Skill", textcontroler: textcontroler),
+            Row(
+              children: [
+                ElevatedButton(
+                    onPressed: () async {
+                      list.add(textcontroler.text);
+                      await firestore
+                          .collection("users")
+                          .doc(UserData["UID"])
+                          .update({
+                        "Skills": list,
+                      });
+                      textcontroler.clear();
+                    },
+                    child: const Text("Update")),
+                ElevatedButton(
+                    onPressed: () async {
+                      Navigator.pop(context);
+                    },
+                    child: const Text("Cancel")),
+              ],
+            ),
+
           ],
         ),
       );

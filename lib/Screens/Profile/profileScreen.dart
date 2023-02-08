@@ -98,7 +98,7 @@ class _profileScreenState extends State<profileScreen> {
                 ),
               ),
               // // // // // // // // // // // Skill // // // // // // // // //
-              h1("Skills", skillUpdate(context, widget.UserData)),
+              h1("Skills", (){skillUpdate(context, widget.UserData);}),
 
               ListView.builder(
                   shrinkWrap: true,
@@ -191,7 +191,7 @@ Widget h1(title, fun) {
       children: [
         Text(
           title,
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         IconButton(
             onPressed: () {

@@ -3,14 +3,12 @@ import 'package:education_spot/Widgets/myTextfield.dart';
 import 'package:flutter/material.dart';
 
 FirebaseFirestore firestore = FirebaseFirestore.instance;
-TextEditingController titlecontroler = TextEditingController(text: "abc@gmail.com");
-TextEditingController startcontroler = TextEditingController(text: "abc@gmail.com");
-TextEditingController endcontroler = TextEditingController(text: "abc@gmail.com");
+TextEditingController titlecontroler = TextEditingController();
+TextEditingController startcontroler = TextEditingController();
+TextEditingController endcontroler = TextEditingController();
 
 educationUpdate(context, UserData) async {
   var list = UserData["Education"];
-  // {"name": "Matric", "start": "2016", "end": "2019"},
-
   showModalBottomSheet(
     context: context,
     builder: (context) {
@@ -19,15 +17,27 @@ educationUpdate(context, UserData) async {
         child: Wrap(
           children: [
             const Text("Add Education"),
-            myTextfield(titel: "Education Title", hint: "hint", textcontroler: titlecontroler),
-            myTextfield(titel: "start", hint: "hint", textcontroler: startcontroler),
-            myTextfield(titel: "end", hint: "hint", textcontroler: endcontroler),
+            myTextfield(
+                titel: "Education Title",
+                hint: "hint",
+                textcontroler: titlecontroler),
+            myTextfield(
+                titel: "start", hint: "hint", textcontroler: startcontroler),
+            myTextfield(
+                titel: "end", hint: "hint", textcontroler: endcontroler),
             ElevatedButton(
                 onPressed: () async {
                   list.add(
-                    {"name": titlecontroler.text, "start": startcontroler.text, "end": endcontroler.text},
+                    {
+                      "name": titlecontroler.text,
+                      "start": startcontroler.text,
+                      "end": endcontroler.text
+                    },
                   );
-                  await firestore.collection("users").doc(UserData["UID"]).update({
+                  await firestore
+                      .collection("users")
+                      .doc(UserData["UID"])
+                      .update({
                     "Education": list,
                   });
                   titlecontroler.clear();
@@ -35,14 +45,7 @@ educationUpdate(context, UserData) async {
                   endcontroler.clear();
                 },
                 child: const Text("Update")),
-            ElevatedButton(
-                onPressed: () async {
-
-                },
-                child: const Text("Cancel")),
-
-
-
+            ElevatedButton(onPressed: () async {}, child: const Text("Cancel")),
           ],
         ),
       );

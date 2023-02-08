@@ -98,7 +98,7 @@ class _profileScreenState extends State<profileScreen> {
                 ),
               ),
               // // // // // // // // // // // Skill // // // // // // // // //
-              h1("Skills", (){skillUpdate(context, widget.UserData);}),
+              h1("Skills",context,widget.UserData),
 
               ListView.builder(
                   shrinkWrap: true,
@@ -116,14 +116,14 @@ class _profileScreenState extends State<profileScreen> {
                         ),
                         Text(
                           Skills[index],
-                          style: TextStyle(fontSize: 18),
+                          style: const TextStyle(fontSize: 18),
                         ),
                       ],
                     );
                   }),
-              // // // // // // // // // // // Skill // // // // // // // // //
+              // // // // // // // // // // // Education // // // // // // // // //
 
-              h1("Education", educationUpdate(context, widget.UserData)),
+              h1("Education", context, widget.UserData),
               ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -184,7 +184,7 @@ class _profileScreenState extends State<profileScreen> {
   }
 }
 
-Widget h1(title, fun) {
+Widget h1(title, context,UserData) {
   return Padding(
     padding: const EdgeInsets.only(left: 18.0),
     child: Row(
@@ -195,7 +195,11 @@ Widget h1(title, fun) {
         ),
         IconButton(
             onPressed: () {
-              fun();
+              if("Skills"==title){
+                skillUpdate(context, UserData);
+              }else{
+                educationUpdate(context, UserData);
+              }
             },
             icon: const Icon(
               Icons.edit,

@@ -18,8 +18,8 @@ educationUpdate(context, UserData) async {
         padding: const EdgeInsets.all(18.0),
         child: Wrap(
           children: [
-            Center(
-              child: const Text(
+            const Center(
+              child: Text(
                 "Add Education",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),

@@ -3,7 +3,7 @@ import 'package:education_spot/Widgets/myTextfield.dart';
 import 'package:flutter/material.dart';
 
 FirebaseFirestore firestore = FirebaseFirestore.instance;
-TextEditingController textcontroler = TextEditingController(text: "abc@gmail.com");
+TextEditingController textcontroler = TextEditingController();
 
 skillUpdate(context, UserData) async {
   var list = UserData["Skills"];
@@ -16,11 +16,15 @@ skillUpdate(context, UserData) async {
         child: Wrap(
           children: [
             const Text("Add Skill"),
-            myTextfield(titel: "Add Skill", hint: "hint", textcontroler: textcontroler),
+            myTextfield(
+                titel: "Add Skill", hint: "hint", textcontroler: textcontroler),
             ElevatedButton(
                 onPressed: () async {
                   list.add(textcontroler.text);
-                  await firestore.collection("users").doc(UserData["UID"]).update({
+                  await firestore
+                      .collection("users")
+                      .doc(UserData["UID"])
+                      .update({
                     "Skills": list,
                   });
                   textcontroler.clear();
@@ -28,11 +32,7 @@ skillUpdate(context, UserData) async {
                 child: const Text("Update")),
             ElevatedButton(
                 onPressed: () async {
-
-                },
-                child: const Text("Cancel")), ElevatedButton(
-                onPressed: () async {
-
+                  Navigator.pop(context);
                 },
                 child: const Text("Cancel")),
           ],

@@ -17,7 +17,6 @@ class profileScreen extends StatefulWidget {
 }
 
 class _profileScreenState extends State<profileScreen> {
-
   var Imgs = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOfULawGx7OIMmrO9F2jShe9MqvLgR5-RyUQ&usqp=CAU",
     "https://www.unigreet.com/wp-content/uploads/2021/10/Cute-baby-dp-877x1024.jpg",
@@ -42,7 +41,6 @@ class _profileScreenState extends State<profileScreen> {
               // // // // // // // // // // // About // // // // // // // // //
               Padding(
                 padding: const EdgeInsets.only(
-                  top: 18.0,
                   left: 18.0,
                   right: 18.0,
                 ),
@@ -56,7 +54,8 @@ class _profileScreenState extends State<profileScreen> {
                         children: [
                           Text(
                             widget.UserData["username"],
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           Text(
                             widget.UserData["email"],
@@ -70,7 +69,8 @@ class _profileScreenState extends State<profileScreen> {
                               fontSize: 16,
                             ),
                           ),
-                          Text("Hello. I'm ${widget.UserData["username"]} Welcome to my profile")
+                          Text(
+                              "Hello. I'm ${widget.UserData["username"]} Welcome to my profile")
                         ],
                       ),
                     ),
@@ -89,31 +89,16 @@ class _profileScreenState extends State<profileScreen> {
                             child: CircleAvatar(
                                 radius: 20,
                                 backgroundColor: Colors.white,
-                                child: IconButton(onPressed: () {}, icon: const Icon(Icons.camera_alt)))),
+                                child: IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(Icons.camera_alt)))),
                       ],
                     )
                   ],
                 ),
               ),
               // // // // // // // // // // // Skill // // // // // // // // //
-              Padding(
-                padding: const EdgeInsets.only(left: 18.0, bottom: 5),
-                child: Row(
-                  children: [
-                    const Text(
-                      "Skills",
-                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                    ),
-                    IconButton(
-                        onPressed: () {
-                          skillUpdate(context, widget.UserData);
-                        },
-                        icon: const Icon(
-                          Icons.edit,
-                        ))
-                  ],
-                ),
-              ),
+              h1("Skills", skillUpdate(context, widget.UserData)),
 
               ListView.builder(
                   shrinkWrap: true,
@@ -137,26 +122,8 @@ class _profileScreenState extends State<profileScreen> {
                     );
                   }),
               // // // // // // // // // // // Skill // // // // // // // // //
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 18.0,
-                ),
-                child: Row(
-                  children: [
-                    const Text(
-                      "Education",
-                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                    ),
-                    IconButton(
-                        onPressed: () {                          educationUpdate(context, widget.UserData);
-                        },
-                        icon: Icon(
-                          Icons.edit,
-                        ))
-                  ],
-                ),
-              ),
 
+              h1("Education", educationUpdate(context, widget.UserData)),
               ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -215,4 +182,25 @@ class _profileScreenState extends State<profileScreen> {
       ),
     );
   }
+}
+
+Widget h1(title, fun) {
+  return Padding(
+    padding: const EdgeInsets.only(left: 18.0),
+    child: Row(
+      children: [
+        Text(
+          title,
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        ),
+        IconButton(
+            onPressed: () {
+              fun();
+            },
+            icon: const Icon(
+              Icons.edit,
+            ))
+      ],
+    ),
+  );
 }

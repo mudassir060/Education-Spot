@@ -15,10 +15,21 @@ skillUpdate(context, UserData) async {
         padding: const EdgeInsets.all(8.0),
         child: Wrap(
           children: [
-            const Text("Add Skill"),
-            myTextfield(
-                titel: "", hint: "Enter Your Skill", textcontroler: textcontroler),
+            const Center(
+              child: Text(
+                "Add Skill",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: myTextfield(
+                  titel: "",
+                  hint: "Enter Your Skill",
+                  textcontroler: textcontroler),
+            ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ElevatedButton(
                     onPressed: () async {
@@ -39,7 +50,6 @@ skillUpdate(context, UserData) async {
                     child: const Text("Cancel")),
               ],
             ),
-
           ],
         ),
       );

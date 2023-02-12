@@ -1,4 +1,3 @@
-import 'package:education_spot/constants/style.dart';
 import 'package:flutter/material.dart';
 
 Widget smallButton(titel, fun, color) {

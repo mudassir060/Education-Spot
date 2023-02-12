@@ -79,7 +79,7 @@ class _signInScreenState extends State<signInScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                mySpacer(30.0, vwidth),
+                mySpacer(40.0, vwidth),
                 const Text(
                   "Login",
                   style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
@@ -96,7 +96,7 @@ class _signInScreenState extends State<signInScreen> {
                   padding: const EdgeInsets.all(30),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    color: Colors.white,
+                    color: Colors.white60,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,

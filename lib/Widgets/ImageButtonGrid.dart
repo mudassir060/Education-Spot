@@ -45,20 +45,20 @@ class ImageButtonGrid extends StatelessWidget {
                     );
                   }
                 },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(30),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                    // color: primaryColor,
-                  ),
+                child: Card(
+                  // decoration: BoxDecoration(
+                  //   color: Colors.white,
+                  //   borderRadius: BorderRadius.circular(30),
+                  //   boxShadow: [
+                  //     BoxShadow(
+                  //       color: Colors.grey.withOpacity(0.1),
+                  //       spreadRadius: 5,
+                  //       blurRadius: 7,
+                  //       offset: Offset(0, 3), // changes position of shadow
+                  //     ),
+                  //   ],
+                  //   // color: primaryColor,
+                  // ),
                   child: Column(
                     children: [
                       Padding(

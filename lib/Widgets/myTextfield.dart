@@ -20,14 +20,18 @@ class myTextfield extends StatelessWidget {
           style: TextStyle( color: Colors.grey, fontSize: 16),
         ),
         mySpacer(5.0, 0.0),
-        TextField(
-          controller: textcontroler,
-          decoration: InputDecoration(
-            hintText: "Enter your $hint",
-            filled: true,
-            fillColor: Color.fromRGBO(235, 235, 245, 0.9),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
+        SizedBox(
+          height: 50,
+          child: TextField(
+            controller: textcontroler,
+            decoration: InputDecoration(
+              hintText: "Enter your $hint",
+              filled: true,
+              fillColor: Colors.white,
+              // fillColor: Color.fromRGBO(235, 235, 245, 0.9),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
           ),
         ),

@@ -42,7 +42,7 @@ class _profileScreenState extends State<profileScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // // // // // // // // // // // Top Bar // // // // // // // // //
-              myAppBar(titel: "My Profile", linewidth: 130),
+              const myAppBar(titel: "My Profile", linewidth: 130),
               // // // // // // // // // // // About // // // // // // // // //
               Padding(
                 padding: const EdgeInsets.only(
@@ -59,7 +59,7 @@ class _profileScreenState extends State<profileScreen> {
                         children: [
                           Text(
                             widget.UserData["username"],
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           Text(

@@ -56,18 +56,35 @@ class _homeScreenState extends State<homeScreen> {
                       fontWeight: FontWeight.bold,
                       fontSize: 25),
                 ),
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.more_vert,
-                      color: primaryColor,
-                    ))
+                PopupMenuButton<String>(
+                  onSelected: (value) {
+                    // Handle the selection of a menu item
+                  },
+                  itemBuilder: (context) => [
+                    const PopupMenuItem(
+                      value: 'item1',
+                      child: Text('Rate us'),
+                    ),
+                    const PopupMenuItem(
+                      value: 'item2',
+                      child: Text('About us'),
+                    ),
+                    // ignore: prefer_const_constructors
+                    PopupMenuItem(
+                      value: 'item3',
+                      child: const Text('Contact us'),
+                    ),
+                  ],
+                ),
               ],
             ),
             // // // // // // // // // // // Banner Ad // // // // // // // //
             Image.asset(Banner_Ad),
             // // // // // // // // // // // Gridview Button // // // // // // // // //
-            ImageButtonGrid( Community: buttonList, UserData: widget.UserData,)
+            ImageButtonGrid(
+              Community: buttonList,
+              UserData: widget.UserData,
+            )
           ],
         ),
       )),

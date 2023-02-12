@@ -37,7 +37,7 @@ class _communityChatScreenState extends State<communityChatScreen> {
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           backgroundColor: primaryColor,
-          foregroundColor: seconderyColor,
+          foregroundColor: Colors.white,
           mini: true,
           onPressed: () {
             smsBox(context, widget.UserData, widget.name);
@@ -62,7 +62,7 @@ class _communityChatScreenState extends State<communityChatScreen> {
                       Text(
                         widget.name,
                         style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
+                            fontSize: 25, fontWeight: FontWeight.bold),
                       ),
                       mySpacer(10.0, 0.0),
                       Container(

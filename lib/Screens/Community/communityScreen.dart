@@ -45,7 +45,7 @@ class _communityScreenState extends State<communityScreen> {
                           const Text(
                             "Community",
                             style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold),
+                                fontSize: 25, fontWeight: FontWeight.bold),
                           ),
                           mySpacer(10.0, 0.0),
                           Container(

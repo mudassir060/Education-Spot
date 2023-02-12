@@ -35,21 +35,20 @@ class sholarshipCard extends StatelessWidget {
     var vwidth = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0),
-      child:   InkWell(
+      padding: const EdgeInsets.only(top:8.0),
+      child: InkWell(
         onTap: () {
-          print(img);
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //       builder: (context) => webView(
-          //         url: url,
-          //       )),
-          // );
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => webView(
+                  url: url,
+                )),
+          );
         },
         child: Card(
           child: Container(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(left: 8, right: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -66,13 +65,13 @@ class sholarshipCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    mySpacer(0.0, 5.0),
+                    mySpacer(0.0, 15.0),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
-                          width: 220,
+                          width: 200,
                           child: Text(
                             titel,
                             maxLines: 2,
@@ -87,20 +86,17 @@ class sholarshipCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                mySpacer(10.0, 0.0),
-
+    
                 Text(
                   "Levels: $level",
                   style: TextStyle(fontSize: 15),
                 ),
-                mySpacer(10.0, 0.0),
-
+    
                 Text(
                   "Fields: $field",
                   style: TextStyle(fontSize: 15),
                 ),
-                mySpacer(10.0, 0.0),
-
+    
                 Text(
                   "Deadline: $deadline",
                   style: TextStyle(fontSize: 15),
@@ -137,7 +133,7 @@ Widget textshow(title, subtitle, vwidth) {
           title,
           style: const TextStyle(
             fontSize: 15,
-            color: Colors.grey,
+            color: primaryColor,
           ),
         ),
         Text(

@@ -131,7 +131,7 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
             // // // // // // // // // // // Top Bar // // // // // // // // //
             const myAppBar(titel: "Available Scholarships", linewidth: 250),
             Padding(
-              padding: const EdgeInsets.all(18.0),
+              padding: const EdgeInsets.only(left: 18.0, right: 18),
               child: Column(
                 children: [
                   // // // // // // // // // // // Search Box // // // // // // // // //
@@ -158,18 +158,12 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
                   ),
                   mySpacer(10.0, 0.0),
                   // // // // // // // // // // // Featured sholarships // // // // // // // // //
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Wrap(
+                    direction: Axis.horizontal,
                     children: [
                       smallButton("Matric", () {}, false),
                       smallButton("Intermediate", () {}, false),
                       smallButton("University", () {}, false),
-                    ],
-                  ),
-                  mySpacer(10.0, 0.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
                       smallButton("Merit base", () {}, false),
                       smallButton("Need base", () {}, false),
                       smallButton("Others", () {}, false),

@@ -117,16 +117,17 @@ class _profileScreenState extends State<profileScreen> {
                         children: [
                           SlidableAction(
                             icon: Icons.delete,
+                            foregroundColor: Colors.red,
                             onPressed: (BuildContext context) async {
                               setState(() {
                                 Skills.removeAt(index);
                               });
-                               await firestore
-                                    .collection("users")
-                                    .doc(widget.UserData["UID"])
-                                    .update({
-                                  "Skills": Skills,
-                                });
+                              await firestore
+                                  .collection("users")
+                                  .doc(widget.UserData["UID"])
+                                  .update({
+                                "Skills": Skills,
+                              });
                             },
                           ),
                         ],
@@ -156,20 +157,43 @@ class _profileScreenState extends State<profileScreen> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: education.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Row(
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(left: 38.0, right: 8.0),
-                          child: Icon(
-                            Icons.star,
-                            size: 18,
+                    return Slidable(
+                      key: const ValueKey(0),
+                      endActionPane: ActionPane(
+                        motion: ScrollMotion(),
+                        children: [
+                          SlidableAction(
+                            icon: Icons.delete,
+                            foregroundColor: Colors.red,
+                            onPressed: (BuildContext context) async {
+                              setState(() {
+                                education.removeAt(index);
+                              });
+                              await firestore
+                                  .collection("users")
+                                  .doc(widget.UserData["UID"])
+                                  .update({
+                                "Education": education,
+                              });
+                            },
                           ),
-                        ),
-                        Text(
-                          "${education[index]["name"]}  (${education[index]["start"]} - ${education[index]["end"]})",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ],
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(left: 38.0, right: 8.0),
+                            child: Icon(
+                              Icons.star,
+                              size: 18,
+                            ),
+                          ),
+                          Text(
+                            "${education[index]["name"]}  (${education[index]["start"]} - ${education[index]["end"]})",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ],
+                      ),
                     );
                   }),
               mySpacer(10.0, 0.0),

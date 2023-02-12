@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education_spot/Screens/Profile/educationUpdate.dart';
 import 'package:education_spot/Screens/Profile/skillUpdate.dart';
 import 'package:education_spot/Widgets/myAppBar.dart';
 import 'package:education_spot/Widgets/mySpacer.dart';
+import 'package:education_spot/constants/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -24,10 +26,8 @@ class _profileScreenState extends State<profileScreen> {
     "https://www.unigreet.com/wp-content/uploads/2021/10/Baby-boy-pic-1011x1024.jpg",
     "https://www.imagediamond.com/blog/wp-content/uploads/2019/07/Girls-whatsapp-Dp-120.jpg"
   ];
-  String doNothing() {
-    print("ppasda");
-    return "null";
-  }
+
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -111,66 +111,26 @@ class _profileScreenState extends State<profileScreen> {
                   itemCount: Skills.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Slidable(
-                      // Specify a key if the Slidable is dismissible.
                       key: const ValueKey(0),
-
-                      // The start action pane is the one at the left or the top side.
-                      // startActionPane: ActionPane(
-                      //   // A motion is a widget used to control how the pane animates.
-                      //   motion: const ScrollMotion(),
-                      //
-                      //   // A pane can dismiss the Slidable.
-                      //   dismissible: DismissiblePane(onDismissed: () {}),
-                      //
-                      //   // All actions are defined in the children parameter.
-                      //   children: const [
-                      //     // A SlidableAction can have an icon and/or a label.
-                      //     SlidableAction(
-                      //       onPressed: doNothing,
-                      //       backgroundColor: Color(0xFFFE4A49),
-                      //       foregroundColor: Colors.white,
-                      //       icon: Icons.delete,
-                      //       label: 'Delete',
-                      //     ),
-                      //     SlidableAction(
-                      //       onPressed: (context) {
-                      //         // Code that you want to execute when the widget is tapped
-                      //       },
-                      //       backgroundColor: Color(0xFF21B7CA),
-                      //       foregroundColor: Colors.white,
-                      //       icon: Icons.share,
-                      //       label: 'Share',
-                      //     ),
-                      //   ],
-                      // ),
-
-                      // The end action pane is the one at the right or the bottom side.
-                      endActionPane: const ActionPane(
+                      endActionPane: ActionPane(
                         motion: ScrollMotion(),
                         children: [
-                          Text("Delete")
-
-                          // SlidableAction(
-                          //   // An action can be bigger than the others.
-                          //   flex: 2,
-                          //   onPressed: doNothing,
-                          //   backgroundColor: Color(0xFF7BC043),
-                          //   foregroundColor: Colors.white,
-                          //   icon: Icons.archive,
-                          //   label: 'Archive',
-                          // ),
-                          // SlidableAction(
-                          //   onPressed: doNothing,
-                          //   backgroundColor: Color(0xFF0392CF),
-                          //   foregroundColor: Colors.white,
-                          //   icon: Icons.save,
-                          //   label: 'Save',
-                          // ),
+                          SlidableAction(
+                            icon: Icons.delete,
+                            onPressed: (BuildContext context) async {
+                              setState(() {
+                                Skills.removeAt(index);
+                              });
+                               await firestore
+                                    .collection("users")
+                                    .doc(widget.UserData["UID"])
+                                    .update({
+                                  "Skills": Skills,
+                                });
+                            },
+                          ),
                         ],
                       ),
-
-                      // The child of the Slidable is what the user sees when the
-                      // component is not dragged.
                       child: Row(
                         children: [
                           const Padding(
@@ -253,7 +213,7 @@ class _profileScreenState extends State<profileScreen> {
 
 Widget h1(title, context, UserData) {
   return Padding(
-    padding: const EdgeInsets.only(left: 18.0, right: 18.0),
+    padding: const EdgeInsets.only(left: 18.0, right: 18.0, top: 8.0),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -263,6 +223,7 @@ Widget h1(title, context, UserData) {
         ),
         SizedBox(
             height: 20,
+            width: 120,
             child: ElevatedButton(
                 onPressed: () {
                   if ("Skills" == title) {

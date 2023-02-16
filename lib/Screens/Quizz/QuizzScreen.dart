@@ -26,9 +26,9 @@ class _QuizzScreenState extends State<QuizzScreen> {
         ),
         rowCard(
           img: Quiz,
-          title: 'MCAT',
-          question: MCAT,
-          data: MCAT,
+          title: 'MDCAT',
+          question: MDCAT,
+          data: MDCAT,
         ),
         rowCard(
           img: Quiz,

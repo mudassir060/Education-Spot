@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
 import '../../Widgets/myAppBar.dart';
+import '../../Widgets/myLoading.dart';
 import 'AdmissionCard.dart';
 
 class AdmissionsScreen extends StatefulWidget {
@@ -109,7 +110,7 @@ class _AdmissionsScreenState extends State<AdmissionsScreen> {
                           // );
                         }),
                   )
-                  : const Center(child: Text("Loading...")),
+                  :  Center(child: myLoading()),
             ],
           ),
         ),

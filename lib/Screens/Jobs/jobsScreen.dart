@@ -180,7 +180,7 @@ class _jobsScreenState extends State<jobsScreen> {
                                 );
                               }),
                         )
-                      : const Text('Loading...'),
+                      : const myLoading(),
                 ],
               ),
             ),

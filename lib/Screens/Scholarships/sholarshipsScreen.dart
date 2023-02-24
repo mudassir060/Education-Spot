@@ -193,7 +193,7 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
                                 );
                               }),
                         )
-                      : const Center(child: Text("Loading...")),
+                      : const Center(child: myLoading()),
                 ],
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../Widgets/ImageCasha.dart';
 import '../../Widgets/mySpacer.dart';
 import '../../Widgets/smallButton.dart';
 import '../../Widgets/webView.dart';
@@ -35,15 +36,15 @@ class sholarshipCard extends StatelessWidget {
     var vwidth = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: const EdgeInsets.only(top:8.0),
+      padding: const EdgeInsets.only(top: 8.0),
       child: InkWell(
         onTap: () {
           Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => webView(
-                  url: url,
-                )),
+                      url: url,
+                    )),
           );
         },
         child: Card(
@@ -59,11 +60,12 @@ class sholarshipCard extends StatelessWidget {
                       width: 70,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                          image: NetworkImage(img),
-                          fit: BoxFit.fitWidth,
-                        ),
+                        // image: DecorationImage(
+                        //   image: NetworkImage(img),
+                        //   fit: BoxFit.fitWidth,
+                        // ),
                       ),
+                      child: imageCasha(img),
                     ),
                     mySpacer(0.0, 15.0),
                     Column(
@@ -86,17 +88,14 @@ class sholarshipCard extends StatelessWidget {
                     ),
                   ],
                 ),
-    
                 Text(
                   "Levels: $level",
                   style: TextStyle(fontSize: 15),
                 ),
-    
                 Text(
                   "Fields: $field",
                   style: TextStyle(fontSize: 15),
                 ),
-    
                 Text(
                   "Deadline: $deadline",
                   style: TextStyle(fontSize: 15),
@@ -107,9 +106,17 @@ class sholarshipCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     textshow("Type", type, vwidth),
-                    Container(width: 1,height: 60, color: Colors.grey,),
+                    Container(
+                      width: 1,
+                      height: 60,
+                      color: Colors.grey,
+                    ),
                     textshow("Category", category, vwidth),
-                    Container(width: 1,height: 60,color: Colors.grey,),
+                    Container(
+                      width: 1,
+                      height: 60,
+                      color: Colors.grey,
+                    ),
                     textshow("Area", area, vwidth),
                   ],
                 )
@@ -119,13 +126,12 @@ class sholarshipCard extends StatelessWidget {
         ),
       ),
     );
-
   }
 }
 
 Widget textshow(title, subtitle, vwidth) {
   return Container(
-    width: vwidth/4,
+    width: vwidth / 4,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

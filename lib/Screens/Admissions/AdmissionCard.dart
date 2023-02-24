@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../Widgets/ImageCasha.dart';
 import '../../Widgets/mySpacer.dart';
 import '../../Widgets/webView.dart';
 import '../../constants/images.dart';
@@ -48,11 +49,12 @@ class AdmissionCard extends StatelessWidget {
                     width: 70,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                        image: NetworkImage(img),
-                        fit: BoxFit.fill,
-                      ),
+                      // image: DecorationImage(
+                      //   image: NetworkImage(img),
+                      //   fit: BoxFit.fill,
+                      // ),
                     ),
+                    child: imageCasha(img),
                   ),
                   mySpacer(0.0, 5.0),
                   Column(

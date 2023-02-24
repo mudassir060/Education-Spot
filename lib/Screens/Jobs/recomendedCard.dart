@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../Widgets/ImageCasha.dart';
 import '../../Widgets/mySpacer.dart';
 import '../../Widgets/webView.dart';
 import '../../constants/images.dart';
@@ -66,7 +67,7 @@ class recomendedCard extends StatelessWidget {
                         //   fit: BoxFit.fitHeight,
                         // ),
                       ),
-                      child: Image.network(img),
+                    child: imageCasha(img),
                     ),
                     mySpacer(0.0, 5.0),
                     Column(

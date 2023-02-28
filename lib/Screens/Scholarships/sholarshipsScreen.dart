@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../../constants/images.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
-
+import '../../Widgets/myLoading.dart';
 class sholarshipsScreen extends StatefulWidget {
   const sholarshipsScreen({Key? key}) : super(key: key);
 
@@ -193,7 +193,7 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
                                 );
                               }),
                         )
-                      : const Center(child: myLoading()),
+                      :  myLoading(),
                 ],
               ),
             ),

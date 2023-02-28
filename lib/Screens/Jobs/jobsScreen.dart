@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
 import '../../constants/style.dart';
-
+import '../../Widgets/myLoading.dart';
 class jobsScreen extends StatefulWidget {
   const jobsScreen({Key? key}) : super(key: key);
 
@@ -180,7 +180,7 @@ class _jobsScreenState extends State<jobsScreen> {
                                 );
                               }),
                         )
-                      : const myLoading(),
+                      : myLoading(),
                 ],
               ),
             ),

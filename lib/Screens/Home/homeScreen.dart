@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import '../../Widgets/ImageButtonGrid.dart';
 import '../../constants/images.dart';
 import '../Admissions/AdmissionsScreen.dart';
+import '../CV/AdmissionsScreen.dart';
+import '../Community/communityScreen.dart';
 import '../Jobs/jobsScreen.dart';
 import '../Quizz/QuizzScreen.dart';
 import '../Scholarships/sholarshipsScreen.dart';
@@ -29,6 +31,9 @@ class _homeScreenState extends State<homeScreen> {
       {"name": "Admission", "image": Admissions, "page": AdmissionsScreen()},
       {"name": "Quiz", "image": Quiz, "page": QuizzScreen()},
       {"name": "Job", "image": Jobs, "page": jobsScreen()},
+            {"name": "Community", "image": CommonRoom, "page": communityScreen(UserData: widget.UserData,)},
+      {"name": "Job", "image": cv, "page": CVScreen()},
+
     ];
     var vwidth = MediaQuery.of(context).size.width;
     var vheight = MediaQuery.of(context).size.height;

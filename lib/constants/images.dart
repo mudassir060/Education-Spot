@@ -20,6 +20,7 @@ const String Profile2 = "assets/icons/Profile.jpg";
 
 // // // // // // // // // // // Communities // // // // // // // // //
 const String Jobs = "assets/icons/Jobs.png";
+const String cv = "assets/icons/cv.png";
 const String CommonRoom = "assets/icons/CommonRoom.png";
 const String Scholarships2 = "assets/icons/Scholarship.png";
 const String Discussion = "assets/icons/Chat.png";

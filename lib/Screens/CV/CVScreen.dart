@@ -37,7 +37,7 @@ class _CVScreenState extends State<CVScreen> {
                   padding: const EdgeInsets.only(left: 15.0, right: 15.0),
                   child: StackedCardCarousel(
                       initialOffset: 0,
-                      spaceBetweenItems: 400,
+                      spaceBetweenItems: 450,
                       items: [
                         cvCard(widget.UserData, cv_1),
                         cvCard(widget.UserData, cv_1),

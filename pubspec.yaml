@@ -29,7 +29,10 @@ dependencies:
   cached_network_image: ^3.2.3
   shared_preferences: ^2.0.18
   stacked_card_carousel: ^0.0.4
+  printing: ^5.10.1
 
+
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

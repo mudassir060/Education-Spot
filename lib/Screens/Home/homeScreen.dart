@@ -31,8 +31,8 @@ class _homeScreenState extends State<homeScreen> {
       {"name": "Admission", "image": Admissions, "page": AdmissionsScreen()},
       {"name": "Quiz", "image": Quiz, "page": QuizzScreen()},
       {"name": "Job", "image": Jobs, "page": jobsScreen()},
-            {"name": "Community", "image": CommonRoom, "page": communityScreen(UserData: widget.UserData,)},
-      {"name": "Job", "image": cv, "page": CVScreen()},
+      {"name": "Community", "image": CommonRoom, "page": communityScreen(UserData: widget.UserData,)},
+      {"name": "CV", "image": cv, "page": CVScreen(UserData: widget.UserData,)},
 
     ];
     var vwidth = MediaQuery.of(context).size.width;

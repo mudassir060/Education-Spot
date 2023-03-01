@@ -28,6 +28,7 @@ dependencies:
   loading_animation_widget: ^1.2.0+4
   cached_network_image: ^3.2.3
   shared_preferences: ^2.0.18
+  stacked_card_carousel: ^0.0.4
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +64,7 @@ flutter:
     - assets/
     - assets/images/
     - assets/icons/
+    - assets/cv/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

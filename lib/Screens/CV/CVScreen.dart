@@ -3,7 +3,9 @@ import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
 import '../../Widgets/myAppBar.dart';
 import '../../Widgets/myLoading.dart';
+import 'package:stacked_card_carousel/stacked_card_carousel.dart';
 
+import 'cvCard.dart';
 class CVScreen extends StatefulWidget {
   const CVScreen({Key? key}) : super(key: key);
 
@@ -25,11 +27,26 @@ class _CVScreenState extends State<CVScreen> {
           child: Column(
             children: [
               myAppBar(
-                titel: "CV",
+                titel: "Create CV",
                 linewidth: 140,
               ),
              
-               Center(child: myLoading()),
+               SizedBox(
+                height: 600,
+                 child: Padding(
+                   padding: const EdgeInsets.all(12.0),
+                   child: StackedCardCarousel(
+                    spaceBetweenItems: 200,
+                         items:[  
+                          cvCard(),
+                          cvCard(),
+                          cvCard(),
+                          cvCard(),
+                          cvCard(),
+                         ]
+                     ),
+                 ),
+               )
             ],
           ),
         ),

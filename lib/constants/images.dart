@@ -30,6 +30,8 @@ const String Others = "assets/icons/Other.png";
 // // // // // // // // // // // Communities // // // // // // // // //
 const String images = "assets/images/images.png";
 // const String logo = "assets/images/Logo.png";
-// const String logo = "assets/images/Logo.png";
 // // // // // // // // // // // Skill // // // // // // // // //
+const String logo = "assets/images/Logo.png";
+
+
 // // // // // // // // // // // Skill // // // // // // // // //

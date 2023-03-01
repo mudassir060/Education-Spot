@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../Widgets/ImageButtonGrid.dart';
 import '../../constants/images.dart';
 import '../Admissions/AdmissionsScreen.dart';
-import '../CV/AdmissionsScreen.dart';
+import '../CV/CVScreen.dart';
 import '../Community/communityScreen.dart';
 import '../Jobs/jobsScreen.dart';
 import '../Quizz/QuizzScreen.dart';

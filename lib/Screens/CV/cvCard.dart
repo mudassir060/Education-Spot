@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
-import '../../constants/';
+import '../../constants/images.dart';
 Widget cvCard() {
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-          Image.asset(cv_1),
-          ElevatedButton(onPressed: (){}, child: const Text("Use Templete")),
-            ],
-          ),
-        )),
-  );
+  return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Stack(
+          children: [
+        Image.asset(cv_1),
+                Positioned(top: 40, child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(onPressed: (){}, child: const Text("Use Templete")),
+                    SizedBox()
+                  ],
+                )),
+
+          ],
+        ),
+      ));
 }

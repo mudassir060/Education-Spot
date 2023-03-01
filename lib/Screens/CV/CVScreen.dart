@@ -31,20 +31,24 @@ class _CVScreenState extends State<CVScreen> {
                 linewidth: 140,
               ),
              
-               SizedBox(
-                height: 600,
-                 child: Padding(
-                   padding: const EdgeInsets.all(12.0),
-                   child: StackedCardCarousel(
-                    spaceBetweenItems: 200,
-                         items:[  
-                          cvCard(),
-                          cvCard(),
-                          cvCard(),
-                          cvCard(),
-                          cvCard(),
-                         ]
-                     ),
+               Container(             color: Colors.amberAccent,
+
+                 child: SizedBox(
+                  height: 700,
+                   child: Padding(
+                     padding: const EdgeInsets.only(left:15.0, right: 15.0),
+                     child: StackedCardCarousel(
+                      initialOffset: 0,
+                      spaceBetweenItems: 400,
+                           items:[  
+                            cvCard(),
+                            cvCard(),
+                            cvCard(),
+                            cvCard(),
+                            cvCard(),
+                           ]
+                       ),
+                   ),
                  ),
                )
             ],

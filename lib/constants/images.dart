@@ -31,7 +31,7 @@ const String Others = "assets/icons/Other.png";
 const String images = "assets/images/images.png";
 // const String logo = "assets/images/Logo.png";
 // // // // // // // // // // // Skill // // // // // // // // //
-const String logo = "assets/images/Logo.png";
+const String cv_1 = "assets/cv/cv_1.png";
 
 
 // // // // // // // // // // // Skill // // // // // // // // //

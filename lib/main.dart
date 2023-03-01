@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'Screens/CV/CV_1.dart';
 import 'Screens/authentication/signInScreen.dart';
 import 'Widgets/BottomNavigBar.dart';
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
 
             // Once complete, show your application
             if (snapshot.connectionState == ConnectionState.done) {
-              return signInScreen();
+              return CVW_1();
             }
 
             // Otherwise, show something whilst waiting for initialization to complete
@@ -80,7 +81,7 @@ class _getDataState extends State<getData> {
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
-        return signInScreen();
+        return CVW_1();
       },
     );
   }

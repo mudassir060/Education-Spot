@@ -1,12 +1,16 @@
+import 'dart:convert';
+
 import 'package:education_spot/Screens/Scholarships/sholarshipCard.dart';
 import 'package:education_spot/Widgets/myAppBar.dart';
 import 'package:education_spot/Widgets/mySpacer.dart';
 import 'package:education_spot/Widgets/smallButton.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../constants/images.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
 import '../../Widgets/myLoading.dart';
+
 class sholarshipsScreen extends StatefulWidget {
   const sholarshipsScreen({Key? key}) : super(key: key);
 
@@ -89,6 +93,29 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
         ),
       );
     });
+  }
+
+  static Future setdata(List<Map> data) async {
+    List<String> dataString = [];
+    data.forEach((element) {
+      dataString.add(json.encode(element));
+    });
+    final prefs = await SharedPreferences.getInstance();
+
+    await prefs.setStringList("_keyUsername", dataString);
+  }
+
+  static Future<List<Map>> getdata() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    List<String> dataString = prefs.getStringList("_keyUsername") ?? [];
+    List<Map> data = [];
+    if (dataString.isNotEmpty) {
+      dataString.forEach((element) {
+        data.add(json.decode(element));
+      });
+    }
+    return data;
   }
 
   @override
@@ -193,7 +220,7 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
                                 );
                               }),
                         )
-                      :  myLoading(),
+                      : myLoading(),
                 ],
               ),
             ),

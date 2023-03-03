@@ -31,20 +31,22 @@ const PdfColor lightGreen = PdfColor.fromInt(0xffcdf1e7);
 const 
 sep = 120.0;
 
-Future<Uint8List> CV_1(PdfPageFormat format) async {
-  final doc = pw.Document(title: 'My Résumé', author: 'David PHAM-VAN');
+Future<Uint8List> CV_1(data) async {
+  final doc = pw.Document(title: 'My Résumé', author: '${data["username"]}');
 
   final profileImage = pw.MemoryImage(
-    (await rootBundle.load(images)).buffer.asUint8List(),
+    (await rootBundle.load(Profile)).buffer.asUint8List(),
   );
 
-  final pageTheme = await _myPageTheme(format);
+  final pageTheme = await _myPageTheme(PdfPageFormat.a4);
 
   doc.addPage(
     pw.MultiPage(
       pageTheme: pageTheme,
       build: (pw.Context context) => [
-          pw.Partition(
+        pw.Partitions(
+          children: [
+            pw.Partition(
               child: pw.Column(
                 crossAxisAlignment: pw.CrossAxisAlignment.start,
                 children: <pw.Widget>[
@@ -53,13 +55,13 @@ Future<Uint8List> CV_1(PdfPageFormat format) async {
                     child: pw.Column(
                       crossAxisAlignment: pw.CrossAxisAlignment.start,
                       children: <pw.Widget>[
-                        pw.Text('Parnella Charlesbois',
+                        pw.Text('${data["username"]}',
                             textScaleFactor: 2,
                             style: pw.Theme.of(context)
                                 .defaultTextStyle
                                 .copyWith(fontWeight: pw.FontWeight.bold)),
                         pw.Padding(padding: const pw.EdgeInsets.only(top: 10)),
-                        pw.Text('Electrotyper',
+                        pw.Text('${data["job"]}',
                             textScaleFactor: 1.2,
                             style: pw.Theme.of(context)
                                 .defaultTextStyle
@@ -74,19 +76,17 @@ Future<Uint8List> CV_1(PdfPageFormat format) async {
                             pw.Column(
                               crossAxisAlignment: pw.CrossAxisAlignment.start,
                               children: <pw.Widget>[
-                                pw.Text('568 Port Washington Road'),
-                                pw.Text('Nordegg, AB T0M 2H0'),
-                                pw.Text('Canada, ON'),
+                                pw.Text('${data["addres"]}'),
+                                pw.Text('${data["PhoneNo"]}'),
                               ],
                             ),
                             pw.Column(
                               crossAxisAlignment: pw.CrossAxisAlignment.start,
                               children: <pw.Widget>[
-                                pw.Text('+1 403-721-6898'),
-                                _UrlText('p.charlesbois@yahoo.com',
-                                    'mailto:p.charlesbois@yahoo.com'),
+                                _UrlText('${data["email"]}',
+                                    'mailto:${data["email"]}'),
                                 _UrlText(
-                                    'wholeprices.ca', 'https://wholeprices.ca'),
+                                    '${data["web"]}', '${data["web"]}'),
                               ],
                             ),
                             pw.Padding(padding: pw.EdgeInsets.zero)
@@ -97,19 +97,15 @@ Future<Uint8List> CV_1(PdfPageFormat format) async {
                   ),
                   _Category(title: 'Work Experience'),
                   _Block(
-                      title: 'Tour bus driver',
-                      icon: const pw.IconData(0xe530)),
-                  _Block(
-                      title: 'Logging equipment operator',
-                      icon: const pw.IconData(0xe30d)),
-                  _Block(title: 'Foot doctor', icon: const pw.IconData(0xe3f3)),
-                  _Block(
-                      title: 'Unicorn trainer',
-                      icon: const pw.IconData(0xf0cf)),
-                  _Block(
                       title: 'Chief chatter', icon: const pw.IconData(0xe0ca)),
                   pw.SizedBox(height: 20),
                   _Category(title: 'Education'),
+                  pw.ListView.builder(
+                    itemCount: data["Education"].length,
+                    itemBuilder: (context, int index) {
+                      return pw.Text("${data["Education"][index]["name"]}") ;
+                    },
+                  ),
                   _Block(title: 'Bachelor Of Commerce'),
                   _Block(title: 'Bachelor Interior Design'),
                 ],
@@ -151,7 +147,8 @@ Future<Uint8List> CV_1(PdfPageFormat format) async {
                 ],
               ),
             )
-         
+          ],
+        ),
       ],
     ),
   );

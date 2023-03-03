@@ -37,8 +37,7 @@ Widget cvCard(context,data, img) {
                       final file = File("${directory?.path}/CV.pdf");
 
                       if (await Permission.storage.request().isGranted) {
-                        await file.writeAsBytes(await CV_1(PdfPageFormat.a4));
-                        print(directory?.path);
+                        await file.writeAsBytes(await CV_1( data));
                         Navigator.push(
                             context,
                             MaterialPageRoute(

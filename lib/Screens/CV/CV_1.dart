@@ -23,6 +23,8 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
+import '../../constants/images.dart';
+
 
 const PdfColor green = PdfColor.fromInt(0xff9ce5d0);
 const PdfColor lightGreen = PdfColor.fromInt(0xffcdf1e7);
@@ -33,7 +35,7 @@ Future<Uint8List> CV_1(PdfPageFormat format) async {
   final doc = pw.Document(title: 'My Résumé', author: 'David PHAM-VAN');
 
   final profileImage = pw.MemoryImage(
-    (await rootBundle.load('assets/logo.jpg')).buffer.asUint8List(),
+    (await rootBundle.load(images)).buffer.asUint8List(),
   );
 
   final pageTheme = await _myPageTheme(format);
@@ -42,9 +44,7 @@ Future<Uint8List> CV_1(PdfPageFormat format) async {
     pw.MultiPage(
       pageTheme: pageTheme,
       build: (pw.Context context) => [
-        pw.Partitions(
-          children: [
-            pw.Partition(
+          pw.Partition(
               child: pw.Column(
                 crossAxisAlignment: pw.CrossAxisAlignment.start,
                 children: <pw.Widget>[
@@ -151,8 +151,7 @@ Future<Uint8List> CV_1(PdfPageFormat format) async {
                 ],
               ),
             )
-          ],
-        ),
+         
       ],
     ),
   );
@@ -239,7 +238,7 @@ class _Block extends pw.StatelessWidget {
             child: pw.Column(
                 crossAxisAlignment: pw.CrossAxisAlignment.start,
                 children: <pw.Widget>[
-                  pw.Lorem(length: 20),
+                  pw.Lorem(length: 10),
                 ]),
           ),
         ]);

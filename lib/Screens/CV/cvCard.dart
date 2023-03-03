@@ -43,7 +43,7 @@ Widget cvCard(context,data, img) {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    PDFViewerScaffold(path: directory?.path)));
+                                    PDFViewerScaffold(appBar: AppBar(), path: "${directory?.path}/CV.pdf")));
                       } else {
                         print(
                             "// Handle the case if the user doesn't grant permission");

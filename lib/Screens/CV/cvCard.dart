@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:education_spot/Screens/CV/resume.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:printing/printing.dart';
@@ -24,19 +25,20 @@ Widget cvCard(data, img) {
               child: IconButton(
                   onPressed: () async {
                     try {
-                      final pdf = pw.Document();
-                        final font = await PdfGoogleFonts.nunitoExtraLight();
+                      
+                      // final pdf = pw.Document();
+                      //   final font = await PdfGoogleFonts.nunitoExtraLight();
 
-                      pdf.addPage(pw.Page(
-                          pageFormat: PdfPageFormat.a4,
-                          build: (pw.Context context) {
-                            return CV_1(font); // Center
-                          }));
+                      // pdf.addPage(pw.Page(
+                      //     pageFormat: PdfPageFormat.a4,
+                      //     build: (pw.Context context) {
+                      //       return CV_1(font); // Center
+                      //     }));
                       final directory = await getExternalStorageDirectory();
                       final file = File("${directory?.path}/CV.pdf");
 
                       if (await Permission.storage.request().isGranted) {
-                        await file.writeAsBytes(await pdf.save());
+                        await file.writeAsBytes(await generateResume(PdfPageFormat.a4));
                         print(directory?.path);
                       } else {
                         print(

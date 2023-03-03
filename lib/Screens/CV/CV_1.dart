@@ -6,21 +6,27 @@ pw.Center CV_1(font) {
   return pw.Center(
     child: pw.Row(
       children: [
-       pw. Column(
+        pw.Column(
           children: [
             pw.Padding(
-              padding: pw. EdgeInsets.all(8.0),
-              child:pw. Column(
+              padding: pw.EdgeInsets.all(1.0),
+              child: pw.Column(
                 children: [
                   pw.Text("${UserData["username"]}"),
-                 pw. Text("${UserData["job"]}"),
+                  pw.Text("${UserData["job"]}"),
                 ],
               ),
             ),
-          pw.  Text("Contact"),
-              pw.      Text("${UserData["PhoneNo"]}"),
-               pw.     Text("${UserData["email"]}"),
-                pw.    Text("${UserData["web"]}"),
+            pw.Text("Contact"),
+            pw.Text("${UserData["PhoneNo"]}"),
+            pw.Text("${UserData["email"]}"),
+            pw.Text("${UserData["web"]}"),
+            // pw.ListView.builder(
+            //   itemCount: 1,
+            //   itemBuilder: (BuildContext context, int index) {
+            //     return pw.Container();
+            //   },
+            // ),
           ],
         ),
       ],
@@ -46,21 +52,34 @@ Widget CVW_1() {
       children: [
         Column(
           children: [
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Text("${UserData["username"]}"),
-                    Text("${UserData["job"]}"),
-                  ],
-                ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              margin: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0),
+                color: Colors.blue.shade100,
+              ),
+              child: Column(
+                children: [
+                  Text("${UserData["username"]}"),
+                  Text("${UserData["job"]}"),
+                ],
               ),
             ),
             Text("Contact"),
-                    Text("${UserData["PhoneNo"]}"),
-                    Text("${UserData["email"]}"),
-                    Text("${UserData["web"]}"),
+            Text("${UserData["PhoneNo"]}"),
+            Text("${UserData["email"]}"),
+            Text("${UserData["web"]}"),
+            Text("Skills"),
+            ListView.builder(
+              itemCount: 10, // The number of items to build
+              itemBuilder: (BuildContext context, int index) {
+                // The indexed Builder function
+                return ListTile(
+                  title: Text('Item $index'),
+                );
+              },
+            ),
           ],
         ),
       ],

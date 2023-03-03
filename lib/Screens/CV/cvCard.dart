@@ -1,7 +1,8 @@
 import 'dart:io';
 
-import 'package:education_spot/Screens/CV/resume.dart';
+import 'package:education_spot/Screens/CV/CV_1.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_full_pdf_viewer/flutter_full_pdf_viewer.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:printing/printing.dart';
 import '../../constants/images.dart';
@@ -9,9 +10,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:permission_handler/permission_handler.dart';
 
-import 'CV_1.dart';
-
-Widget cvCard(data, img) {
+Widget cvCard(context,data, img) {
   return Card(
       child: Padding(
     padding: const EdgeInsets.all(8.0),
@@ -25,7 +24,6 @@ Widget cvCard(data, img) {
               child: IconButton(
                   onPressed: () async {
                     try {
-                      
                       // final pdf = pw.Document();
                       //   final font = await PdfGoogleFonts.nunitoExtraLight();
 
@@ -34,12 +32,18 @@ Widget cvCard(data, img) {
                       //     build: (pw.Context context) {
                       //       return CV_1(font); // Center
                       //     }));
+
                       final directory = await getExternalStorageDirectory();
                       final file = File("${directory?.path}/CV.pdf");
 
                       if (await Permission.storage.request().isGranted) {
-                        await file.writeAsBytes(await generateResume(PdfPageFormat.a4));
+                        await file.writeAsBytes(await CV_1(PdfPageFormat.a4));
                         print(directory?.path);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    PDFViewerScaffold(path: directory?.path)));
                       } else {
                         print(
                             "// Handle the case if the user doesn't grant permission");

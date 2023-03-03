@@ -39,10 +39,10 @@ class _CVScreenState extends State<CVScreen> {
                       initialOffset: 0,
                       spaceBetweenItems: 450,
                       items: [
-                        cvCard(widget.UserData, cv_1),
-                        cvCard(widget.UserData, cv_1),
-                        cvCard(widget.UserData, cv_1),
-                        cvCard(widget.UserData, cv_1),
+                        cvCard(context,widget.UserData, cv_1),
+                        cvCard(context,widget.UserData, cv_1),
+                        cvCard(context,widget.UserData, cv_1),
+                        cvCard(context,widget.UserData, cv_1),
                 
                       ]),
                 ),

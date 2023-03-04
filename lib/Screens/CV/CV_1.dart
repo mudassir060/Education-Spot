@@ -21,6 +21,7 @@ import 'dart:typed_data';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:pdf/widgets.dart';
 import 'package:printing/printing.dart';
 
 import '../../constants/images.dart';
@@ -39,9 +40,10 @@ Future<Uint8List> CV_1(data) async {
   final pageTheme = await _myPageTheme(PdfPageFormat.a4);
 
   doc.addPage(
-    pw.MultiPage(
+    // pw.MultiPage(
+    Page(
       pageTheme: pageTheme,
-      build: (pw.Context context) => [
+      build: (pw.Context context) => 
         pw.Partitions(
           children: [
             pw.Partition(
@@ -146,8 +148,7 @@ Future<Uint8List> CV_1(data) async {
               ),
             )
           ],
-        ),
-      ],
+        ),   
     ),
   );
   return doc.save();

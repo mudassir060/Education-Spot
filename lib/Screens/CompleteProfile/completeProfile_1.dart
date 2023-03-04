@@ -87,7 +87,7 @@ class _completeProfile_1State extends State<completeProfile_1> {
                     hint: 'mobile number',
                     textcontroler: phonenoCtrl,
                   ),
-                   myTextfield(
+                  myTextfield(
                     titel: 'Job',
                     hint: 'Job',
                     textcontroler: jobCtrl,
@@ -100,8 +100,19 @@ class _completeProfile_1State extends State<completeProfile_1> {
         bottomNavigationBar: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward)),
+            IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(Icons.arrow_back)),
+            IconButton(onPressed: () {
+               widget.userData["username"] = usernameCtrl.text;
+                  widget.userData["web"] = webCtrl.text;
+                  widget.userData["address"] = addressCtrl.text;
+                  widget.userData["PhoneNo"] = phonenoCtrl.text;
+                  widget.userData["job"] = jobCtrl.text;
+                  print("======>${widget.userData}");
+            }, icon: Icon(Icons.arrow_forward)),
           ],
         ),
       ),

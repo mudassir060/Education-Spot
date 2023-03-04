@@ -78,6 +78,11 @@ class _completeProfile_2State extends State<completeProfile_2> {
                           onPressed: () {
                             widget.userData["Skills"].add(
                                 {"name": skillCtrl.text, "rating": rating});
+                            print("++++${widget.userData["Skills"]}");
+                            skillCtrl.clear();
+                            setState(() {
+                              rating = 0;
+                            });
                           },
                           child: Text("Add Skill")),
                     ],
@@ -90,11 +95,11 @@ class _completeProfile_2State extends State<completeProfile_2> {
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("${widget.userData["Skills"][index]}"),
+                          Text("${widget.userData["Skills"][index]["name"]}"),
                           SizedBox(
                             width: 100,
                             child: LinearProgressIndicator(
-                              value: 0.6,
+                              value: widget.userData["Skills"][index]["rating"],
                             ),
                           ),
                         ],

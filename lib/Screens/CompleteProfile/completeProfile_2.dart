@@ -108,13 +108,32 @@ class _completeProfile_2State extends State<completeProfile_2> {
             ),
           ],
         ),
-        bottomNavigationBar: Row(
+               bottomNavigationBar: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward)),
+            IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(Icons.arrow_back)),
+            IconButton(
+                onPressed: () {
+                  if (widget.userData["Skills"]!=null) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => completeProfile_2(
+                                userData: widget.userData,
+                              )),
+                    );
+                  } else {
+                    print("please add some skill");
+                  }
+                },
+                icon: Icon(Icons.arrow_forward)),
           ],
         ),
+   
       ),
     );
   }

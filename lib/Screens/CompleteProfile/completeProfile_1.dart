@@ -1,12 +1,7 @@
 // ignore_for_file: camel_case_types
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:education_spot/Widgets/BottomNavigBar.dart';
-import 'package:education_spot/Widgets/myButton.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:education_spot/Screens/CompleteProfile/completeProfile_2.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
 
@@ -107,14 +102,22 @@ class _completeProfile_1State extends State<completeProfile_1> {
                   Navigator.pop(context);
                 },
                 icon: Icon(Icons.arrow_back)),
-            IconButton(onPressed: () {
-               widget.userData["username"] = usernameCtrl.text;
+            IconButton(
+                onPressed: () {
+                  widget.userData["username"] = usernameCtrl.text;
                   widget.userData["web"] = webCtrl.text;
                   widget.userData["address"] = addressCtrl.text;
                   widget.userData["PhoneNo"] = phonenoCtrl.text;
                   widget.userData["job"] = jobCtrl.text;
-                  print("======>${widget.userData}");
-            }, icon: Icon(Icons.arrow_forward)),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => completeProfile_2(
+                              userData: widget.userData,
+                            )),
+                  );
+                },
+                icon: Icon(Icons.arrow_forward)),
           ],
         ),
       ),

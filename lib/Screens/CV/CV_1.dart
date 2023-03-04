@@ -106,7 +106,6 @@ Future<Uint8List> CV_1(data) async {
                             eduData: data["Education"][index]);
                       },
                     ),
-                
                 ],
               ),
             ),
@@ -220,31 +219,17 @@ class Education_Block extends pw.StatelessWidget {
                     style: pw.Theme.of(context)
                         .defaultTextStyle
                         .copyWith(fontWeight: pw.FontWeight.bold)),
-                                        pw.Spacer(),
-
+                pw.Spacer(),
                 pw.Text(eduData["uni"],
                     style: pw.Theme.of(context)
                         .defaultTextStyle
                         .copyWith(fontWeight: pw.FontWeight.bold)),
-                                        pw.Spacer(),
-
+                pw.Spacer(),
                 pw.Text(eduData["start"] + "_" + eduData["start"],
                     style: pw.Theme.of(context)
                         .defaultTextStyle
                         .copyWith(fontWeight: pw.FontWeight.bold)),
-                pw.Spacer(),
               ]),
-          // pw.Container(
-          //   decoration: const pw.BoxDecoration(
-          //       border: pw.Border(left: pw.BorderSide(color: green, width: 2))),
-          //   padding: const pw.EdgeInsets.only(left: 10, top: 5, bottom: 5),
-          //   margin: const pw.EdgeInsets.only(left: 5),
-          //   child: pw.Column(
-          //       crossAxisAlignment: pw.CrossAxisAlignment.start,
-          //       children: <pw.Widget>[
-          //         pw.Lorem(length: 10),
-          //       ]),
-          // ),
         ]);
   }
 }

@@ -109,13 +109,21 @@ class _completeProfile_1State extends State<completeProfile_1> {
                   widget.userData["address"] = addressCtrl.text;
                   widget.userData["PhoneNo"] = phonenoCtrl.text;
                   widget.userData["job"] = jobCtrl.text;
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => completeProfile_2(
-                              userData: widget.userData,
-                            )),
-                  );
+                  if (usernameCtrl.text != null &&
+                      webCtrl.text != null &&
+                      addressCtrl.text != null &&
+                      phonenoCtrl.text != null &&
+                      jobCtrl.text != null) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => completeProfile_2(
+                                userData: widget.userData,
+                              )),
+                    );
+                  } else {
+                    print("please fill all text field");
+                  }
                 },
                 icon: Icon(Icons.arrow_forward)),
           ],

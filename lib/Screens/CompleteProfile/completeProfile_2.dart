@@ -21,19 +21,6 @@ class completeProfile_2 extends StatefulWidget {
 class _completeProfile_2State extends State<completeProfile_2> {
   final TextEditingController usernameCtrl = TextEditingController();
   final TextEditingController webCtrl = TextEditingController();
-  final TextEditingController addressCtrl = TextEditingController();
-  final TextEditingController phonenoCtrl = TextEditingController();
-  final TextEditingController jobCtrl = TextEditingController();
-  @override
-  void initState() {
-    // TODO: implement initState
-    usernameCtrl.text = widget.userData["username"];
-    webCtrl.text = widget.userData["web"];
-    addressCtrl.text = widget.userData["address"];
-    phonenoCtrl.text = widget.userData["PhoneNo"];
-    jobCtrl.text = widget.userData["job"];
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +33,8 @@ class _completeProfile_2State extends State<completeProfile_2> {
           children: [
             mySpacer(30.0, vwidth),
             const Text(
-              "Update Your Account",
+              "Update Your Skills",
               style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
-            ),
-            mySpacer(5.0, vwidth),
-            const Text(
-              "Complete Your Profile",
-              style: TextStyle(fontWeight: FontWeight.bold),
             ),
             mySpacer(30.0, vwidth),
             Container(
@@ -77,20 +59,12 @@ class _completeProfile_2State extends State<completeProfile_2> {
                     hint: 'web',
                     textcontroler: webCtrl,
                   ),
-                  myTextfield(
-                    titel: 'address',
-                    hint: 'address',
-                    textcontroler: addressCtrl,
-                  ),
-                  myTextfield(
-                    titel: 'MOBILE NUMBER',
-                    hint: 'mobile number',
-                    textcontroler: phonenoCtrl,
-                  ),
-                   myTextfield(
-                    titel: 'Job',
-                    hint: 'Job',
-                    textcontroler: jobCtrl,
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: widget.userData["Skills"].length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Text("${widget.userData["Skills"][index]}");
+                    },
                   ),
                 ],
               ),

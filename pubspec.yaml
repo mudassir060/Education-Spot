@@ -35,8 +35,7 @@ dependencies:
   permission_handler: ^10.2.0
   flutter_html_to_pdf: ^0.7.0
   flutter_full_pdf_viewer: ^1.0.6
-
-
+  syncfusion_flutter_datepicker: ^20.4.52
   
 dev_dependencies:
   flutter_test:

@@ -26,13 +26,11 @@ Widget cvCard(context,data, img) {
                     try {
                       // final pdf = pw.Document();
                       //   final font = await PdfGoogleFonts.nunitoExtraLight();
-
                       // pdf.addPage(pw.Page(
                       //     pageFormat: PdfPageFormat.a4,
                       //     build: (pw.Context context) {
                       //       return CV_1(font); // Center
                       //     }));
-
                       final directory = await getExternalStorageDirectory();
                       final file = File("${directory?.path}/CV.pdf");
 

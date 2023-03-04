@@ -15,6 +15,7 @@ class completeProfile_3 extends StatefulWidget {
 class _completeProfile_3State extends State<completeProfile_3> {
   final TextEditingController experienceCtrl = TextEditingController();
   final TextEditingController desCtrl = TextEditingController();
+  var startDate;
   @override
   Widget build(BuildContext context) {
     var vwidth = MediaQuery.of(context).size.width;
@@ -47,6 +48,32 @@ class _completeProfile_3State extends State<completeProfile_3> {
                     hint: 'Description',
                     textcontroler: desCtrl,
                   ),
+                  mySpacer(10.0, vwidth),
+                  Text("$startDate"),
+                  ElevatedButton(
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) {
+                            return SingleChildScrollView(
+                              child: SizedBox(
+                                height: 400,
+                                child: DatePickerDialog(
+                                  firstDate:
+                                      DateTime(DateTime.now().year - 50, 1),
+                                  lastDate: DateTime(DateTime.now().year + 50, 1),
+                                  initialDate: DateTime.now(),
+                                  // selectableDayPredicate: (DateTime dateTime) {
+                                  //   Navigator.pop(context);
+                                  // },
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      child: Text("Start Date")),
+                  mySpacer(20.0, vwidth),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [

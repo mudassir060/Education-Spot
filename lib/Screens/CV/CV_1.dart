@@ -25,11 +25,9 @@ import 'package:printing/printing.dart';
 
 import '../../constants/images.dart';
 
-
 const PdfColor green = PdfColor.fromInt(0xff9ce5d0);
 const PdfColor lightGreen = PdfColor.fromInt(0xffcdf1e7);
-const 
-sep = 120.0;
+const sep = 120.0;
 
 Future<Uint8List> CV_1(data) async {
   final doc = pw.Document(title: 'My Résumé', author: '${data["username"]}');
@@ -85,8 +83,7 @@ Future<Uint8List> CV_1(data) async {
                               children: <pw.Widget>[
                                 _UrlText('${data["email"]}',
                                     'mailto:${data["email"]}'),
-                                _UrlText(
-                                    '${data["web"]}', '${data["web"]}'),
+                                _UrlText('${data["web"]}', '${data["web"]}'),
                               ],
                             ),
                             pw.Padding(padding: pw.EdgeInsets.zero)
@@ -99,15 +96,17 @@ Future<Uint8List> CV_1(data) async {
                   _Block(
                       title: 'Chief chatter', icon: const pw.IconData(0xe0ca)),
                   pw.SizedBox(height: 20),
-                  _Category(title: 'Education'),
-                  pw.ListView.builder(
-                    itemCount: data["Education"].length,
-                    itemBuilder: (context, int index) {
-                      return pw.Text("${data["Education"][index]["name"]}") ;
-                    },
-                  ),
-                  _Block(title: 'Bachelor Of Commerce'),
-                  _Block(title: 'Bachelor Interior Design'),
+                  if (data["Education"].length != null)
+                    _Category(title: 'Education'),
+                  if (data["Education"].length != null)
+                    pw.ListView.builder(
+                      itemCount: data["Education"].length,
+                      itemBuilder: (context, int index) {
+                        return Education_Block(
+                            eduData: data["Education"][index]);
+                      },
+                    ),
+                
                 ],
               ),
             ),
@@ -191,6 +190,63 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
       );
     },
   );
+}
+
+class Education_Block extends pw.StatelessWidget {
+  Education_Block({
+    required this.eduData,
+  });
+
+  final Map eduData;
+
+  @override
+  pw.Widget build(pw.Context context) {
+    return pw.Column(
+        crossAxisAlignment: pw.CrossAxisAlignment.start,
+        children: <pw.Widget>[
+          pw.Row(
+              crossAxisAlignment: pw.CrossAxisAlignment.start,
+              children: <pw.Widget>[
+                pw.Container(
+                  width: 6,
+                  height: 6,
+                  margin: const pw.EdgeInsets.only(top: 5.5, left: 2, right: 5),
+                  decoration: const pw.BoxDecoration(
+                    color: green,
+                    shape: pw.BoxShape.circle,
+                  ),
+                ),
+                pw.Text(eduData["name"],
+                    style: pw.Theme.of(context)
+                        .defaultTextStyle
+                        .copyWith(fontWeight: pw.FontWeight.bold)),
+                                        pw.Spacer(),
+
+                pw.Text(eduData["uni"],
+                    style: pw.Theme.of(context)
+                        .defaultTextStyle
+                        .copyWith(fontWeight: pw.FontWeight.bold)),
+                                        pw.Spacer(),
+
+                pw.Text(eduData["start"] + "_" + eduData["start"],
+                    style: pw.Theme.of(context)
+                        .defaultTextStyle
+                        .copyWith(fontWeight: pw.FontWeight.bold)),
+                pw.Spacer(),
+              ]),
+          // pw.Container(
+          //   decoration: const pw.BoxDecoration(
+          //       border: pw.Border(left: pw.BorderSide(color: green, width: 2))),
+          //   padding: const pw.EdgeInsets.only(left: 10, top: 5, bottom: 5),
+          //   margin: const pw.EdgeInsets.only(left: 5),
+          //   child: pw.Column(
+          //       crossAxisAlignment: pw.CrossAxisAlignment.start,
+          //       children: <pw.Widget>[
+          //         pw.Lorem(length: 10),
+          //       ]),
+          // ),
+        ]);
+  }
 }
 
 class _Block extends pw.StatelessWidget {

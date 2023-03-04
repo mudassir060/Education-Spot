@@ -16,6 +16,7 @@ class _completeProfile_3State extends State<completeProfile_3> {
   final TextEditingController experienceCtrl = TextEditingController();
   final TextEditingController desCtrl = TextEditingController();
   var startDate;
+  var endDate;
   @override
   Widget build(BuildContext context) {
     var vwidth = MediaQuery.of(context).size.width;
@@ -49,30 +50,55 @@ class _completeProfile_3State extends State<completeProfile_3> {
                     textcontroler: desCtrl,
                   ),
                   mySpacer(10.0, vwidth),
-                  Text("$startDate"),
-                  ElevatedButton(
-                      onPressed: () {
-                        showModalBottomSheet(
-                          context: context,
-                          builder: (context) {
-                            return SingleChildScrollView(
-                              child: SizedBox(
-                                height: 400,
-                                child: DatePickerDialog(
-                                  firstDate:
-                                      DateTime(DateTime.now().year - 50, 1),
-                                  lastDate: DateTime(DateTime.now().year + 50, 1),
-                                  initialDate: DateTime.now(),
-                                  // selectableDayPredicate: (DateTime dateTime) {
-                                  //   Navigator.pop(context);
-                                  // },
-                                ),
-                              ),
-                            );
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ElevatedButton(
+                          onPressed: () {
+                            showDatePicker(
+                                context: context,
+                                firstDate: DateTime(DateTime.now().year - 50, 1),
+                                lastDate: DateTime.now(),
+                                initialDate: DateTime.now(),
+                                builder: (context, picker) {
+                                  return Container(
+                                    child: picker!,
+                                  );
+                                }).then((selectedDate) {
+                              //TODO: handle selected date
+                              if (selectedDate != null) {
+                                setState(() {
+                                  startDate = "${selectedDate.day}/${selectedDate.month}/${selectedDate.year}";
+                                });
+                              }
+                            });
+                         
                           },
-                        );
-                      },
-                      child: Text("Start Date")),
+                          child: Text("Start Date ${startDate??""}")),
+                      ElevatedButton(
+                          onPressed: () {
+                            showDatePicker(
+                                context: context,
+                                firstDate: DateTime(DateTime.now().year - 50, 1),
+                                lastDate: DateTime.now(),
+                                initialDate: DateTime.now(),
+                                builder: (context, picker) {
+                                  return Container(
+                                    child: picker!,
+                                  );
+                                }).then((selectedDate) {
+                              //TODO: handle selected date
+                              if (selectedDate != null) {
+                                setState(() {
+                                  endDate = "${selectedDate.day}/${selectedDate.month}/${selectedDate.year}";
+                                });
+                              }
+                            });
+                         
+                          },
+                          child: Text("End Date ${endDate??""}")),
+                    ],
+                  ),
                   mySpacer(20.0, vwidth),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -19,17 +19,19 @@ class completeProfile_1 extends StatefulWidget {
 }
 
 class _completeProfile_1State extends State<completeProfile_1> {
-  final TextEditingController usernamecontroller = TextEditingController();
-  final TextEditingController webcontroller = TextEditingController();
-  final TextEditingController addresscontroller = TextEditingController();
-  final TextEditingController phonenocontroller = TextEditingController();
+  final TextEditingController usernameCtrl = TextEditingController();
+  final TextEditingController webCtrl = TextEditingController();
+  final TextEditingController addressCtrl = TextEditingController();
+  final TextEditingController phonenoCtrl = TextEditingController();
+  final TextEditingController jobCtrl = TextEditingController();
   @override
   void initState() {
     // TODO: implement initState
-    usernamecontroller.text = widget.userData["username"];
-    webcontroller.text = widget.userData["web"];
-    addresscontroller.text = widget.userData["address"];
-    phonenocontroller.text = widget.userData["PhoneNo"];
+    usernameCtrl.text = widget.userData["username"];
+    webCtrl.text = widget.userData["web"];
+    addressCtrl.text = widget.userData["address"];
+    phonenoCtrl.text = widget.userData["PhoneNo"];
+    jobCtrl.text = widget.userData["job"];
     super.initState();
   }
 
@@ -68,22 +70,27 @@ class _completeProfile_1State extends State<completeProfile_1> {
                   myTextfield(
                     titel: 'NAME',
                     hint: 'name',
-                    textcontroler: usernamecontroller,
+                    textcontroler: usernameCtrl,
                   ),
                   myTextfield(
                     titel: 'Web or Portfolio',
                     hint: 'web',
-                    textcontroler: webcontroller,
+                    textcontroler: webCtrl,
                   ),
                   myTextfield(
                     titel: 'address',
                     hint: 'address',
-                    textcontroler: addresscontroller,
+                    textcontroler: addressCtrl,
                   ),
                   myTextfield(
                     titel: 'MOBILE NUMBER',
                     hint: 'mobile number',
-                    textcontroler: phonenocontroller,
+                    textcontroler: phonenoCtrl,
+                  ),
+                   myTextfield(
+                    titel: 'Job',
+                    hint: 'Job',
+                    textcontroler: jobCtrl,
                   ),
                 ],
               ),

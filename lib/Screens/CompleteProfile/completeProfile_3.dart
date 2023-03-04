@@ -14,7 +14,7 @@ class completeProfile_3 extends StatefulWidget {
 
 class _completeProfile_3State extends State<completeProfile_3> {
   final TextEditingController experienceCtrl = TextEditingController();
-  var rating = 0.0;
+  final TextEditingController desCtrl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var vwidth = MediaQuery.of(context).size.width;
@@ -41,15 +41,11 @@ class _completeProfile_3State extends State<completeProfile_3> {
                     hint: 'Experience',
                     textcontroler: experienceCtrl,
                   ),
-                  Slider(
-                    value: rating,
-                    onChanged: (newrating) {
-                      setState(() {
-                        rating = newrating;
-                      });
-                    },
-                    label: "$rating",
-                    divisions: 10,
+                  mySpacer(10.0, vwidth),
+                  myTextfield(
+                    titel: 'Description',
+                    hint: 'Description',
+                    textcontroler: desCtrl,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -57,22 +53,18 @@ class _completeProfile_3State extends State<completeProfile_3> {
                       ElevatedButton(
                           onPressed: () {
                             experienceCtrl.clear();
-                            setState(() {
-                              rating = 0;
-                            });
+                            desCtrl.clear();
                           },
                           child: Text("Clear")),
                       ElevatedButton(
                           onPressed: () {
                             widget.userData["experiences"].add({
                               "name": experienceCtrl.text,
-                              "rating": rating
+                              "des": desCtrl.text,
                             });
                             print("++++${widget.userData["experiences"]}");
                             experienceCtrl.clear();
-                            setState(() {
-                              rating = 0;
-                            });
+                            desCtrl.clear();
                           },
                           child: Text("Add experience")),
                     ],

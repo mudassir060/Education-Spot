@@ -19,9 +19,8 @@ class completeProfile_2 extends StatefulWidget {
 }
 
 class _completeProfile_2State extends State<completeProfile_2> {
-  final TextEditingController usernameCtrl = TextEditingController();
-  final TextEditingController webCtrl = TextEditingController();
-
+  final TextEditingController skillCtrl = TextEditingController();
+  var rating = 0.0;
   @override
   Widget build(BuildContext context) {
     var vwidth = MediaQuery.of(context).size.width;
@@ -50,22 +49,61 @@ class _completeProfile_2State extends State<completeProfile_2> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   myTextfield(
-                    titel: 'NAME',
-                    hint: 'name',
-                    textcontroler: usernameCtrl,
+                    titel: 'Skill',
+                    hint: 'Skill',
+                    textcontroler: skillCtrl,
                   ),
-                  myTextfield(
-                    titel: 'Web or Portfolio',
-                    hint: 'web',
-                    textcontroler: webCtrl,
+                  Slider(
+                    value: rating,
+                    onChanged: (newrating) {
+                      setState(() {
+                        rating = newrating;
+                      });
+                    },
+                    label: "$rating",
+                    divisions: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ElevatedButton(
+                          onPressed: () {
+                            skillCtrl.clear();
+                            setState(() {
+                              rating = 0;
+                            });
+                          },
+                          child: Text("Clear")),
+                      ElevatedButton(
+                          onPressed: () {
+                            widget.userData["Skills"].add(
+                                {"name": skillCtrl.text, "rating": rating});
+                          },
+                          child: Text("Add Skill")),
+                    ],
                   ),
                   ListView.builder(
                     shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: widget.userData["Skills"].length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Text("${widget.userData["Skills"][index]}");
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("${widget.userData["Skills"][index]}"),
+                          SizedBox(
+                            width: 100,
+                            child: LinearProgressIndicator(
+                              value: 0.6,
+                            ),
+                          ),
+                        ],
+                      );
                     },
                   ),
+                  SizedBox(),
+                  SizedBox(),
+                  SizedBox(),
                 ],
               ),
             ),

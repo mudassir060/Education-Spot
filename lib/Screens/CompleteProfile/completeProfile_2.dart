@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
+import 'completeProfile_3.dart';
 
 class completeProfile_2 extends StatefulWidget {
   final Map userData;
@@ -81,34 +82,39 @@ class _completeProfile_2State extends State<completeProfile_2> {
                           child: Text("Add Skill")),
                     ],
                   ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: widget.userData["Skills"].length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("${widget.userData["Skills"][index]["name"]}"),
-                            SizedBox(
-                              width: 100,
-                              child: LinearProgressIndicator(
-                                value: widget.userData["Skills"][index]["rating"],
+                  widget.userData["Skills"] != null
+                      ? ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: widget.userData["Skills"].length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                      "${widget.userData["Skills"][index]["name"]}"),
+                                  SizedBox(
+                                    width: 100,
+                                    child: LinearProgressIndicator(
+                                      value: widget.userData["Skills"][index]
+                                          ["rating"],
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
+                            );
+                          },
+                        )
+                      : Text("No Skill"),
                 ],
               ),
             ),
           ],
         ),
-               bottomNavigationBar: Row(
+        bottomNavigationBar: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
@@ -118,11 +124,11 @@ class _completeProfile_2State extends State<completeProfile_2> {
                 icon: Icon(Icons.arrow_back)),
             IconButton(
                 onPressed: () {
-                  if (widget.userData["Skills"]!=null) {
+                  if (widget.userData["Skills"] != null) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => completeProfile_2(
+                          builder: (context) => completeProfile_3(
                                 userData: widget.userData,
                               )),
                     );
@@ -133,7 +139,6 @@ class _completeProfile_2State extends State<completeProfile_2> {
                 icon: Icon(Icons.arrow_forward)),
           ],
         ),
-   
       ),
     );
   }

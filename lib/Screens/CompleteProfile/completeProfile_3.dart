@@ -1,20 +1,19 @@
 // ignore_for_file: camel_case_types
 
-
 import 'package:flutter/material.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
 
-class completeProfile_2 extends StatefulWidget {
+class completeProfile_3 extends StatefulWidget {
   final Map userData;
-  const completeProfile_2({Key? key, required this.userData}) : super(key: key);
+  const completeProfile_3({Key? key, required this.userData}) : super(key: key);
 
   @override
-  State<completeProfile_2> createState() => _completeProfile_2State();
+  State<completeProfile_3> createState() => _completeProfile_3State();
 }
 
-class _completeProfile_2State extends State<completeProfile_2> {
-  final TextEditingController skillCtrl = TextEditingController();
+class _completeProfile_3State extends State<completeProfile_3> {
+  final TextEditingController experienceCtrl = TextEditingController();
   var rating = 0.0;
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,7 @@ class _completeProfile_2State extends State<completeProfile_2> {
           children: [
             mySpacer(30.0, vwidth),
             const Text(
-              "Update Your Skills",
+              "Update Your Experience",
               style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
             ),
             mySpacer(30.0, vwidth),
@@ -38,9 +37,9 @@ class _completeProfile_2State extends State<completeProfile_2> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   myTextfield(
-                    titel: 'Skill',
-                    hint: 'Skill',
-                    textcontroler: skillCtrl,
+                    titel: 'Experience',
+                    hint: 'Experience',
+                    textcontroler: experienceCtrl,
                   ),
                   Slider(
                     value: rating,
@@ -57,7 +56,7 @@ class _completeProfile_2State extends State<completeProfile_2> {
                     children: [
                       ElevatedButton(
                           onPressed: () {
-                            skillCtrl.clear();
+                            experienceCtrl.clear();
                             setState(() {
                               rating = 0;
                             });
@@ -65,45 +64,52 @@ class _completeProfile_2State extends State<completeProfile_2> {
                           child: Text("Clear")),
                       ElevatedButton(
                           onPressed: () {
-                            widget.userData["Skills"].add(
-                                {"name": skillCtrl.text, "rating": rating});
-                            print("++++${widget.userData["Skills"]}");
-                            skillCtrl.clear();
+                            widget.userData["experiences"].add({
+                              "name": experienceCtrl.text,
+                              "rating": rating
+                            });
+                            print("++++${widget.userData["experiences"]}");
+                            experienceCtrl.clear();
                             setState(() {
                               rating = 0;
                             });
                           },
-                          child: Text("Add Skill")),
+                          child: Text("Add experience")),
                     ],
                   ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: widget.userData["Skills"].length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("${widget.userData["Skills"][index]["name"]}"),
-                            SizedBox(
-                              width: 100,
-                              child: LinearProgressIndicator(
-                                value: widget.userData["Skills"][index]["rating"],
+                  widget.userData["experiences"] != null
+                      ? ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: widget.userData["experiences"].length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                      "${widget.userData["experiences"][index]["name"]}"),
+                                  SizedBox(
+                                    width: 100,
+                                    child: LinearProgressIndicator(
+                                      value: widget.userData["experiences"]
+                                          [index]["rating"],
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
+                            );
+                          },
+                        )
+                      : Container(),
                 ],
               ),
             ),
           ],
         ),
-               bottomNavigationBar: Row(
+        bottomNavigationBar: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
@@ -113,22 +119,21 @@ class _completeProfile_2State extends State<completeProfile_2> {
                 icon: Icon(Icons.arrow_back)),
             IconButton(
                 onPressed: () {
-                  if (widget.userData["Skills"]!=null) {
+                  if (widget.userData["experiences"] != null) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => completeProfile_2(
+                          builder: (context) => completeProfile_3(
                                 userData: widget.userData,
                               )),
                     );
                   } else {
-                    print("please add some skill");
+                    print("please add some experience");
                   }
                 },
                 icon: Icon(Icons.arrow_forward)),
           ],
         ),
-   
       ),
     );
   }

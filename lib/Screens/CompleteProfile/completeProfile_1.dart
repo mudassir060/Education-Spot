@@ -62,21 +62,25 @@ class _completeProfile_1State extends State<completeProfile_1> {
                       hint: 'name',
                       textcontroler: usernameCtrl,
                     ),
+                    mySpacer(10.0, vwidth),
                     myTextfield(
                       titel: 'Web or Portfolio',
                       hint: 'web',
                       textcontroler: webCtrl,
                     ),
+                    mySpacer(10.0, vwidth),
                     myTextfield(
                       titel: 'address',
                       hint: 'address',
                       textcontroler: addressCtrl,
                     ),
+                    mySpacer(10.0, vwidth),
                     myTextfield(
                       titel: 'MOBILE NUMBER',
                       hint: 'mobile number',
                       textcontroler: phonenoCtrl,
                     ),
+                    mySpacer(10.0, vwidth),
                     myTextfield(
                       titel: 'Job',
                       hint: 'Job',

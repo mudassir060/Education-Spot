@@ -103,9 +103,6 @@ class _completeProfile_2State extends State<completeProfile_2> {
                       );
                     },
                   ),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
                 ],
               ),
             ),

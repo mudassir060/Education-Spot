@@ -51,14 +51,8 @@ class _completeProfile_1State extends State<completeProfile_1> {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               mySpacer(10.0, vwidth),
-              Container(
-                height: 540,
-                width: vwidth - 50,
-                padding: const EdgeInsets.all(30),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: Colors.white,
-                ),
+              Padding(
+                padding: const EdgeInsets.all(25.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

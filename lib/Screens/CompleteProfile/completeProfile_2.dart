@@ -37,7 +37,7 @@ class _completeProfile_2State extends State<completeProfile_2> {
             ),
             mySpacer(30.0, vwidth),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(25.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

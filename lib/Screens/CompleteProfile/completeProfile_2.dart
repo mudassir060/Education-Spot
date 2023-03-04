@@ -36,14 +36,8 @@ class _completeProfile_2State extends State<completeProfile_2> {
               style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
             ),
             mySpacer(30.0, vwidth),
-            Container(
-              height: 520,
-              width: vwidth - 50,
-              padding: const EdgeInsets.all(30),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: Colors.white,
-              ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -92,17 +86,20 @@ class _completeProfile_2State extends State<completeProfile_2> {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: widget.userData["Skills"].length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("${widget.userData["Skills"][index]["name"]}"),
-                          SizedBox(
-                            width: 100,
-                            child: LinearProgressIndicator(
-                              value: widget.userData["Skills"][index]["rating"],
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("${widget.userData["Skills"][index]["name"]}"),
+                            SizedBox(
+                              width: 100,
+                              child: LinearProgressIndicator(
+                                value: widget.userData["Skills"][index]["rating"],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       );
                     },
                   ),

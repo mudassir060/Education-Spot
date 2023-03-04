@@ -142,7 +142,7 @@ class _profileScreenState extends State<profileScreen> {
                             ),
                           ),
                           Text(
-                            Skills[index],
+                            Skills[index]["name"],
                             style: const TextStyle(fontSize: 18),
                           ),
                         ],

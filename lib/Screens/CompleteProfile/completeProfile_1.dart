@@ -11,7 +11,8 @@ import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
 
 class completeProfile_1 extends StatefulWidget {
-  const completeProfile_1({Key? key}) : super(key: key);
+  final Map userData;
+  const completeProfile_1({Key? key, required this.userData}) : super(key: key);
 
   @override
   State<completeProfile_1> createState() => _completeProfile_1State();

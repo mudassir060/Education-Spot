@@ -7,6 +7,7 @@ import '../../constants/images.dart';
 import '../Admissions/AdmissionsScreen.dart';
 import '../CV/CVScreen.dart';
 import '../Community/communityScreen.dart';
+import '../CompleteProfile/completeProfile_1.dart';
 import '../Jobs/jobsScreen.dart';
 import '../Quizz/QuizzScreen.dart';
 import '../Scholarships/sholarshipsScreen.dart';
@@ -32,7 +33,10 @@ class _homeScreenState extends State<homeScreen> {
       {"name": "Quiz", "image": Quiz, "page": QuizzScreen()},
       {"name": "Job", "image": Jobs, "page": jobsScreen()},
       {"name": "Community", "image": CommonRoom, "page": communityScreen(UserData: widget.UserData,)},
-      {"name": "CV", "image": cv, "page": CVScreen(UserData: widget.UserData,)},
+      {"name": "CV", "image": cv, 
+      // "page": CVScreen(UserData: widget.UserData,)
+      "page": completeProfile_1(userData: widget.UserData,)
+      },
 
     ];
     var vwidth = MediaQuery.of(context).size.width;

@@ -74,6 +74,10 @@ Future<Uint8List> CV_1(data) async {
                     ],
                   ),
                 ),
+                if (data["about_me"] != null)
+                  _Category(title: 'About Me'),
+                if (data["about_me"] != null) 
+                pw.Text(data["about_me"]),
                 if (data["experiences"].length != null)
                   _Category(title: 'Work Experience'),
                 if (data["experiences"].length != null)

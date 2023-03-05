@@ -20,6 +20,7 @@ class _completeProfile_1State extends State<completeProfile_1> {
   final TextEditingController addressCtrl = TextEditingController();
   final TextEditingController phonenoCtrl = TextEditingController();
   final TextEditingController jobCtrl = TextEditingController();
+  final TextEditingController aboutCtrl = TextEditingController();
   @override
   void initState() {
     // TODO: implement initState
@@ -28,6 +29,7 @@ class _completeProfile_1State extends State<completeProfile_1> {
     addressCtrl.text = widget.userData["address"];
     phonenoCtrl.text = widget.userData["PhoneNo"];
     jobCtrl.text = widget.userData["job"];
+    aboutCtrl.text = widget.userData["about_me"];
     super.initState();
   }
 
@@ -87,6 +89,12 @@ class _completeProfile_1State extends State<completeProfile_1> {
                       hint: 'Job',
                       textcontroler: jobCtrl,
                     ),
+                     mySpacer(10.0, vwidth),
+                    myTextfield(
+                      titel: 'About Us',
+                      hint: 'About Us',
+                      textcontroler: aboutCtrl,
+                    ),
                   ],
                 ),
               ),
@@ -109,11 +117,13 @@ class _completeProfile_1State extends State<completeProfile_1> {
                   widget.userData["address"] = addressCtrl.text;
                   widget.userData["PhoneNo"] = phonenoCtrl.text;
                   widget.userData["job"] = jobCtrl.text;
+                  widget.userData["about_me"] = aboutCtrl.text;
                   if (usernameCtrl.text != null &&
                       webCtrl.text != null &&
                       addressCtrl.text != null &&
                       phonenoCtrl.text != null &&
-                      jobCtrl.text != null) {
+                      jobCtrl.text != null&&
+                      aboutCtrl.text != null) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(

@@ -98,18 +98,13 @@ class _homeScreenState extends State<homeScreen> {
             ),
             // // // // // // // // // // // Banner Ad // // // // // // // //
             CarouselSlider(
-              options: CarouselOptions(height: 400.0),
-              items: [1, 2, 3, 4, 5].map((i) {
+              options: CarouselOptions(height: 150.0),
+              items: [Banner_1,Banner_2,Banner_3].map((i) {
                 return Builder(
                   builder: (BuildContext context) {
                     return Container(
                         width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.symmetric(horizontal: 5.0),
-                        decoration: BoxDecoration(color: Colors.amber),
-                        child: Text(
-                          'text $i',
-                          style: TextStyle(fontSize: 16.0),
-                        ));
+                        child: Image.asset(i));
                   },
                 );
               }).toList(),

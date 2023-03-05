@@ -3,6 +3,9 @@ const String logo = "assets/images/Logo.png";
 
 // // // // // // // // // // // HOme // // // // // // // // //
 const String Banner_Ad = "assets/images/Banner_Ad.png";
+const String Banner_1 = "assets/images/1.jpg";
+const String Banner_2 = "assets/images/2.png";
+const String Banner_3 = "assets/images/3.jpg";
 
 const String Quiz = "assets/icons/Quizz.png";
 const String exit = "assets/images/exit.png";

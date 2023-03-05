@@ -124,13 +124,13 @@ Future<Uint8List> CV_1(data) async {
                           _Percent(
                               size: 60, value: .4, title: pw.Text('Excel')),
                         ]),
-                        pw.BarcodeWidget(
-                          data: 'Parnella Charlesbois',
-                          width: 60,
-                          height: 60,
-                          barcode: pw.Barcode.qrCode(),
-                          drawText: false,
-                        ),
+                        // pw.BarcodeWidget(
+                        //   data: 'Parnella Charlesbois',
+                        //   width: 60,
+                        //   height: 60,
+                        //   barcode: pw.Barcode.qrCode(),
+                        //   drawText: false,
+                        // ),
                       ],
                     ),
                   ),
@@ -216,7 +216,7 @@ class Education_Block extends pw.StatelessWidget {
                         .defaultTextStyle
                         .copyWith(fontWeight: pw.FontWeight.bold)),
                 pw.Spacer(),
-                pw.Text(eduData["startDate"] + "_" + eduData["endDate"],
+                pw.Text("(${eduData['startDate']}) To (${eduData['endDate']})",
                     style: pw.Theme.of(context)
                         .defaultTextStyle
                         .copyWith(fontWeight: pw.FontWeight.bold)),
@@ -255,11 +255,12 @@ class Exp_Block extends pw.StatelessWidget {
                         .defaultTextStyle
                         .copyWith(fontWeight: pw.FontWeight.bold)),
                 pw.Spacer(),
-                pw.Text("${expData['startDate']} To ${expData['endDate']}",
+                pw.Text("(${expData['startDate']}) To (${expData['endDate']})",
                     style: pw.Theme.of(context)
                         .defaultTextStyle
                         .copyWith(fontWeight: pw.FontWeight.bold)),
               ]),
+       
           pw.Container(
             decoration: const pw.BoxDecoration(
                 border: pw.Border(left: pw.BorderSide(color: green, width: 2))),
@@ -271,10 +272,12 @@ class Exp_Block extends pw.StatelessWidget {
                   pw.Text(expData['des'],
                     style: pw.Theme.of(context)
                         .defaultTextStyle
-                        .copyWith()),
-                pw.Spacer(),
+                        .copyWith()
+                        ),
+                // pw.Spacer(),
                 ]),
           ),
+      
         ]);
   }
 }

@@ -4,17 +4,16 @@ import 'package:flutter/material.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
 import 'completeProfile_3.dart';
-import 'completeProfile_6.dart';
 
-class completeProfile_5 extends StatefulWidget {
+class completeProfile_6 extends StatefulWidget {
   final Map userData;
-  const completeProfile_5({Key? key, required this.userData}) : super(key: key);
+  const completeProfile_6({Key? key, required this.userData}) : super(key: key);
 
   @override
-  State<completeProfile_5> createState() => _completeProfile_5State();
+  State<completeProfile_6> createState() => _completeProfile_6State();
 }
 
-class _completeProfile_5State extends State<completeProfile_5> {
+class _completeProfile_6State extends State<completeProfile_6> {
   final TextEditingController languageCtrl = TextEditingController();
   var rating = 0.0;
   @override
@@ -128,7 +127,7 @@ class _completeProfile_5State extends State<completeProfile_5> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => completeProfile_6(
+                          builder: (context) => completeProfile_3(
                                 userData: widget.userData,
                               )),
                     );

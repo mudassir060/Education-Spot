@@ -73,9 +73,7 @@ class _CVScreenState extends State<CVScreen> {
                       spaceBetweenItems: 450,
                       items: [
                         cvCard(context, widget.UserData, cv_1),
-                        cvCard(context, widget.UserData, cv_1),
-                        cvCard(context, widget.UserData, cv_1),
-                        cvCard(context, widget.UserData, cv_1),
+                        cvCard(context, widget.UserData, cv_2),
                       ]),
                 ),
               ),

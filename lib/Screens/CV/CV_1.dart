@@ -43,12 +43,12 @@ Future<Uint8List> CV_1(data) async {
                           style: pw.Theme.of(context)
                               .defaultTextStyle
                               .copyWith(fontWeight: pw.FontWeight.bold)),
-                      pw.Padding(padding: const pw.EdgeInsets.only(top: 10)),
+                      pw.Padding(padding: const pw.EdgeInsets.only(top: 5)),
                       pw.Text('${data["job"]}',
                           textScaleFactor: 1.2,
                           style: pw.Theme.of(context).defaultTextStyle.copyWith(
                               fontWeight: pw.FontWeight.bold, color: green)),
-                      pw.Padding(padding: const pw.EdgeInsets.only(top: 20)),
+                      pw.Padding(padding: const pw.EdgeInsets.only(top: 10)),
                       pw.Row(
                         crossAxisAlignment: pw.CrossAxisAlignment.start,
                         mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
@@ -87,7 +87,7 @@ Future<Uint8List> CV_1(data) async {
                       return Exp_Block(expData: data["experiences"][index]);
                     },
                   ),
-                pw.SizedBox(height: 10),
+                // pw.SizedBox(height: 10),
                 if (data["Education"].length != null)
                   _Category(title: 'Education'),
                 if (data["Education"].length != null)
@@ -97,7 +97,7 @@ Future<Uint8List> CV_1(data) async {
                       return Education_Block(eduData: data["Education"][index]);
                     },
                   ),
-                pw.SizedBox(height: 10),
+                // pw.SizedBox(height: 10),
                 pw.Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -180,7 +180,7 @@ Future<Uint8List> CV_1(data) async {
 }
 
 Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
-  final bgShape = await rootBundle.loadString('assets/resume.svg');
+  final bgShape = await rootBundle.loadString(cvBg_1);
 
   format = format.applyMargin(
       left: 2.0 * PdfPageFormat.cm,

@@ -13,8 +13,8 @@ class completeProfile_4 extends StatefulWidget {
 }
 
 class _completeProfile_4State extends State<completeProfile_4> {
-  final TextEditingController experienceCtrl = TextEditingController();
-  final TextEditingController desCtrl = TextEditingController();
+  final TextEditingController degreeCtrl = TextEditingController();
+  final TextEditingController uniCtrl = TextEditingController();
   var startDate;
   var endDate;
   @override
@@ -29,7 +29,7 @@ class _completeProfile_4State extends State<completeProfile_4> {
             children: [
               mySpacer(30.0, vwidth),
               const Text(
-                "Update Your Experience",
+                "Update Your Education",
                 style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
               ),
               mySpacer(30.0, vwidth),
@@ -40,15 +40,15 @@ class _completeProfile_4State extends State<completeProfile_4> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     myTextfield(
-                      titel: 'Title',
-                      hint: 'Experience',
-                      textcontroler: experienceCtrl,
+                      titel: 'Degree Title',
+                      hint: 'Degree Title',
+                      textcontroler: degreeCtrl,
                     ),
                     mySpacer(10.0, vwidth),
                     myTextfield(
-                      titel: 'Description',
-                      hint: 'Description',
-                      textcontroler: desCtrl,
+                      titel: 'Nniversity or Collage Name',
+                      hint: 'Nniversity or Collage Name',
+                      textcontroler: uniCtrl,
                     ),
                     mySpacer(10.0, vwidth),
                     Row(
@@ -108,8 +108,8 @@ class _completeProfile_4State extends State<completeProfile_4> {
                       children: [
                         ElevatedButton(
                             onPressed: () {
-                              experienceCtrl.clear();
-                              desCtrl.clear();
+                              degreeCtrl.clear();
+                              uniCtrl.clear();
                               setState(() {
                                 startDate = null;
                                 endDate = null;
@@ -118,12 +118,12 @@ class _completeProfile_4State extends State<completeProfile_4> {
                             child: Text("Clear")),
                         ElevatedButton(
                             onPressed: () {
-                              if (widget.userData["experiences"] == null) {
-                                widget.userData["experiences"] = [];
+                              if (widget.userData["Education"] == null) {
+                                widget.userData["Education"] = [];
                               }
-                              widget.userData["experiences"].add({
-                                "name": experienceCtrl.text,
-                                "des": desCtrl.text,
+                              widget.userData["Education"].add({
+                                "name": degreeCtrl.text,
+                                "uni": uniCtrl.text,
                                 "startDate": startDate,
                                 "endDate": endDate,
                               });
@@ -131,18 +131,18 @@ class _completeProfile_4State extends State<completeProfile_4> {
                                 startDate = null;
                                 endDate = null;
                               });
-                              print("++++${widget.userData["experiences"]}");
-                              experienceCtrl.clear();
-                              desCtrl.clear();
+                              print("++++${widget.userData["Education"]}");
+                              degreeCtrl.clear();
+                              uniCtrl.clear();
                             },
-                            child: Text("Add experience")),
+                            child: Text("Add")),
                       ],
                     ),
-                    widget.userData["experiences"] != null
+                    widget.userData["Education"] != null
                         ? ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
-                            itemCount: widget.userData["experiences"].length,
+                            itemCount: widget.userData["Education"].length,
                             itemBuilder: (BuildContext context, int index) {
                               return Container(
                                 padding: const EdgeInsets.all(8.0),
@@ -156,16 +156,16 @@ class _completeProfile_4State extends State<completeProfile_4> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                            "${widget.userData["experiences"][index]["name"]}"),
+                                            "${widget.userData["Education"][index]["name"]}"),
                                         Text(
-                                            "${widget.userData["experiences"][index]["startDate"]}"),
+                                            "${widget.userData["Education"][index]["startDate"]}"),
                                         Text("To"),
                                         Text(
-                                            "${widget.userData["experiences"][index]["endDate"]}"),
+                                            "${widget.userData["Education"][index]["endDate"]}"),
                                       ],
                                     ),
                                     Text(
-                                        "${widget.userData["experiences"][index]["des"]}"),
+                                        "${widget.userData["Education"][index]["uni"]}"),
                                   ],
                                 ),
                               );
@@ -188,7 +188,7 @@ class _completeProfile_4State extends State<completeProfile_4> {
                 icon: Icon(Icons.arrow_back)),
             IconButton(
                 onPressed: () {
-                  if (widget.userData["experiences"] != null) {
+                  if (widget.userData["Education"] != null) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -197,7 +197,7 @@ class _completeProfile_4State extends State<completeProfile_4> {
                               )),
                     );
                   } else {
-                    print("please add some experience");
+                    print("please add some Education");
                   }
                 },
                 icon: Icon(Icons.arrow_forward)),

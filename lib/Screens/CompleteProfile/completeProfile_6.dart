@@ -14,7 +14,7 @@ class completeProfile_6 extends StatefulWidget {
 }
 
 class _completeProfile_6State extends State<completeProfile_6> {
-  final TextEditingController languageCtrl = TextEditingController();
+  final TextEditingController hobbiesCtrl = TextEditingController();
   var rating = 0.0;
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class _completeProfile_6State extends State<completeProfile_6> {
             children: [
               mySpacer(30.0, vwidth),
               const Text(
-                "Update Your Language",
+                "Update Your Hobbies",
                 style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
               ),
               mySpacer(30.0, vwidth),
@@ -39,9 +39,9 @@ class _completeProfile_6State extends State<completeProfile_6> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     myTextfield(
-                      titel: 'Language',
-                      hint: 'Language',
-                      textcontroler: languageCtrl,
+                      titel: 'Hobbies',
+                      hint: 'Hobbies',
+                      textcontroler: hobbiesCtrl,
                     ),
                     Slider(
                       value: rating,
@@ -58,7 +58,7 @@ class _completeProfile_6State extends State<completeProfile_6> {
                       children: [
                         ElevatedButton(
                             onPressed: () {
-                              languageCtrl.clear();
+                              hobbiesCtrl.clear();
                               setState(() {
                                 rating = 0;
                               });
@@ -66,13 +66,13 @@ class _completeProfile_6State extends State<completeProfile_6> {
                             child: Text("Clear")),
                         ElevatedButton(
                             onPressed: () {
-                              if (widget.userData["Language"] == null) {
-                                widget.userData["Language"] = [];
+                              if (widget.userData["Hobbies"] == null) {
+                                widget.userData["Hobbies"] = [];
                               }
-                              widget.userData["Language"].add(
-                                  {"name": languageCtrl.text, "rating": rating});
-                              print("++++${widget.userData["Language"]}");
-                              languageCtrl.clear();
+                              widget.userData["Hobbies"].add(
+                                  {"name": hobbiesCtrl.text, "rating": rating});
+                              print("++++${widget.userData["Hobbies"]}");
+                              hobbiesCtrl.clear();
                               setState(() {
                                 rating = 0;
                               });
@@ -80,11 +80,11 @@ class _completeProfile_6State extends State<completeProfile_6> {
                             child: Text("Add")),
                       ],
                     ),
-                    widget.userData["Language"] != null
+                    widget.userData["Hobbies"] != null
                         ? ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
-                            itemCount: widget.userData["Language"].length,
+                            itemCount: widget.userData["Hobbies"].length,
                             itemBuilder: (BuildContext context, int index) {
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -93,11 +93,11 @@ class _completeProfile_6State extends State<completeProfile_6> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                        "${widget.userData["Language"][index]["name"]}"),
+                                        "${widget.userData["Hobbies"][index]["name"]}"),
                                     SizedBox(
                                       width: 100,
                                       child: LinearProgressIndicator(
-                                        value: widget.userData["Language"][index]
+                                        value: widget.userData["Hobbies"][index]
                                             ["rating"],
                                       ),
                                     ),
@@ -106,7 +106,7 @@ class _completeProfile_6State extends State<completeProfile_6> {
                               );
                             },
                           )
-                        : const Text("No Language"),
+                        : const Text("No Hobbies"),
                   ],
                 ),
               ),
@@ -123,7 +123,7 @@ class _completeProfile_6State extends State<completeProfile_6> {
                 icon: Icon(Icons.arrow_back)),
             IconButton(
                 onPressed: () {
-                  if (widget.userData["Language"] != null) {
+                  if (widget.userData["Hobbies"] != null) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -132,7 +132,7 @@ class _completeProfile_6State extends State<completeProfile_6> {
                               )),
                     );
                   } else {
-                    print("please add some Language");
+                    print("please add some Hobbies");
                   }
                 },
                 icon: Icon(Icons.arrow_forward)),

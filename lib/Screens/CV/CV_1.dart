@@ -26,119 +26,120 @@ Future<Uint8List> CV_1(data) async {
     // pw.MultiPage(
     Page(
       pageTheme: pageTheme,
-      build: (pw.Context context) => 
-        pw.Partitions(
-          children: [
-            pw.Partition(
-              child: pw.Column(
-                crossAxisAlignment: pw.CrossAxisAlignment.start,
-                children: <pw.Widget>[
-                  pw.Container(
-                    padding: const pw.EdgeInsets.only(left: 30, bottom: 20),
-                    child: pw.Column(
-                      crossAxisAlignment: pw.CrossAxisAlignment.start,
-                      children: <pw.Widget>[
-                        pw.Text('${data["username"]}',
-                            textScaleFactor: 2,
-                            style: pw.Theme.of(context)
-                                .defaultTextStyle
-                                .copyWith(fontWeight: pw.FontWeight.bold)),
-                        pw.Padding(padding: const pw.EdgeInsets.only(top: 10)),
-                        pw.Text('${data["job"]}',
-                            textScaleFactor: 1.2,
-                            style: pw.Theme.of(context)
-                                .defaultTextStyle
-                                .copyWith(
-                                    fontWeight: pw.FontWeight.bold,
-                                    color: green)),
-                        pw.Padding(padding: const pw.EdgeInsets.only(top: 20)),
-                        pw.Row(
-                          crossAxisAlignment: pw.CrossAxisAlignment.start,
-                          mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-                          children: <pw.Widget>[
-                            pw.Column(
-                              crossAxisAlignment: pw.CrossAxisAlignment.start,
-                              children: <pw.Widget>[
-                                pw.Text('${data["address"]}'),
-                                pw.Text('${data["PhoneNo"]}'),
-                              ],
-                            ),
-                            pw.Column(
-                              crossAxisAlignment: pw.CrossAxisAlignment.start,
-                              children: <pw.Widget>[
-                                _UrlText('${data["email"]}',
-                                    'mailto:${data["email"]}'),
-                                _UrlText('${data["web"]}', '${data["web"]}'),
-                              ],
-                            ),
-                            pw.Padding(padding: pw.EdgeInsets.zero)
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  if (data["Education"].length != null)
-                    _Category(title: 'Work Experience'),
-                  if (data["experiences"].length != null)
-                    pw.ListView.builder(
-                      itemCount: data["experiences"].length,
-                      itemBuilder: (context, int index) {
-                        return Exp_Block(
-                            expData: data["experiences"][index]);
-                      },
-                    ),
-                  pw.SizedBox(height: 20),
-                  if (data["Education"].length != null)
-                    _Category(title: 'Education'),
-                  if (data["Education"].length != null)
-                    pw.ListView.builder(
-                      itemCount: data["Education"].length,
-                      itemBuilder: (context, int index) {
-                        return Education_Block(
-                            eduData: data["Education"][index]);
-                      },
-                    ),
-                ],
-              ),
-            ),
-            pw.Partition(
-              width: sep,
-              child: pw.Column(
-                children: [
-                  pw.Container(
-                    height: pageTheme.pageFormat.availableHeight,
-                    child: pw.Column(
-                      crossAxisAlignment: pw.CrossAxisAlignment.center,
-                      mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-                      children: <pw.Widget>[
-                        pw.ClipOval(
-                          child: pw.Container(
-                            width: 100,
-                            height: 100,
-                            color: lightGreen,
-                            child: pw.Image(profileImage),
+      build: (pw.Context context) => pw.Partitions(
+        children: [
+          pw.Partition(
+            child: pw.Column(
+              crossAxisAlignment: pw.CrossAxisAlignment.start,
+              children: <pw.Widget>[
+                pw.Container(
+                  padding: const pw.EdgeInsets.only(left: 30, bottom: 20),
+                  child: pw.Column(
+                    crossAxisAlignment: pw.CrossAxisAlignment.start,
+                    children: <pw.Widget>[
+                      pw.Text('${data["username"]}',
+                          textScaleFactor: 2,
+                          style: pw.Theme.of(context)
+                              .defaultTextStyle
+                              .copyWith(fontWeight: pw.FontWeight.bold)),
+                      pw.Padding(padding: const pw.EdgeInsets.only(top: 10)),
+                      pw.Text('${data["job"]}',
+                          textScaleFactor: 1.2,
+                          style: pw.Theme.of(context).defaultTextStyle.copyWith(
+                              fontWeight: pw.FontWeight.bold, color: green)),
+                      pw.Padding(padding: const pw.EdgeInsets.only(top: 20)),
+                      pw.Row(
+                        crossAxisAlignment: pw.CrossAxisAlignment.start,
+                        mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+                        children: <pw.Widget>[
+                          pw.Column(
+                            crossAxisAlignment: pw.CrossAxisAlignment.start,
+                            children: <pw.Widget>[
+                              pw.Text('${data["address"]}'),
+                              pw.Text('${data["PhoneNo"]}'),
+                            ],
                           ),
-                        ),
-                        pw.Column(children: <pw.Widget>[
-                          _Percent(size: 60, value: .7, title: pw.Text('Word')),
-                          _Percent(
-                              size: 60, value: .4, title: pw.Text('Excel')),
-                        ]),
-                        // pw.BarcodeWidget(
-                        //   data: 'Parnella Charlesbois',
-                        //   width: 60,
-                        //   height: 60,
-                        //   barcode: pw.Barcode.qrCode(),
-                        //   drawText: false,
-                        // ),
-                      ],
-                    ),
+                          pw.Column(
+                            crossAxisAlignment: pw.CrossAxisAlignment.start,
+                            children: <pw.Widget>[
+                              _UrlText('${data["email"]}',
+                                  'mailto:${data["email"]}'),
+                              _UrlText('${data["web"]}', '${data["web"]}'),
+                            ],
+                          ),
+                          pw.Padding(padding: pw.EdgeInsets.zero)
+                        ],
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            )
-          ],
-        ),   
+                ),
+                if (data["Education"].length != null)
+                  _Category(title: 'Work Experience'),
+                if (data["experiences"].length != null)
+                  pw.ListView.builder(
+                    itemCount: data["experiences"].length,
+                    itemBuilder: (context, int index) {
+                      return Exp_Block(expData: data["experiences"][index]);
+                    },
+                  ),
+                pw.SizedBox(height: 20),
+                if (data["Education"].length != null)
+                  _Category(title: 'Education'),
+                if (data["Education"].length != null)
+                  pw.ListView.builder(
+                    itemCount: data["Education"].length,
+                    itemBuilder: (context, int index) {
+                      return Education_Block(eduData: data["Education"][index]);
+                    },
+                  ),
+              ],
+            ),
+          ),
+          pw.Partition(
+            width: sep,
+            child: pw.Column(
+              children: [
+                pw.Container(
+                  height: pageTheme.pageFormat.availableHeight,
+                  child: pw.Column(
+                    crossAxisAlignment: pw.CrossAxisAlignment.center,
+                    mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+                    children: <pw.Widget>[
+                      pw.ClipOval(
+                        child: pw.Container(
+                          width: 100,
+                          height: 100,
+                          color: lightGreen,
+                          child: pw.Image(profileImage),
+                        ),
+                      ),
+                      pw.Column(children: <pw.Widget>[
+                        if (data["Skills"].length != null)
+                          pw.ListView.builder(
+                            itemCount: data["Skills"].length,
+                            itemBuilder: (context, int index) {
+                              return _Percent(perData: data["Skills"][index]);
+                            },
+                          ),
+                      ]),
+                      pw.Container(),
+                      pw.Container(),
+                      pw.Container(),
+                      // pw.BarcodeWidget(
+                      //   data: 'Parnella Charlesbois',
+                      //   width: 60,
+                      //   height: 60,
+                      //   barcode: pw.Barcode.qrCode(),
+                      //   drawText: false,
+                      // ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     ),
   );
   return doc.save();
@@ -232,7 +233,6 @@ class Exp_Block extends pw.StatelessWidget {
 
   final Map expData;
 
-
   @override
   pw.Widget build(pw.Context context) {
     return pw.Column(
@@ -260,7 +260,6 @@ class Exp_Block extends pw.StatelessWidget {
                         .defaultTextStyle
                         .copyWith(fontWeight: pw.FontWeight.bold)),
               ]),
-       
           pw.Container(
             decoration: const pw.BoxDecoration(
                 border: pw.Border(left: pw.BorderSide(color: green, width: 2))),
@@ -270,14 +269,10 @@ class Exp_Block extends pw.StatelessWidget {
                 crossAxisAlignment: pw.CrossAxisAlignment.start,
                 children: <pw.Widget>[
                   pw.Text(expData['des'],
-                    style: pw.Theme.of(context)
-                        .defaultTextStyle
-                        .copyWith()
-                        ),
-                // pw.Spacer(),
+                      style: pw.Theme.of(context).defaultTextStyle.copyWith()),
+                  // pw.Spacer(),
                 ]),
           ),
-      
         ]);
   }
 }
@@ -306,16 +301,10 @@ class _Category extends pw.StatelessWidget {
 
 class _Percent extends pw.StatelessWidget {
   _Percent({
-    required this.size,
-    required this.value,
-    required this.title,
+    required this.perData,
   });
 
-  final double size;
-
-  final double value;
-
-  final pw.Widget title;
+  final Map perData;
 
   static const fontSize = 1.2;
 
@@ -329,20 +318,20 @@ class _Percent extends pw.StatelessWidget {
   pw.Widget build(pw.Context context) {
     final widgets = <pw.Widget>[
       pw.Container(
-        width: size,
-        height: size,
+        width: 70,
+        height: 70,
         child: pw.Stack(
           alignment: pw.Alignment.center,
           fit: pw.StackFit.expand,
           children: <pw.Widget>[
             pw.Center(
               child: pw.Text(
-                '${(value * 100).round().toInt()}%',
+                '${(perData["rating"] * 100).round().toInt()}%',
                 textScaleFactor: fontSize,
               ),
             ),
             pw.CircularProgressIndicator(
-              value: value,
+              value: perData["rating"],
               backgroundColor: backgroundColor,
               color: color,
               strokeWidth: strokeWidth,
@@ -352,7 +341,7 @@ class _Percent extends pw.StatelessWidget {
       )
     ];
 
-    widgets.add(title);
+    widgets.add(pw.Text(perData["name"]));
 
     return pw.Column(children: widgets);
   }

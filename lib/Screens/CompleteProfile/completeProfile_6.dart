@@ -1,8 +1,10 @@
 // ignore_for_file: camel_case_types
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
+import '../CV/CVScreen.dart';
 import 'completeProfile_3.dart';
 
 class completeProfile_6 extends StatefulWidget {
@@ -124,14 +126,7 @@ class _completeProfile_6State extends State<completeProfile_6> {
             IconButton(
                 onPressed: () {
                   if (widget.userData["Hobbies"] != null) {
-                    
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //       builder: (context) => completeProfile_3(
-                    //             userData: widget.userData,
-                    //           )),
-                    // );
+                    SaveButton(context, widget.userData);
                   } else {
                     print("please add some Hobbies");
                   }
@@ -144,19 +139,34 @@ class _completeProfile_6State extends State<completeProfile_6> {
   }
 }
 
-
-
-SaveButton (context){  
-  showDialog(  
-    context: context,  
-    builder: (BuildContext context) {  
-      return  AlertDialog(  
-    title: Text("Simple Alert"),  
-    content: Text("This is an alert message."),  
-    actions: [  
-      ElevatedButton(onPressed: (){}, child: const Text("Cancel")),
-      ElevatedButton(onPressed: (){}, child: const Text("Save")),
-    ],  
-  );  ;  
-    },  
-  );  }
+SaveButton(context, userData) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text("Simple Alert"),
+        content: Text("This is an alert message."),
+        actions: [
+          ElevatedButton(onPressed: () {}, child: const Text("Cancel")),
+          ElevatedButton(
+              onPressed: () async {
+                FirebaseFirestore firestore = FirebaseFirestore.instance;
+                await firestore
+                    .collection("users")
+                    .doc(userData['UID'])
+                    .set(userData);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CVScreen(
+                            UserData: userData,
+                          )),
+                );
+              },
+              child: const Text("Save")),
+        ],
+      );
+      ;
+    },
+  );
+}

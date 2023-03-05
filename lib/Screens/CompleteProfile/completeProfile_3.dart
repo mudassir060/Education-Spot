@@ -122,7 +122,7 @@ class _completeProfile_3State extends State<completeProfile_3> {
                               if (widget.userData["experiences"] == null) {
                                 widget.userData["experiences"] = [];
                               }
-                              if (startDate!=null&& endDate==null&&experienceCtrl!=''&&endDate!="") {
+                              if (startDate!=null&& endDate!=null&&experienceCtrl!=''&&desCtrl!="") {
                                  widget.userData["experiences"].add({
                                 "name": experienceCtrl.text,
                                 "des": desCtrl.text,
@@ -136,7 +136,7 @@ class _completeProfile_3State extends State<completeProfile_3> {
                               experienceCtrl.clear();
                               desCtrl.clear();
                               } else {
-                                
+                                                    print("please fill all text field");
                               }
                              
                             },

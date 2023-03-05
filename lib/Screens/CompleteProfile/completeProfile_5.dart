@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
+import 'Widgets/staper.dart';
 import 'completeProfile_3.dart';
 import 'completeProfile_6.dart';
 
@@ -70,8 +71,10 @@ class _completeProfile_5State extends State<completeProfile_5> {
                               if (widget.userData["Language"] == null) {
                                 widget.userData["Language"] = [];
                               }
-                              widget.userData["Language"].add(
-                                  {"name": languageCtrl.text, "rating": rating});
+                              widget.userData["Language"].add({
+                                "name": languageCtrl.text,
+                                "rating": rating
+                              });
                               print("++++${widget.userData["Language"]}");
                               languageCtrl.clear();
                               setState(() {
@@ -98,8 +101,8 @@ class _completeProfile_5State extends State<completeProfile_5> {
                                     SizedBox(
                                       width: 100,
                                       child: LinearProgressIndicator(
-                                        value: widget.userData["Language"][index]
-                                            ["rating"],
+                                        value: widget.userData["Language"]
+                                            [index]["rating"],
                                       ),
                                     ),
                                   ],
@@ -122,6 +125,7 @@ class _completeProfile_5State extends State<completeProfile_5> {
                   Navigator.pop(context);
                 },
                 icon: Icon(Icons.arrow_back)),
+            staper(5),
             IconButton(
                 onPressed: () {
                   if (widget.userData["Language"] != null) {

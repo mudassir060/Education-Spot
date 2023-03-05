@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
+import 'Widgets/staper.dart';
 import 'completeProfile_4.dart';
 
 class completeProfile_3 extends StatefulWidget {
@@ -122,23 +123,25 @@ class _completeProfile_3State extends State<completeProfile_3> {
                               if (widget.userData["experiences"] == null) {
                                 widget.userData["experiences"] = [];
                               }
-                              if (startDate!=null&& endDate!=null&&experienceCtrl!=''&&desCtrl!="") {
-                                 widget.userData["experiences"].add({
-                                "name": experienceCtrl.text,
-                                "des": desCtrl.text,
-                                "startDate": startDate,
-                                "endDate": endDate,
-                              });
-                              setState(() {
-                                startDate = null;
-                                endDate = null;
-                              });
-                              experienceCtrl.clear();
-                              desCtrl.clear();
+                              if (startDate != null &&
+                                  endDate != null &&
+                                  experienceCtrl != '' &&
+                                  desCtrl != "") {
+                                widget.userData["experiences"].add({
+                                  "name": experienceCtrl.text,
+                                  "des": desCtrl.text,
+                                  "startDate": startDate,
+                                  "endDate": endDate,
+                                });
+                                setState(() {
+                                  startDate = null;
+                                  endDate = null;
+                                });
+                                experienceCtrl.clear();
+                                desCtrl.clear();
                               } else {
-                                                    print("please fill all text field");
+                                print("please fill all text field");
                               }
-                             
                             },
                             child: Text("Add experience")),
                       ],
@@ -152,7 +155,9 @@ class _completeProfile_3State extends State<completeProfile_3> {
                               return Container(
                                 padding: const EdgeInsets.all(8.0),
                                 margin: const EdgeInsets.all(8.0),
-                                color: index % 2 == 0 ? Color.fromARGB(255, 235, 232, 232) : Color.fromARGB(255, 180, 178, 178),
+                                color: index % 2 == 0
+                                    ? Color.fromARGB(255, 235, 232, 232)
+                                    : Color.fromARGB(255, 180, 178, 178),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -191,6 +196,7 @@ class _completeProfile_3State extends State<completeProfile_3> {
                   Navigator.pop(context);
                 },
                 icon: Icon(Icons.arrow_back)),
+            staper(3),
             IconButton(
                 onPressed: () {
                   if (widget.userData["experiences"] != null) {

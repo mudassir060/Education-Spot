@@ -4,6 +4,7 @@ import 'package:education_spot/Screens/CompleteProfile/completeProfile_2.dart';
 import 'package:flutter/material.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
+import 'Widgets/staper.dart';
 
 class completeProfile_1 extends StatefulWidget {
   final Map userData;
@@ -100,6 +101,7 @@ class _completeProfile_1State extends State<completeProfile_1> {
                   Navigator.pop(context);
                 },
                 icon: Icon(Icons.arrow_back)),
+                staper(1),
             IconButton(
                 onPressed: () {
                   widget.userData["username"] = usernameCtrl.text;

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
 import '../CV/CVScreen.dart';
+import 'Widgets/staper.dart';
 import 'completeProfile_3.dart';
 
 class completeProfile_6 extends StatefulWidget {
@@ -123,6 +124,7 @@ class _completeProfile_6State extends State<completeProfile_6> {
                   Navigator.pop(context);
                 },
                 icon: Icon(Icons.arrow_back)),
+            staper(6),
             IconButton(
                 onPressed: () {
                   if (widget.userData["Hobbies"] != null) {

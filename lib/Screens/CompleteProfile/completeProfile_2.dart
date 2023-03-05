@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
+import 'Widgets/staper.dart';
 import 'completeProfile_3.dart';
 
 class completeProfile_2 extends StatefulWidget {
@@ -127,6 +128,7 @@ class _completeProfile_2State extends State<completeProfile_2> {
                   Navigator.pop(context);
                 },
                 icon: Icon(Icons.arrow_back)),
+            staper(2),
             IconButton(
                 onPressed: () {
                   if (widget.userData["Skills"] != null) {

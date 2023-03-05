@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
+import 'Widgets/staper.dart';
 import 'completeProfile_5.dart';
 
 class completeProfile_4 extends StatefulWidget {
@@ -148,7 +149,9 @@ class _completeProfile_4State extends State<completeProfile_4> {
                               return Container(
                                 padding: const EdgeInsets.all(8.0),
                                 margin: const EdgeInsets.all(8.0),
-                                color: index % 2 == 0 ? Color.fromARGB(255, 235, 232, 232) : Color.fromARGB(255, 180, 178, 178),
+                                color: index % 2 == 0
+                                    ? Color.fromARGB(255, 235, 232, 232)
+                                    : Color.fromARGB(255, 180, 178, 178),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -187,6 +190,7 @@ class _completeProfile_4State extends State<completeProfile_4> {
                   Navigator.pop(context);
                 },
                 icon: Icon(Icons.arrow_back)),
+            staper(4),
             IconButton(
                 onPressed: () {
                   if (widget.userData["Education"] != null) {

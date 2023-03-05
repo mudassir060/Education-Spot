@@ -1,25 +1,19 @@
 // ignore_for_file: camel_case_types
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:education_spot/Widgets/BottomNavigBar.dart';
-import 'package:education_spot/Widgets/myButton.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
 import 'completeProfile_3.dart';
 
-class completeProfile_2 extends StatefulWidget {
+class completeProfile_5 extends StatefulWidget {
   final Map userData;
-  const completeProfile_2({Key? key, required this.userData}) : super(key: key);
+  const completeProfile_5({Key? key, required this.userData}) : super(key: key);
 
   @override
-  State<completeProfile_2> createState() => _completeProfile_2State();
+  State<completeProfile_5> createState() => _completeProfile_5State();
 }
 
-class _completeProfile_2State extends State<completeProfile_2> {
+class _completeProfile_5State extends State<completeProfile_5> {
   final TextEditingController languageCtrl = TextEditingController();
   var rating = 0.0;
   @override

@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:education_spot/Widgets/mySpacer.dart';
 import 'package:education_spot/constants/style.dart';
 import 'package:flutter/material.dart';
@@ -32,12 +33,20 @@ class _homeScreenState extends State<homeScreen> {
       {"name": "Admission", "image": Admissions, "page": AdmissionsScreen()},
       {"name": "Quiz", "image": Quiz, "page": QuizzScreen()},
       {"name": "Job", "image": Jobs, "page": jobsScreen()},
-      {"name": "Community", "image": CommonRoom, "page": communityScreen(UserData: widget.UserData,)},
-      {"name": "Create CV", "image": cv, 
-      "page": CVScreen(UserData: widget.UserData,)
-      // "page": completeProfile_1(userData: widget.UserData,)
+      {
+        "name": "Community",
+        "image": CommonRoom,
+        "page": communityScreen(
+          UserData: widget.UserData,
+        )
       },
-
+      {
+        "name": "Create CV", "image": cv,
+        "page": CVScreen(
+          UserData: widget.UserData,
+        )
+        // "page": completeProfile_1(userData: widget.UserData,)
+      },
     ];
     var vwidth = MediaQuery.of(context).size.width;
     var vheight = MediaQuery.of(context).size.height;
@@ -88,8 +97,23 @@ class _homeScreenState extends State<homeScreen> {
               ],
             ),
             // // // // // // // // // // // Banner Ad // // // // // // // //
-            Image.asset(Banner_Ad),
-            // // // // // // // // // // // Gridview Button // // // // // // // // //
+            CarouselSlider(
+              options: CarouselOptions(height: 400.0),
+              items: [1, 2, 3, 4, 5].map((i) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(horizontal: 5.0),
+                        decoration: BoxDecoration(color: Colors.amber),
+                        child: Text(
+                          'text $i',
+                          style: TextStyle(fontSize: 16.0),
+                        ));
+                  },
+                );
+              }).toList(),
+            ), // // // // // // // // // // // Gridview Button // // // // // // // // //
             ImageButtonGrid(
               Community: buttonList,
               UserData: widget.UserData,

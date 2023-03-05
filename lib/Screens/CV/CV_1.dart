@@ -55,15 +55,15 @@ Future<Uint8List> CV_1(data) async {
                           pw.Column(
                             crossAxisAlignment: pw.CrossAxisAlignment.start,
                             children: <pw.Widget>[
-                              pw.Text('${data["address"]}'),
                               pw.Text('${data["PhoneNo"]}'),
+                              _UrlText('${data["email"]}',
+                                  'mailto:${data["email"]}'),
                             ],
                           ),
                           pw.Column(
                             crossAxisAlignment: pw.CrossAxisAlignment.start,
                             children: <pw.Widget>[
-                              _UrlText('${data["email"]}',
-                                  'mailto:${data["email"]}'),
+                              pw.Text('${data["address"]}'),
                               _UrlText('${data["web"]}', '${data["web"]}'),
                             ],
                           ),
@@ -82,7 +82,7 @@ Future<Uint8List> CV_1(data) async {
                       return Exp_Block(expData: data["experiences"][index]);
                     },
                   ),
-                pw.SizedBox(height: 20),
+                pw.SizedBox(height: 10),
                 if (data["Education"].length != null)
                   _Category(title: 'Education'),
                 if (data["Education"].length != null)
@@ -92,6 +92,32 @@ Future<Uint8List> CV_1(data) async {
                       return Education_Block(eduData: data["Education"][index]);
                     },
                   ),
+                pw.Row(children: [
+                  Column(children: [
+                    if (data["Hobbies"].length != null)
+                      _Category(title: 'Hobbies'),
+                    if (data["Hobbies"].length != null)
+                      pw.ListView.builder(
+                        itemCount: data["Hobbies"].length,
+                        itemBuilder: (context, int index) {
+                          return Education_Block(
+                              eduData: data["Hobbies"][index]);
+                        },
+                      ),
+                  ]),
+                  Column(children: [
+                    if (data["Language"].length != null)
+                      _Category(title: 'Language'),
+                    if (data["Language"].length != null)
+                      pw.ListView.builder(
+                        itemCount: data["Language"].length,
+                        itemBuilder: (context, int index) {
+                          return Education_Block(
+                              eduData: data["Language"][index]);
+                        },
+                      ),
+                  ])
+                ])
               ],
             ),
           ),
@@ -212,10 +238,7 @@ class Education_Block extends pw.StatelessWidget {
                         .defaultTextStyle
                         .copyWith(fontWeight: pw.FontWeight.bold)),
                 pw.Spacer(),
-                pw.Text(eduData["uni"],
-                    style: pw.Theme.of(context)
-                        .defaultTextStyle
-                        .copyWith(fontWeight: pw.FontWeight.bold)),
+                pw.Text(eduData["uni"]),
                 pw.Spacer(),
                 pw.Text("(${eduData['startDate']}) To (${eduData['endDate']})",
                     style: pw.Theme.of(context)
@@ -343,6 +366,26 @@ class _Percent extends pw.StatelessWidget {
 
     widgets.add(pw.Text(perData["name"]));
 
+    return pw.Column(children: widgets);
+  }
+}
+
+class Hob_Block extends pw.StatelessWidget {
+  Hob_Block({
+    required this.perData,
+  });
+  final Map perData;
+  PdfColor get color => green;
+  @override
+  pw.Widget build(pw.Context context) {
+    final widgets = <pw.Widget>[
+      pw.Row(children: [
+        pw.Text("${perData["name"]}"),
+        pw.SizedBox(
+            width: 100,
+            child: pw.LinearProgressIndicator(value: perData["rating"]))
+      ])
+    ];
     return pw.Column(children: widgets);
   }
 }

@@ -25,11 +25,11 @@ Future<Uint8List> CV_2(data) async {
 
   doc.addPage(
     // pw.MultiPage(
-    Page(
+    pw.Page(
       pageTheme: pageTheme,
       build: (pw.Context context) => pw.Partitions(
         children: [
-              pw.Partition(
+          pw.Partition(
             width: sep,
             child: pw.Column(
               children: [
@@ -71,8 +71,7 @@ Future<Uint8List> CV_2(data) async {
                 ),
               ],
             ),
-          )
-      ,
+          ),
           pw.Partition(
             child: pw.Column(
               crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -118,10 +117,8 @@ Future<Uint8List> CV_2(data) async {
                     ],
                   ),
                 ),
-                if (data["about_me"] != null)
-                  _Category(title: 'About Me'),
-                if (data["about_me"] != null) 
-                pw.Text(data["about_me"]),
+                if (data["about_me"] != null) _Category(title: 'About Me'),
+                if (data["about_me"] != null) pw.Text(data["about_me"]),
                 if (data["experiences"].length != null)
                   _Category(title: 'Work Experience'),
                 if (data["experiences"].length != null)
@@ -184,10 +181,10 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
   final bgShape = await rootBundle.loadString(cvBg_1);
 
   format = format.applyMargin(
-      left: 2.0 * PdfPageFormat.cm,
-      top: 4.0 * PdfPageFormat.cm,
-      right: 2.0 * PdfPageFormat.cm,
-      bottom: 2.0 * PdfPageFormat.cm);
+      left: 2.0 * PdfPageFormat.mm,
+      top: 4.0 * PdfPageFormat.mm,
+      right: 2.0 * PdfPageFormat.mm,
+      bottom: 2.0 * PdfPageFormat.mm);
   return pw.PageTheme(
     pageFormat: format,
     theme: pw.ThemeData.withFont(

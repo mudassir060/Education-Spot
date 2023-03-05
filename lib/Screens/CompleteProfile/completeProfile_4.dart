@@ -3,17 +3,16 @@
 import 'package:flutter/material.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
-import 'completeProfile_4.dart';
 
-class completeProfile_3 extends StatefulWidget {
+class completeProfile_4 extends StatefulWidget {
   final Map userData;
-  const completeProfile_3({Key? key, required this.userData}) : super(key: key);
+  const completeProfile_4({Key? key, required this.userData}) : super(key: key);
 
   @override
-  State<completeProfile_3> createState() => _completeProfile_3State();
+  State<completeProfile_4> createState() => _completeProfile_4State();
 }
 
-class _completeProfile_3State extends State<completeProfile_3> {
+class _completeProfile_4State extends State<completeProfile_4> {
   final TextEditingController experienceCtrl = TextEditingController();
   final TextEditingController desCtrl = TextEditingController();
   var startDate;
@@ -122,8 +121,7 @@ class _completeProfile_3State extends State<completeProfile_3> {
                               if (widget.userData["experiences"] == null) {
                                 widget.userData["experiences"] = [];
                               }
-                              if (startDate!=null&& endDate==null&&experienceCtrl!=''&&endDate!="") {
-                                 widget.userData["experiences"].add({
+                              widget.userData["experiences"].add({
                                 "name": experienceCtrl.text,
                                 "des": desCtrl.text,
                                 "startDate": startDate,
@@ -133,12 +131,9 @@ class _completeProfile_3State extends State<completeProfile_3> {
                                 startDate = null;
                                 endDate = null;
                               });
+                              print("++++${widget.userData["experiences"]}");
                               experienceCtrl.clear();
                               desCtrl.clear();
-                              } else {
-                                
-                              }
-                             
                             },
                             child: Text("Add experience")),
                       ],

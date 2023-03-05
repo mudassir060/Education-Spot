@@ -46,10 +46,10 @@ class _BottomNavigBarState extends State<BottomNavigBar> {
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.group),
-            label: 'Community',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.group),
+          //   label: 'Community',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.notifications),
             label: 'Notification',

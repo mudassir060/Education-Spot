@@ -33,7 +33,7 @@ class _homeScreenState extends State<homeScreen> {
       {"name": "Quiz", "image": Quiz, "page": QuizzScreen()},
       {"name": "Job", "image": Jobs, "page": jobsScreen()},
       {"name": "Community", "image": CommonRoom, "page": communityScreen(UserData: widget.UserData,)},
-      {"name": "CV", "image": cv, 
+      {"name": "Create CV", "image": cv, 
       // "page": CVScreen(UserData: widget.UserData,)
       "page": completeProfile_1(userData: widget.UserData,)
       },

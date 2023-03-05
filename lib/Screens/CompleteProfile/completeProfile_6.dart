@@ -147,7 +147,11 @@ SaveButton(context, userData) {
         title: Text("Simple Alert"),
         content: Text("This is an alert message."),
         actions: [
-          ElevatedButton(onPressed: () {}, child: const Text("Cancel")),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text("Cancel")),
           ElevatedButton(
               onPressed: () async {
                 FirebaseFirestore firestore = FirebaseFirestore.instance;

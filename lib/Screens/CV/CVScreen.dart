@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
+import '../../Widgets/BottomNavigBar.dart';
 import '../../Widgets/myAppBar.dart';
 import '../../Widgets/myLoading.dart';
 import 'package:stacked_card_carousel/stacked_card_carousel.dart';
 
+import '../../Widgets/mySpacer.dart';
 import '../../constants/images.dart';
+import '../../constants/style.dart';
 import 'cvCard.dart';
 
 class CVScreen extends StatefulWidget {
@@ -27,9 +30,39 @@ class _CVScreenState extends State<CVScreen> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              myAppBar(
-                titel: "Create CV",
-                linewidth: 140,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => BottomNavigBar(
+                                    UserData: widget.UserData,
+                                  )),
+                        );
+                      },
+                      child: Image.asset(backCurve)),
+                  mySpacer(0.0, 0.0),
+                  Column(
+                    children: [
+                      Text(
+                        "Create CV",
+                        style: const TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
+                      ),
+                      mySpacer(10.0, 0.0),
+                      Container(
+                        width: 140,
+                        height: 2,
+                        color: primaryColor,
+                      )
+                    ],
+                  ),
+                  mySpacer(0.0, 0.0),
+                  mySpacer(0.0, 0.0),
+                ],
               ),
               SizedBox(
                 height: 700,
@@ -39,11 +72,10 @@ class _CVScreenState extends State<CVScreen> {
                       initialOffset: 0,
                       spaceBetweenItems: 450,
                       items: [
-                        cvCard(context,widget.UserData, cv_1),
-                        cvCard(context,widget.UserData, cv_1),
-                        cvCard(context,widget.UserData, cv_1),
-                        cvCard(context,widget.UserData, cv_1),
-                
+                        cvCard(context, widget.UserData, cv_1),
+                        cvCard(context, widget.UserData, cv_1),
+                        cvCard(context, widget.UserData, cv_1),
+                        cvCard(context, widget.UserData, cv_1),
                       ]),
                 ),
               ),

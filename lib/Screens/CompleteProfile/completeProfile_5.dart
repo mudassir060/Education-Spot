@@ -66,6 +66,9 @@ class _completeProfile_5State extends State<completeProfile_5> {
                             child: Text("Clear")),
                         ElevatedButton(
                             onPressed: () {
+                              if (widget.userData["Language"] == null) {
+                                widget.userData["Language"] = [];
+                              }
                               widget.userData["Language"].add(
                                   {"name": languageCtrl.text, "rating": rating});
                               print("++++${widget.userData["Language"]}");

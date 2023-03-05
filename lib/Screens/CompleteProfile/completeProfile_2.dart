@@ -72,6 +72,9 @@ class _completeProfile_2State extends State<completeProfile_2> {
                             child: Text("Clear")),
                         ElevatedButton(
                             onPressed: () {
+                              if (widget.userData["Skills"] == null) {
+                                widget.userData["Skills"] = [];
+                              }
                               widget.userData["Skills"].add(
                                   {"name": skillCtrl.text, "rating": rating});
                               print("++++${widget.userData["Skills"]}");

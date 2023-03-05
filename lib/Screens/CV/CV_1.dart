@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'dart:typed_data';
+import 'package:education_spot/constants/style.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -73,7 +74,7 @@ Future<Uint8List> CV_1(data) async {
                     ],
                   ),
                 ),
-                if (data["Education"].length != null)
+                if (data["experiences"].length != null)
                   _Category(title: 'Work Experience'),
                 if (data["experiences"].length != null)
                   pw.ListView.builder(
@@ -92,32 +93,35 @@ Future<Uint8List> CV_1(data) async {
                       return Education_Block(eduData: data["Education"][index]);
                     },
                   ),
-                pw.Row(children: [
-                  Column(children: [
-                    if (data["Hobbies"].length != null)
-                      _Category(title: 'Hobbies'),
-                    if (data["Hobbies"].length != null)
-                      pw.ListView.builder(
-                        itemCount: data["Hobbies"].length,
-                        itemBuilder: (context, int index) {
-                          return Education_Block(
-                              eduData: data["Hobbies"][index]);
-                        },
-                      ),
-                  ]),
-                  Column(children: [
-                    if (data["Language"].length != null)
-                      _Category(title: 'Language'),
-                    if (data["Language"].length != null)
-                      pw.ListView.builder(
-                        itemCount: data["Language"].length,
-                        itemBuilder: (context, int index) {
-                          return Education_Block(
-                              eduData: data["Language"][index]);
-                        },
-                      ),
-                  ])
-                ])
+                pw.SizedBox(height: 10),
+                pw.Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(children: [
+                        if (data["Hobbies"].length != null)
+                          _Category(title: 'Hobbies'),
+                        if (data["Hobbies"].length != null)
+                          pw.ListView.builder(
+                            itemCount: data["Hobbies"].length,
+                            itemBuilder: (context, int index) {
+                              return Hob_Block(hobData: data["Hobbies"][index]);
+                            },
+                          ),
+                      ]),
+                      pw.Container(width: 2, height: 80, color: green),
+                      Column(children: [
+                        if (data["Language"].length != null)
+                          _Category(title: 'Language'),
+                        if (data["Language"].length != null)
+                          pw.ListView.builder(
+                            itemCount: data["Language"].length,
+                            itemBuilder: (context, int index) {
+                              return Hob_Block(
+                                  hobData: data["Language"][index]);
+                            },
+                          ),
+                      ])
+                    ])
               ],
             ),
           ),
@@ -372,18 +376,22 @@ class _Percent extends pw.StatelessWidget {
 
 class Hob_Block extends pw.StatelessWidget {
   Hob_Block({
-    required this.perData,
+    required this.hobData,
   });
-  final Map perData;
+  final Map hobData;
   PdfColor get color => green;
   @override
   pw.Widget build(pw.Context context) {
     final widgets = <pw.Widget>[
       pw.Row(children: [
-        pw.Text("${perData["name"]}"),
         pw.SizedBox(
-            width: 100,
-            child: pw.LinearProgressIndicator(value: perData["rating"]))
+          width: 80,
+          child: pw.Text("${hobData["name"]}"),
+        ),
+        pw.SizedBox(width: 10),
+        pw.SizedBox(
+            width: 70,
+            child: pw.LinearProgressIndicator(value: hobData["rating"]))
       ])
     ];
     return pw.Column(children: widgets);

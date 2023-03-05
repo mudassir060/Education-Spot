@@ -124,13 +124,14 @@ class _completeProfile_6State extends State<completeProfile_6> {
             IconButton(
                 onPressed: () {
                   if (widget.userData["Hobbies"] != null) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => completeProfile_3(
-                                userData: widget.userData,
-                              )),
-                    );
+                    
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //       builder: (context) => completeProfile_3(
+                    //             userData: widget.userData,
+                    //           )),
+                    // );
                   } else {
                     print("please add some Hobbies");
                   }
@@ -142,3 +143,20 @@ class _completeProfile_6State extends State<completeProfile_6> {
     );
   }
 }
+
+
+
+SaveButton (context){  
+  showDialog(  
+    context: context,  
+    builder: (BuildContext context) {  
+      return  AlertDialog(  
+    title: Text("Simple Alert"),  
+    content: Text("This is an alert message."),  
+    actions: [  
+      ElevatedButton(onPressed: (){}, child: const Text("Cancel")),
+      ElevatedButton(onPressed: (){}, child: const Text("Save")),
+    ],  
+  );  ;  
+    },  
+  );  }

@@ -59,7 +59,7 @@ Future<Uint8List> CV_1(data) async {
                             pw.Column(
                               crossAxisAlignment: pw.CrossAxisAlignment.start,
                               children: <pw.Widget>[
-                                pw.Text('${data["addres"]}'),
+                                pw.Text('${data["address"]}'),
                                 pw.Text('${data["PhoneNo"]}'),
                               ],
                             ),
@@ -77,9 +77,16 @@ Future<Uint8List> CV_1(data) async {
                       ],
                     ),
                   ),
-                  _Category(title: 'Work Experience'),
-                  _Block(
-                      title: 'Chief chatter', icon: const pw.IconData(0xe0ca)),
+                  if (data["Education"].length != null)
+                    _Category(title: 'Work Experience'),
+                  if (data["experiences"].length != null)
+                    pw.ListView.builder(
+                      itemCount: data["experiences"].length,
+                      itemBuilder: (context, int index) {
+                        return Exp_Block(
+                            expData: data["experiences"][index]);
+                      },
+                    ),
                   pw.SizedBox(height: 20),
                   if (data["Education"].length != null)
                     _Category(title: 'Education'),
@@ -209,7 +216,7 @@ class Education_Block extends pw.StatelessWidget {
                         .defaultTextStyle
                         .copyWith(fontWeight: pw.FontWeight.bold)),
                 pw.Spacer(),
-                pw.Text(eduData["start"] + "_" + eduData["start"],
+                pw.Text(eduData["startDate"] + "_" + eduData["endDate"],
                     style: pw.Theme.of(context)
                         .defaultTextStyle
                         .copyWith(fontWeight: pw.FontWeight.bold)),
@@ -218,15 +225,13 @@ class Education_Block extends pw.StatelessWidget {
   }
 }
 
-class _Block extends pw.StatelessWidget {
-  _Block({
-    required this.title,
-    this.icon,
+class Exp_Block extends pw.StatelessWidget {
+  Exp_Block({
+    required this.expData,
   });
 
-  final String title;
+  final Map expData;
 
-  final pw.IconData? icon;
 
   @override
   pw.Widget build(pw.Context context) {
@@ -245,12 +250,15 @@ class _Block extends pw.StatelessWidget {
                     shape: pw.BoxShape.circle,
                   ),
                 ),
-                pw.Text(title,
+                pw.Text(expData['name'],
                     style: pw.Theme.of(context)
                         .defaultTextStyle
                         .copyWith(fontWeight: pw.FontWeight.bold)),
                 pw.Spacer(),
-                if (icon != null) pw.Icon(icon!, color: lightGreen, size: 18),
+                pw.Text("${expData['startDate']} To ${expData['endDate']}",
+                    style: pw.Theme.of(context)
+                        .defaultTextStyle
+                        .copyWith(fontWeight: pw.FontWeight.bold)),
               ]),
           pw.Container(
             decoration: const pw.BoxDecoration(
@@ -260,7 +268,11 @@ class _Block extends pw.StatelessWidget {
             child: pw.Column(
                 crossAxisAlignment: pw.CrossAxisAlignment.start,
                 children: <pw.Widget>[
-                  pw.Lorem(length: 10),
+                  pw.Text(expData['des'],
+                    style: pw.Theme.of(context)
+                        .defaultTextStyle
+                        .copyWith()),
+                pw.Spacer(),
                 ]),
           ),
         ]);

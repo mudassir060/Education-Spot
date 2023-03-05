@@ -10,7 +10,9 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:permission_handler/permission_handler.dart';
 
-Widget cvCard(context,data, img) {
+import 'CV_2.dart';
+
+Widget cvCard(context, data, img, cv) {
   return Card(
       child: Padding(
     padding: const EdgeInsets.all(8.0),
@@ -35,12 +37,25 @@ Widget cvCard(context,data, img) {
                       final file = File("${directory?.path}/CV.pdf");
 
                       if (await Permission.storage.request().isGranted) {
-                        await file.writeAsBytes(await CV_1( data));
+                        if (cv == 1) {
+                          await file.writeAsBytes(await CV_1(data));
+                        } else  if (cv == 2) {
+                          await file.writeAsBytes(await CV_2(data));
+                        } else  if (cv == 3) {
+                          await file.writeAsBytes(await CV_1(data));
+                        } else  if (cv == 4) {
+                          await file.writeAsBytes(await CV_1(data));
+                        } else  if (cv == 5) {
+                          await file.writeAsBytes(await CV_1(data));
+                        } else  {
+                          await file.writeAsBytes(await CV_1(data));
+                        }  
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    PDFViewerScaffold(appBar: AppBar(), path: "${directory?.path}/CV.pdf")));
+                                builder: (context) => PDFViewerScaffold(
+                                    appBar: AppBar(),
+                                    path: "${directory?.path}/CV.pdf")));
                       } else {
                         print(
                             "// Handle the case if the user doesn't grant permission");

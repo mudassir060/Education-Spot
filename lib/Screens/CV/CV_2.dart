@@ -10,8 +10,8 @@ import 'package:printing/printing.dart';
 
 import '../../constants/images.dart';
 
-const PdfColor green = PdfColor.fromInt(0xff9ce5d0);
-const PdfColor lightGreen = PdfColor.fromInt(0xffcdf1e7);
+const PdfColor blue = PdfColor.fromInt(0xff9ce5d0);
+const PdfColor lightBlue = PdfColor.fromInt(0xffcdf1e7);
 const sep = 120.0;
 
 Future<Uint8List> CV_2(data) async {
@@ -20,7 +20,6 @@ Future<Uint8List> CV_2(data) async {
   final profileImage = pw.MemoryImage(
     (await rootBundle.load(Profile)).buffer.asUint8List(),
   );
-
   final pageTheme = await _myPageTheme(PdfPageFormat.a4);
 
   doc.addPage(
@@ -30,48 +29,50 @@ Future<Uint8List> CV_2(data) async {
       build: (pw.Context context) => pw.Partitions(
         children: [
           pw.Partition(
-            width: sep,
-            child: pw.Column(
-              children: [
-                pw.Container(
-                  height: pageTheme.pageFormat.availableHeight,
-                  child: pw.Column(
-                    crossAxisAlignment: pw.CrossAxisAlignment.center,
-                    mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-                    children: <pw.Widget>[
-                      pw.ClipOval(
-                        child: pw.Container(
-                          width: 100,
-                          height: 100,
-                          color: lightGreen,
-                          child: pw.Image(profileImage),
-                        ),
-                      ),
-                      pw.Column(children: <pw.Widget>[
-                        if (data["Skills"].length != null)
-                          pw.ListView.builder(
-                            itemCount: data["Skills"].length,
-                            itemBuilder: (context, int index) {
-                              return _Percent(perData: data["Skills"][index]);
-                            },
+              width: sep,
+              child: pw.Container(
+                child: pw.Column(
+                  children: [
+                    pw.Container(
+                      height: pageTheme.pageFormat.availableHeight,
+                      child: pw.Column(
+                        crossAxisAlignment: pw.CrossAxisAlignment.center,
+                        mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+                        children: <pw.Widget>[
+                          pw.ClipOval(
+                            child: pw.Container(
+                              width: 100,
+                              height: 100,
+                              color: lightBlue,
+                              child: pw.Image(profileImage),
+                            ),
                           ),
-                      ]),
-                      pw.Container(),
-                      pw.Container(),
-                      pw.Container(),
-                      // pw.BarcodeWidget(
-                      //   data: 'Parnella Charlesbois',
-                      //   width: 60,
-                      //   height: 60,
-                      //   barcode: pw.Barcode.qrCode(),
-                      //   drawText: false,
-                      // ),
-                    ],
-                  ),
+                          pw.Column(children: <pw.Widget>[
+                            if (data["Skills"].length != null)
+                              pw.ListView.builder(
+                                itemCount: data["Skills"].length,
+                                itemBuilder: (context, int index) {
+                                  return _Percent(
+                                      perData: data["Skills"][index]);
+                                },
+                              ),
+                          ]),
+                          pw.Container(),
+                          pw.Container(),
+                          pw.Container(),
+                          // pw.BarcodeWidget(
+                          //   data: 'Parnella Charlesbois',
+                          //   width: 60,
+                          //   height: 60,
+                          //   barcode: pw.Barcode.qrCode(),
+                          //   drawText: false,
+                          // ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ),
+              )),
           pw.Partition(
             child: pw.Column(
               crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -90,7 +91,7 @@ Future<Uint8List> CV_2(data) async {
                       pw.Text('${data["job"]}',
                           textScaleFactor: 1.2,
                           style: pw.Theme.of(context).defaultTextStyle.copyWith(
-                              fontWeight: pw.FontWeight.bold, color: green)),
+                              fontWeight: pw.FontWeight.bold, color: blue)),
                       pw.Padding(padding: const pw.EdgeInsets.only(top: 10)),
                       pw.Row(
                         crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -153,7 +154,7 @@ Future<Uint8List> CV_2(data) async {
                             },
                           ),
                       ]),
-                      pw.Container(width: 2, height: 80, color: green),
+                      pw.Container(width: 2, height: 80, color: blue),
                       Column(children: [
                         if (data["Language"].length != null)
                           _Category(title: 'Language'),
@@ -178,15 +179,18 @@ Future<Uint8List> CV_2(data) async {
 }
 
 Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
-  final bgShape = await rootBundle.loadString(cvBg_1);
+   final bgShape = await rootBundle.loadString(cvBg_2);
+;
+  final pageTheme = await _myPageTheme(PdfPageFormat.a4);
 
   format = format.applyMargin(
-      left: 2.0 * PdfPageFormat.mm,
-      top: 4.0 * PdfPageFormat.mm,
-      right: 2.0 * PdfPageFormat.mm,
-      bottom: 2.0 * PdfPageFormat.mm);
+      left: 0 * PdfPageFormat.cm,
+      top: 0 * PdfPageFormat.cm,
+      right: 0 * PdfPageFormat.cm,
+      bottom: 0 * PdfPageFormat.cm);
   return pw.PageTheme(
     pageFormat: format,
+    margin: EdgeInsets.all(5),
     theme: pw.ThemeData.withFont(
       base: await PdfGoogleFonts.openSansRegular(),
       bold: await PdfGoogleFonts.openSansBold(),
@@ -198,16 +202,17 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
         child: pw.Stack(
           children: [
             pw.Positioned(
-              child: pw.SvgImage(svg: bgShape),
+              child: pw.SvgImage(svg: bgShape,                       height: pageTheme.pageFormat.availableHeight,
+),
               left: 0,
               top: 0,
             ),
-            pw.Positioned(
-              child: pw.Transform.rotate(
-                  angle: pi, child: pw.SvgImage(svg: bgShape)),
-              right: 0,
-              bottom: 0,
-            ),
+            // pw.Positioned(
+            //   child: pw.Transform.rotate(
+            //       angle: pi, child: pw.SvgImage(svg: bgShape)),
+            //   right: 0,
+            //   bottom: 0,
+            // ),
           ],
         ),
       );
@@ -235,7 +240,7 @@ class Education_Block extends pw.StatelessWidget {
                   height: 6,
                   margin: const pw.EdgeInsets.only(top: 5.5, left: 2, right: 5),
                   decoration: const pw.BoxDecoration(
-                    color: green,
+                    color: blue,
                     shape: pw.BoxShape.circle,
                   ),
                 ),
@@ -275,7 +280,7 @@ class Exp_Block extends pw.StatelessWidget {
                   height: 6,
                   margin: const pw.EdgeInsets.only(top: 5.5, left: 2, right: 5),
                   decoration: const pw.BoxDecoration(
-                    color: green,
+                    color: blue,
                     shape: pw.BoxShape.circle,
                   ),
                 ),
@@ -291,7 +296,7 @@ class Exp_Block extends pw.StatelessWidget {
               ]),
           pw.Container(
             decoration: const pw.BoxDecoration(
-                border: pw.Border(left: pw.BorderSide(color: green, width: 2))),
+                border: pw.Border(left: pw.BorderSide(color: blue, width: 2))),
             padding: const pw.EdgeInsets.only(left: 10, top: 5, bottom: 5),
             margin: const pw.EdgeInsets.only(left: 5),
             child: pw.Column(
@@ -315,7 +320,7 @@ class _Category extends pw.StatelessWidget {
   pw.Widget build(pw.Context context) {
     return pw.Container(
       decoration: const pw.BoxDecoration(
-        color: lightGreen,
+        color: lightBlue,
         borderRadius: pw.BorderRadius.all(pw.Radius.circular(6)),
       ),
       margin: const pw.EdgeInsets.only(bottom: 10, top: 20),
@@ -337,7 +342,7 @@ class _Percent extends pw.StatelessWidget {
 
   static const fontSize = 1.2;
 
-  PdfColor get color => green;
+  PdfColor get color => blue;
 
   static const backgroundColor = PdfColors.grey300;
 
@@ -381,7 +386,7 @@ class Hob_Block extends pw.StatelessWidget {
     required this.hobData,
   });
   final Map hobData;
-  PdfColor get color => green;
+  PdfColor get color => blue;
   @override
   pw.Widget build(pw.Context context) {
     final widgets = <pw.Widget>[

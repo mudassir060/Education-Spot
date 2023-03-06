@@ -98,8 +98,11 @@ class _homeScreenState extends State<homeScreen> {
             ),
             // // // // // // // // // // // Banner Ad // // // // // // // //
             CarouselSlider(
-              options: CarouselOptions(height: 150.0),
-              items: [Banner_1,Banner_2,Banner_3].map((i) {
+              options: CarouselOptions(
+                height: 150.0,
+                autoPlay: true,
+              ),
+              items: [Banner_1, Banner_2, Banner_3].map((i) {
                 return Builder(
                   builder: (BuildContext context) {
                     return Container(

@@ -10,8 +10,8 @@ import 'package:printing/printing.dart';
 
 import '../../constants/images.dart';
 
-const PdfColor blue = PdfColor.fromInt(0xFF2E13AA);
-const PdfColor lightBlue = PdfColor.fromInt(0xFF620EEB);
+const PdfColor blue = PdfColor.fromInt(0xFF4171C3);
+const PdfColor lightBlue = PdfColor.fromInt(0xFF4171C3);
 const PdfColor white = PdfColor.fromInt(0xFFFFFFFF);
 const sep = 120.0;
 
@@ -34,21 +34,21 @@ Future<Uint8List> CV_2(data) async {
             children: [
               pw.Stack(children: [
                 pw.Padding(
-                  padding: EdgeInsets.only(left: 70, top: 15, bottom: 15),
+                  padding: EdgeInsets.only(left: 70, top: 25, bottom: 20),
                   child: pw.Container(
-                    height: 70,
                     decoration: const BoxDecoration(
                       color: lightBlue,
                       borderRadius: BorderRadius.all(
                         Radius.circular(35.0),
                       ),
                     ),
-                    padding: const pw.EdgeInsets.only(left: 30, bottom: 20),
+                    padding: const pw.EdgeInsets.only(
+                        left: 50, bottom: 10, top: 10, right: 10),
                     child: pw.Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <pw.Widget>[
                         pw.Text('${data["username"]}',
-                            textScaleFactor: 2,
+                            textScaleFactor: 1.7,
                             style: pw.Theme.of(context)
                                 .defaultTextStyle
                                 .copyWith(
@@ -68,8 +68,8 @@ Future<Uint8List> CV_2(data) async {
                 ),
                 pw.ClipOval(
                   child: pw.Container(
-                    width: 100,
-                    height: 100,
+                    width: 120,
+                    height: 120,
                     color: lightBlue,
                     child: pw.Image(profileImage),
                   ),
@@ -188,7 +188,7 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
       bottom: 0 * PdfPageFormat.cm);
   return pw.PageTheme(
     pageFormat: format,
-    margin: EdgeInsets.all(50),
+    margin: EdgeInsets.all(30),
     theme: pw.ThemeData.withFont(
       base: await PdfGoogleFonts.openSansRegular(),
       bold: await PdfGoogleFonts.openSansBold(),
@@ -328,6 +328,7 @@ class _Category extends pw.StatelessWidget {
       child: pw.Text(
         title,
         textScaleFactor: 1.5,
+        style: pw.Theme.of(context).defaultTextStyle.copyWith(color: white),
       ),
     );
   }

@@ -10,8 +10,9 @@ import 'package:printing/printing.dart';
 
 import '../../constants/images.dart';
 
-const PdfColor blue = PdfColor.fromInt(0xff9ce5d0);
-const PdfColor lightBlue = PdfColor.fromInt(0xffcdf1e7);
+const PdfColor blue = PdfColor.fromInt(0xFF2E13AA);
+const PdfColor lightBlue = PdfColor.fromInt(0xFF620EEB);
+const PdfColor white = PdfColor.fromInt(0xFFFFFFFF);
 const sep = 120.0;
 
 Future<Uint8List> CV_2(data) async {
@@ -26,150 +27,148 @@ Future<Uint8List> CV_2(data) async {
     // pw.MultiPage(
     pw.Page(
       pageTheme: pageTheme,
-      build: (pw.Context context) => pw.Partitions(
+      build: (pw.Context context) => pw.Column(
         children: [
-          pw.Partition(
-              width: sep,
-              child: pw.Container(
-                child: pw.Column(
-                  children: [
-                    pw.Container(
-                      height: pageTheme.pageFormat.availableHeight,
-                      child: pw.Column(
-                        crossAxisAlignment: pw.CrossAxisAlignment.center,
-                        mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-                        children: <pw.Widget>[
-                          pw.ClipOval(
-                            child: pw.Container(
-                              width: 100,
-                              height: 100,
-                              color: lightBlue,
-                              child: pw.Image(profileImage),
-                            ),
-                          ),
-                          pw.Column(children: <pw.Widget>[
-                            if (data["Skills"].length != null)
-                              pw.ListView.builder(
-                                itemCount: data["Skills"].length,
-                                itemBuilder: (context, int index) {
-                                  return _Percent(
-                                      perData: data["Skills"][index]);
-                                },
-                              ),
-                          ]),
-                          pw.Container(),
-                          pw.Container(),
-                          pw.Container(),
-                          // pw.BarcodeWidget(
-                          //   data: 'Parnella Charlesbois',
-                          //   width: 60,
-                          //   height: 60,
-                          //   barcode: pw.Barcode.qrCode(),
-                          //   drawText: false,
-                          // ),
-                        ],
+          pw.Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              pw.Stack(children: [
+                pw.Padding(
+                  padding: EdgeInsets.only(left: 70, top: 15, bottom: 15),
+                  child: pw.Container(
+                    height: 70,
+                    decoration: const BoxDecoration(
+                      color: lightBlue,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(35.0),
                       ),
                     ),
-                  ],
-                ),
-              )),
-          pw.Partition(
-            child: pw.Column(
-              crossAxisAlignment: pw.CrossAxisAlignment.start,
-              children: <pw.Widget>[
-                pw.Container(
-                  padding: const pw.EdgeInsets.only(left: 30, bottom: 20),
-                  child: pw.Column(
-                    crossAxisAlignment: pw.CrossAxisAlignment.start,
-                    children: <pw.Widget>[
-                      pw.Text('${data["username"]}',
-                          textScaleFactor: 2,
-                          style: pw.Theme.of(context)
-                              .defaultTextStyle
-                              .copyWith(fontWeight: pw.FontWeight.bold)),
-                      pw.Padding(padding: const pw.EdgeInsets.only(top: 5)),
-                      pw.Text('${data["job"]}',
-                          textScaleFactor: 1.2,
-                          style: pw.Theme.of(context).defaultTextStyle.copyWith(
-                              fontWeight: pw.FontWeight.bold, color: blue)),
-                      pw.Padding(padding: const pw.EdgeInsets.only(top: 10)),
-                      pw.Row(
-                        crossAxisAlignment: pw.CrossAxisAlignment.start,
-                        mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-                        children: <pw.Widget>[
-                          pw.Column(
-                            crossAxisAlignment: pw.CrossAxisAlignment.start,
-                            children: <pw.Widget>[
-                              pw.Text('${data["PhoneNo"]}'),
-                              _UrlText('${data["email"]}',
-                                  'mailto:${data["email"]}'),
-                            ],
-                          ),
-                          pw.Column(
-                            crossAxisAlignment: pw.CrossAxisAlignment.start,
-                            children: <pw.Widget>[
-                              pw.Text('${data["address"]}'),
-                              _UrlText('${data["web"]}', '${data["web"]}'),
-                            ],
-                          ),
-                          pw.Padding(padding: pw.EdgeInsets.zero)
-                        ],
-                      ),
-                    ],
+                    padding: const pw.EdgeInsets.only(left: 30, bottom: 20),
+                    child: pw.Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <pw.Widget>[
+                        pw.Text('${data["username"]}',
+                            textScaleFactor: 2,
+                            style: pw.Theme.of(context)
+                                .defaultTextStyle
+                                .copyWith(
+                                    fontWeight: pw.FontWeight.bold,
+                                    color: white)),
+                        pw.Padding(padding: const pw.EdgeInsets.only(top: 5)),
+                        pw.Text('${data["job"]}',
+                            textScaleFactor: 1.2,
+                            style: pw.Theme.of(context)
+                                .defaultTextStyle
+                                .copyWith(
+                                    fontWeight: pw.FontWeight.bold,
+                                    color: white)),
+                      ],
+                    ),
                   ),
                 ),
-                if (data["about_me"] != null) _Category(title: 'About Me'),
-                if (data["about_me"] != null) pw.Text(data["about_me"]),
-                if (data["experiences"].length != null)
-                  _Category(title: 'Work Experience'),
-                if (data["experiences"].length != null)
-                  pw.ListView.builder(
-                    itemCount: data["experiences"].length,
-                    itemBuilder: (context, int index) {
-                      return Exp_Block(expData: data["experiences"][index]);
-                    },
+                pw.ClipOval(
+                  child: pw.Container(
+                    width: 100,
+                    height: 100,
+                    color: lightBlue,
+                    child: pw.Image(profileImage),
                   ),
-                // pw.SizedBox(height: 10),
-                if (data["Education"].length != null)
-                  _Category(title: 'Education'),
-                if (data["Education"].length != null)
-                  pw.ListView.builder(
-                    itemCount: data["Education"].length,
-                    itemBuilder: (context, int index) {
-                      return Education_Block(eduData: data["Education"][index]);
-                    },
-                  ),
-                // pw.SizedBox(height: 10),
-                pw.Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(children: [
-                        if (data["Hobbies"].length != null)
-                          _Category(title: 'Hobbies'),
-                        if (data["Hobbies"].length != null)
-                          pw.ListView.builder(
-                            itemCount: data["Hobbies"].length,
-                            itemBuilder: (context, int index) {
-                              return Hob_Block(hobData: data["Hobbies"][index]);
-                            },
-                          ),
-                      ]),
-                      pw.Container(width: 2, height: 80, color: blue),
-                      Column(children: [
-                        if (data["Language"].length != null)
-                          _Category(title: 'Language'),
-                        if (data["Language"].length != null)
-                          pw.ListView.builder(
-                            itemCount: data["Language"].length,
-                            itemBuilder: (context, int index) {
-                              return Hob_Block(
-                                  hobData: data["Language"][index]);
-                            },
-                          ),
-                      ])
+                ),
+              ]),
+              pw.Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    pw.Text('${data["PhoneNo"]}'),
+                    _UrlText('${data["email"]}', 'mailto:${data["email"]}'),
+                    pw.Text('${data["address"]}'),
+                    _UrlText('${data["web"]}', '${data["web"]}'),
+                    pw.Padding(padding: pw.EdgeInsets.zero)
+                  ]),
+              // pw.Container(
+              //   height: pageTheme.pageFormat.availableHeight,
+              //   child: pw.Column(
+              //     crossAxisAlignment: pw.CrossAxisAlignment.center,
+              //     mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+              //     children: <pw.Widget>[
+
+              //       pw.Column(children: <pw.Widget>[
+              //         if (data["Skills"].length != null)
+              //           pw.ListView.builder(
+              //             itemCount: data["Skills"].length,
+              //             itemBuilder: (context, int index) {
+              //               return _Percent(
+              //                   perData: data["Skills"][index]);
+              //             },
+              //           ),
+              //       ]),
+              //       pw.Container(),
+              //       pw.Container(),
+              //       pw.Container(),
+              //       // pw.BarcodeWidget(
+              //       //   data: 'Parnella Charlesbois',
+              //       //   width: 60,
+              //       //   height: 60,
+              //       //   barcode: pw.Barcode.qrCode(),
+              //       //   drawText: false,
+              //       // ),
+              //     ],
+              //   ),
+              // ),
+            ],
+          ),
+          pw.Column(
+            crossAxisAlignment: pw.CrossAxisAlignment.start,
+            children: <pw.Widget>[
+              if (data["about_me"] != null) _Category(title: 'About Me'),
+              if (data["about_me"] != null) pw.Text(data["about_me"]),
+              if (data["experiences"].length != null)
+                _Category(title: 'Work Experience'),
+              if (data["experiences"].length != null)
+                pw.ListView.builder(
+                  itemCount: data["experiences"].length,
+                  itemBuilder: (context, int index) {
+                    return Exp_Block(expData: data["experiences"][index]);
+                  },
+                ),
+              // pw.SizedBox(height: 10),
+              if (data["Education"].length != null)
+                _Category(title: 'Education'),
+              if (data["Education"].length != null)
+                pw.ListView.builder(
+                  itemCount: data["Education"].length,
+                  itemBuilder: (context, int index) {
+                    return Education_Block(eduData: data["Education"][index]);
+                  },
+                ),
+              // pw.SizedBox(height: 10),
+              pw.Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(children: [
+                      if (data["Hobbies"].length != null)
+                        _Category(title: 'Hobbies'),
+                      if (data["Hobbies"].length != null)
+                        pw.ListView.builder(
+                          itemCount: data["Hobbies"].length,
+                          itemBuilder: (context, int index) {
+                            return Hob_Block(hobData: data["Hobbies"][index]);
+                          },
+                        ),
+                    ]),
+                    pw.Container(width: 2, height: 80, color: blue),
+                    Column(children: [
+                      if (data["Language"].length != null)
+                        _Category(title: 'Language'),
+                      if (data["Language"].length != null)
+                        pw.ListView.builder(
+                          itemCount: data["Language"].length,
+                          itemBuilder: (context, int index) {
+                            return Hob_Block(hobData: data["Language"][index]);
+                          },
+                        ),
                     ])
-              ],
-            ),
+                  ])
+            ],
           ),
         ],
       ),
@@ -179,9 +178,8 @@ Future<Uint8List> CV_2(data) async {
 }
 
 Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
-   final bgShape = await rootBundle.loadString(cvBg_2);
-;
-  final pageTheme = await _myPageTheme(PdfPageFormat.a4);
+  final bgShape = await rootBundle.loadString(cvBg_2);
+  ;
 
   format = format.applyMargin(
       left: 0 * PdfPageFormat.cm,
@@ -190,7 +188,7 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
       bottom: 0 * PdfPageFormat.cm);
   return pw.PageTheme(
     pageFormat: format,
-    margin: EdgeInsets.all(5),
+    margin: EdgeInsets.all(50),
     theme: pw.ThemeData.withFont(
       base: await PdfGoogleFonts.openSansRegular(),
       bold: await PdfGoogleFonts.openSansBold(),
@@ -202,8 +200,10 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
         child: pw.Stack(
           children: [
             pw.Positioned(
-              child: pw.SvgImage(svg: bgShape,                       height: pageTheme.pageFormat.availableHeight,
-),
+              child: pw.SvgImage(
+                svg: bgShape,
+                height: 770,
+              ),
               left: 0,
               top: 0,
             ),

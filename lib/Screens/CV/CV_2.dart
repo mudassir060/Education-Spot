@@ -144,29 +144,36 @@ Future<Uint8List> CV_2(data) async {
               pw.Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(children: [
-                      if (data["Hobbies"].length != null)
-                        _Category(title: 'Hobbies'),
-                      if (data["Hobbies"].length != null)
-                        pw.ListView.builder(
-                          itemCount: data["Hobbies"].length,
-                          itemBuilder: (context, int index) {
-                            return Hob_Block(hobData: data["Hobbies"][index]);
-                          },
-                        ),
-                    ]),
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (data["Hobbies"].length != null)
+                            _Category(title: 'Hobbies'),
+                          if (data["Hobbies"].length != null)
+                            pw.ListView.builder(
+                              itemCount: data["Hobbies"].length,
+                              itemBuilder: (context, int index) {
+                                return Hob_Block(
+                                    hobData: data["Hobbies"][index]);
+                              },
+                            ),
+                        ]),
                     pw.Container(width: 2, height: 80, color: blue),
-                    Column(children: [
-                      if (data["Language"].length != null)
-                        _Category(title: 'Language'),
-                      if (data["Language"].length != null)
-                        pw.ListView.builder(
-                          itemCount: data["Language"].length,
-                          itemBuilder: (context, int index) {
-                            return Hob_Block(hobData: data["Language"][index]);
-                          },
-                        ),
-                    ])
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (data["Language"].length != null)
+                            _Category(title: 'Language'),
+                          if (data["Language"].length != null)
+                            pw.ListView.builder(
+                              itemCount: data["Language"].length,
+                              itemBuilder: (context, int index) {
+                                return Hob_Block(
+                                    hobData: data["Language"][index]);
+                              },
+                            ),
+                        ]),
+                    pw.Container(),
                   ])
             ],
           ),
@@ -178,8 +185,8 @@ Future<Uint8List> CV_2(data) async {
 }
 
 Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
-  final bgShape = await rootBundle.loadString(cvBg_2);
-  ;
+  final bgShape_1 = await rootBundle.loadString(cvBg_2_1);
+  final bgShape_2 = await rootBundle.loadString(cvBg_2_2);
 
   format = format.applyMargin(
       left: 0 * PdfPageFormat.cm,
@@ -201,18 +208,20 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
           children: [
             pw.Positioned(
               child: pw.SvgImage(
-                svg: bgShape,
-                height: 770,
+                svg: bgShape_1,
+                height: 350,
               ),
               left: 0,
               top: 0,
             ),
-            // pw.Positioned(
-            //   child: pw.Transform.rotate(
-            //       angle: pi, child: pw.SvgImage(svg: bgShape)),
-            //   right: 0,
-            //   bottom: 0,
-            // ),
+            pw.Positioned(
+              child: pw.SvgImage(
+                svg: bgShape_2,
+                height: 350,
+              ),
+              right: 0,
+              bottom: 0,
+            ),
           ],
         ),
       );

@@ -74,6 +74,7 @@ class _CVScreenState extends State<CVScreen> {
                       items: [
                         cvCard(context, widget.UserData, cv_1,1),
                         cvCard(context, widget.UserData, cv_2,2),
+                        cvCard(context, widget.UserData, cv_3,3),
                       ]),
                 ),
               ),

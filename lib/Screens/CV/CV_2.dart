@@ -214,7 +214,7 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
             pw.Positioned(
               child: pw.Image(
                bgShape_1,
-                // height: 350,
+                height: 350,
               ),
               left: 0,
               top: 0,
@@ -222,7 +222,7 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
             pw.Positioned(
               child: pw.Image(
                bgShape_2,
-                // height: 350,
+                height: 350,
               ),
               right: 0,
               bottom: 0,

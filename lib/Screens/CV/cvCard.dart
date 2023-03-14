@@ -62,8 +62,7 @@ Widget cvCard(context, data, img, cv) {
                                         IconButton(
                                             onPressed: () {
                                               Share.shareFiles(
-                                                  ["${directory?.path}/CV.pdf"],
-                                                  text: 'Great picture');
+                                                  ["${directory?.path}/CV.pdf"]);
                                             },
                                             icon: const Icon(Icons.share))
                                       ],

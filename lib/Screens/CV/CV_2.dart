@@ -185,9 +185,14 @@ Future<Uint8List> CV_2(data) async {
 }
 
 Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
-  final bgShape_1 = await rootBundle.loadString(cvBg_2_1);
-  final bgShape_2 = await rootBundle.loadString(cvBg_2_2);
-
+  // final bgShape_1 = await rootBundle.loadString(cvBg_2_1);
+  // final bgShape_2 = await rootBundle.loadString(cvBg_2_2);
+  final bgShape_1 = pw.MemoryImage(
+    (await rootBundle.load(cvBg_2_1)).buffer.asUint8List(),
+  );
+    final bgShape_2 = pw.MemoryImage(
+    (await rootBundle.load(cvBg_2_2)).buffer.asUint8List(),
+  );
   format = format.applyMargin(
       left: 0 * PdfPageFormat.cm,
       top: 0 * PdfPageFormat.cm,
@@ -207,17 +212,17 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
         child: pw.Stack(
           children: [
             pw.Positioned(
-              child: pw.SvgImage(
-                svg: bgShape_1,
-                height: 350,
+              child: pw.Image(
+               bgShape_1,
+                // height: 350,
               ),
               left: 0,
               top: 0,
             ),
             pw.Positioned(
-              child: pw.SvgImage(
-                svg: bgShape_2,
-                height: 350,
+              child: pw.Image(
+               bgShape_2,
+                // height: 350,
               ),
               right: 0,
               bottom: 0,

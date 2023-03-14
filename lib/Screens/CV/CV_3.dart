@@ -10,9 +10,8 @@ import 'package:printing/printing.dart';
 
 import '../../constants/images.dart';
 
-const PdfColor green = PdfColor.fromInt(0xff9ce5d0);
-const PdfColor lightGreen = PdfColor.fromInt(0xffcdf1e7);
-const sep = 120.0;
+const PdfColor blue = PdfColor.fromInt(0xff012060);
+const PdfColor lightblue = PdfColor.fromInt(0xff00AFF8);
 
 Future<Uint8List> CV_3(data) async {
   final doc = pw.Document(title: 'My Résumé', author: '${data["username"]}');
@@ -29,6 +28,78 @@ Future<Uint8List> CV_3(data) async {
       pageTheme: pageTheme,
       build: (pw.Context context) => pw.Partitions(
         children: [
+          pw.Partition(
+            width: 250,
+            child: pw.Column(
+              children: [
+                pw.Container(
+                  height: pageTheme.pageFormat.availableHeight,
+                  child: pw.Column(
+                    crossAxisAlignment: pw.CrossAxisAlignment.center,
+                    mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+                    children: <pw.Widget>[
+                      pw.ClipOval(
+                        child: pw.Container(
+                          width: 160,
+                          height: 160,
+                          color: lightblue,
+                          child: pw.Image(profileImage),
+                        ),
+                      ),
+                      // pw.Column(children: <pw.Widget>[
+                      //   if (data["Skills"].length != null)
+                      //     pw.ListView.builder(
+                      //       itemCount: data["Skills"].length,
+                      //       itemBuilder: (context, int index) {
+                      //         return _Percent(perData: data["Skills"][index]);
+                      //       },
+                      //     ),
+                      // ]),
+                      if (data["Skills"].length != null)
+                          _Category(title: 'Skills'),
+                        if (data["Skills"].length != null)
+                          pw.ListView.builder(
+                            itemCount: data["Skills"].length,
+                            itemBuilder: (context, int index) {
+                              return Hob_Block(
+                                  hobData: data["Skills"][index]);
+                            },
+                          ),
+                      if (data["Language"].length != null)
+                          _Category(title: 'Language'),
+                        if (data["Language"].length != null)
+                          pw.ListView.builder(
+                            itemCount: data["Language"].length,
+                            itemBuilder: (context, int index) {
+                              return Hob_Block(
+                                  hobData: data["Language"][index]);
+                            },
+                          ),
+                          if (data["Hobbies"].length != null)
+                          _Category(title: 'Hobbies'),
+                        if (data["Hobbies"].length != null)
+                          pw.ListView.builder(
+                            itemCount: data["Hobbies"].length,
+                            itemBuilder: (context, int index) {
+                              return Hob_Block(hobData: data["Hobbies"][index]);
+                            },
+                          ),
+                      pw.Container(),
+                      pw.Container(),
+                      pw.Container(),
+                      // pw.BarcodeWidget(
+                      //   data: 'Parnella Charlesbois',
+                      //   width: 60,
+                      //   height: 60,
+                      //   barcode: pw.Barcode.qrCode(),
+                      //   drawText: false,
+                      // ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
           pw.Partition(
             child: pw.Column(
               crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -47,7 +118,7 @@ Future<Uint8List> CV_3(data) async {
                       pw.Text('${data["job"]}',
                           textScaleFactor: 1.2,
                           style: pw.Theme.of(context).defaultTextStyle.copyWith(
-                              fontWeight: pw.FontWeight.bold, color: green)),
+                              fontWeight: pw.FontWeight.bold, color: blue)),
                       pw.Padding(padding: const pw.EdgeInsets.only(top: 10)),
                       pw.Row(
                         crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -74,10 +145,8 @@ Future<Uint8List> CV_3(data) async {
                     ],
                   ),
                 ),
-                if (data["about_me"] != null)
-                  _Category(title: 'About Me'),
-                if (data["about_me"] != null) 
-                pw.Text(data["about_me"]),
+                if (data["about_me"] != null) _Category(title: 'About Me'),
+                if (data["about_me"] != null) pw.Text(data["about_me"]),
                 if (data["experiences"].length != null)
                   _Category(title: 'Work Experience'),
                 if (data["experiences"].length != null)
@@ -98,80 +167,10 @@ Future<Uint8List> CV_3(data) async {
                     },
                   ),
                 // pw.SizedBox(height: 10),
-                pw.Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(children: [
-                        if (data["Hobbies"].length != null)
-                          _Category(title: 'Hobbies'),
-                        if (data["Hobbies"].length != null)
-                          pw.ListView.builder(
-                            itemCount: data["Hobbies"].length,
-                            itemBuilder: (context, int index) {
-                              return Hob_Block(hobData: data["Hobbies"][index]);
-                            },
-                          ),
-                      ]),
-                      pw.Container(width: 2, height: 80, color: green),
-                      Column(children: [
-                        if (data["Language"].length != null)
-                          _Category(title: 'Language'),
-                        if (data["Language"].length != null)
-                          pw.ListView.builder(
-                            itemCount: data["Language"].length,
-                            itemBuilder: (context, int index) {
-                              return Hob_Block(
-                                  hobData: data["Language"][index]);
-                            },
-                          ),
-                      ])
-                    ])
+               
               ],
             ),
           ),
-          pw.Partition(
-            width: sep,
-            child: pw.Column(
-              children: [
-                pw.Container(
-                  height: pageTheme.pageFormat.availableHeight,
-                  child: pw.Column(
-                    crossAxisAlignment: pw.CrossAxisAlignment.center,
-                    mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-                    children: <pw.Widget>[
-                      pw.ClipOval(
-                        child: pw.Container(
-                          width: 100,
-                          height: 100,
-                          color: lightGreen,
-                          child: pw.Image(profileImage),
-                        ),
-                      ),
-                      pw.Column(children: <pw.Widget>[
-                        if (data["Skills"].length != null)
-                          pw.ListView.builder(
-                            itemCount: data["Skills"].length,
-                            itemBuilder: (context, int index) {
-                              return _Percent(perData: data["Skills"][index]);
-                            },
-                          ),
-                      ]),
-                      pw.Container(),
-                      pw.Container(),
-                      pw.Container(),
-                      // pw.BarcodeWidget(
-                      //   data: 'Parnella Charlesbois',
-                      //   width: 60,
-                      //   height: 60,
-                      //   barcode: pw.Barcode.qrCode(),
-                      //   drawText: false,
-                      // ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          )
         ],
       ),
     ),
@@ -180,15 +179,22 @@ Future<Uint8List> CV_3(data) async {
 }
 
 Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
-  final bgShape = await rootBundle.loadString(cvBg_1);
-
+  // final bgShape_1 = await rootBundle.loadString(cvBg_2_1);
+  // final bgShape_2 = await rootBundle.loadString(cvBg_2_2);
+  final bgShape_1 = pw.MemoryImage(
+    (await rootBundle.load(cvBg_2_1)).buffer.asUint8List(),
+  );
+  final bgShape_2 = pw.MemoryImage(
+    (await rootBundle.load(cvBg_2_2)).buffer.asUint8List(),
+  );
   format = format.applyMargin(
-      left: 2.0 * PdfPageFormat.cm,
-      top: 4.0 * PdfPageFormat.cm,
-      right: 2.0 * PdfPageFormat.cm,
-      bottom: 2.0 * PdfPageFormat.cm);
+      left: 0 * PdfPageFormat.cm,
+      top: 0 * PdfPageFormat.cm,
+      right: 0 * PdfPageFormat.cm,
+      bottom: 0 * PdfPageFormat.cm);
   return pw.PageTheme(
     pageFormat: format,
+    margin: EdgeInsets.all(30),
     theme: pw.ThemeData.withFont(
       base: await PdfGoogleFonts.openSansRegular(),
       bold: await PdfGoogleFonts.openSansBold(),
@@ -200,13 +206,18 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
         child: pw.Stack(
           children: [
             pw.Positioned(
-              child: pw.SvgImage(svg: bgShape),
+              child: pw.Image(
+                bgShape_1,
+                height: 350,
+              ),
               left: 0,
               top: 0,
             ),
             pw.Positioned(
-              child: pw.Transform.rotate(
-                  angle: pi, child: pw.SvgImage(svg: bgShape)),
+              child: pw.Image(
+                bgShape_2,
+                height: 350,
+              ),
               right: 0,
               bottom: 0,
             ),
@@ -237,7 +248,7 @@ class Education_Block extends pw.StatelessWidget {
                   height: 6,
                   margin: const pw.EdgeInsets.only(top: 5.5, left: 2, right: 5),
                   decoration: const pw.BoxDecoration(
-                    color: green,
+                    color: blue,
                     shape: pw.BoxShape.circle,
                   ),
                 ),
@@ -277,7 +288,7 @@ class Exp_Block extends pw.StatelessWidget {
                   height: 6,
                   margin: const pw.EdgeInsets.only(top: 5.5, left: 2, right: 5),
                   decoration: const pw.BoxDecoration(
-                    color: green,
+                    color: blue,
                     shape: pw.BoxShape.circle,
                   ),
                 ),
@@ -293,7 +304,7 @@ class Exp_Block extends pw.StatelessWidget {
               ]),
           pw.Container(
             decoration: const pw.BoxDecoration(
-                border: pw.Border(left: pw.BorderSide(color: green, width: 2))),
+                border: pw.Border(left: pw.BorderSide(color: blue, width: 2))),
             padding: const pw.EdgeInsets.only(left: 10, top: 5, bottom: 5),
             margin: const pw.EdgeInsets.only(left: 5),
             child: pw.Column(
@@ -317,8 +328,8 @@ class _Category extends pw.StatelessWidget {
   pw.Widget build(pw.Context context) {
     return pw.Container(
       decoration: const pw.BoxDecoration(
-        color: lightGreen,
-        borderRadius: pw.BorderRadius.all(pw.Radius.circular(6)),
+        color: lightblue,
+        borderRadius: pw.BorderRadius.all(pw.Radius.circular(20)),
       ),
       margin: const pw.EdgeInsets.only(bottom: 10, top: 20),
       padding: const pw.EdgeInsets.fromLTRB(10, 4, 10, 4),
@@ -339,7 +350,7 @@ class _Percent extends pw.StatelessWidget {
 
   static const fontSize = 1.2;
 
-  PdfColor get color => green;
+  PdfColor get color => blue;
 
   static const backgroundColor = PdfColors.grey300;
 
@@ -383,7 +394,7 @@ class Hob_Block extends pw.StatelessWidget {
     required this.hobData,
   });
   final Map hobData;
-  PdfColor get color => green;
+  PdfColor get color => blue;
   @override
   pw.Widget build(pw.Context context) {
     final widgets = <pw.Widget>[

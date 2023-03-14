@@ -7,7 +7,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/widgets.dart';
 import 'package:printing/printing.dart';
-
+import 'package:flutter/material.dart' as mt;
 import '../../constants/images.dart';
 
 const PdfColor blue = PdfColor.fromInt(0xff012060);
@@ -56,34 +56,32 @@ Future<Uint8List> CV_3(data) async {
                       //     ),
                       // ]),
                       if (data["Skills"].length != null)
-                          _Category(title: 'Skills'),
-                        if (data["Skills"].length != null)
-                          pw.ListView.builder(
-                            itemCount: data["Skills"].length,
-                            itemBuilder: (context, int index) {
-                              return Hob_Block(
-                                  hobData: data["Skills"][index]);
-                            },
-                          ),
+                        _Category(title: 'Skills'),
+                      if (data["Skills"].length != null)
+                        pw.ListView.builder(
+                          itemCount: data["Skills"].length,
+                          itemBuilder: (context, int index) {
+                            return Hob_Block(hobData: data["Skills"][index]);
+                          },
+                        ),
                       if (data["Language"].length != null)
-                          _Category(title: 'Language'),
-                        if (data["Language"].length != null)
-                          pw.ListView.builder(
-                            itemCount: data["Language"].length,
-                            itemBuilder: (context, int index) {
-                              return Hob_Block(
-                                  hobData: data["Language"][index]);
-                            },
-                          ),
-                          if (data["Hobbies"].length != null)
-                          _Category(title: 'Hobbies'),
-                        if (data["Hobbies"].length != null)
-                          pw.ListView.builder(
-                            itemCount: data["Hobbies"].length,
-                            itemBuilder: (context, int index) {
-                              return Hob_Block(hobData: data["Hobbies"][index]);
-                            },
-                          ),
+                        _Category(title: 'Language'),
+                      if (data["Language"].length != null)
+                        pw.ListView.builder(
+                          itemCount: data["Language"].length,
+                          itemBuilder: (context, int index) {
+                            return Hob_Block(hobData: data["Language"][index]);
+                          },
+                        ),
+                      if (data["Hobbies"].length != null)
+                        _Category(title: 'Hobbies'),
+                      if (data["Hobbies"].length != null)
+                        pw.ListView.builder(
+                          itemCount: data["Hobbies"].length,
+                          itemBuilder: (context, int index) {
+                            return Hob_Block(hobData: data["Hobbies"][index]);
+                          },
+                        ),
                       pw.Container(),
                       pw.Container(),
                       pw.Container(),
@@ -167,7 +165,6 @@ Future<Uint8List> CV_3(data) async {
                     },
                   ),
                 // pw.SizedBox(height: 10),
-               
               ],
             ),
           ),
@@ -326,18 +323,33 @@ class _Category extends pw.StatelessWidget {
 
   @override
   pw.Widget build(pw.Context context) {
-    return pw.Container(
-      decoration: const pw.BoxDecoration(
-        color: lightblue,
-        borderRadius: pw.BorderRadius.all(pw.Radius.circular(20)),
-      ),
-      margin: const pw.EdgeInsets.only(bottom: 10, top: 20),
-      padding: const pw.EdgeInsets.fromLTRB(10, 4, 10, 4),
-      child: pw.Text(
-        title,
-        textScaleFactor: 1.5,
-      ),
-    );
+    return pw.Stack(children: [
+      pw.Container(
+          width: 180,
+          decoration: const pw.BoxDecoration(
+            color: lightblue,
+            borderRadius: pw.BorderRadius.all(pw.Radius.circular(18)),
+          ),
+          // margin: const pw.EdgeInsets.only(bottom: 10, top: 20),
+          // padding: const pw.EdgeInsets.fromLTRB(10, 4, 10, 4),
+          child: pw.Padding(
+            padding: const pw.EdgeInsets.fromLTRB(30, 4, 10, 4),
+            child: pw.Text(
+              title,
+              textScaleFactor: 1.5,
+            ),
+          )),
+      pw.Container(
+        width: 20,
+                  // padding: const pw.EdgeInsets.fromLTRB(10, 4, 10, 4),
+
+        decoration: const pw.BoxDecoration(
+          color: PdfColor.fromInt(0xff9ce5d0),
+          borderRadius: pw.BorderRadius.all(pw.Radius.circular(18)),
+        ),
+        child: pw.Icon(pw.IconData(mt.Icons.check.codePoint), size: 30),
+      )
+    ]);
   }
 }
 

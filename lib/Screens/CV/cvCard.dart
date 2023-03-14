@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_full_pdf_viewer/flutter_full_pdf_viewer.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:printing/printing.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../constants/images.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -39,22 +40,34 @@ Widget cvCard(context, data, img, cv) {
                       if (await Permission.storage.request().isGranted) {
                         if (cv == 1) {
                           await file.writeAsBytes(await CV_1(data));
-                        } else  if (cv == 2) {
+                        } else if (cv == 2) {
                           await file.writeAsBytes(await CV_2(data));
-                        } else  if (cv == 3) {
+                        } else if (cv == 3) {
                           await file.writeAsBytes(await CV_1(data));
-                        } else  if (cv == 4) {
+                        } else if (cv == 4) {
                           await file.writeAsBytes(await CV_1(data));
-                        } else  if (cv == 5) {
+                        } else if (cv == 5) {
                           await file.writeAsBytes(await CV_1(data));
-                        } else  {
+                        } else {
                           await file.writeAsBytes(await CV_1(data));
-                        }  
+                        }
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => PDFViewerScaffold(
-                                    appBar: AppBar(),
+                                    appBar: AppBar(
+                                      title: Text("CV View"),
+                                      backgroundColor: Colors.lightBlue,
+                                      actions: [
+                                        IconButton(
+                                            onPressed: () {
+                                              Share.shareFiles(
+                                                  ["${directory?.path}/CV.pdf"],
+                                                  text: 'Great picture');
+                                            },
+                                            icon: const Icon(Icons.share))
+                                      ],
+                                    ),
                                     path: "${directory?.path}/CV.pdf")));
                       } else {
                         print(

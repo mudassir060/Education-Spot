@@ -30,7 +30,7 @@ class _BottomNavigBarState extends State<BottomNavigBar> {
   Widget build(BuildContext context) {
      List<Widget> _widgetOptions = <Widget>[
        homeScreen(UserData: widget.UserData,),
-      communityScreen(UserData: widget.UserData,),
+      // communityScreen(UserData: widget.UserData,),
       const notificationScreen(),
       profileScreen(UserData:  widget.UserData,)
     ];

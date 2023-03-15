@@ -12,12 +12,16 @@ import '../../constants/images.dart';
 
 const PdfColor blue = PdfColor.fromInt(0xff012060);
 const PdfColor lightblue = PdfColor.fromInt(0xff00AFF8);
+const PdfColor white = PdfColor.fromInt(0xFFFFFFFF);
 
 Future<Uint8List> CV_3(data) async {
   final doc = pw.Document(title: 'My Résumé', author: '${data["username"]}');
 
   final profileImage = pw.MemoryImage(
     (await rootBundle.load(Profile)).buffer.asUint8List(),
+  );
+  final circleImg = pw.MemoryImage(
+    (await rootBundle.load(cvBg_3_0)).buffer.asUint8List(),
   );
 
   final pageTheme = await _myPageTheme(PdfPageFormat.a4);
@@ -56,7 +60,7 @@ Future<Uint8List> CV_3(data) async {
                       //     ),
                       // ]),
                       if (data["Skills"].length != null)
-                        _Category(title: 'Skills'),
+                        _Heading(title: 'Skills'),
                       if (data["Skills"].length != null)
                         pw.ListView.builder(
                           itemCount: data["Skills"].length,
@@ -65,7 +69,7 @@ Future<Uint8List> CV_3(data) async {
                           },
                         ),
                       if (data["Language"].length != null)
-                        _Category(title: 'Language'),
+                        _Heading(title: 'Language'),
                       if (data["Language"].length != null)
                         pw.ListView.builder(
                           itemCount: data["Language"].length,
@@ -74,7 +78,7 @@ Future<Uint8List> CV_3(data) async {
                           },
                         ),
                       if (data["Hobbies"].length != null)
-                        _Category(title: 'Hobbies'),
+                        _Heading(title: 'Hobbies'),
                       if (data["Hobbies"].length != null)
                         pw.ListView.builder(
                           itemCount: data["Hobbies"].length,
@@ -143,10 +147,10 @@ Future<Uint8List> CV_3(data) async {
                     ],
                   ),
                 ),
-                if (data["about_me"] != null) _Category(title: 'About Me'),
+                if (data["about_me"] != null) _Category(title: 'About Me', img:circleImg),
                 if (data["about_me"] != null) pw.Text(data["about_me"]),
                 if (data["experiences"].length != null)
-                  _Category(title: 'Work Experience'),
+                  _Category(title: 'Work Experience', img:circleImg),
                 if (data["experiences"].length != null)
                   pw.ListView.builder(
                     itemCount: data["experiences"].length,
@@ -156,7 +160,7 @@ Future<Uint8List> CV_3(data) async {
                   ),
                 // pw.SizedBox(height: 10),
                 if (data["Education"].length != null)
-                  _Category(title: 'Education'),
+                  _Category(title: 'Education', img:circleImg),
                 if (data["Education"].length != null)
                   pw.ListView.builder(
                     itemCount: data["Education"].length,
@@ -179,10 +183,10 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
   // final bgShape_1 = await rootBundle.loadString(cvBg_2_1);
   // final bgShape_2 = await rootBundle.loadString(cvBg_2_2);
   final bgShape_1 = pw.MemoryImage(
-    (await rootBundle.load(cvBg_2_1)).buffer.asUint8List(),
+    (await rootBundle.load(cvBg_3_1)).buffer.asUint8List(),
   );
   final bgShape_2 = pw.MemoryImage(
-    (await rootBundle.load(cvBg_2_2)).buffer.asUint8List(),
+    (await rootBundle.load(cvBg_3_2)).buffer.asUint8List(),
   );
   format = format.applyMargin(
       left: 0 * PdfPageFormat.cm,
@@ -205,17 +209,19 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
             pw.Positioned(
               child: pw.Image(
                 bgShape_1,
-                height: 350,
+                // height: 950,
               ),
               left: 0,
+              right: 0,
               top: 0,
             ),
             pw.Positioned(
               child: pw.Image(
                 bgShape_2,
-                height: 350,
+                height: 950,
               ),
               right: 0,
+              top: 0,
               bottom: 0,
             ),
           ],
@@ -316,39 +322,58 @@ class Exp_Block extends pw.StatelessWidget {
   }
 }
 
-class _Category extends pw.StatelessWidget {
-  _Category({required this.title});
+class _Heading extends pw.StatelessWidget {
+  _Heading({required this.title});
 
   final String title;
 
   @override
   pw.Widget build(pw.Context context) {
+    return pw.Container(
+      child: pw.Text(
+        title,
+        textScaleFactor: 1.5,
+        style: pw.Theme.of(context).defaultTextStyle.copyWith(
+            color: blue, fontWeight: pw.FontWeight.bold, fontSize: 18),
+      ),
+    );
+  }
+}
+
+class _Category extends pw.StatelessWidget {
+  _Category( {required this.title,required this.img});
+
+  final String title;
+  final img;
+
+  @override
+  pw.Widget build(pw.Context context) {
     return pw.Stack(children: [
       pw.Container(
-          width: 180,
+          width: 220,
           decoration: const pw.BoxDecoration(
             color: lightblue,
             borderRadius: pw.BorderRadius.all(pw.Radius.circular(18)),
           ),
-          // margin: const pw.EdgeInsets.only(bottom: 10, top: 20),
-          // padding: const pw.EdgeInsets.fromLTRB(10, 4, 10, 4),
-          child: pw.Padding(
-            padding: const pw.EdgeInsets.fromLTRB(30, 4, 10, 4),
-            child: pw.Text(
-              title,
-              textScaleFactor: 1.5,
-            ),
+          margin: const pw.EdgeInsets.all(5),
+          padding: const pw.EdgeInsets.fromLTRB(60, 7, 10, 7),
+          child: pw.Text(
+            title,
+            textScaleFactor: 1.5,
           )),
-      pw.Container(
-        width: 20,
-                  // padding: const pw.EdgeInsets.fromLTRB(10, 4, 10, 4),
-
-        decoration: const pw.BoxDecoration(
-          color: PdfColor.fromInt(0xff9ce5d0),
-          borderRadius: pw.BorderRadius.all(pw.Radius.circular(18)),
-        ),
-        child: pw.Icon(pw.IconData(mt.Icons.check.codePoint), size: 30),
-      )
+          pw.Image(
+                img,
+                height: 50,
+              ),
+      // pw.Container(
+      //   padding: const pw.EdgeInsets.fromLTRB(4, 4, 4, 4),
+      //   decoration: const pw.BoxDecoration(
+      //     color: blue,
+      //     borderRadius: pw.BorderRadius.all(pw.Radius.circular(18)),
+      //   ),
+      //   child: pw.Icon(pw.IconData(mt.Icons.check.codePoint),
+      //       size: 30, color: white),
+      // )
     ]);
   }
 }

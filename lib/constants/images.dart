@@ -42,5 +42,7 @@ const String cvBg_2_1 = "assets/cv/cvBg_2_1.jpg";
 const String cvBg_2_2 = "assets/cv/cvBg_2_2.jpg";
 
 const String cv_3 = "assets/cv/cv_3.jpg";
-
+const String cvBg_3_0 = "assets/cv/cvBg_3_0.png";
+const String cvBg_3_1 = "assets/cv/cvBg_3_1.png";
+const String cvBg_3_2 = "assets/cv/cvBg_3_2.png";
 // // // // // // // // // // // Skill // // // // // // // // //

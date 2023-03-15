@@ -43,8 +43,7 @@ Future<Uint8List> CV_3(data) async {
                     mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
                     children: <pw.Widget>[
                       pw.Container(
-                            margin: EdgeInsets.only(top:35),
-
+                        margin: EdgeInsets.only(top: 35),
                       ),
                       pw.ClipOval(
                         child: pw.Container(
@@ -67,7 +66,7 @@ Future<Uint8List> CV_3(data) async {
                       _Category(title: '${data["PhoneNo"]}', img: circleImg),
                       _Category(title: '${data["email"]}', img: circleImg),
                       _Category(title: '${data["address"]}', img: circleImg),
-                  _Category(title: '${data["web"]}', img:circleImg),
+                      // _Category(title: '${data["web"]}', img: circleImg),
 
                       if (data["Skills"].length != null)
                         _Heading(title: 'SKILLS'),
@@ -96,7 +95,7 @@ Future<Uint8List> CV_3(data) async {
                             return Hob_Block(hobData: data["Hobbies"][index]);
                           },
                         ),
-                     
+
                       // pw.Container(),
                       // pw.BarcodeWidget(
                       //   data: 'Parnella Charlesbois',
@@ -128,8 +127,7 @@ Future<Uint8List> CV_3(data) async {
                       pw.Text('${data["job"]}',
                           textScaleFactor: 1.2,
                           style: pw.Theme.of(context).defaultTextStyle.copyWith(
-                              fontWeight: pw.FontWeight.bold,
-                              color: white)),
+                              fontWeight: pw.FontWeight.bold, color: white)),
                       pw.Padding(padding: const pw.EdgeInsets.only(top: 40)),
                     ],
                   ),
@@ -183,7 +181,7 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
       bottom: 0 * PdfPageFormat.cm);
   return pw.PageTheme(
     pageFormat: format,
-    margin: EdgeInsets.only(top:5,left:30, right: 30),
+    margin: EdgeInsets.only(top: 10, left: 30, right: 30),
     theme: pw.ThemeData.withFont(
       base: await PdfGoogleFonts.openSansRegular(),
       bold: await PdfGoogleFonts.openSansBold(),

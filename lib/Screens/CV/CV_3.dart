@@ -33,15 +33,19 @@ Future<Uint8List> CV_3(data) async {
       build: (pw.Context context) => pw.Partitions(
         children: [
           pw.Partition(
-            width: 250,
+            width: 230,
             child: pw.Column(
               children: [
                 pw.Container(
                   height: pageTheme.pageFormat.availableHeight,
                   child: pw.Column(
-                    crossAxisAlignment: pw.CrossAxisAlignment.center,
-                    mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: pw.CrossAxisAlignment.start,
+                    mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
                     children: <pw.Widget>[
+                      pw.Container(
+                            margin: EdgeInsets.only(top:35),
+
+                      ),
                       pw.ClipOval(
                         child: pw.Container(
                           width: 160,
@@ -59,8 +63,14 @@ Future<Uint8List> CV_3(data) async {
                       //       },
                       //     ),
                       // ]),
+                      _Heading(title: 'CONTACT'),
+                      _Category(title: '${data["PhoneNo"]}', img: circleImg),
+                      _Category(title: '${data["email"]}', img: circleImg),
+                      _Category(title: '${data["address"]}', img: circleImg),
+                  _Category(title: '${data["web"]}', img:circleImg),
+
                       if (data["Skills"].length != null)
-                        _Heading(title: 'Skills'),
+                        _Heading(title: 'SKILLS'),
                       if (data["Skills"].length != null)
                         pw.ListView.builder(
                           itemCount: data["Skills"].length,
@@ -69,7 +79,7 @@ Future<Uint8List> CV_3(data) async {
                           },
                         ),
                       if (data["Language"].length != null)
-                        _Heading(title: 'Language'),
+                        _Heading(title: 'LAHGUAGES'),
                       if (data["Language"].length != null)
                         pw.ListView.builder(
                           itemCount: data["Language"].length,
@@ -78,7 +88,7 @@ Future<Uint8List> CV_3(data) async {
                           },
                         ),
                       if (data["Hobbies"].length != null)
-                        _Heading(title: 'Hobbies'),
+                        _Heading(title: 'HOBBIES'),
                       if (data["Hobbies"].length != null)
                         pw.ListView.builder(
                           itemCount: data["Hobbies"].length,
@@ -86,9 +96,8 @@ Future<Uint8List> CV_3(data) async {
                             return Hob_Block(hobData: data["Hobbies"][index]);
                           },
                         ),
-                      pw.Container(),
-                      pw.Container(),
-                      pw.Container(),
+                     
+                      // pw.Container(),
                       // pw.BarcodeWidget(
                       //   data: 'Parnella Charlesbois',
                       //   width: 60,
@@ -113,44 +122,23 @@ Future<Uint8List> CV_3(data) async {
                     children: <pw.Widget>[
                       pw.Text('${data["username"]}',
                           textScaleFactor: 2,
-                          style: pw.Theme.of(context)
-                              .defaultTextStyle
-                              .copyWith(fontWeight: pw.FontWeight.bold)),
-                      pw.Padding(padding: const pw.EdgeInsets.only(top: 5)),
+                          style: pw.Theme.of(context).defaultTextStyle.copyWith(
+                              fontWeight: pw.FontWeight.bold,
+                              color: lightblue)),
                       pw.Text('${data["job"]}',
                           textScaleFactor: 1.2,
                           style: pw.Theme.of(context).defaultTextStyle.copyWith(
-                              fontWeight: pw.FontWeight.bold, color: blue)),
-                      pw.Padding(padding: const pw.EdgeInsets.only(top: 10)),
-                      pw.Row(
-                        crossAxisAlignment: pw.CrossAxisAlignment.start,
-                        mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-                        children: <pw.Widget>[
-                          pw.Column(
-                            crossAxisAlignment: pw.CrossAxisAlignment.start,
-                            children: <pw.Widget>[
-                              pw.Text('${data["PhoneNo"]}'),
-                              _UrlText('${data["email"]}',
-                                  'mailto:${data["email"]}'),
-                            ],
-                          ),
-                          pw.Column(
-                            crossAxisAlignment: pw.CrossAxisAlignment.start,
-                            children: <pw.Widget>[
-                              pw.Text('${data["address"]}'),
-                              _UrlText('${data["web"]}', '${data["web"]}'),
-                            ],
-                          ),
-                          pw.Padding(padding: pw.EdgeInsets.zero)
-                        ],
-                      ),
+                              fontWeight: pw.FontWeight.bold,
+                              color: white)),
+                      pw.Padding(padding: const pw.EdgeInsets.only(top: 40)),
                     ],
                   ),
                 ),
-                if (data["about_me"] != null) _Category(title: 'About Me', img:circleImg),
+                if (data["about_me"] != null)
+                  _Category(title: 'About Me', img: circleImg),
                 if (data["about_me"] != null) pw.Text(data["about_me"]),
                 if (data["experiences"].length != null)
-                  _Category(title: 'Work Experience', img:circleImg),
+                  _Category(title: 'Work Experience', img: circleImg),
                 if (data["experiences"].length != null)
                   pw.ListView.builder(
                     itemCount: data["experiences"].length,
@@ -160,7 +148,7 @@ Future<Uint8List> CV_3(data) async {
                   ),
                 // pw.SizedBox(height: 10),
                 if (data["Education"].length != null)
-                  _Category(title: 'Education', img:circleImg),
+                  _Category(title: 'Education', img: circleImg),
                 if (data["Education"].length != null)
                   pw.ListView.builder(
                     itemCount: data["Education"].length,
@@ -195,7 +183,7 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
       bottom: 0 * PdfPageFormat.cm);
   return pw.PageTheme(
     pageFormat: format,
-    margin: EdgeInsets.all(30),
+    margin: EdgeInsets.only(top:5,left:30, right: 30),
     theme: pw.ThemeData.withFont(
       base: await PdfGoogleFonts.openSansRegular(),
       bold: await PdfGoogleFonts.openSansBold(),
@@ -207,21 +195,15 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
         child: pw.Stack(
           children: [
             pw.Positioned(
-              child: pw.Image(
-                bgShape_1,
-                // height: 950,
-              ),
-              left: 0,
-              right: 0,
-              top: 0,
-            ),
+                child: pw.Image(bgShape_1, height: 400, width: 600),
+                // left: 0,
+                // right: 0,
+                top: 0),
+            pw.Container(height: 12, width: 555, color: blue),
             pw.Positioned(
-              child: pw.Image(
-                bgShape_2,
-                height: 950,
-              ),
-              right: 0,
-              top: 0,
+              child: pw.Image(bgShape_2, height: 400, width: 600),
+              // right: 0,
+              // top: 0,
               bottom: 0,
             ),
           ],
@@ -341,7 +323,7 @@ class _Heading extends pw.StatelessWidget {
 }
 
 class _Category extends pw.StatelessWidget {
-  _Category( {required this.title,required this.img});
+  _Category({required this.title, required this.img});
 
   final String title;
   final img;
@@ -356,15 +338,15 @@ class _Category extends pw.StatelessWidget {
             borderRadius: pw.BorderRadius.all(pw.Radius.circular(18)),
           ),
           margin: const pw.EdgeInsets.all(5),
-          padding: const pw.EdgeInsets.fromLTRB(60, 7, 10, 7),
+          padding: const pw.EdgeInsets.fromLTRB(50, 7, 10, 7),
           child: pw.Text(
             title,
             textScaleFactor: 1.5,
           )),
-          pw.Image(
-                img,
-                height: 50,
-              ),
+      pw.Image(
+        img,
+        height: 50,
+      ),
       // pw.Container(
       //   padding: const pw.EdgeInsets.fromLTRB(4, 4, 4, 4),
       //   decoration: const pw.BoxDecoration(

@@ -44,6 +44,7 @@ Future<Uint8List> CV_4(data) async {
                       children: [
                         pw.Column(
                             crossAxisAlignment: pw.CrossAxisAlignment.start,
+                            mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
                             children: [
                               //pw.Padding(padding: pw.EdgeInsets.only(left: 30)),
                               pw.Container(
@@ -82,39 +83,6 @@ Future<Uint8List> CV_4(data) async {
                                         eduData: data["Education"][index]);
                                   },
                                 ),
-
-                              pw.SizedBox(height: 20),
-
-                              pw.Container(
-                                padding: const pw.EdgeInsets.only(
-                                  left: 14,
-                                ),
-                                child: Text(
-                                  "Reference",
-                                  style: TextStyle(color: white, fontSize: 16),
-                                ),
-                              ),
-
-                              pw.SizedBox(height: 10),
-                              pw.Container(
-                                  //padding: const pw.EdgeInsets.only(left:20),
-                                  margin: EdgeInsets.only(left: 14),
-                                  height: 1,
-                                  width: 130,
-                                  color: yellow),
-
-                              // if (data["Education"].length != null)
-                              // _Category(title: 'Education'),
-                              // pw.SizedBox(height: 10),
-                              // if (data["Reference"].length != null)
-                              //   pw.ListView.builder(
-                              //     itemCount: data["Reference"].length,
-                              //     itemBuilder: (context, int index) {
-                              //       return Reference_Block(
-                              //         software: data["Reference"][index],
-                              //       );
-                              //     },
-                              //   ),
 
                               pw.SizedBox(height: 30),
                               pw.Row(
@@ -241,6 +209,38 @@ Future<Uint8List> CV_4(data) async {
                               //     )
                               //   ]))
                               // ])
+                              pw.Container(
+                                padding: const pw.EdgeInsets.only(
+                                  left: 14,
+                                ),
+                                child: Text(
+                                  "Hobbies",
+                                  style: TextStyle(color: white, fontSize: 16),
+                                ),
+                              ),
+
+                              pw.SizedBox(height: 10),
+                           pw.Row(
+                            children: [ pw.Container(
+                                  margin: EdgeInsets.only(left: 14),
+                                  height: 1,
+                                  width: 130,
+                                  color: yellow),]
+                           ),
+                             
+
+                              if (data["Hobbies"].length != null)
+                                // _Category(title: 'Hobbies'),
+                              pw.SizedBox(height: 10),
+                              if (data["Hobbies"].length != null)
+                                pw.ListView.builder(
+                                  itemCount: data["Hobbies"].length,
+                                  itemBuilder: (context, int index) {
+                                    return Hob_Block(
+                                      hobData: data["Hobbies"][index],
+                                    );
+                                  },
+                                ),
                             ]),
                       ],
 
@@ -376,29 +376,26 @@ Future<Uint8List> CV_4(data) async {
                 //   ),
                 // pw.SizedBox(height: 10),
                 pw.Row(
-                  
+
                     //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                     
                       Column(children: [
                         if (data["Skills"].length != null)
                           _Category(title: 'Software Skills'),
-
                         Container(
-                          margin: EdgeInsets.only( top: 20),
-                        child:data["Skills"].length != null?
-
-                          pw.ListView.builder(
-                            itemCount: data["Skills"].length,
-                            itemBuilder: (context, int index) {
-                              return Hob_Block(hobData: data["Skills"][index]);
-                            },
-                          ):
-                          pw.Text("No data available"),
+                          margin: EdgeInsets.only(top: 20),
+                          child: data["Skills"].length != null
+                              ? pw.ListView.builder(
+                                  itemCount: data["Skills"].length,
+                                  itemBuilder: (context, int index) {
+                                    return Hob_Block(
+                                        hobData: data["Skills"][index]);
+                                  },
+                                )
+                              : pw.Text("No data available"),
                         )
                       ]),
 
-                
                       // pw.Container(width: 2, height: 80, color: green),
                       // Column(children: [
                       //   if (data["Language"].length != null)
@@ -521,45 +518,6 @@ class Education_Block extends pw.StatelessWidget {
 
 //--------------------------
 
-class Reference_Block extends pw.StatelessWidget {
-  Reference_Block({
-    required this.software,
-  });
-
-  final Map software;
-
-  @override
-  pw.Widget build(pw.Context context) {
-    return pw.Column(
-        crossAxisAlignment: pw.CrossAxisAlignment.start,
-        children: <pw.Widget>[
-          pw.Column(
-              crossAxisAlignment: pw.CrossAxisAlignment.start,
-              children: <pw.Widget>[
-                Container(
-                  padding: const pw.EdgeInsets.only(
-                    left: 14,
-                  ),
-
-                  // pw.Container(
-                  //   width: 6,
-                  //   height: 6,
-                  //   margin: const pw.EdgeInsets.only(top: 5.5, left: 2, right: 5),
-                  //   decoration: const pw.BoxDecoration(
-                  //     color: green,
-                  //     shape: pw.BoxShape.circle,
-                  //   ),
-                  // ),
-
-                  child: pw.Text(software["software"],
-                      style: pw.Theme.of(context)
-                          .defaultTextStyle
-                          .copyWith(color: white)),
-                )
-              ]),
-        ]);
-  }
-}
 
 class Exp_Block extends pw.StatelessWidget {
   Exp_Block({
@@ -599,33 +557,30 @@ class Exp_Block extends pw.StatelessWidget {
               SizedBox(width: 10),
 
               pw.Container(
-                padding: pw.EdgeInsets.only(left: 10, top: 20,right: 20),
+                  padding: pw.EdgeInsets.only(left: 10, top: 20, right: 20),
+                  child: pw.Text(
+                    expData['name'],
+                    style: pw.Theme.of(context)
+                        .defaultTextStyle
+                        .copyWith(fontWeight: FontWeight.bold),
 
-                child: pw.Text(expData['name'],
-                  style: pw.Theme.of(context).defaultTextStyle.copyWith(fontWeight: FontWeight.bold),
-
-                //  
-                )
-                // container(
-                //
-                // )
-              ),
+                    //
+                  )
+                  // container(
+                  //
+                  // )
+                  ),
             ],
           ),
-           Container(
-                    padding: pw.EdgeInsets.only(left: 110,right: 20),
+          Container(
+            padding: pw.EdgeInsets.only(left: 110, right: 20),
 
-                    //  height: 100,
-                    //  width: 300,
-                    //  color: yellow,
-                     child:  pw.Text( expData['des'],
-                style: pw.Theme.of(context)
-                    .defaultTextStyle
-                   ),
-
-                 
-                   ),
-
+            //  height: 100,
+            //  width: 300,
+            //  color: yellow,
+            child: pw.Text(expData['des'],
+                style: pw.Theme.of(context).defaultTextStyle),
+          ),
 
           // child:
 
@@ -679,55 +634,6 @@ class _Category extends pw.StatelessWidget {
   }
 }
 
-class _Percent extends pw.StatelessWidget {
-  _Percent({
-    required this.perData,
-  });
-
-  final Map perData;
-
-  static const fontSize = 1.2;
-
-  PdfColor get color => green;
-
-  static const backgroundColor = PdfColors.grey300;
-
-  static const strokeWidth = 5.0;
-
-  @override
-  pw.Widget build(pw.Context context) {
-    final widgets = <pw.Widget>[
-      pw.Container(
-
-        width: 70,
-        height: 70,
-        child: pw.Stack(
-          alignment: pw.Alignment.center,
-          fit: pw.StackFit.expand,
-          children: <pw.Widget>[
-            pw.Center(
-              child: pw.Text(
-                '${(perData["rating"] * 100).round().toInt()}%',
-                textScaleFactor: fontSize,
-              ),
-            ),
-            pw.CircularProgressIndicator(
-              value: perData["rating"],
-              backgroundColor: backgroundColor,
-              color: color,
-              strokeWidth: strokeWidth,
-            ),
-          ],
-        ),
-      )
-    ];
-
-    widgets.add(pw.Text(perData["name"]));
-
-    return pw.Column(children: widgets);
-  }
-}
-
 class Hob_Block extends pw.StatelessWidget {
   Hob_Block({
     required this.hobData,
@@ -737,12 +643,8 @@ class Hob_Block extends pw.StatelessWidget {
   @override
   pw.Widget build(pw.Context context) {
     final widgets = <pw.Widget>[
-      
       Container(
-       
-          
-      child:pw.Row(children: [
-       
+          child: pw.Row(children: [
         pw.SizedBox(
           width: 80,
           child: pw.Text("${hobData["name"]}"),
@@ -751,30 +653,9 @@ class Hob_Block extends pw.StatelessWidget {
         pw.SizedBox(
             width: 70,
             child: pw.LinearProgressIndicator(value: hobData["rating"]))
-      ])
-      ),
+      ])),
     ];
     return pw.Column(children: widgets);
-   
-
   }
 }
 
-class _UrlText extends pw.StatelessWidget {
-  _UrlText(this.text, this.url);
-
-  final String text;
-  final String url;
-
-  @override
-  pw.Widget build(pw.Context context) {
-    return pw.UrlLink(
-      destination: url,
-      child: pw.Text(text,
-          style: const pw.TextStyle(
-            decoration: pw.TextDecoration.underline,
-            color: PdfColors.blue,
-          )),
-    );
-  }
-}

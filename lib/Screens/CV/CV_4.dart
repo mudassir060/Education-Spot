@@ -17,7 +17,7 @@ const PdfColor light_black = PdfColor.fromInt(0xB41B1B1A);
 const PdfColor white = PdfColor.fromInt(0xB4FAFAF3);
 const sep = 150.0;
 
-Future<Uint8List> CV_2(data) async {
+Future<Uint8List> CV_4(data) async {
   final doc = pw.Document(title: 'My Résumé', author: '${data["username"]}');
 
   final profileImage = pw.MemoryImage(
@@ -105,16 +105,16 @@ Future<Uint8List> CV_2(data) async {
 
                               // if (data["Education"].length != null)
                               // _Category(title: 'Education'),
-                              pw.SizedBox(height: 10),
-                              if (data["Reference"].length != null)
-                                pw.ListView.builder(
-                                  itemCount: data["Reference"].length,
-                                  itemBuilder: (context, int index) {
-                                    return Reference_Block(
-                                      software: data["Reference"][index],
-                                    );
-                                  },
-                                ),
+                              // pw.SizedBox(height: 10),
+                              // if (data["Reference"].length != null)
+                              //   pw.ListView.builder(
+                              //     itemCount: data["Reference"].length,
+                              //     itemBuilder: (context, int index) {
+                              //       return Reference_Block(
+                              //         software: data["Reference"][index],
+                              //       );
+                              //     },
+                              //   ),
 
                               pw.SizedBox(height: 30),
                               pw.Row(

@@ -13,6 +13,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 import 'CV_2.dart';
 import 'CV_3.dart';
+import 'CV_4.dart';
 
 Widget cvCard(context, data, img, cv) {
   return Card(
@@ -46,7 +47,7 @@ Widget cvCard(context, data, img, cv) {
                         } else if (cv == 3) {
                           await file.writeAsBytes(await CV_3(data));
                         } else if (cv == 4) {
-                          await file.writeAsBytes(await CV_1(data));
+                          await file.writeAsBytes(await CV_4(data));
                         } else if (cv == 5) {
                           await file.writeAsBytes(await CV_1(data));
                         } else {

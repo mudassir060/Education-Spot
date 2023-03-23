@@ -37,181 +37,137 @@ Future<Uint8List> CV_4(data) async {
             child: pw.Column(
               children: [
                 pw.Container(
-                    height: 600,
-                    width: 900,
-                    color: black,
-                    child: pw.Stack(
+                  color: black,
+                  child: pw.Column(
+                      crossAxisAlignment: pw.CrossAxisAlignment.start,
+                      mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
                       children: [
-                        pw.Column(
-                            crossAxisAlignment: pw.CrossAxisAlignment.start,
-                            mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
-                            children: [
-                              //pw.Padding(padding: pw.EdgeInsets.only(left: 30)),
-                              pw.Container(
-                                  height: 150,
-                                  width: 400,
-                                  //color: black,
-                                  child: pw.Image(profileImage)),
-                              pw.SizedBox(height: 10),
-                              //pw.margin: const pw.EdgeInsets.only(bottom: 10, top: 20),
-                              pw.Container(
-                                padding: const pw.EdgeInsets.only(
-                                  left: 14,
-                                ),
-                                child: Text(
-                                  "Education",
-                                  style: TextStyle(color: white, fontSize: 16),
-                                ),
+                        pw.Container(
+                            height: 150,
+                            width: 400,
+                            child: pw.Image(profileImage)),
+                        if (data["Education"].length != null)
+                          SideBar_H1(title: 'Education'),
+                        pw.SizedBox(height: 10),
+                        if (data["Education"].length != null)
+                          pw.ListView.builder(
+                            
+                            itemCount: data["Education"].length,
+                            itemBuilder: (context, int index) {
+                              return Education_Block(
+                                  eduData: data["Education"][index]);
+                            },
+                          ),
+                        pw.SizedBox(height: 30),
+                        pw.Row(
+                          children: [
+                            Container(height: 15, width: 30, color: yellow),
+                            Container(
+                              height: 15,
+                              width: 120,
+                              color: light_black,
+                              padding:
+                                  const pw.EdgeInsets.only(left: 10, bottom: 5),
+                              child: Text(
+                                'Phone:',
+                                style: TextStyle(color: white, fontSize: 10),
                               ),
-
-                              pw.SizedBox(height: 10),
-                              pw.Container(
-                                  //padding: const pw.EdgeInsets.only(left:20),
-                                  margin: EdgeInsets.only(left: 14),
-                                  height: 1,
-                                  width: 130,
-                                  color: yellow),
-
-                              // if (data["Education"].length != null)
-                              // Page_H1(title: 'Education'),
-                              pw.SizedBox(height: 10),
-                              if (data["Education"].length != null)
-                                pw.ListView.builder(
-                                  itemCount: data["Education"].length,
-                                  itemBuilder: (context, int index) {
-                                    return Education_Block(
-                                        eduData: data["Education"][index]);
-                                  },
-                                ),
-
-                              pw.SizedBox(height: 30),
-                              pw.Row(
-                                children: [
-                                  Container(
-                                      height: 15, width: 30, color: yellow),
-                                  Container(
-                                    height: 15,
-                                    width: 120,
-                                    color: light_black,
-                                    padding: const pw.EdgeInsets.only(
-                                        left: 10, bottom: 5),
-                                    child: Text(
-                                      'Phone:',
-                                      style:
-                                          TextStyle(color: white, fontSize: 10),
-                                    ),
-                                  )
-                                ],
+                            )
+                          ],
+                        ),
+                        Container(
+                          padding: const pw.EdgeInsets.only(
+                            left: 40,
+                          ),
+                          child: pw.Text('${data["PhoneNo"]}',
+                              style: TextStyle(color: white)),
+                        ),
+                        SizedBox(height: 10),
+                        pw.Row(
+                          children: [
+                            Container(height: 15, width: 30, color: yellow),
+                            Container(
+                              height: 15,
+                              width: 120,
+                              color: light_black,
+                              padding:
+                                  const pw.EdgeInsets.only(left: 10, bottom: 5),
+                              child: Text(
+                                'Email:',
+                                style: TextStyle(color: white, fontSize: 10),
                               ),
-                              Container(
-                                padding: const pw.EdgeInsets.only(
-                                  left: 40,
-                                ),
-                                child: pw.Text('${data["PhoneNo"]}',
-                                    style: TextStyle(color: white)),
+                            )
+                          ],
+                        ),
+                        Container(
+                          padding: const pw.EdgeInsets.only(
+                            left: 40,
+                          ),
+                          child: pw.Text('${data["email"]}',
+                              style: TextStyle(color: white)),
+                        ),
+                        SizedBox(height: 10),
+                        pw.Row(
+                          children: [
+                            Container(height: 15, width: 30, color: yellow),
+                            Container(
+                              height: 15,
+                              width: 120,
+                              color: light_black,
+                              padding:
+                                  const pw.EdgeInsets.only(left: 10, bottom: 5),
+                              child: Text(
+                                'Website:',
+                                style: TextStyle(color: white, fontSize: 10),
                               ),
-
-                              SizedBox(height: 10),
-
-                              pw.Row(
-                                children: [
-                                  Container(
-                                      height: 15, width: 30, color: yellow),
-                                  Container(
-                                    height: 15,
-                                    width: 120,
-                                    color: light_black,
-                                    padding: const pw.EdgeInsets.only(
-                                        left: 10, bottom: 5),
-                                    child: Text(
-                                      'Email:',
-                                      style:
-                                          TextStyle(color: white, fontSize: 10),
-                                    ),
-                                  )
-                                ],
+                            )
+                          ],
+                        ),
+                        Container(
+                          padding: const pw.EdgeInsets.only(
+                            left: 30,
+                          ),
+                          child: pw.Text('${data["web"]}',
+                              style: TextStyle(color: white, fontSize: 10)),
+                        ),
+                        SizedBox(height: 10),
+                        pw.Row(
+                          children: [
+                            Container(height: 15, width: 30, color: yellow),
+                            Container(
+                              height: 15,
+                              width: 120,
+                              color: light_black,
+                              padding:
+                                  const pw.EdgeInsets.only(left: 10, bottom: 5),
+                              child: Text(
+                                'Address:',
+                                style: TextStyle(color: white, fontSize: 10),
                               ),
-                              Container(
-                                padding: const pw.EdgeInsets.only(
-                                  left: 40,
-                                ),
-                                child: pw.Text('${data["email"]}',
-                                    style: TextStyle(color: white)),
-                              ),
-
-                              SizedBox(height: 10),
-
-                              pw.Row(
-                                children: [
-                                  Container(
-                                      height: 15, width: 30, color: yellow),
-                                  Container(
-                                    height: 15,
-                                    width: 120,
-                                    color: light_black,
-                                    padding: const pw.EdgeInsets.only(
-                                        left: 10, bottom: 5),
-                                    child: Text(
-                                      'Website:',
-                                      style:
-                                          TextStyle(color: white, fontSize: 10),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Container(
-                                padding: const pw.EdgeInsets.only(
-                                  left: 30,
-                                ),
-                                child: pw.Text('${data["web"]}',
-                                    style:
-                                        TextStyle(color: white, fontSize: 10)),
-                              ),
-
-                              SizedBox(height: 10),
-
-                              pw.Row(
-                                children: [
-                                  Container(
-                                      height: 15, width: 30, color: yellow),
-                                  Container(
-                                    height: 15,
-                                    width: 120,
-                                    color: light_black,
-                                    padding: const pw.EdgeInsets.only(
-                                        left: 10, bottom: 5),
-                                    child: Text(
-                                      'Address:',
-                                      style:
-                                          TextStyle(color: white, fontSize: 10),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Container(
-                                padding: const pw.EdgeInsets.only(
-                                  left: 30,
-                                ),
-                                child: pw.Text('${data["address"]}',
-                                    style:
-                                        TextStyle(color: white, fontSize: 10)),
-                              ),
-
-                              if (data["Hobbies"].length != null)
-                                SideBar_H1(title: 'Hobbies'),
-                              pw.SizedBox(height: 10),
-                              if (data["Hobbies"].length != null)
-                                pw.ListView.builder(
-                                  itemCount: data["Hobbies"].length,
-                                  itemBuilder: (context, int index) {
-                                    return Hob_Block(
-                                      hobData: data["Hobbies"][index],
-                                    );
-                                  },
-                                ),
-                            ]),
-                      ],
-                    )),
+                            )
+                          ],
+                        ),
+                        Container(
+                          padding: const pw.EdgeInsets.only(
+                            left: 30,
+                          ),
+                          child: pw.Text('${data["address"]}',
+                              style: TextStyle(color: white, fontSize: 10)),
+                        ),
+                        if (data["Hobbies"].length != null)
+                          SideBar_H1(title: 'Hobbies'),
+                        pw.SizedBox(height: 10),
+                        if (data["Hobbies"].length != null)
+                          pw.ListView.builder(
+                            itemCount: data["Hobbies"].length,
+                            itemBuilder: (context, int index) {
+                              return Hob_Block(
+                                hobData: data["Hobbies"][index],
+                              );
+                            },
+                          ),
+                      ]),
+                ),
               ],
             ),
           ),
@@ -325,9 +281,6 @@ class Education_Block extends pw.StatelessWidget {
               children: <pw.Widget>[
                 pw.Row(children: [
                   Container(
-                    padding: const pw.EdgeInsets.only(
-                      left: 14,
-                    ),
                     child: pw.Text(eduData["name"],
                         style: pw.Theme.of(context).defaultTextStyle.copyWith(
                             fontWeight: pw.FontWeight.bold,

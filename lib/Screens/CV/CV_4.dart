@@ -499,30 +499,15 @@ class Exp_Block extends pw.StatelessWidget {
         crossAxisAlignment: pw.CrossAxisAlignment.start,
         children: <pw.Widget>[
           pw.Row(
-            //crossAxisAlignment: pw.CrossAxisAlignment.start,
             children: <pw.Widget>[
-              // pw.Container(
-              //   width: 6,
-              //   height: 6,
-              //   margin: const pw.EdgeInsets.only(top: 5.5, left: 2, right: 5),
-
-              // ),
-              // pw.Text(expData['name'],
-              //     style: pw.Theme.of(context)
-              //         .defaultTextStyle
-              //         .copyWith(fontWeight: pw.FontWeight.bold)),
-              // pw.Spacer(),
               pw.Container(
                 padding: pw.EdgeInsets.only(left: 30, top: 20),
-                child: //pw.Text("(${expData['endDate']})"
-                    pw.Text(expData['endDate'],
-                        style: pw.Theme.of(context)
-                            .defaultTextStyle
-                            .copyWith(fontWeight: pw.FontWeight.bold)),
+                child: pw.Text(expData['endDate'],
+                    style: pw.Theme.of(context)
+                        .defaultTextStyle
+                        .copyWith(fontWeight: pw.FontWeight.bold)),
               ),
-
               SizedBox(width: 10),
-
               pw.Container(
                   padding: pw.EdgeInsets.only(left: 10, top: 20, right: 20),
                   child: pw.Text(
@@ -550,49 +535,26 @@ class Exp_Block extends pw.StatelessWidget {
           ),
 
           // child:
-
-          // pw.Container(
-          //   decoration: const pw.BoxDecoration(
-          //       border: pw.Border(left: pw.BorderSide(color: green, width: 2))),
-          //   padding: const pw.EdgeInsets.only(left: 10, top: 5, bottom: 5),
-          //   margin: const pw.EdgeInsets.only(left: 5),
-          //   child: pw.Column(
-          //       crossAxisAlignment: pw.CrossAxisAlignment.start,
-          //       children: <pw.Widget>[
-          //         pw.Text(expData['des'],
-          //             style: pw.Theme.of(context).defaultTextStyle.copyWith()),
-          //         // pw.Spacer(),
-          //       ]),
-          // ),
         ]);
   }
 }
 
 class Page_H1 extends pw.StatelessWidget {
   Page_H1({required this.title});
-
   final String title;
-
   @override
   pw.Widget build(pw.Context context) {
     return pw.Column(
         crossAxisAlignment: pw.CrossAxisAlignment.start,
         children: [
           pw.Container(
-            // decoration: const pw.BoxDecoration(
-            //   color: lightGreen,
-            //   borderRadius: pw.BorderRadius.all(pw.Radius.circular(6)),
-            // ),
             margin: const pw.EdgeInsets.only(bottom: 10, top: 20, left: 30),
-
-            //margin: EdgeInsets.only(left: 30),
             child: pw.Text(
               title,
               textScaleFactor: 1.5,
             ),
           ),
           pw.Container(
-              //padding: const pw.EdgeInsets.only(left:20),
               margin: EdgeInsets.only(left: 30),
               height: 1,
               width: 350,
@@ -614,7 +576,10 @@ class Hob_Block extends pw.StatelessWidget {
           child: pw.Row(children: [
         pw.SizedBox(
           width: 80,
-          child: pw.Text("${hobData["name"]}"),
+          child: Text(
+            "${hobData["name"]}",
+            style: TextStyle(color: white),
+          ),
         ),
         pw.SizedBox(width: 10),
         pw.SizedBox(
@@ -634,9 +599,7 @@ class SideBar_H1 extends pw.StatelessWidget {
   PdfColor get color => green;
   @override
   pw.Widget build(pw.Context context) {
-    return pw.Column(
-      crossAxisAlignment: CrossAxisAlignment.center, 
-      children: [
+    return pw.Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
       pw.Container(
         child: Text(
           title,
@@ -644,8 +607,7 @@ class SideBar_H1 extends pw.StatelessWidget {
         ),
       ),
       pw.SizedBox(height: 10),
-      pw.Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
+      pw.Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
         pw.Container(height: 1, width: 130, color: yellow),
       ]),
     ]);

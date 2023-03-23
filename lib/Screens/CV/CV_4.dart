@@ -73,7 +73,7 @@ Future<Uint8List> CV_4(data) async {
                                   color: yellow),
 
                               // if (data["Education"].length != null)
-                              // _Category(title: 'Education'),
+                              // Page_H1(title: 'Education'),
                               pw.SizedBox(height: 10),
                               if (data["Education"].length != null)
                                 pw.ListView.builder(
@@ -197,41 +197,9 @@ Future<Uint8List> CV_4(data) async {
                                         TextStyle(color: white, fontSize: 10)),
                               ),
 
-                              // pw.Row(children: [
-                              //   Container(height: 10, width: 30, color: yellow),
-                              //   Container(
-                              //       child: pw.Column(children: [
-                              //     pw.Text('Email:'),
-                              //     Container(
-                              //       margin: EdgeInsets.only(left: 10),
-                              //       child: _UrlText('${data["email"]}',
-                              //           'mailto:${data["email"]}'),
-                              //     )
-                              //   ]))
-                              // ])
-                              pw.Container(
-                                padding: const pw.EdgeInsets.only(
-                                  left: 14,
-                                ),
-                                child: Text(
-                                  "Hobbies",
-                                  style: TextStyle(color: white, fontSize: 16),
-                                ),
-                              ),
-
-                              pw.SizedBox(height: 10),
-                           pw.Row(
-                            children: [ pw.Container(
-                                  margin: EdgeInsets.only(left: 14),
-                                  height: 1,
-                                  width: 130,
-                                  color: yellow),]
-                           ),
-                             
-
                               if (data["Hobbies"].length != null)
-                                // _Category(title: 'Hobbies'),
-                              pw.SizedBox(height: 10),
+                                SideBar_H1(title: 'Hobbies'),
+                                pw.SizedBox(height: 10),
                               if (data["Hobbies"].length != null)
                                 pw.ListView.builder(
                                   itemCount: data["Hobbies"].length,
@@ -342,7 +310,7 @@ Future<Uint8List> CV_4(data) async {
                   ),
                 ),
 
-                if (data["about_me"] != null) _Category(title: 'About Me'),
+                if (data["about_me"] != null) Page_H1(title: 'About Me'),
                 pw.Container(
                   margin: EdgeInsets.only(left: 30, right: 30, top: 10),
                   child: data["about_me"] != null
@@ -351,7 +319,7 @@ Future<Uint8List> CV_4(data) async {
                 ),
 
                 if (data["experiences"].length != null)
-                  _Category(title: 'Work Experience'),
+                  Page_H1(title: 'Work Experience'),
                 pw.Container(
                   child: data["experiences"].length != null
                       ? pw.ListView.builder(
@@ -366,7 +334,7 @@ Future<Uint8List> CV_4(data) async {
 
                 // pw.SizedBox(height: 10),
                 // if (data["Education"].length != null)
-                //   _Category(title: 'Education'),
+                //   Page_H1(title: 'Education'),
                 // if (data["Education"].length != null)
                 //   pw.ListView.builder(
                 //     itemCount: data["Education"].length,
@@ -381,7 +349,7 @@ Future<Uint8List> CV_4(data) async {
                     children: [
                       Column(children: [
                         if (data["Skills"].length != null)
-                          _Category(title: 'Software Skills'),
+                          Page_H1(title: 'Software Skills'),
                         Container(
                           margin: EdgeInsets.only(top: 20),
                           child: data["Skills"].length != null
@@ -399,7 +367,7 @@ Future<Uint8List> CV_4(data) async {
                       // pw.Container(width: 2, height: 80, color: green),
                       // Column(children: [
                       //   if (data["Language"].length != null)
-                      //     _Category(title: 'Language'),
+                      //     Page_H1(title: 'Language'),
                       //   if (data["Language"].length != null)
                       //     pw.ListView.builder(
                       //       itemCount: data["Language"].length,
@@ -518,7 +486,6 @@ class Education_Block extends pw.StatelessWidget {
 
 //--------------------------
 
-
 class Exp_Block extends pw.StatelessWidget {
   Exp_Block({
     required this.expData,
@@ -601,8 +568,8 @@ class Exp_Block extends pw.StatelessWidget {
   }
 }
 
-class _Category extends pw.StatelessWidget {
-  _Category({required this.title});
+class Page_H1 extends pw.StatelessWidget {
+  Page_H1({required this.title});
 
   final String title;
 
@@ -659,3 +626,32 @@ class Hob_Block extends pw.StatelessWidget {
   }
 }
 
+class SideBar_H1 extends pw.StatelessWidget {
+  SideBar_H1({
+    required this.title,
+  });
+  final String title;
+  PdfColor get color => green;
+  @override
+  pw.Widget build(pw.Context context) {
+    return pw.Column(children: [
+      pw.Container(
+        padding: const pw.EdgeInsets.only(
+          left: 14,
+        ),
+        child: Text(
+          title,
+          style: TextStyle(color: white, fontSize: 16),
+        ),
+      ),
+      pw.SizedBox(height: 10),
+      pw.Row(children: [
+        pw.Container(
+            margin: EdgeInsets.only(left: 14),
+            height: 1,
+            // width: 130,
+            color: yellow),
+      ]),
+    ]);
+  }
+}

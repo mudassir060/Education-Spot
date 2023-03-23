@@ -211,48 +211,7 @@ Future<Uint8List> CV_4(data) async {
                                 ),
                             ]),
                       ],
-
-                      // Education(),
-
-                      //pw.Text("Education",style: TextStyle(color: green))
-                    )
-
-                    //child: pw.Container(height: 200,width: 200,color: black )
-                    // height: pageTheme.pageFormat.availableHeight,
-                    // child: pw.Column(
-                    //   crossAxisAlignment: pw.CrossAxisAlignment.center,
-                    //   mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-                    //   children: <pw.Widget>[
-                    //     pw.ClipOval(
-                    //       child: pw.Container(
-                    //         width: 100,
-                    //         height: 100,
-                    //         color: lightGreen,
-                    //         child: pw.Image(profileImage),
-                    //       ),
-                    //     ),
-                    //     pw.Column(children: <pw.Widget>[
-                    //       if (data["Skills"].length != null)
-                    //         pw.ListView.builder(
-                    //           itemCount: data["Skills"].length,
-                    //           itemBuilder: (context, int index) {
-                    //             return _Percent(perData: data["Skills"][index]);
-                    //           },
-                    //         ),
-                    //     ]),
-                    //     pw.Container(),
-                    //     pw.Container(),
-                    //     pw.Container(),
-                    //     // pw.BarcodeWidget(
-                    //     //   data: 'Parnella Charlesbois',
-                    //     //   width: 60,
-                    //     //   height: 60,
-                    //     //   barcode: pw.Barcode.qrCode(),
-                    //     //   drawText: false,
-                    //     // ),
-                    //   ],
-                    // ),
-                    ),
+                    )),
               ],
             ),
           ),
@@ -261,7 +220,6 @@ Future<Uint8List> CV_4(data) async {
               crossAxisAlignment: pw.CrossAxisAlignment.start,
               children: <pw.Widget>[
                 SizedBox(height: 40),
-
                 pw.Container(
                   height: 100,
                   width: 500,
@@ -275,41 +233,14 @@ Future<Uint8List> CV_4(data) async {
                           style: pw.Theme.of(context)
                               .defaultTextStyle
                               .copyWith(fontWeight: pw.FontWeight.bold)),
-
                       pw.Padding(padding: const pw.EdgeInsets.only(top: 5)),
-
                       pw.Text('${data["job"]}',
                           textScaleFactor: 1.2,
                           style: pw.Theme.of(context).defaultTextStyle.copyWith(
                               fontWeight: pw.FontWeight.bold, color: black)),
-                      //   pw.Padding(padding: const pw.EdgeInsets.only(top: 10)),
-
-                      //   pw.Row(
-                      //     crossAxisAlignment: pw.CrossAxisAlignment.start,
-                      //     mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-                      //     children: <pw.Widget>[
-                      //       pw.Column(
-                      //         crossAxisAlignment: pw.CrossAxisAlignment.start,
-                      //         children: <pw.Widget>[
-                      //           pw.Text('${data["PhoneNo"]}'),
-                      //           _UrlText('${data["email"]}',
-                      //               'mailto:${data["email"]}'),
-                      //         ],
-                      //       ),
-                      //       pw.Column(
-                      //         crossAxisAlignment: pw.CrossAxisAlignment.start,
-                      //         children: <pw.Widget>[
-                      //           pw.Text('${data["address"]}'),
-                      //           _UrlText('${data["web"]}', '${data["web"]}'),
-                      //         ],
-                      //       ),
-                      //       pw.Padding(padding: pw.EdgeInsets.zero)
-                      //     ],
-                      //   ),
                     ],
                   ),
                 ),
-
                 if (data["about_me"] != null) Page_H1(title: 'About Me'),
                 pw.Container(
                   margin: EdgeInsets.only(left: 30, right: 30, top: 10),
@@ -317,7 +248,6 @@ Future<Uint8List> CV_4(data) async {
                       ? pw.Text(data["about_me"])
                       : pw.Text("No data available"),
                 ),
-
                 if (data["experiences"].length != null)
                   Page_H1(title: 'Work Experience'),
                 pw.Container(
@@ -331,53 +261,24 @@ Future<Uint8List> CV_4(data) async {
                         )
                       : pw.Text("No data available"),
                 ),
-
-                // pw.SizedBox(height: 10),
-                // if (data["Education"].length != null)
-                //   Page_H1(title: 'Education'),
-                // if (data["Education"].length != null)
-                //   pw.ListView.builder(
-                //     itemCount: data["Education"].length,
-                //     itemBuilder: (context, int index) {
-                //       return Education_Block(eduData: data["Education"][index]);
-                //     },
-                //   ),
-                // pw.SizedBox(height: 10),
-                pw.Row(
-
-                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(children: [
-                        if (data["Skills"].length != null)
-                          Page_H1(title: 'Software Skills'),
-                        Container(
-                          margin: EdgeInsets.only(top: 20),
-                          child: data["Skills"].length != null
-                              ? pw.ListView.builder(
-                                  itemCount: data["Skills"].length,
-                                  itemBuilder: (context, int index) {
-                                    return Hob_Block(
-                                        hobData: data["Skills"][index]);
-                                  },
-                                )
-                              : pw.Text("No data available"),
-                        )
-                      ]),
-
-                      // pw.Container(width: 2, height: 80, color: green),
-                      // Column(children: [
-                      //   if (data["Language"].length != null)
-                      //     Page_H1(title: 'Language'),
-                      //   if (data["Language"].length != null)
-                      //     pw.ListView.builder(
-                      //       itemCount: data["Language"].length,
-                      //       itemBuilder: (context, int index) {
-                      //         return Hob_Block(
-                      //             hobData: data["Language"][index]);
-                      //       },
-                      //     ),
-                      // ])
-                    ]),
+                pw.Row(children: [
+                  Column(children: [
+                    if (data["Skills"].length != null)
+                      Page_H1(title: 'Software Skills'),
+                    Container(
+                      margin: EdgeInsets.only(top: 20),
+                      child: data["Skills"].length != null
+                          ? pw.ListView.builder(
+                              itemCount: data["Skills"].length,
+                              itemBuilder: (context, int index) {
+                                return Hob_Block(
+                                    hobData: data["Skills"][index]);
+                              },
+                            )
+                          : pw.Text("No data available"),
+                    )
+                  ]),
+                ]),
               ],
             ),
           ),
@@ -404,27 +305,6 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
       bold: await PdfGoogleFonts.openSansBold(),
       icons: await PdfGoogleFonts.materialIcons(),
     ),
-    // buildBackground: (pw.Context context) {
-    //   return pw.FullPage(
-    //     ignoreMargins: true,
-    //     child: pw.Stack(
-    //       children: [
-    //         pw.Positioned(
-    //           child: pw.SvgImage(svg: bgShape),
-    //           left: 0,
-    //           top: 0,
-    //         ),
-    //         pw.Positioned(
-    //           child: pw.Transform.rotate(
-    //               angle: pi, child: pw.SvgImage(svg: bgShape)),
-    //           right: 0,
-    //           bottom: 0,
-    //         ),
-    //       ],
-    //     ),
-    //   );
-
-    // },
   );
 }
 
@@ -443,15 +323,6 @@ class Education_Block extends pw.StatelessWidget {
           pw.Column(
               crossAxisAlignment: pw.CrossAxisAlignment.start,
               children: <pw.Widget>[
-                // pw.Container(
-                //   width: 6,
-                //   height: 6,
-                //   margin: const pw.EdgeInsets.only(top: 5.5, left: 2, right: 5),
-                //   decoration: const pw.BoxDecoration(
-                //     color: green,
-                //     shape: pw.BoxShape.circle,
-                //   ),
-                // ),
                 pw.Row(children: [
                   Container(
                     padding: const pw.EdgeInsets.only(
@@ -467,7 +338,6 @@ class Education_Block extends pw.StatelessWidget {
                   pw.Text(eduData["uni"], style: TextStyle(color: white)),
                   //pw.Spacer(),
                 ]),
-
                 Container(
                   padding: const pw.EdgeInsets.only(
                     left: 14,
@@ -515,26 +385,14 @@ class Exp_Block extends pw.StatelessWidget {
                     style: pw.Theme.of(context)
                         .defaultTextStyle
                         .copyWith(fontWeight: FontWeight.bold),
-
-                    //
-                  )
-                  // container(
-                  //
-                  // )
-                  ),
+                  )),
             ],
           ),
           Container(
             padding: pw.EdgeInsets.only(left: 110, right: 20),
-
-            //  height: 100,
-            //  width: 300,
-            //  color: yellow,
             child: pw.Text(expData['des'],
                 style: pw.Theme.of(context).defaultTextStyle),
           ),
-
-          // child:
         ]);
   }
 }

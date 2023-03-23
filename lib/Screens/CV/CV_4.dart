@@ -199,7 +199,7 @@ Future<Uint8List> CV_4(data) async {
 
                               if (data["Hobbies"].length != null)
                                 SideBar_H1(title: 'Hobbies'),
-                                pw.SizedBox(height: 10),
+                              pw.SizedBox(height: 10),
                               if (data["Hobbies"].length != null)
                                 pw.ListView.builder(
                                   itemCount: data["Hobbies"].length,
@@ -634,23 +634,19 @@ class SideBar_H1 extends pw.StatelessWidget {
   PdfColor get color => green;
   @override
   pw.Widget build(pw.Context context) {
-    return pw.Column(children: [
+    return pw.Column(
+      crossAxisAlignment: CrossAxisAlignment.center, 
+      children: [
       pw.Container(
-        padding: const pw.EdgeInsets.only(
-          left: 14,
-        ),
         child: Text(
           title,
           style: TextStyle(color: white, fontSize: 16),
         ),
       ),
       pw.SizedBox(height: 10),
-      pw.Row(children: [
-        pw.Container(
-            margin: EdgeInsets.only(left: 14),
-            height: 1,
-            // width: 130,
-            color: yellow),
+      pw.Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+        pw.Container(height: 1, width: 130, color: yellow),
       ]),
     ]);
   }

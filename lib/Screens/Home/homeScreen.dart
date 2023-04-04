@@ -12,6 +12,7 @@ import '../CompleteProfile/completeProfile_1.dart';
 import '../Jobs/jobsScreen.dart';
 import '../Quizz/QuizzScreen.dart';
 import '../Scholarships/sholarshipsScreen.dart';
+import '../chatGPT/chat_page.dart';
 
 class homeScreen extends StatefulWidget {
   final Map UserData;
@@ -35,10 +36,10 @@ class _homeScreenState extends State<homeScreen> {
       {"name": "Quiz", "image": Quiz, "page": QuizzScreen()},
       {"name": "Job", "image": Jobs, "page": jobsScreen()},
       {
-        "name": "Community",
-        "image": CommonRoom,
-        "page": communityScreen(
-          UserData: widget.UserData,
+        "name": "Chat GPT",
+        "image": "assets/chatgpt-icon.png",
+        "page": ChatPage(
+          // UserData: widget.UserData,
         )
       },
       {

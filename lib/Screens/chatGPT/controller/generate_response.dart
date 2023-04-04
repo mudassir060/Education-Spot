@@ -5,7 +5,7 @@ import '../constant/api_key.dart';
 Future<String> generateResponse(String prompt) async {
   const apiKey = apikey;
 
-  var url = Uri.https("https://api.openai.com/v1/engines/davinci-codex/completions");
+  var url = Uri.https("api.openai.com", "/v1/completions");
   final response = await http.post(
     url,
     headers: {
@@ -22,7 +22,7 @@ Future<String> generateResponse(String prompt) async {
       'presence_penalty': 0.0,
     }),
   );
-  print("======>$response");
+  print("======>${response.body}");
   if (response.statusCode == 200) {
     Map<String, dynamic> newresponse = jsonDecode(response.body);
     return newresponse['choices'][0]['text'];

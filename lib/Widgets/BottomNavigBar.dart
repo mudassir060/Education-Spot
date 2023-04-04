@@ -30,8 +30,8 @@ class _BottomNavigBarState extends State<BottomNavigBar> {
   Widget build(BuildContext context) {
      List<Widget> _widgetOptions = <Widget>[
        homeScreen(UserData: widget.UserData,),
-      // communityScreen(UserData: widget.UserData,),
-      const notificationScreen(),
+      communityScreen(UserData: widget.UserData,),
+      // const notificationScreen(),
       profileScreen(UserData:  widget.UserData,)
     ];
     return Scaffold(
@@ -46,14 +46,14 @@ class _BottomNavigBarState extends State<BottomNavigBar> {
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.group),
-          //   label: 'Community',
-          // ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Notification',
+            icon: Icon(Icons.group),
+            label: 'Community',
           ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.notifications),
+          //   label: 'Notification',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',

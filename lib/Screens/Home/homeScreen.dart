@@ -1,7 +1,7 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:education_spot/Widgets/mySpacer.dart';
 import 'package:education_spot/constants/style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_carousel_slider/carousel_slider.dart';
 
 import '../../Widgets/ImageButtonGrid.dart';
 import '../../constants/images.dart';
@@ -22,6 +22,7 @@ class homeScreen extends StatefulWidget {
 }
 
 class _homeScreenState extends State<homeScreen> {
+  var sliderImg = [Banner_1, Banner_2, Banner_3];
   @override
   Widget build(BuildContext context) {
     var buttonList = [
@@ -97,20 +98,19 @@ class _homeScreenState extends State<homeScreen> {
               ],
             ),
             // // // // // // // // // // // Banner Ad // // // // // // // //
-            CarouselSlider(
-              options: CarouselOptions(
-                height: 150.0,
-                autoPlay: true,
-              ),
-              items: [Banner_1, Banner_2, Banner_3].map((i) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: Image.asset(i));
+            Container(
+              height: 500,
+              child: CarouselSlider.builder(
+                  // key: _sliderKey,
+                  unlimitedMode: true,
+                  slideBuilder: (index) {
+                    return Image.asset(sliderImg[index]);
                   },
-                );
-              }).toList(),
+                  slideTransform: CubeTransform(),
+                  slideIndicator: CircularSlideIndicator(
+                    padding: EdgeInsets.only(bottom: 32),
+                  ),
+                  itemCount: sliderImg.length),
             ), // // // // // // // // // // // Gridview Button // // // // // // // // //
             ImageButtonGrid(
               Community: buttonList,

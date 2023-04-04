@@ -100,7 +100,7 @@ class _homeScreenState extends State<homeScreen> {
             ),
             // // // // // // // // // // // Banner Ad // // // // // // // //
             Container(
-              height: 500,
+              height: 200,
               child: CarouselSlider.builder(
                   // key: _sliderKey,
                   unlimitedMode: true,

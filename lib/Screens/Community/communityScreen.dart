@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../Widgets/ImageButtonGrid.dart';
+import '../../Widgets/myAppBar.dart';
 import '../../Widgets/mySpacer.dart';
 import '../../constants/images.dart';
 import '../../constants/style.dart';
@@ -33,46 +34,51 @@ class _communityScreenState extends State<communityScreen> {
           child: Column(
             children: [
               // // // // // // // // // // // Top Bar // // // // // // // // //
-              Stack(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Image.asset(communitCurve),
-                      mySpacer(0.0, 0.0),
-                      Column(
-                        children: [
-                          const Text(
-                            "Community",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                          mySpacer(10.0, 0.0),
-                          Container(
-                            width: 200,
-                            height: 2,
-                            color: primaryColor,
-                          )
-                        ],
-                      ),
-                      mySpacer(0.0, 0.0),
-                    ],
-                  ),
-                  // // // // // // // // // // // Text Heading // // // // // // // //
-                  const Positioned(
-                    top: 110,
-                    left: 60,
-                    child: Text(
-                      "Join the Community",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                  )
-                ],
-              ),
+              // Stack(
+              //   children: [
+              //     Row(
+              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //       children: [
+              //         Image.asset(communitCurve),
+              //         mySpacer(0.0, 0.0),
+              //         Column(
+              //           children: [
+              //             const Text(
+              //               "Community",
+              //               style: TextStyle(
+              //                   fontSize: 25, fontWeight: FontWeight.bold),
+              //             ),
+              //             mySpacer(10.0, 0.0),
+              //             Container(
+              //               width: 200,
+              //               height: 2,
+              //               color: primaryColor,
+              //             )
+              //           ],
+              //         ),
+              //         mySpacer(0.0, 0.0),
+              //       ],
+              //     ),
+              //     // // // // // // // // // // // Text Heading // // // // // // // //
+              //     const Positioned(
+              //       top: 110,
+              //       left: 60,
+              //       child: Text(
+              //         "Join the Community",
+              //         style:
+              //             TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              //       ),
+              //     )
+              //   ],
+              // ),
+              const myAppBar(titel: "Community", linewidth: 150),
+
               // // // // // // // // // // // Community List // // // // // // // // //
 
-              ImageButtonGrid(Community: Community, UserData: widget.UserData,)
+              ImageButtonGrid(
+                Community: Community,
+                UserData: widget.UserData,
+              )
             ],
           ),
         ),

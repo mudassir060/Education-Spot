@@ -117,49 +117,49 @@ class _jobsScreenState extends State<jobsScreen> {
               padding: const EdgeInsets.only(left: 18.0,right: 18.0,bottom: 18.0,),
               child: Column(
                 children: [
-                  // // // // // // // // // // // Search Box // // // // // // // // //
-                  Container(
-                    width: 350,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: primaryColor,
-                    ),
-                    padding: const EdgeInsets.only(left: 15.0),
-                    child: const TextField(
-                      // controller: textcontroler,
-                      style: TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                          icon: Icon(
-                            Icons.search,
-                            color: Colors.white,
-                          ),
-                          hintText: "Search a job or a position",
-                          hintStyle: TextStyle(color: Colors.white),
-                          border: InputBorder.none),
-                    ),
-                  ),
-                  // mySpacer(5.0, 0.0),
+                  // // // // // // // // // // // // Search Box // // // // // // // // //
+                  // Container(
+                  //   width: 350,
+                  //   height: 50,
+                  //   decoration: BoxDecoration(
+                  //     borderRadius: BorderRadius.circular(30),
+                  //     color: primaryColor,
+                  //   ),
+                  //   padding: const EdgeInsets.only(left: 15.0),
+                  //   child: const TextField(
+                  //     // controller: textcontroler,
+                  //     style: TextStyle(color: Colors.white),
+                  //     decoration: InputDecoration(
+                  //         icon: Icon(
+                  //           Icons.search,
+                  //           color: Colors.white,
+                  //         ),
+                  //         hintText: "Search a job or a position",
+                  //         hintStyle: TextStyle(color: Colors.white),
+                  //         border: InputBorder.none),
+                  //   ),
+                  // ),
+                  // // mySpacer(5.0, 0.0),
 
-                  // // // // // // // // // // // Recomended titel // // // // // // // // //
+                  // // // // // // // // // // // // Recomended titel // // // // // // // // //
 
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Text(
-                          "Latest Jobs",
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          "See All",
-                          style: TextStyle(fontSize: 16, color: Colors.grey, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // // // // // // // // // // // Recomended Jobs // // // // // // // // //
+                  // Padding(
+                  //   padding: const EdgeInsets.all(12.0),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: const [
+                  //       Text(
+                  //         "Latest Jobs",
+                  //         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  //       ),
+                  //       Text(
+                  //         "See All",
+                  //         style: TextStyle(fontSize: 16, color: Colors.grey, fontWeight: FontWeight.bold),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // // // // // // // // // // // // Recomended Jobs // // // // // // // // //
 
                   articles.length != 0
                       ? Container(

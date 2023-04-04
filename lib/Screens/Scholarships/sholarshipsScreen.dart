@@ -162,40 +162,40 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
               child: Column(
                 children: [
                   // // // // // // // // // // // Search Box // // // // // // // // //
-                  Container(
-                    width: 350,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.white,
-                    ),
-                    padding: const EdgeInsets.only(left: 15.0),
-                    child: const TextField(
-                      // controller: textcontroler,
-                      style: TextStyle(color: Colors.grey),
-                      decoration: InputDecoration(
-                          icon: Icon(
-                            Icons.search,
-                            color: Colors.grey,
-                          ),
-                          hintText: "Search for a scholarship",
-                          hintStyle: TextStyle(color: Colors.grey),
-                          border: InputBorder.none),
-                    ),
-                  ),
-                  mySpacer(10.0, 0.0),
+                  // Container(
+                  //   width: 350,
+                  //   height: 50,
+                  //   decoration: BoxDecoration(
+                  //     borderRadius: BorderRadius.circular(30),
+                  //     color: Colors.white,
+                  //   ),
+                  //   padding: const EdgeInsets.only(left: 15.0),
+                  //   child: const TextField(
+                  //     // controller: textcontroler,
+                  //     style: TextStyle(color: Colors.grey),
+                  //     decoration: InputDecoration(
+                  //         icon: Icon(
+                  //           Icons.search,
+                  //           color: Colors.grey,
+                  //         ),
+                  //         hintText: "Search for a scholarship",
+                  //         hintStyle: TextStyle(color: Colors.grey),
+                  //         border: InputBorder.none),
+                  //   ),
+                  // ),
+                  // mySpacer(10.0, 0.0),
                   // // // // // // // // // // // Featured sholarships // // // // // // // // //
-                  Wrap(
-                    direction: Axis.horizontal,
-                    children: [
-                      smallButton("Matric", () {}, false),
-                      smallButton("Intermediate", () {}, false),
-                      smallButton("University", () {}, false),
-                      smallButton("Merit base", () {}, false),
-                      smallButton("Need base", () {}, false),
-                      smallButton("Others", () {}, false),
-                    ],
-                  ),
+                  // Wrap(
+                  //   direction: Axis.horizontal,
+                  //   children: [
+                  //     smallButton("Matric", () {}, false),
+                  //     smallButton("Intermediate", () {}, false),
+                  //     smallButton("University", () {}, false),
+                  //     smallButton("Merit base", () {}, false),
+                  //     smallButton("Need base", () {}, false),
+                  //     smallButton("Others", () {}, false),
+                  //   ],
+                  // ),
                   // // // // // // // // // // // Featured CArd // // // // // // // // //
 
                   articles.length != 0

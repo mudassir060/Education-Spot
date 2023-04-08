@@ -35,19 +35,19 @@ class _homeScreenState extends State<homeScreen> {
       {"name": "Admission", "image": Admissions, "page": AdmissionsScreen()},
       {"name": "Quiz", "image": Quiz, "page": QuizzScreen()},
       {"name": "Job", "image": Jobs, "page": jobsScreen()},
-      {
-        "name": "Chat GPT",
-        "image": "assets/chatgpt-icon.png",
-        "page": ChatPage(
-          // UserData: widget.UserData,
-        )
-      },
+      // {
+      //   "name": "Chat GPT",
+      //   "image": "assets/chatgpt-icon.png",
+      //   "page": ChatPage(
+      //     // UserData: widget.UserData,
+      //   )
+      // },
       {
         "name": "Create CV", "image": cv,
-        "page": CVScreen(
-          UserData: widget.UserData,
-        )
-        // "page": completeProfile_1(userData: widget.UserData,)
+        // "page": CVScreen(
+        //   UserData: widget.UserData,
+        // )
+        "page": completeProfile_1(userData: widget.UserData,)
       },
     ];
     var vwidth = MediaQuery.of(context).size.width;

@@ -22,14 +22,14 @@ Future<String> generateResponse(String prompt) async {
       'presence_penalty': 0.0,
     }),
   );
-  print("======>${response.body}");
+  // print("======>${response.body}");
   if (response.statusCode == 200) {
     Map<String, dynamic> newresponse = jsonDecode(response.body);
     return newresponse['choices'][0]['text'];
   }
-
+  var data = jsonDecode(response.body);
   return {
-    "error": "Cannot catch data",
+    "error": data['error']['message'],
     "statusCode": response.statusCode,
   }.toString();
 }

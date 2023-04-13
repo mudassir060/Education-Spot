@@ -156,7 +156,7 @@ class _sholarshipsScreenState extends State<sholarshipsScreen> {
         child: Column(
           children: [
             // // // // // // // // // // // Top Bar // // // // // // // // //
-            const myAppBar(titel: "Available Scholarships", linewidth: 250),
+            const myAppBar(titel: "Scholarships", linewidth: 250),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, right: 18),
               child: Column(

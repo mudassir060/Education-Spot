@@ -49,7 +49,7 @@ class _QuizStartState extends State<QuizStart> {
                   children: [
                     TableRow(children: [
                       container(
-                        "TEST NAME",
+                        "NAME",
                         Colors.grey[300],
                       ),
                       container(
@@ -59,7 +59,7 @@ class _QuizStartState extends State<QuizStart> {
                     ]),
                     TableRow(children: [
                       container(
-                        "TEST CATEGORY",
+                        "CATEGORY",
                         Colors.grey[200],
                       ),
                       container(
@@ -69,7 +69,7 @@ class _QuizStartState extends State<QuizStart> {
                     ]),
                     TableRow(children: [
                       container(
-                        "TEST TYPE",
+                        "TYPE",
                         Colors.grey[300],
                       ),
                       container(

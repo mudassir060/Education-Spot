@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../Screens/CV/CVScreen.dart';
 import '../Screens/Chats/CommunityChat/communityChatScreen.dart';
+import '../Screens/CompleteProfile/completeProfile_1.dart';
 
 class ImageButtonGrid extends StatelessWidget {
   final Map UserData;
@@ -39,16 +41,31 @@ class ImageButtonGrid extends StatelessWidget {
                   showDialog<String>(
                     context: context,
                     builder: (BuildContext context) => AlertDialog(
-                      title: const Text('AlertDialog Title'),
-                      content: const Text('AlertDialog description'),
+                      title: const Text('Generate CV'),
+                      content: const Text(
+                          'if your profile is not complete first you need to complete your profile. please complete your profile.'),
                       actions: <Widget>[
                         TextButton(
-                          onPressed: () => Navigator.pop(context, 'Cancel'),
-                          child: const Text('Cancel'),
+                          onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CVScreen(
+                                UserData: UserData,
+                              ),
+                            ),
+                          ),
+                          child: const Text('View Template'),
                         ),
                         TextButton(
-                          onPressed: () => Navigator.pop(context, 'OK'),
-                          child: const Text('OK'),
+                          onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => completeProfile_1(
+                                userData: UserData,
+                              ),
+                            ),
+                          ),
+                          child: const Text('Edit Profile'),
                         ),
                       ],
                     ),

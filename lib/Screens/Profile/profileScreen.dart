@@ -20,12 +20,12 @@ class profileScreen extends StatefulWidget {
 }
 
 class _profileScreenState extends State<profileScreen> {
-  var Imgs = [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOfULawGx7OIMmrO9F2jShe9MqvLgR5-RyUQ&usqp=CAU",
-    "https://www.unigreet.com/wp-content/uploads/2021/10/Cute-baby-dp-877x1024.jpg",
-    "https://www.unigreet.com/wp-content/uploads/2021/10/Baby-boy-pic-1011x1024.jpg",
-    "https://www.imagediamond.com/blog/wp-content/uploads/2019/07/Girls-whatsapp-Dp-120.jpg"
-  ];
+  // var Imgs = [
+  //   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOfULawGx7OIMmrO9F2jShe9MqvLgR5-RyUQ&usqp=CAU",
+  //   "https://www.unigreet.com/wp-content/uploads/2021/10/Cute-baby-dp-877x1024.jpg",
+  //   "https://www.unigreet.com/wp-content/uploads/2021/10/Baby-boy-pic-1011x1024.jpg",
+  //   "https://www.imagediamond.com/blog/wp-content/uploads/2019/07/Girls-whatsapp-Dp-120.jpg"
+  // ];
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
@@ -189,7 +189,7 @@ class _profileScreenState extends State<profileScreen> {
                             ),
                           ),
                           Text(
-                            "${education[index]["name"]}  (${education[index]["start"]} - ${education[index]["end"]})",
+                            "${education[index]["name"]}  (${education[index]["startDate"]} - ${education[index]["endDate"]})",
                             style: TextStyle(fontSize: 18),
                           ),
                         ],
@@ -197,36 +197,90 @@ class _profileScreenState extends State<profileScreen> {
                     );
                   }),
               mySpacer(10.0, 0.0),
-              // // // // // // // // // // // profile History // // // // // // // // //
-              const Padding(
-                padding: EdgeInsets.only(left: 18.0, bottom: 10.0),
-                child: Text(
-                  "Profile History",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                child: GridView.count(
+
+
+
+                            // // // // // // // // // // // Education // // // // // // // // //
+
+              h1("Education", context, widget.UserData),
+              ListView.builder(
                   shrinkWrap: true,
-                  primary: false,
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 4.0,
-                  mainAxisSpacing: 8.0,
-                  children: List.generate(Imgs.length, (index) {
-                    return Container(
-                      // alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                          image: NetworkImage(Imgs[index]),
-                          fit: BoxFit.cover,
-                        ),
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: education.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Slidable(
+                      key: const ValueKey(0),
+                      endActionPane: ActionPane(
+                        motion: ScrollMotion(),
+                        children: [
+                          SlidableAction(
+                            icon: Icons.delete,
+                            foregroundColor: Colors.red,
+                            onPressed: (BuildContext context) async {
+                              setState(() {
+                                education.removeAt(index);
+                              });
+                              await firestore
+                                  .collection("users")
+                                  .doc(widget.UserData["UID"])
+                                  .update({
+                                "Education": education,
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(left: 38.0, right: 8.0),
+                            child: Icon(
+                              Icons.star,
+                              size: 18,
+                            ),
+                          ),
+                          Text(
+                            "${education[index]["name"]}  (${education[index]["startDate"]} - ${education[index]["endDate"]})",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ],
                       ),
                     );
                   }),
-                ),
-              )
+              mySpacer(10.0, 0.0),
+
+              
+              // // // // // // // // // // // profile History // // // // // // // // //
+              // const Padding(
+              //   padding: EdgeInsets.only(left: 18.0, bottom: 10.0),
+              //   child: Text(
+              //     "Profile History",
+              //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              //   ),
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+              //   child: GridView.count(
+              //     shrinkWrap: true,
+              //     primary: false,
+              //     crossAxisCount: 3,
+              //     crossAxisSpacing: 4.0,
+              //     mainAxisSpacing: 8.0,
+              //     children: List.generate(Imgs.length, (index) {
+              //       return Container(
+              //         // alignment: Alignment.center,
+              //         decoration: BoxDecoration(
+              //           borderRadius: BorderRadius.circular(15),
+              //           image: DecorationImage(
+              //             image: NetworkImage(Imgs[index]),
+              //             fit: BoxFit.cover,
+              //           ),
+              //         ),
+              //       );
+              //     }),
+              //   ),
+              // )
+           
             ],
           ),
         ),

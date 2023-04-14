@@ -110,7 +110,7 @@ class _homeScreenState extends State<homeScreen> {
                   },
                   slideTransform: CubeTransform(),
                   slideIndicator: CircularSlideIndicator(
-                    padding: EdgeInsets.only(bottom: 32),
+                    padding: EdgeInsets.only(bottom: 10),
                   ),
                   itemCount: sliderImg.length),
             ), // // // // // // // // // // // Gridview Button // // // // // // // // //

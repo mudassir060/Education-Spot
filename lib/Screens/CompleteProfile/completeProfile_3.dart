@@ -156,59 +156,67 @@ class _completeProfile_3State extends State<completeProfile_3> {
                             itemCount: widget.userData["experiences"].length,
                             itemBuilder: (BuildContext context, int index) {
                               return Slidable(
-                      key: const ValueKey(0),
-                      endActionPane: ActionPane(
-                        motion: ScrollMotion(),
-                        children: [
-                          SlidableAction(
-                            icon: Icons.delete,
-                            foregroundColor: Colors.red,
-                            onPressed: (BuildContext context) async {
-                              setState(() {
-                                widget.userData["experiences"].removeAt(index);
-                              });
-                              await FirebaseFirestore.instance
-                                  .collection("users")
-                                  .doc(widget.userData["UID"])
-                                  .update({
-                                "experiences": widget.userData["experiences"],
-                              });
-                            },
-                          ),
-                        ],
-                      ),child: Container(
-                                padding: const EdgeInsets.all(8.0),
-                                margin: const EdgeInsets.all(8.0),
-                                color: index % 2 == 0
-                                    ? Color.fromARGB(255, 235, 232, 232)
-                                    : Color.fromARGB(255, 180, 178, 178),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                key: const ValueKey(0),
+                                endActionPane: ActionPane(
+                                  motion: ScrollMotion(),
                                   children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "${widget.userData["experiences"][index]["name"]}",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold, color: primaryColor),
-                                              
-                                        ),
-                                        Text(
-                                            "(${widget.userData["experiences"][index]["startDate"]})"),
-                                        Text("To",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold, color: primaryColor),),
-                                        Text(
-                                            "(${widget.userData["experiences"][index]["endDate"]})"),
-                                      ],
+                                    SlidableAction(
+                                      icon: Icons.delete,
+                                      foregroundColor: Colors.red,
+                                      onPressed: (BuildContext context) async {
+                                        setState(() {
+                                          widget.userData["experiences"]
+                                              .removeAt(index);
+                                        });
+                                        await FirebaseFirestore.instance
+                                            .collection("users")
+                                            .doc(widget.userData["UID"])
+                                            .update({
+                                          "experiences":
+                                              widget.userData["experiences"],
+                                        });
+                                      },
                                     ),
-                                    Text(
-                                        "${widget.userData["experiences"][index]["des"]}"),
                                   ],
                                 ),
-                                    ),      );
+                                child: Container(
+                                  padding: const EdgeInsets.all(8.0),
+                                  margin: const EdgeInsets.all(8.0),
+                                  color: index % 2 == 0
+                                      ? Color.fromARGB(255, 235, 232, 232)
+                                      : Color.fromARGB(255, 180, 178, 178),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            "${widget.userData["experiences"][index]["name"]}",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: primaryColor),
+                                          ),
+                                          Text(
+                                              "(${widget.userData["experiences"][index]["startDate"]})"),
+                                          Text(
+                                            "To",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: primaryColor),
+                                          ),
+                                          Text(
+                                              "(${widget.userData["experiences"][index]["endDate"]})"),
+                                        ],
+                                      ),
+                                      Text(
+                                          "${widget.userData["experiences"][index]["des"]}"),
+                                    ],
+                                  ),
+                                ),
+                              );
                             },
                           )
                         : Container(),

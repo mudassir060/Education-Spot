@@ -89,7 +89,7 @@ class _completeProfile_1State extends State<completeProfile_1> {
                       hint: 'Job',
                       textcontroler: jobCtrl,
                     ),
-                     mySpacer(10.0, vwidth),
+                    mySpacer(10.0, vwidth),
                     MLTextfield(
                       titel: 'About Us',
                       hint: 'About Us',
@@ -109,7 +109,7 @@ class _completeProfile_1State extends State<completeProfile_1> {
                   Navigator.pop(context);
                 },
                 icon: Icon(Icons.arrow_back)),
-                staper(1),
+            staper(1),
             IconButton(
                 onPressed: () {
                   widget.userData["username"] = usernameCtrl.text;
@@ -122,7 +122,7 @@ class _completeProfile_1State extends State<completeProfile_1> {
                       webCtrl.text != null &&
                       addressCtrl.text != null &&
                       phonenoCtrl.text != null &&
-                      jobCtrl.text != null&&
+                      jobCtrl.text != null &&
                       aboutCtrl.text != null) {
                     Navigator.push(
                       context,

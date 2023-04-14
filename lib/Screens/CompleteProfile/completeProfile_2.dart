@@ -95,44 +95,47 @@ class _completeProfile_2State extends State<completeProfile_2> {
                             itemCount: widget.userData["Skills"].length,
                             itemBuilder: (BuildContext context, int index) {
                               return Slidable(
-                      key: const ValueKey(0),
-                      endActionPane: ActionPane(
-                        motion: ScrollMotion(),
-                        children: [
-                          SlidableAction(
-                            icon: Icons.delete,
-                            foregroundColor: Colors.red,
-                            onPressed: (BuildContext context) async {
-                              setState(() {
-                                widget.userData["Skills"].removeAt(index);
-                              });
-                              await FirebaseFirestore.instance
-                                  .collection("users")
-                                  .doc(widget.userData["UID"])
-                                  .update({
-                                "Skills": widget.userData["Skills"],
-                              });
-                            },
-                          ),
-                        ],
-                      ),child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                        "${widget.userData["Skills"][index]["name"]}"),
-                                    SizedBox(
-                                      width: 100,
-                                      child: LinearProgressIndicator(
-                                        value: widget.userData["Skills"][index]
-                                            ["rating"],
+                                  key: const ValueKey(0),
+                                  endActionPane: ActionPane(
+                                    motion: ScrollMotion(),
+                                    children: [
+                                      SlidableAction(
+                                        icon: Icons.delete,
+                                        foregroundColor: Colors.red,
+                                        onPressed:
+                                            (BuildContext context) async {
+                                          setState(() {
+                                            widget.userData["Skills"]
+                                                .removeAt(index);
+                                          });
+                                          await FirebaseFirestore.instance
+                                              .collection("users")
+                                              .doc(widget.userData["UID"])
+                                              .update({
+                                            "Skills": widget.userData["Skills"],
+                                          });
+                                        },
                                       ),
+                                    ],
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                            "${widget.userData["Skills"][index]["name"]}"),
+                                        SizedBox(
+                                          width: 100,
+                                          child: LinearProgressIndicator(
+                                            value: widget.userData["Skills"]
+                                                [index]["rating"],
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
-                              ));
+                                  ));
                             },
                           )
                         : Text("No Skill"),

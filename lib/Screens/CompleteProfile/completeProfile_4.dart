@@ -150,57 +150,67 @@ class _completeProfile_4State extends State<completeProfile_4> {
                             itemCount: widget.userData["Education"].length,
                             itemBuilder: (BuildContext context, int index) {
                               return Slidable(
-                      key: const ValueKey(0),
-                      endActionPane: ActionPane(
-                        motion: ScrollMotion(),
-                        children: [
-                          SlidableAction(
-                            icon: Icons.delete,
-                            foregroundColor: Colors.red,
-                            onPressed: (BuildContext context) async {
-                              setState(() {
-                                widget.userData["Education"].removeAt(index);
-                              });
-                              await FirebaseFirestore.instance
-                                  .collection("users")
-                                  .doc(widget.userData["UID"])
-                                  .update({
-                                "Education": widget.userData["Education"],
-                              });
-                            },
-                          ),
-                        ],
-                      ),child: Container(
-                                padding: const EdgeInsets.all(8.0),
-                                margin: const EdgeInsets.all(8.0),
-                                color: index % 2 == 0
-                                    ? Color.fromARGB(255, 235, 232, 232)
-                                    : Color.fromARGB(255, 180, 178, 178),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                key: const ValueKey(0),
+                                endActionPane: ActionPane(
+                                  motion: ScrollMotion(),
                                   children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                            "${widget.userData["Education"][index]["name"]}",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold, color: primaryColor),),
-                                        Text(
-                                            "(${widget.userData["Education"][index]["startDate"]})"),
-                                        Text("To",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold, color: primaryColor),),
-                                        Text(
-                                            "(${widget.userData["Education"][index]["endDate"]})"),
-                                      ],
+                                    SlidableAction(
+                                      icon: Icons.delete,
+                                      foregroundColor: Colors.red,
+                                      onPressed: (BuildContext context) async {
+                                        setState(() {
+                                          widget.userData["Education"]
+                                              .removeAt(index);
+                                        });
+                                        await FirebaseFirestore.instance
+                                            .collection("users")
+                                            .doc(widget.userData["UID"])
+                                            .update({
+                                          "Education":
+                                              widget.userData["Education"],
+                                        });
+                                      },
                                     ),
-                                    Text(
-                                        "${widget.userData["Education"][index]["uni"]}"),
                                   ],
                                 ),
-                                ),  );
+                                child: Container(
+                                  padding: const EdgeInsets.all(8.0),
+                                  margin: const EdgeInsets.all(8.0),
+                                  color: index % 2 == 0
+                                      ? Color.fromARGB(255, 235, 232, 232)
+                                      : Color.fromARGB(255, 180, 178, 178),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            "${widget.userData["Education"][index]["name"]}",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: primaryColor),
+                                          ),
+                                          Text(
+                                              "(${widget.userData["Education"][index]["startDate"]})"),
+                                          Text(
+                                            "To",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: primaryColor),
+                                          ),
+                                          Text(
+                                              "(${widget.userData["Education"][index]["endDate"]})"),
+                                        ],
+                                      ),
+                                      Text(
+                                          "${widget.userData["Education"][index]["uni"]}"),
+                                    ],
+                                  ),
+                                ),
+                              );
                             },
                           )
                         : Container(),

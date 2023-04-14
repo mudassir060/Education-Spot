@@ -91,44 +91,47 @@ class _completeProfile_6State extends State<completeProfile_6> {
                             itemCount: widget.userData["Hobbies"].length,
                             itemBuilder: (BuildContext context, int index) {
                               return Slidable(
-                      key: const ValueKey(0),
-                      endActionPane: ActionPane(
-                        motion: ScrollMotion(),
-                        children: [
-                          SlidableAction(
-                            icon: Icons.delete,
-                            foregroundColor: Colors.red,
-                            onPressed: (BuildContext context) async {
-                              setState(() {
-                                widget.userData["Hobbies"].removeAt(index);
-                              });
-                              await FirebaseFirestore.instance
-                                  .collection("users")
-                                  .doc(widget.userData["UID"])
-                                  .update({
-                                "Hobbies": widget.userData["Hobbies"],
-                              });
-                            },
-                          ),
-                        ],
-                      ),child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                key: const ValueKey(0),
+                                endActionPane: ActionPane(
+                                  motion: ScrollMotion(),
                                   children: [
-                                    Text(
-                                        "${widget.userData["Hobbies"][index]["name"]}"),
-                                    SizedBox(
-                                      width: 100,
-                                      child: LinearProgressIndicator(
-                                        value: widget.userData["Hobbies"][index]
-                                            ["rating"],
-                                      ),
+                                    SlidableAction(
+                                      icon: Icons.delete,
+                                      foregroundColor: Colors.red,
+                                      onPressed: (BuildContext context) async {
+                                        setState(() {
+                                          widget.userData["Hobbies"]
+                                              .removeAt(index);
+                                        });
+                                        await FirebaseFirestore.instance
+                                            .collection("users")
+                                            .doc(widget.userData["UID"])
+                                            .update({
+                                          "Hobbies": widget.userData["Hobbies"],
+                                        });
+                                      },
                                     ),
                                   ],
                                 ),
-                               ), );
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                          "${widget.userData["Hobbies"][index]["name"]}"),
+                                      SizedBox(
+                                        width: 100,
+                                        child: LinearProgressIndicator(
+                                          value: widget.userData["Hobbies"]
+                                              [index]["rating"],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
                             },
                           )
                         : const Text("No Hobbies"),

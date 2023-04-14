@@ -92,45 +92,49 @@ class _completeProfile_5State extends State<completeProfile_5> {
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: widget.userData["Language"].length,
                             itemBuilder: (BuildContext context, int index) {
-                               return Slidable(
-                      key: const ValueKey(0),
-                      endActionPane: ActionPane(
-                        motion: ScrollMotion(),
-                        children: [
-                          SlidableAction(
-                            icon: Icons.delete,
-                            foregroundColor: Colors.red,
-                            onPressed: (BuildContext context) async {
-                              setState(() {
-                                widget.userData["Language"].removeAt(index);
-                              });
-                              await FirebaseFirestore.instance
-                                  .collection("users")
-                                  .doc(widget.userData["UID"])
-                                  .update({
-                                "Language": widget.userData["Language"],
-                              });
-                            },
-                          ),
-                        ],
-                      ),child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                              return Slidable(
+                                key: const ValueKey(0),
+                                endActionPane: ActionPane(
+                                  motion: ScrollMotion(),
                                   children: [
-                                    Text(
-                                        "${widget.userData["Language"][index]["name"]}"),
-                                    SizedBox(
-                                      width: 100,
-                                      child: LinearProgressIndicator(
-                                        value: widget.userData["Language"]
-                                            [index]["rating"],
-                                      ),
+                                    SlidableAction(
+                                      icon: Icons.delete,
+                                      foregroundColor: Colors.red,
+                                      onPressed: (BuildContext context) async {
+                                        setState(() {
+                                          widget.userData["Language"]
+                                              .removeAt(index);
+                                        });
+                                        await FirebaseFirestore.instance
+                                            .collection("users")
+                                            .doc(widget.userData["UID"])
+                                            .update({
+                                          "Language":
+                                              widget.userData["Language"],
+                                        });
+                                      },
                                     ),
                                   ],
                                 ),
-                                ), );
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                          "${widget.userData["Language"][index]["name"]}"),
+                                      SizedBox(
+                                        width: 100,
+                                        child: LinearProgressIndicator(
+                                          value: widget.userData["Language"]
+                                              [index]["rating"],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
                             },
                           )
                         : const Text("No Language"),

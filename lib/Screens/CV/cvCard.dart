@@ -28,54 +28,69 @@ Widget cvCard(context, data, img, cv) {
             child: CircleAvatar(
               child: IconButton(
                   onPressed: () async {
-                    try {
-                      // final pdf = pw.Document();
-                      //   final font = await PdfGoogleFonts.nunitoExtraLight();
-                      // pdf.addPage(pw.Page(
-                      //     pageFormat: PdfPageFormat.a4,
-                      //     build: (pw.Context context) {
-                      //       return CV_1(font); // Center
-                      //     }));
-                      final directory = await getExternalStorageDirectory();
-                      final file = File("${directory?.path}/CV.pdf");
+                    if (data["username"] != null &&
+                        data["web"] != null &&
+                        data["address"] != null &&
+                        data["PhoneNo"] != null &&
+                        data["job"] != null &&
+                        data["about_me"] != null &&
+                        data["Skills"] != null &&
+                        data["experiences"] != null &&
+                        data["Education"] != null &&
+                        data["Language"] != null &&
+                        data["Hobbies"] != null) {
+                      try {
+                        // final pdf = pw.Document();
+                        //   final font = await PdfGoogleFonts.nunitoExtraLight();
+                        // pdf.addPage(pw.Page(
+                        //     pageFormat: PdfPageFormat.a4,
+                        //     build: (pw.Context context) {
+                        //       return CV_1(font); // Center
+                        //     }));
+                        final directory = await getExternalStorageDirectory();
+                        final file = File("${directory?.path}/CV.pdf");
 
-                      if (await Permission.storage.request().isGranted) {
-                        if (cv == 1) {
-                          await file.writeAsBytes(await CV_1(data));
-                        } else if (cv == 2) {
-                          await file.writeAsBytes(await CV_2(data));
-                        } else if (cv == 3) {
-                          await file.writeAsBytes(await CV_3(data));
-                        } else if (cv == 4) {
-                          await file.writeAsBytes(await CV_4(data));
-                        } else if (cv == 5) {
-                          await file.writeAsBytes(await CV_1(data));
+                        if (await Permission.storage.request().isGranted) {
+                          if (cv == 1) {
+                            await file.writeAsBytes(await CV_1(data));
+                          } else if (cv == 2) {
+                            await file.writeAsBytes(await CV_2(data));
+                          } else if (cv == 3) {
+                            await file.writeAsBytes(await CV_3(data));
+                          } else if (cv == 4) {
+                            await file.writeAsBytes(await CV_4(data));
+                          } else if (cv == 5) {
+                            await file.writeAsBytes(await CV_1(data));
+                          } else {
+                            await file.writeAsBytes(await CV_1(data));
+                          }
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PDFViewerScaffold(
+                                      appBar: AppBar(
+                                        title: Text("CV View"),
+                                        backgroundColor: Colors.lightBlue,
+                                        actions: [
+                                          IconButton(
+                                              onPressed: () {
+                                                Share.shareFiles([
+                                                  "${directory?.path}/CV.pdf"
+                                                ]);
+                                              },
+                                              icon: const Icon(Icons.share))
+                                        ],
+                                      ),
+                                      path: "${directory?.path}/CV.pdf")));
                         } else {
-                          await file.writeAsBytes(await CV_1(data));
+                          print(
+                              "// Handle the case if the user doesn't grant permission");
                         }
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PDFViewerScaffold(
-                                    appBar: AppBar(
-                                      title: Text("CV View"),
-                                      backgroundColor: Colors.lightBlue,
-                                      actions: [
-                                        IconButton(
-                                            onPressed: () {
-                                              Share.shareFiles(
-                                                  ["${directory?.path}/CV.pdf"]);
-                                            },
-                                            icon: const Icon(Icons.share))
-                                      ],
-                                    ),
-                                    path: "${directory?.path}/CV.pdf")));
-                      } else {
-                        print(
-                            "// Handle the case if the user doesn't grant permission");
+                      } catch (e) {
+                        print("=====<$e");
                       }
-                    } catch (e) {
-                      print("=====<$e");
+                    } else {
+                      print("first complete your profile");
                     }
                   },
                   icon: Icon(Icons.arrow_downward)),

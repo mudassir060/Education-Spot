@@ -47,7 +47,8 @@ class _homeScreenState extends State<homeScreen> {
         // "page": CVScreen(
         //   UserData: widget.UserData,
         // )
-        "page": completeProfile_1(userData: widget.UserData,)
+        // "page": completeProfile_1(userData: widget.UserData,)
+        "page": true
       },
     ];
     var vwidth = MediaQuery.of(context).size.width;

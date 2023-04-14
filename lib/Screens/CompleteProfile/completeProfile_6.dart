@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
 import '../CV/CVScreen.dart';
@@ -89,7 +90,28 @@ class _completeProfile_6State extends State<completeProfile_6> {
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: widget.userData["Hobbies"].length,
                             itemBuilder: (BuildContext context, int index) {
-                              return Padding(
+                              return Slidable(
+                      key: const ValueKey(0),
+                      endActionPane: ActionPane(
+                        motion: ScrollMotion(),
+                        children: [
+                          SlidableAction(
+                            icon: Icons.delete,
+                            foregroundColor: Colors.red,
+                            onPressed: (BuildContext context) async {
+                              setState(() {
+                                widget.userData["Hobbies"].removeAt(index);
+                              });
+                              await FirebaseFirestore.instance
+                                  .collection("users")
+                                  .doc(widget.userData["UID"])
+                                  .update({
+                                "Hobbies": widget.userData["Hobbies"],
+                              });
+                            },
+                          ),
+                        ],
+                      ),child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   mainAxisAlignment:
@@ -106,7 +128,7 @@ class _completeProfile_6State extends State<completeProfile_6> {
                                     ),
                                   ],
                                 ),
-                              );
+                               ), );
                             },
                           )
                         : const Text("No Hobbies"),

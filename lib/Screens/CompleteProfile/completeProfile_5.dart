@@ -1,6 +1,8 @@
 // ignore_for_file: camel_case_types
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
 import 'Widgets/staper.dart';
@@ -90,7 +92,28 @@ class _completeProfile_5State extends State<completeProfile_5> {
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: widget.userData["Language"].length,
                             itemBuilder: (BuildContext context, int index) {
-                              return Padding(
+                               return Slidable(
+                      key: const ValueKey(0),
+                      endActionPane: ActionPane(
+                        motion: ScrollMotion(),
+                        children: [
+                          SlidableAction(
+                            icon: Icons.delete,
+                            foregroundColor: Colors.red,
+                            onPressed: (BuildContext context) async {
+                              setState(() {
+                                widget.userData["Language"].removeAt(index);
+                              });
+                              await FirebaseFirestore.instance
+                                  .collection("users")
+                                  .doc(widget.userData["UID"])
+                                  .update({
+                                "Language": widget.userData["Language"],
+                              });
+                            },
+                          ),
+                        ],
+                      ),child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   mainAxisAlignment:
@@ -107,7 +130,7 @@ class _completeProfile_5State extends State<completeProfile_5> {
                                     ),
                                   ],
                                 ),
-                              );
+                                ), );
                             },
                           )
                         : const Text("No Language"),

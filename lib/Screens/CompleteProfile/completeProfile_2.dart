@@ -6,6 +6,7 @@ import 'package:education_spot/Widgets/myButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
@@ -93,7 +94,28 @@ class _completeProfile_2State extends State<completeProfile_2> {
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: widget.userData["Skills"].length,
                             itemBuilder: (BuildContext context, int index) {
-                              return Padding(
+                              return Slidable(
+                      key: const ValueKey(0),
+                      endActionPane: ActionPane(
+                        motion: ScrollMotion(),
+                        children: [
+                          SlidableAction(
+                            icon: Icons.delete,
+                            foregroundColor: Colors.red,
+                            onPressed: (BuildContext context) async {
+                              setState(() {
+                                widget.userData["Skills"].removeAt(index);
+                              });
+                              await FirebaseFirestore.instance
+                                  .collection("users")
+                                  .doc(widget.userData["UID"])
+                                  .update({
+                                "Skills": widget.userData["Skills"],
+                              });
+                            },
+                          ),
+                        ],
+                      ),child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   mainAxisAlignment:
@@ -110,7 +132,7 @@ class _completeProfile_2State extends State<completeProfile_2> {
                                     ),
                                   ],
                                 ),
-                              );
+                              ));
                             },
                           )
                         : Text("No Skill"),

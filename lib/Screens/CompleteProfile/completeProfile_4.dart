@@ -1,6 +1,8 @@
 // ignore_for_file: camel_case_types
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
 import '../../constants/style.dart';
@@ -147,7 +149,28 @@ class _completeProfile_4State extends State<completeProfile_4> {
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: widget.userData["Education"].length,
                             itemBuilder: (BuildContext context, int index) {
-                              return Container(
+                              return Slidable(
+                      key: const ValueKey(0),
+                      endActionPane: ActionPane(
+                        motion: ScrollMotion(),
+                        children: [
+                          SlidableAction(
+                            icon: Icons.delete,
+                            foregroundColor: Colors.red,
+                            onPressed: (BuildContext context) async {
+                              setState(() {
+                                widget.userData["Education"].removeAt(index);
+                              });
+                              await FirebaseFirestore.instance
+                                  .collection("users")
+                                  .doc(widget.userData["UID"])
+                                  .update({
+                                "Education": widget.userData["Education"],
+                              });
+                            },
+                          ),
+                        ],
+                      ),child: Container(
                                 padding: const EdgeInsets.all(8.0),
                                 margin: const EdgeInsets.all(8.0),
                                 color: index % 2 == 0
@@ -177,7 +200,7 @@ class _completeProfile_4State extends State<completeProfile_4> {
                                         "${widget.userData["Education"][index]["uni"]}"),
                                   ],
                                 ),
-                              );
+                                ),  );
                             },
                           )
                         : Container(),

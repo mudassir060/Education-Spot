@@ -1,5 +1,6 @@
 // ignore_for_file: camel_case_types
 
+import 'package:education_spot/constants/style.dart';
 import 'package:flutter/material.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
@@ -166,12 +167,18 @@ class _completeProfile_3State extends State<completeProfile_3> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                            "${widget.userData["experiences"][index]["name"]}"),
+                                          "${widget.userData["experiences"][index]["name"]}",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold, color: primaryColor),
+                                              
+                                        ),
                                         Text(
-                                            "${widget.userData["experiences"][index]["startDate"]}"),
-                                        Text("To"),
+                                            "(${widget.userData["experiences"][index]["startDate"]})"),
+                                        Text("To",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold, color: primaryColor),),
                                         Text(
-                                            "${widget.userData["experiences"][index]["endDate"]}"),
+                                            "(${widget.userData["experiences"][index]["endDate"]})"),
                                       ],
                                     ),
                                     Text(

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
+import '../../constants/style.dart';
 import 'Widgets/staper.dart';
 import 'completeProfile_5.dart';
 
@@ -160,12 +161,16 @@ class _completeProfile_4State extends State<completeProfile_4> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                            "${widget.userData["Education"][index]["name"]}"),
+                                            "${widget.userData["Education"][index]["name"]}",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold, color: primaryColor),),
                                         Text(
-                                            "${widget.userData["Education"][index]["startDate"]}"),
-                                        Text("To"),
+                                            "(${widget.userData["Education"][index]["startDate"]})"),
+                                        Text("To",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold, color: primaryColor),),
                                         Text(
-                                            "${widget.userData["Education"][index]["endDate"]}"),
+                                            "(${widget.userData["Education"][index]["endDate"]})"),
                                       ],
                                     ),
                                     Text(

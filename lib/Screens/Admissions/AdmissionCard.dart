@@ -145,10 +145,11 @@ class AdmissionCard extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => webView(
-                              url: url,
-                            )),
+                                  url: url,
+                                )),
                       );
-                    },                    child: Container(
+                    },
+                    child: Container(
                       width: 100,
                       height: 40,
                       decoration: BoxDecoration(
@@ -158,7 +159,10 @@ class AdmissionCard extends StatelessWidget {
                       child: const Center(
                           child: Text(
                         "Apply",
-                        style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
                       )),
                     ),
                   ),

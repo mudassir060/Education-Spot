@@ -44,14 +44,13 @@ class _AdmissionsScreenState extends State<AdmissionsScreen> {
     final url = Uri.parse("https://www.eduvision.edu.pk/admissions.php");
     final response = await http.get(url);
     dom.Document html = dom.Document.html(response.body);
-    final urls = html.querySelectorAll("a").map((e) => "$url${e.attributes["href"]}").toList();
+    final urls = html.querySelectorAll("a").map((e) => "${e.attributes["href"]}").toList();
     final textdata = html.querySelectorAll("td").map((e) => e.text).toList();
     final imgs = html.querySelectorAll("img").map((e) => e.attributes["src"]).toList();
-    print(" Url===> ${urls.length} textdata===> ${textdata} ");
-    print("  img===> ${imgs.length}");
-    for (final url in textdata) {
-      debugPrint("=====>${url}");
-    }
+    // print(" Url===> ${urls} ");
+    // for (final url in textdata) {
+    //   debugPrint("url ok=====>${url}");
+    // }
     setState(() {
       articles = List.generate(
           20,

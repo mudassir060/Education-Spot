@@ -158,6 +158,7 @@ class _profileScreenState extends State<profileScreen> {
 
             widget.UserData["Skills"] != null
                 ? ListView.builder(
+                    padding: EdgeInsets.zero,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: Skills.length,
@@ -207,6 +208,7 @@ class _profileScreenState extends State<profileScreen> {
             h1("Education"),
             widget.UserData["Education"] != null
                 ? ListView.builder(
+                    padding: EdgeInsets.zero,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: education.length,
@@ -255,8 +257,9 @@ class _profileScreenState extends State<profileScreen> {
 
             // // // // // // // // // // // Education // // // // // // // // //
             h1("Experiences"),
-            widget.UserData["Experiences"] != null
+            widget.UserData["experiences"] != null
                 ? ListView.builder(
+                    padding: EdgeInsets.zero,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: experiences.length,
@@ -308,6 +311,7 @@ class _profileScreenState extends State<profileScreen> {
 
             widget.UserData["Hobbies"] != null
                 ? ListView.builder(
+                    padding: EdgeInsets.zero,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: Hobbies.length,
@@ -358,6 +362,7 @@ class _profileScreenState extends State<profileScreen> {
             h1("Language"),
             widget.UserData["Language"] != null
                 ? ListView.builder(
+                    padding: EdgeInsets.zero,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: Language.length,

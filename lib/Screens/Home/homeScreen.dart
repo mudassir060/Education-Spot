@@ -6,13 +6,10 @@ import 'package:flutter_carousel_slider/carousel_slider.dart';
 import '../../Widgets/ImageButtonGrid.dart';
 import '../../constants/images.dart';
 import '../Admissions/AdmissionsScreen.dart';
-import '../CV/CVScreen.dart';
-import '../Community/communityScreen.dart';
-import '../CompleteProfile/completeProfile_1.dart';
 import '../Jobs/jobsScreen.dart';
 import '../Quizz/QuizzScreen.dart';
 import '../Scholarships/sholarshipsScreen.dart';
-import '../chatGPT/chat_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class homeScreen extends StatefulWidget {
   final Map UserData;
@@ -24,6 +21,15 @@ class homeScreen extends StatefulWidget {
 
 class _homeScreenState extends State<homeScreen> {
   var sliderImg = [Banner_1, Banner_2, Banner_3];
+                      final Uri _url0 = Uri.parse('https://chat.whatsapp.com/HJCDYV4WR5h6fXw7Ut3iDe');
+                      final Uri _url1 = Uri.parse('wa.me/923454335400');
+                      final Uri _url2 = Uri.parse('wa.me/923440747466');
+
+                    Future<void> _launchUrl(_url) async {
+                      if (!await launchUrl(_url)) {
+                        throw Exception('Could not launch $_url');
+                      }
+                    }
   @override
   Widget build(BuildContext context) {
     var buttonList = [
@@ -106,7 +112,20 @@ class _homeScreenState extends State<homeScreen> {
                   // key: _sliderKey,
                   unlimitedMode: true,
                   slideBuilder: (index) {
-                    return Image.asset(sliderImg[index]);
+                   
+                    return InkWell(
+                        onTap: () {
+                          if (index == 0) {
+                            _launchUrl(_url0);
+                          }
+                          if (index == 2) {
+                            _launchUrl(_url1);
+                          }
+                           if (index == 2) {
+                            _launchUrl(_url2);
+                          }
+                        },
+                        child: Image.asset(sliderImg[index]));
                   },
                   slideTransform: CubeTransform(),
                   slideIndicator: CircularSlideIndicator(

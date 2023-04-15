@@ -34,6 +34,8 @@ class _profileScreenState extends State<profileScreen> {
     var Skills = widget.UserData["Skills"];
     var education = widget.UserData["Education"];
     var experiences = widget.UserData["experiences"];
+    var Language = widget.UserData["Language"];
+    var Hobbies = widget.UserData["Hobbies"];
     var vwidth = MediaQuery.of(context).size.width;
     var vheight = MediaQuery.of(context).size.height;
     return SafeArea(
@@ -104,11 +106,8 @@ class _profileScreenState extends State<profileScreen> {
               ),
               // // // // // // // // // // // Skill // // // // // // // // //
               // h1("Skills", context, widget.UserData),
-              Text(
-                "Skills",
-                style:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
+              h1("Skills"),
+
               widget.UserData["Skills"] != null
                   ? ListView.builder(
                       shrinkWrap: true,
@@ -157,12 +156,8 @@ class _profileScreenState extends State<profileScreen> {
                   : Text("No Skill"),
               // // // // // // // // // // // Education // // // // // // // // //
 
-              // h1("Education", context, widget.UserData),
-              Text(
-                "Education",
-                style:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
+              h1("Education"),
+
               ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -210,13 +205,7 @@ class _profileScreenState extends State<profileScreen> {
               mySpacer(10.0, 0.0),
 
               // // // // // // // // // // // Education // // // // // // // // //
-
-              // h1("Education", context, widget.UserData),
-              Text(
-                "Experiences",
-                style:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
+              h1("Experiences"),
               ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -261,6 +250,110 @@ class _profileScreenState extends State<profileScreen> {
                       ),
                     );
                   }),
+              mySpacer(10.0, 0.0),
+              // // // // // // // // // // // Skill // // // // // // // // //
+              // h1("Skills", context, widget.UserData),
+              h1("Hobbies"),
+
+              widget.UserData["Hobbies"] != null
+                  ? ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: Hobbies.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Slidable(
+                            key: const ValueKey(0),
+                            endActionPane: ActionPane(
+                              motion: ScrollMotion(),
+                              children: [
+                                SlidableAction(
+                                  icon: Icons.delete,
+                                  foregroundColor: Colors.red,
+                                  onPressed: (BuildContext context) async {
+                                    setState(() {
+                                      widget.UserData["Hobbies"]
+                                          .removeAt(index);
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection("users")
+                                        .doc(widget.UserData["UID"])
+                                        .update({
+                                      "Hobbies": widget.UserData["Hobbies"],
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              children: [
+                                const Padding(
+                                  padding:
+                                      EdgeInsets.only(left: 38.0, right: 8.0),
+                                  child: Icon(
+                                    Icons.star,
+                                    size: 18,
+                                  ),
+                                ),
+                                Text(
+                                  Hobbies[index]["name"],
+                                  style: const TextStyle(fontSize: 18),
+                                ),
+                              ],
+                            ));
+                      })
+                  : Text("No Hobbies"),
+
+              mySpacer(10.0, 0.0),
+              // // // // // // // // // // // Skill // // // // // // // // //
+              h1("Language"),
+              widget.UserData["Language"] != null
+                  ? ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: Language.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Slidable(
+                            key: const ValueKey(0),
+                            endActionPane: ActionPane(
+                              motion: ScrollMotion(),
+                              children: [
+                                SlidableAction(
+                                  icon: Icons.delete,
+                                  foregroundColor: Colors.red,
+                                  onPressed: (BuildContext context) async {
+                                    setState(() {
+                                      widget.UserData["Language"]
+                                          .removeAt(index);
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection("users")
+                                        .doc(widget.UserData["UID"])
+                                        .update({
+                                      "Language": widget.UserData["Language"],
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              children: [
+                                const Padding(
+                                  padding:
+                                      EdgeInsets.only(left: 38.0, right: 8.0),
+                                  child: Icon(
+                                    Icons.star,
+                                    size: 18,
+                                  ),
+                                ),
+                                Text(
+                                  Language[index]["name"],
+                                  style: const TextStyle(fontSize: 18),
+                                ),
+                              ],
+                            ));
+                      })
+                  : Text("No Language"),
+
               mySpacer(10.0, 0.0),
 
               // // // // // // // // // // // profile History // // // // // // // // //
@@ -327,3 +420,14 @@ class _profileScreenState extends State<profileScreen> {
 //     ),
 //   );
 // }
+
+Widget h1(title) {
+  return Padding(
+    padding: const EdgeInsets.only(left:8.0),
+    child: Text(
+      title,
+      style: const TextStyle(
+          fontSize: 20, fontWeight: FontWeight.bold, color: primaryColor),
+    ),
+  );
+}

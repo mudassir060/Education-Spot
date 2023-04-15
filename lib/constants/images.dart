@@ -13,6 +13,13 @@ const String curve = "assets/images/curve.png";
 const String communitCurve = "assets/images/communit.png";
 const String settingCurve = "assets/images/setting.png";
 
+const String group_pic = "assets/images/group_pic.jpg";
+const String settingCrve = "assets/images/setting.png";
+const String settingCuve = "assets/images/setting.png";
+
+
+
+
 
 // // // // // // // // // // // Profile // // // // // // // // //
 const String backCurve = "assets/images/back.png";

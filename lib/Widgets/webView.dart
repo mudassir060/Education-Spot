@@ -23,10 +23,16 @@ class webViewState extends State<webView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Web View"),    backgroundColor: primaryColor,
+      appBar: AppBar(
+        title: Text(
+          "Web View",
+          style: TextStyle(color: Colors.white),
+        ),
+        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: primaryColor,
       ),
       body: WebView(
-                initialUrl: widget.url,
+        initialUrl: widget.url,
       ),
     );
   }

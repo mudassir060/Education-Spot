@@ -43,10 +43,10 @@ class _forgetPasswordState extends State<forgetPassword> {
     return Scaffold(
       backgroundColor: const Color(0xffFFFBFB),
       appBar: AppBar(
-        toolbarHeight: 12,
+        toolbarHeight: 52,
         elevation: 0,
         backgroundColor: Colors.transparent,
-        leadingWidth: 16,
+        leadingWidth: 56,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
@@ -71,55 +71,35 @@ class _forgetPasswordState extends State<forgetPassword> {
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Reset Password",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "No problem! Just enter your email address and we'll send you a one-time password to recover your password.",
-                      textAlign: TextAlign.left,
-                    ),
-                    SizedBox(
-                      height: 13,
-                    ),
-                    myTextfield(
-                      titel: 'Email Address',
-                      hint: 'Email Address',
-                      textcontroler: emailController,
-                    ),
-                    SizedBox(
-                      height: 14,
-                    ),
-                    myButton(
-                        width: w,
-                        function: () {
-                          _resetPassword(context);
-                        },
-                        name: "Forget Password",
-                        loading: false),
-                    // AppButton(
-                    //     button_text: 'Next',
-                    //     isIconPresent: false,
-                    //     onPress: () {
-                    //       _resetPassword(context);
-                    //     }
-                    //  resetPasswordProvider.isValid
-                    // ? () {
-                    //     Navigator.pushNamed(context,
-                    //         RouteName.otpVerificationEmailRoute);
-                    //     print(
-                    //         resetPasswordProvider.email.toString());
-                    //   }
-                    // : () {
-                    //     print("Email is required");
-                    //   }
-                  ],
+                const Text(
+                  "Reset Password",
+                  style:
+                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold ,color: primaryColor),
                 ),
+                const Text(
+                  "No problem! Just enter your email address and we'll send you a one-time password to recover your password.",
+                  // textAlign: TextAlign.left,
+                ),
+                SizedBox(
+                  height: 13,
+                ),
+                myTextfield(
+                  titel: 'Email Address',
+                  hint: 'Email Address',
+                  textcontroler: emailController,
+                ),
+                SizedBox(
+                  height: 14,
+                ),
+                myButton(
+                    width: w,
+                    function: () {
+                      _resetPassword(context);
+                    },
+                    name: "Reset Password",
+                    loading: false),
                 SizedBox(
                   height: 36,
                 ),

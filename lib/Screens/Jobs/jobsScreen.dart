@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
 import '../../constants/style.dart';
 import '../../Widgets/myLoading.dart';
+
 class jobsScreen extends StatefulWidget {
   const jobsScreen({Key? key}) : super(key: key);
 
@@ -47,14 +48,28 @@ class _jobsScreenState extends State<jobsScreen> {
     final url = Uri.parse("https://dailyjobs.pk/");
     final response = await http.get(url);
     dom.Document html = dom.Document.html(response.body);
-    final titles = html.querySelectorAll("h2 > a").map((e) => e.innerHtml.trim()).toList();
-    final urls = html.querySelectorAll("h2 > a").map((e) => "${e.attributes["href"]}").toList();
-    final lastDates = html.querySelectorAll("div > b").map((e) => e.innerHtml).toList();
-    final publishDates = html.querySelectorAll("span.entry-time").map((e) => e.text).toList();
-    final posetions = html.querySelectorAll("p").map((e) => e.innerHtml).toList();
-    final locations = html.querySelectorAll("span.jb-location").map((e) => e.innerHtml).toList();
-    final imgs = html.querySelectorAll("a > img").map((e) => e.attributes["data-src"]).toList();
-    print("titles===> ${titles.length} lastDates===> ${lastDates.length} Url===> ${urls.length} posetions===> ${posetions.length}");
+    final titles =
+        html.querySelectorAll("h2 > a").map((e) => e.innerHtml.trim()).toList();
+    final urls = html
+        .querySelectorAll("h2 > a")
+        .map((e) => "${e.attributes["href"]}")
+        .toList();
+    final lastDates =
+        html.querySelectorAll("div > b").map((e) => e.innerHtml).toList();
+    final publishDates =
+        html.querySelectorAll("span.entry-time").map((e) => e.text).toList();
+    final posetions =
+        html.querySelectorAll("p").map((e) => e.innerHtml).toList();
+    final locations = html
+        .querySelectorAll("span.jb-location")
+        .map((e) => e.innerHtml)
+        .toList();
+    final imgs = html
+        .querySelectorAll("a > img")
+        .map((e) => e.attributes["data-src"])
+        .toList();
+    print(
+        "titles===> ${titles.length} lastDates===> ${lastDates.length} Url===> ${urls.length} posetions===> ${posetions.length}");
     print(
         "lastDates===> ${lastDates.length} location===> ${locations.length} publishDates===> ${publishDates.length} img===> ${imgs.length}");
     // for (final url in urls) {
@@ -114,7 +129,11 @@ class _jobsScreenState extends State<jobsScreen> {
             const myAppBar(titel: "Discover job", linewidth: 150),
 
             Padding(
-              padding: const EdgeInsets.only(left: 18.0,right: 18.0,bottom: 18.0,),
+              padding: const EdgeInsets.only(
+                left: 18.0,
+                right: 18.0,
+                bottom: 18.0,
+              ),
               child: Column(
                 children: [
                   // // // // // // // // // // // // Search Box // // // // // // // // //

@@ -15,7 +15,6 @@ class recomendedCard extends StatelessWidget {
   final String lastDate;
   final String url;
 
-
   // title: titles[index],
   // lastDate: lastDates[index],
   // url: urls[index].toString(),
@@ -23,7 +22,7 @@ class recomendedCard extends StatelessWidget {
   // publishDate: publishDates[index],
   // location: locations[index],
   // img: imgs[index].toString()));
-  
+
   const recomendedCard(
       {Key? key,
       required this.titel,
@@ -31,7 +30,8 @@ class recomendedCard extends StatelessWidget {
       required this.location,
       required this.publishDate,
       required this.lastDate,
-      required this.img, required this.url})
+      required this.img,
+      required this.url})
       : super(key: key);
 
   @override
@@ -39,11 +39,15 @@ class recomendedCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: InkWell(
-        onTap: (){Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => webView(url: url,)),
-        );},
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => webView(
+                      url: url,
+                    )),
+          );
+        },
         child: Card(
           child: Container(
             // width: 600,
@@ -67,7 +71,7 @@ class recomendedCard extends StatelessWidget {
                         //   fit: BoxFit.fitHeight,
                         // ),
                       ),
-                    child: imageCasha(img),
+                      child: imageCasha(img),
                     ),
                     mySpacer(0.0, 5.0),
                     Column(
@@ -84,7 +88,6 @@ class recomendedCard extends StatelessWidget {
                             ),
                           ),
                         ),
-
                       ],
                     ),
                   ],
@@ -103,7 +106,7 @@ class recomendedCard extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            const  Text(
+                            const Text(
                               "Location: ",
                               style: TextStyle(
                                 fontSize: 15,
@@ -121,14 +124,13 @@ class recomendedCard extends StatelessWidget {
                           ],
                         ),
                         mySpacer(5.0, 0.0),
-
                         Row(
                           children: [
                             // Icon(
                             //   Icons.av_timer,
                             //   color: Colors.grey,
                             // ),
-                            const  Text(
+                            const Text(
                               "Publish Date: ",
                               style: TextStyle(
                                 fontSize: 15,
@@ -146,10 +148,9 @@ class recomendedCard extends StatelessWidget {
                           ],
                         ),
                         mySpacer(5.0, 0.0),
-
                         Row(
                           children: [
-                          const  Text(
+                            const Text(
                               "Last Date: ",
                               style: TextStyle(
                                 fontSize: 15,

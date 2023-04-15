@@ -254,7 +254,7 @@ class _profileScreenState extends State<profileScreen> {
                             ),
                           ),
                           Text(
-                            "${education[index]["name"]}  (${education[index]["startDate"]} - ${education[index]["endDate"]})",
+                            "${experiences[index]["name"]}  (${experiences[index]["startDate"]} - ${experiences[index]["endDate"]})",
                             style: TextStyle(fontSize: 18),
                           ),
                         ],

@@ -44,7 +44,7 @@ class _AdmissionsScreenState extends State<AdmissionsScreen> {
     final url = Uri.parse("https://www.eduvision.edu.pk/admissions.php");
     final response = await http.get(url);
     dom.Document html = dom.Document.html(response.body);
-    final urls = html.querySelectorAll("a").map((e) => "$url${e.attributes["href"]}").toList();
+    final urls = html.querySelectorAll("a").map((e) => "https://www.eduvision.edu.pk${e.attributes["href"]}").toList();
     final textdata = html.querySelectorAll("td").map((e) => e.text).toList();
     final imgs = html.querySelectorAll("img").map((e) => e.attributes["src"]).toList();
     print(" Url===> ${urls} ");
@@ -57,7 +57,7 @@ class _AdmissionsScreenState extends State<AdmissionsScreen> {
           (index) => Article(
                 institute: textdata[(index * 5 + 1)],
                 level: textdata[(index * 5 + 2)],
-                url: urls[(index) + 128].toString(),
+                url: urls[(index*2) + 128].toString(),
                 last_date: textdata[index * 5 + 4],
                 discipline_type: textdata[(index * 5 + 3)],
                 img: imgs[(index) + 4].toString(),

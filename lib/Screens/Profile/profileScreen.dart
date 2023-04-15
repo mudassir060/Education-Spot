@@ -24,16 +24,8 @@ class profileScreen extends StatefulWidget {
 }
 
 class _profileScreenState extends State<profileScreen> {
-  // var Imgs = [
-  //   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOfULawGx7OIMmrO9F2jShe9MqvLgR5-RyUQ&usqp=CAU",
-  //   "https://www.unigreet.com/wp-content/uploads/2021/10/Cute-baby-dp-877x1024.jpg",
-  //   "https://www.unigreet.com/wp-content/uploads/2021/10/Baby-boy-pic-1011x1024.jpg",
-  //   "https://www.imagediamond.com/blog/wp-content/uploads/2019/07/Girls-whatsapp-Dp-120.jpg"
-  // ];
-
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   bool imageLooding = false;
-  String url = "null";
   var progressshow = 0.0;
 
   late final XFile? image;
@@ -43,9 +35,9 @@ class _profileScreenState extends State<profileScreen> {
     });
     image = await ImagePicker()
         .pickImage(source: ImageSource.gallery, imageQuality: 45);
-    FirebaseStorage storage = FirebaseStorage.instance;
-    Reference ref =
-        storage.ref().child("${DateTime.now().microsecondsSinceEpoch}");
+    Reference ref = FirebaseStorage.instance
+        .ref()
+        .child("${DateTime.now().microsecondsSinceEpoch}");
     UploadTask uploadTask = ref.putFile(File(image!.path));
     uploadTask.snapshotEvents.listen((TaskSnapshot snapshot) {
       double progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -54,18 +46,19 @@ class _profileScreenState extends State<profileScreen> {
       });
     });
     uploadTask.whenComplete(() async {
-      url = await ref.getDownloadURL();
-      setState(() {
-        url = url;
-        imageLooding = false;
-      });
+      var url = await ref.getDownloadURL();
+
       await firestore.collection("users").doc(widget.UserData["UID"]).update({
         "profile": url,
       });
       setState(() {
         widget.UserData["profile"] = url;
+        imageLooding = false;
       });
     }).catchError((onError) {
+      setState(() {
+        imageLooding = false;
+      });
       snackBar(context, onError.toString());
     });
   }
@@ -136,7 +129,16 @@ class _profileScreenState extends State<profileScreen> {
                         child: widget.UserData["profile"] == null
                             ? CircleAvatar(
                                 radius: 55,
-                                backgroundImage: AssetImage(Profile))
+                                backgroundImage: AssetImage(Profile),
+                                child: imageLooding == true
+                                    ? CircularProgressIndicator(
+                                        value: progressshow / 100,
+                                        backgroundColor: Colors.purple,
+                                        semanticsValue: progressshow.toString(),
+                                        semanticsLabel: progressshow.toString(),
+                                      )
+                                    : Container(),
+                              )
                             : CircleAvatar(
                                 radius: 55,
                                 backgroundImage:

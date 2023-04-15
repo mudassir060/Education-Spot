@@ -59,24 +59,32 @@ class _profileScreenState extends State<profileScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Text(
-                          widget.UserData["username"],
-                          style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          widget.UserData["email"],
-                          style: const TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                        Text(
-                          "Ph.No: ${widget.UserData["PhoneNo"]}",
-                          style: const TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                        Text("${widget.UserData["about_me"]}")
+                        widget.UserData["username"] != null
+                            ? Text(
+                                widget.UserData["username"],
+                                style: const TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              )
+                            : Container(),
+                        widget.UserData["email"] != null
+                            ? Text(
+                                widget.UserData["email"],
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                ),
+                              )
+                            : Container(),
+                        widget.UserData["PhoneNo"] != null
+                            ? Text(
+                                "Ph.No: ${widget.UserData["PhoneNo"]}",
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                ),
+                              )
+                            : Container(),
+                        widget.UserData["about_me"] != null
+                            ? Text("${widget.UserData["about_me"]}")
+                            : Container(),
                       ],
                     ),
                   ),
@@ -270,8 +278,7 @@ class _profileScreenState extends State<profileScreen> {
                                 foregroundColor: Colors.red,
                                 onPressed: (BuildContext context) async {
                                   setState(() {
-                                    widget.UserData["Hobbies"]
-                                        .removeAt(index);
+                                    widget.UserData["Hobbies"].removeAt(index);
                                   });
                                   await FirebaseFirestore.instance
                                       .collection("users")
@@ -321,8 +328,7 @@ class _profileScreenState extends State<profileScreen> {
                                 foregroundColor: Colors.red,
                                 onPressed: (BuildContext context) async {
                                   setState(() {
-                                    widget.UserData["Language"]
-                                        .removeAt(index);
+                                    widget.UserData["Language"].removeAt(index);
                                   });
                                   await FirebaseFirestore.instance
                                       .collection("users")

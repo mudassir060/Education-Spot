@@ -28,59 +28,57 @@ class _communityScreenState extends State<communityScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              // // // // // // // // // // // Top Bar // // // // // // // // //
-              // Stack(
-              //   children: [
-              //     Row(
-              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //       children: [
-              //         Image.asset(communitCurve),
-              //         mySpacer(0.0, 0.0),
-              //         Column(
-              //           children: [
-              //             const Text(
-              //               "Community",
-              //               style: TextStyle(
-              //                   fontSize: 25, fontWeight: FontWeight.bold),
-              //             ),
-              //             mySpacer(10.0, 0.0),
-              //             Container(
-              //               width: 200,
-              //               height: 2,
-              //               color: primaryColor,
-              //             )
-              //           ],
-              //         ),
-              //         mySpacer(0.0, 0.0),
-              //       ],
-              //     ),
-              //     // // // // // // // // // // // Text Heading // // // // // // // //
-              //     const Positioned(
-              //       top: 110,
-              //       left: 60,
-              //       child: Text(
-              //         "Join the Community",
-              //         style:
-              //             TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              //       ),
-              //     )
-              //   ],
-              // ),
-              const myAppBar(titel: "Community", linewidth: 150),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // // // // // // // // // // // Top Bar // // // // // // // // //
+            // Stack(
+            //   children: [
+            //     Row(
+            //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //       children: [
+            //         Image.asset(communitCurve),
+            //         mySpacer(0.0, 0.0),
+            //         Column(
+            //           children: [
+            //             const Text(
+            //               "Community",
+            //               style: TextStyle(
+            //                   fontSize: 25, fontWeight: FontWeight.bold),
+            //             ),
+            //             mySpacer(10.0, 0.0),
+            //             Container(
+            //               width: 200,
+            //               height: 2,
+            //               color: primaryColor,
+            //             )
+            //           ],
+            //         ),
+            //         mySpacer(0.0, 0.0),
+            //       ],
+            //     ),
+            //     // // // // // // // // // // // Text Heading // // // // // // // //
+            //     const Positioned(
+            //       top: 110,
+            //       left: 60,
+            //       child: Text(
+            //         "Join the Community",
+            //         style:
+            //             TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            //       ),
+            //     )
+            //   ],
+            // ),
+            const myAppBar(titel: "Community", linewidth: 150),
 
-              // // // // // // // // // // // Community List // // // // // // // // //
+            // // // // // // // // // // // Community List // // // // // // // // //
 
-              ImageButtonGrid(
-                Community: Community,
-                UserData: widget.UserData,
-              )
-            ],
-          ),
+            ImageButtonGrid(
+              Community: Community,
+              UserData: widget.UserData,
+            )
+          ],
         ),
       ),
     );

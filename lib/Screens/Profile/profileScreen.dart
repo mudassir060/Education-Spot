@@ -38,356 +38,354 @@ class _profileScreenState extends State<profileScreen> {
     var Hobbies = widget.UserData["Hobbies"];
     var vwidth = MediaQuery.of(context).size.width;
     var vheight = MediaQuery.of(context).size.height;
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // // // // // // // // // // // Top Bar // // // // // // // // //
-              const myAppBar(titel: "My Profile", linewidth: 130),
-              // // // // // // // // // // // About // // // // // // // // //
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 18.0,
-                  right: 18.0,
-                ),
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: vwidth - 180,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text(
-                            widget.UserData["username"],
-                            style: const TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            widget.UserData["email"],
-                            style: const TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                          Text(
-                            "Ph.No: ${widget.UserData["PhoneNo"]}",
-                            style: const TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                          Text("${widget.UserData["about_me"]}")
-                        ],
-                      ),
-                    ),
-                    Stack(
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // // // // // // // // // // // Top Bar // // // // // // // // //
+            const myAppBar(titel: "My Profile", linewidth: 130),
+            // // // // // // // // // // // About // // // // // // // // //
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 18.0,
+                right: 18.0,
+              ),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: vwidth - 180,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        const CircleAvatar(
-                          radius: 55,
-                          child: CircleAvatar(
-                            radius: 55,
-                            backgroundImage: AssetImage(Profile),
+                        Text(
+                          widget.UserData["username"],
+                          style: const TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          widget.UserData["email"],
+                          style: const TextStyle(
+                            fontSize: 16,
                           ),
                         ),
-                        Positioned(
-                            bottom: 3,
-                            right: 3,
-                            child: CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.white,
-                                child: IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(Icons.camera_alt)))),
+                        Text(
+                          "Ph.No: ${widget.UserData["PhoneNo"]}",
+                          style: const TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                        Text("${widget.UserData["about_me"]}")
                       ],
-                    )
-                  ],
-                ),
+                    ),
+                  ),
+                  Stack(
+                    children: [
+                      const CircleAvatar(
+                        radius: 55,
+                        child: CircleAvatar(
+                          radius: 55,
+                          backgroundImage: AssetImage(Profile),
+                        ),
+                      ),
+                      Positioned(
+                          bottom: 3,
+                          right: 3,
+                          child: CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.white,
+                              child: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.camera_alt)))),
+                    ],
+                  )
+                ],
               ),
-              // // // // // // // // // // // Skill // // // // // // // // //
-              // h1("Skills", context, widget.UserData),
-              h1("Skills"),
+            ),
+            // // // // // // // // // // // Skill // // // // // // // // //
+            // h1("Skills", context, widget.UserData),
+            h1("Skills"),
 
-              widget.UserData["Skills"] != null
-                  ? ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: Skills.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Slidable(
-                            key: const ValueKey(0),
-                            endActionPane: ActionPane(
-                              motion: ScrollMotion(),
-                              children: [
-                                SlidableAction(
-                                  icon: Icons.delete,
-                                  foregroundColor: Colors.red,
-                                  onPressed: (BuildContext context) async {
-                                    setState(() {
-                                      widget.UserData["Skills"].removeAt(index);
-                                    });
-                                    await FirebaseFirestore.instance
-                                        .collection("users")
-                                        .doc(widget.UserData["UID"])
-                                        .update({
-                                      "Skills": widget.UserData["Skills"],
-                                    });
-                                  },
-                                ),
-                              ],
-                            ),
-                            child: Row(
-                              children: [
-                                const Padding(
-                                  padding:
-                                      EdgeInsets.only(left: 38.0, right: 8.0),
-                                  child: Icon(
-                                    Icons.star,
-                                    size: 18,
-                                  ),
-                                ),
-                                Text(
-                                  Skills[index]["name"],
-                                  style: const TextStyle(fontSize: 18),
-                                ),
-                              ],
-                            ));
-                      })
-                  : Text("No Skill"),
-              // // // // // // // // // // // Education // // // // // // // // //
-
-              h1("Education"),
-
-              ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: education.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Slidable(
-                      key: const ValueKey(0),
-                      endActionPane: ActionPane(
-                        motion: ScrollMotion(),
-                        children: [
-                          SlidableAction(
-                            icon: Icons.delete,
-                            foregroundColor: Colors.red,
-                            onPressed: (BuildContext context) async {
-                              setState(() {
-                                education.removeAt(index);
-                              });
-                              await firestore
-                                  .collection("users")
-                                  .doc(widget.UserData["UID"])
-                                  .update({
-                                "Education": education,
-                              });
-                            },
+            widget.UserData["Skills"] != null
+                ? ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: Skills.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Slidable(
+                          key: const ValueKey(0),
+                          endActionPane: ActionPane(
+                            motion: ScrollMotion(),
+                            children: [
+                              SlidableAction(
+                                icon: Icons.delete,
+                                foregroundColor: Colors.red,
+                                onPressed: (BuildContext context) async {
+                                  setState(() {
+                                    widget.UserData["Skills"].removeAt(index);
+                                  });
+                                  await FirebaseFirestore.instance
+                                      .collection("users")
+                                      .doc(widget.UserData["UID"])
+                                      .update({
+                                    "Skills": widget.UserData["Skills"],
+                                  });
+                                },
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(left: 38.0, right: 8.0),
-                            child: Icon(
-                              Icons.star,
-                              size: 18,
-                            ),
-                          ),
-                          Text(
-                            "${education[index]["name"]}  (${education[index]["startDate"]} - ${education[index]["endDate"]})",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
-              mySpacer(10.0, 0.0),
+                          child: Row(
+                            children: [
+                              const Padding(
+                                padding:
+                                    EdgeInsets.only(left: 38.0, right: 8.0),
+                                child: Icon(
+                                  Icons.star,
+                                  size: 18,
+                                ),
+                              ),
+                              Text(
+                                Skills[index]["name"],
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                            ],
+                          ));
+                    })
+                : Text("No Skill"),
+            // // // // // // // // // // // Education // // // // // // // // //
 
-              // // // // // // // // // // // Education // // // // // // // // //
-              h1("Experiences"),
-              ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: experiences.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Slidable(
-                      key: const ValueKey(0),
-                      endActionPane: ActionPane(
-                        motion: ScrollMotion(),
-                        children: [
-                          SlidableAction(
-                            icon: Icons.delete,
-                            foregroundColor: Colors.red,
-                            onPressed: (BuildContext context) async {
-                              setState(() {
-                                experiences.removeAt(index);
-                              });
-                              await firestore
-                                  .collection("users")
-                                  .doc(widget.UserData["UID"])
-                                  .update({
-                                "experiences": experiences,
-                              });
-                            },
+            h1("Education"),
+
+            ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: education.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Slidable(
+                    key: const ValueKey(0),
+                    endActionPane: ActionPane(
+                      motion: ScrollMotion(),
+                      children: [
+                        SlidableAction(
+                          icon: Icons.delete,
+                          foregroundColor: Colors.red,
+                          onPressed: (BuildContext context) async {
+                            setState(() {
+                              education.removeAt(index);
+                            });
+                            await firestore
+                                .collection("users")
+                                .doc(widget.UserData["UID"])
+                                .update({
+                              "Education": education,
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(left: 38.0, right: 8.0),
+                          child: Icon(
+                            Icons.star,
+                            size: 18,
                           ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(left: 38.0, right: 8.0),
-                            child: Icon(
-                              Icons.star,
-                              size: 18,
-                            ),
+                        ),
+                        Text(
+                          "${education[index]["name"]}  (${education[index]["startDate"]} - ${education[index]["endDate"]})",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ],
+                    ),
+                  );
+                }),
+            mySpacer(10.0, 0.0),
+
+            // // // // // // // // // // // Education // // // // // // // // //
+            h1("Experiences"),
+            ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: experiences.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Slidable(
+                    key: const ValueKey(0),
+                    endActionPane: ActionPane(
+                      motion: ScrollMotion(),
+                      children: [
+                        SlidableAction(
+                          icon: Icons.delete,
+                          foregroundColor: Colors.red,
+                          onPressed: (BuildContext context) async {
+                            setState(() {
+                              experiences.removeAt(index);
+                            });
+                            await firestore
+                                .collection("users")
+                                .doc(widget.UserData["UID"])
+                                .update({
+                              "experiences": experiences,
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(left: 38.0, right: 8.0),
+                          child: Icon(
+                            Icons.star,
+                            size: 18,
                           ),
-                          Text(
-                            "${experiences[index]["name"]}  (${experiences[index]["startDate"]} - ${experiences[index]["endDate"]})",
-                            style: TextStyle(fontSize: 18),
+                        ),
+                        Text(
+                          "${experiences[index]["name"]}  (${experiences[index]["startDate"]} - ${experiences[index]["endDate"]})",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ],
+                    ),
+                  );
+                }),
+            mySpacer(10.0, 0.0),
+            // // // // // // // // // // // Skill // // // // // // // // //
+            // h1("Skills", context, widget.UserData),
+            h1("Hobbies"),
+
+            widget.UserData["Hobbies"] != null
+                ? ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: Hobbies.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Slidable(
+                          key: const ValueKey(0),
+                          endActionPane: ActionPane(
+                            motion: ScrollMotion(),
+                            children: [
+                              SlidableAction(
+                                icon: Icons.delete,
+                                foregroundColor: Colors.red,
+                                onPressed: (BuildContext context) async {
+                                  setState(() {
+                                    widget.UserData["Hobbies"]
+                                        .removeAt(index);
+                                  });
+                                  await FirebaseFirestore.instance
+                                      .collection("users")
+                                      .doc(widget.UserData["UID"])
+                                      .update({
+                                    "Hobbies": widget.UserData["Hobbies"],
+                                  });
+                                },
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    );
-                  }),
-              mySpacer(10.0, 0.0),
-              // // // // // // // // // // // Skill // // // // // // // // //
-              // h1("Skills", context, widget.UserData),
-              h1("Hobbies"),
+                          child: Row(
+                            children: [
+                              const Padding(
+                                padding:
+                                    EdgeInsets.only(left: 38.0, right: 8.0),
+                                child: Icon(
+                                  Icons.star,
+                                  size: 18,
+                                ),
+                              ),
+                              Text(
+                                Hobbies[index]["name"],
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                            ],
+                          ));
+                    })
+                : Text("No Hobbies"),
 
-              widget.UserData["Hobbies"] != null
-                  ? ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: Hobbies.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Slidable(
-                            key: const ValueKey(0),
-                            endActionPane: ActionPane(
-                              motion: ScrollMotion(),
-                              children: [
-                                SlidableAction(
-                                  icon: Icons.delete,
-                                  foregroundColor: Colors.red,
-                                  onPressed: (BuildContext context) async {
-                                    setState(() {
-                                      widget.UserData["Hobbies"]
-                                          .removeAt(index);
-                                    });
-                                    await FirebaseFirestore.instance
-                                        .collection("users")
-                                        .doc(widget.UserData["UID"])
-                                        .update({
-                                      "Hobbies": widget.UserData["Hobbies"],
-                                    });
-                                  },
+            mySpacer(10.0, 0.0),
+            // // // // // // // // // // // Skill // // // // // // // // //
+            h1("Language"),
+            widget.UserData["Language"] != null
+                ? ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: Language.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Slidable(
+                          key: const ValueKey(0),
+                          endActionPane: ActionPane(
+                            motion: ScrollMotion(),
+                            children: [
+                              SlidableAction(
+                                icon: Icons.delete,
+                                foregroundColor: Colors.red,
+                                onPressed: (BuildContext context) async {
+                                  setState(() {
+                                    widget.UserData["Language"]
+                                        .removeAt(index);
+                                  });
+                                  await FirebaseFirestore.instance
+                                      .collection("users")
+                                      .doc(widget.UserData["UID"])
+                                      .update({
+                                    "Language": widget.UserData["Language"],
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            children: [
+                              const Padding(
+                                padding:
+                                    EdgeInsets.only(left: 38.0, right: 8.0),
+                                child: Icon(
+                                  Icons.star,
+                                  size: 18,
                                 ),
-                              ],
-                            ),
-                            child: Row(
-                              children: [
-                                const Padding(
-                                  padding:
-                                      EdgeInsets.only(left: 38.0, right: 8.0),
-                                  child: Icon(
-                                    Icons.star,
-                                    size: 18,
-                                  ),
-                                ),
-                                Text(
-                                  Hobbies[index]["name"],
-                                  style: const TextStyle(fontSize: 18),
-                                ),
-                              ],
-                            ));
-                      })
-                  : Text("No Hobbies"),
+                              ),
+                              Text(
+                                Language[index]["name"],
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                            ],
+                          ));
+                    })
+                : Text("No Language"),
 
-              mySpacer(10.0, 0.0),
-              // // // // // // // // // // // Skill // // // // // // // // //
-              h1("Language"),
-              widget.UserData["Language"] != null
-                  ? ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: Language.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Slidable(
-                            key: const ValueKey(0),
-                            endActionPane: ActionPane(
-                              motion: ScrollMotion(),
-                              children: [
-                                SlidableAction(
-                                  icon: Icons.delete,
-                                  foregroundColor: Colors.red,
-                                  onPressed: (BuildContext context) async {
-                                    setState(() {
-                                      widget.UserData["Language"]
-                                          .removeAt(index);
-                                    });
-                                    await FirebaseFirestore.instance
-                                        .collection("users")
-                                        .doc(widget.UserData["UID"])
-                                        .update({
-                                      "Language": widget.UserData["Language"],
-                                    });
-                                  },
-                                ),
-                              ],
-                            ),
-                            child: Row(
-                              children: [
-                                const Padding(
-                                  padding:
-                                      EdgeInsets.only(left: 38.0, right: 8.0),
-                                  child: Icon(
-                                    Icons.star,
-                                    size: 18,
-                                  ),
-                                ),
-                                Text(
-                                  Language[index]["name"],
-                                  style: const TextStyle(fontSize: 18),
-                                ),
-                              ],
-                            ));
-                      })
-                  : Text("No Language"),
+            mySpacer(10.0, 0.0),
 
-              mySpacer(10.0, 0.0),
-
-              // // // // // // // // // // // profile History // // // // // // // // //
-              // const Padding(
-              //   padding: EdgeInsets.only(left: 18.0, bottom: 10.0),
-              //   child: Text(
-              //     "Profile History",
-              //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              //   ),
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-              //   child: GridView.count(
-              //     shrinkWrap: true,
-              //     primary: false,
-              //     crossAxisCount: 3,
-              //     crossAxisSpacing: 4.0,
-              //     mainAxisSpacing: 8.0,
-              //     children: List.generate(Imgs.length, (index) {
-              //       return Container(
-              //         // alignment: Alignment.center,
-              //         decoration: BoxDecoration(
-              //           borderRadius: BorderRadius.circular(15),
-              //           image: DecorationImage(
-              //             image: NetworkImage(Imgs[index]),
-              //             fit: BoxFit.cover,
-              //           ),
-              //         ),
-              //       );
-              //     }),
-              //   ),
-              // )
-            ],
-          ),
+            // // // // // // // // // // // profile History // // // // // // // // //
+            // const Padding(
+            //   padding: EdgeInsets.only(left: 18.0, bottom: 10.0),
+            //   child: Text(
+            //     "Profile History",
+            //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            //   ),
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+            //   child: GridView.count(
+            //     shrinkWrap: true,
+            //     primary: false,
+            //     crossAxisCount: 3,
+            //     crossAxisSpacing: 4.0,
+            //     mainAxisSpacing: 8.0,
+            //     children: List.generate(Imgs.length, (index) {
+            //       return Container(
+            //         // alignment: Alignment.center,
+            //         decoration: BoxDecoration(
+            //           borderRadius: BorderRadius.circular(15),
+            //           image: DecorationImage(
+            //             image: NetworkImage(Imgs[index]),
+            //             fit: BoxFit.cover,
+            //           ),
+            //         ),
+            //       );
+            //     }),
+            //   ),
+            // )
+          ],
         ),
       ),
     );

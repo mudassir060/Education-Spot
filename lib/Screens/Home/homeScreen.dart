@@ -58,7 +58,7 @@ class _homeScreenState extends State<homeScreen> {
           body: SingleChildScrollView(
         child: Column(
           children: [
-            mySpacer(10.0, 0.0),
+            // mySpacer(10.0, 0.0),
             // // // // // // // // // // // Top Bar // // // // // // // // //
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

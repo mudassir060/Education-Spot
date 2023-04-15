@@ -423,7 +423,7 @@ class _profileScreenState extends State<profileScreen> {
 
 Widget h1(title) {
   return Padding(
-    padding: const EdgeInsets.only(left:8.0),
+    padding: const EdgeInsets.only(left: 8.0),
     child: Text(
       title,
       style: const TextStyle(

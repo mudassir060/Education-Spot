@@ -74,8 +74,7 @@ class _profileScreenState extends State<profileScreen> {
                               fontSize: 16,
                             ),
                           ),
-                          Text(
-                              "Hello. I'm ${widget.UserData["username"]} Welcome to my profile")
+                          Text("${widget.UserData["about_me"]}")
                         ],
                       ),
                     ),
@@ -103,55 +102,66 @@ class _profileScreenState extends State<profileScreen> {
                 ),
               ),
               // // // // // // // // // // // Skill // // // // // // // // //
-              h1("Skills", context, widget.UserData),
-
-              ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: Skills.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Slidable(
-                      key: const ValueKey(0),
-                      endActionPane: ActionPane(
-                        motion: ScrollMotion(),
-                        children: [
-                          SlidableAction(
-                            icon: Icons.delete,
-                            foregroundColor: Colors.red,
-                            onPressed: (BuildContext context) async {
-                              setState(() {
-                                Skills.removeAt(index);
-                              });
-                              await firestore
-                                  .collection("users")
-                                  .doc(widget.UserData["UID"])
-                                  .update({
-                                "Skills": Skills,
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(left: 38.0, right: 8.0),
-                            child: Icon(
-                              Icons.star,
-                              size: 18,
+              // h1("Skills", context, widget.UserData),
+              Text(
+                "Skills",
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              widget.UserData["Skills"] != null
+                  ? ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: Skills.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Slidable(
+                            key: const ValueKey(0),
+                            endActionPane: ActionPane(
+                              motion: ScrollMotion(),
+                              children: [
+                                SlidableAction(
+                                  icon: Icons.delete,
+                                  foregroundColor: Colors.red,
+                                  onPressed: (BuildContext context) async {
+                                    setState(() {
+                                      widget.UserData["Skills"].removeAt(index);
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection("users")
+                                        .doc(widget.UserData["UID"])
+                                        .update({
+                                      "Skills": widget.UserData["Skills"],
+                                    });
+                                  },
+                                ),
+                              ],
                             ),
-                          ),
-                          Text(
-                            Skills[index]["name"],
-                            style: const TextStyle(fontSize: 18),
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
+                            child: Row(
+                              children: [
+                                const Padding(
+                                  padding:
+                                      EdgeInsets.only(left: 38.0, right: 8.0),
+                                  child: Icon(
+                                    Icons.star,
+                                    size: 18,
+                                  ),
+                                ),
+                                Text(
+                                  Skills[index]["name"],
+                                  style: const TextStyle(fontSize: 18),
+                                ),
+                              ],
+                            ));
+                      })
+                  : Text("No Skill"),
               // // // // // // // // // // // Education // // // // // // // // //
 
-              h1("Education", context, widget.UserData),
+              // h1("Education", context, widget.UserData),
+              Text(
+                "Education",
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
               ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -198,11 +208,14 @@ class _profileScreenState extends State<profileScreen> {
                   }),
               mySpacer(10.0, 0.0),
 
+              // // // // // // // // // // // Education // // // // // // // // //
 
-
-                            // // // // // // // // // // // Education // // // // // // // // //
-
-              h1("Education", context, widget.UserData),
+              // h1("Education", context, widget.UserData),
+              Text(
+                "Education",
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
               ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -249,7 +262,6 @@ class _profileScreenState extends State<profileScreen> {
                   }),
               mySpacer(10.0, 0.0),
 
-              
               // // // // // // // // // // // profile History // // // // // // // // //
               // const Padding(
               //   padding: EdgeInsets.only(left: 18.0, bottom: 10.0),
@@ -280,7 +292,6 @@ class _profileScreenState extends State<profileScreen> {
               //     }),
               //   ),
               // )
-           
             ],
           ),
         ),
@@ -289,29 +300,29 @@ class _profileScreenState extends State<profileScreen> {
   }
 }
 
-Widget h1(title, context, UserData) {
-  return Padding(
-    padding: const EdgeInsets.only(left: 18.0, right: 18.0, top: 8.0),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(
-            height: 20,
-            width: 120,
-            child: ElevatedButton(
-                onPressed: () {
-                  if ("Skills" == title) {
-                    skillUpdate(context, UserData);
-                  } else {
-                    educationUpdate(context, UserData);
-                  }
-                },
-                child: Text("Add $title")))
-      ],
-    ),
-  );
-}
+// Widget h1(title, context, UserData) {
+//   return Padding(
+//     padding: const EdgeInsets.only(left: 18.0, right: 18.0, top: 8.0),
+//     child: Row(
+//       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//       children: [
+//         Text(
+//           title,
+//           style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+//         ),
+//         SizedBox(
+//             height: 20,
+//             width: 120,
+//             child: ElevatedButton(
+//                 onPressed: () {
+//                   if ("Skills" == title) {
+//                     skillUpdate(context, UserData);
+//                   } else {
+//                     educationUpdate(context, UserData);
+//                   }
+//                 },
+//                 child: Text("Add $title")))
+//       ],
+//     ),
+//   );
+// }

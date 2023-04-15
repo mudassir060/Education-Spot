@@ -4,60 +4,54 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'Screens/authentication/signInScreen.dart';
 import 'Widgets/BottomNavigBar.dart';
-import 'html_to_pdf.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+    runApp(const getData());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          useMaterial3: true,
-          primarySwatch: Colors.orange,
-        ),
-        home: FutureBuilder(
-          // Initialize FlutterFire
-          future: Firebase.initializeApp(),
-          builder: (context, snapshot) {
-            // Check for errors
-            if (snapshot.hasError) {
-              return const Text("Some thing Went Wrong");
-            }
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//         debugShowCheckedModeBanner: false,
+//         theme: ThemeData(
+//           useMaterial3: true,
+//           primarySwatch: Colors.orange,
+//         ),
+//         home: FutureBuilder(
+//           // Initialize FlutterFire
+//           future: Firebase.initializeApp(),
+//           builder: (context, snapshot) {
+//             // Check for errors
+//             if (snapshot.hasError) {
+//               return const Text("Some thing Went Wrong");
+//             }
 
-            // Once complete, show your application
-            if (snapshot.connectionState == ConnectionState.done) {
-              return getData();
-            }
+//             // Once complete, show your application
+//             if (snapshot.connectionState == ConnectionState.done) {
+//               return getData();
+//             }
 
-            // Otherwise, show something whilst waiting for initialization to complete
-            return const Center(child: CircularProgressIndicator());
-          },
-        ));
-  }
-}
+//             // Otherwise, show something whilst waiting for initialization to complete
+//             return const Center(child: CircularProgressIndicator());
+//           },
+//         ));
+//   }
+// }
 
-class getData extends StatefulWidget {
+class getData extends StatelessWidget {
   const getData({super.key});
 
-  @override
-  State<getData> createState() => _getDataState();
-}
-
-class _getDataState extends State<getData> {
   @override
   Widget build(BuildContext context) {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-    FirebaseAuth auth = FirebaseAuth.instance;
 
-    final User? user = auth.currentUser;
+    final User? user = FirebaseAuth.instance.currentUser;
     get_Data() async {
       final DocumentSnapshot snapshot =
           await firestore.collection("users").doc(user?.uid).get();
@@ -68,21 +62,28 @@ class _getDataState extends State<getData> {
       return null;
     }
 
-    return FutureBuilder(
-      future: get_Data(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return const Text("Some thing Went Wrong");
-        }
-
-        // Once complete, show your application
-        if (snapshot.hasData) {
-          return BottomNavigBar(UserData: snapshot.data as Map);
-        }
-
-        // Otherwise, show something whilst waiting for initialization to complete
-        return signInScreen();
-      },
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          useMaterial3: true,
+          primarySwatch: Colors.orange,
+        ),
+        home: FutureBuilder(
+        future: get_Data(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return const Text("Some thing Went Wrong");
+          }
+    
+          // Once complete, show your application
+          if (snapshot.hasData) {
+            return BottomNavigBar(UserData: snapshot.data as Map);
+          }
+    
+          // Otherwise, show something whilst waiting for initialization to complete
+          return signInScreen();
+        },
+      ),
     );
   }
 }

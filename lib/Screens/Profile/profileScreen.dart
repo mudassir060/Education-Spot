@@ -124,32 +124,17 @@ class _profileScreenState extends State<profileScreen> {
                   ),
                   Stack(
                     children: [
-                      Stack(
-                        children: [
-                          CircleAvatar(
-                            radius: 55,
-                            child: widget.UserData["profile"] == null
-                                ? CircleAvatar(
-                                    radius: 55,
-                                    backgroundImage: AssetImage(Profile),
-                                  )
-                                : CircleAvatar(
-                                    radius: 55,
-                                    backgroundImage: NetworkImage(
-                                        widget.UserData["profile"])),
-                          ),
-                          imageLooding == true
-                              ? Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: CircularProgressIndicator(
-                                    value: progressshow / 100,
-                                    backgroundColor: Colors.purple,
-                                    semanticsValue: progressshow.toString(),
-                                    semanticsLabel: progressshow.toString(),
-                                  ),
-                                )
-                              : Container(),
-                        ],
+                      CircleAvatar(
+                        radius: 55,
+                        child: widget.UserData["profile"] == null
+                            ? CircleAvatar(
+                                radius: 55,
+                                backgroundImage: AssetImage(Profile),
+                              )
+                            : CircleAvatar(
+                                radius: 55,
+                                backgroundImage:
+                                    NetworkImage(widget.UserData["profile"])),
                       ),
                       Positioned(
                           bottom: 3,

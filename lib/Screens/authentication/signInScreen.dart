@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import '../../Widgets/BottomNavigBar.dart';
 import '../../Widgets/myTextfield.dart';
 import '../../Widgets/mySpacer.dart';
+import 'forgetPassword.dart';
 import 'widget/backDesgin.dart';
 
 class signInScreen extends StatefulWidget {
@@ -18,15 +19,14 @@ class signInScreen extends StatefulWidget {
 }
 
 class _signInScreenState extends State<signInScreen> {
-
-  TextEditingController emailCTRL = TextEditingController(text: "abc@gmail.com");
+  TextEditingController emailCTRL =
+      TextEditingController(text: "abc@gmail.com");
   TextEditingController passwordCTRL = TextEditingController(text: "qwerty");
 
   bool looding = false;
   bool _obscureText = true;
 
   // FlutterSecureStorage storage = const FlutterSecureStorage();
-
 
   void register() async {
     setState(() {
@@ -38,13 +38,11 @@ class _signInScreenState extends State<signInScreen> {
     final String useremail = emailCTRL.text.trim();
     final String userpassword = passwordCTRL.text;
     try {
-      if (
-      useremail != '' &&
-          userpassword != '') {
+      if (useremail != '' && userpassword != '') {
         final UserCredential user = await auth.signInWithEmailAndPassword(
             email: useremail, password: userpassword);
         final DocumentSnapshot snapshot =
-        await firestore.collection("users").doc(user.user?.uid).get();
+            await firestore.collection("users").doc(user.user?.uid).get();
         // storage.write(key: "UID", value: user.user?.uid);
         final data = snapshot.data();
         setState(() {
@@ -53,7 +51,9 @@ class _signInScreenState extends State<signInScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => BottomNavigBar(UserData:UserData,)),
+              builder: (context) => BottomNavigBar(
+                    UserData: UserData,
+                  )),
         );
       } else {
         // snackbar("Please fill all text field");
@@ -65,7 +65,6 @@ class _signInScreenState extends State<signInScreen> {
       looding = false;
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +117,14 @@ class _signInScreenState extends State<signInScreen> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              forgetPassword()),
+                                    );
+                                  },
                                   child: const Text(
                                     "Forgot Password?",
                                     style: TextStyle(color: primaryColor),
@@ -130,7 +136,7 @@ class _signInScreenState extends State<signInScreen> {
                       myButton(
                           width: vwidth,
                           function: () {
-                           register();
+                            register();
                           },
                           name: "Sign In",
                           loading: looding),

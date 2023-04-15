@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
 
             // Once complete, show your application
             if (snapshot.connectionState == ConnectionState.done) {
-              return signInScreen();
+              return getData();
             }
 
             // Otherwise, show something whilst waiting for initialization to complete
@@ -50,26 +51,25 @@ class getData extends StatefulWidget {
 }
 
 class _getDataState extends State<getData> {
-
   @override
   Widget build(BuildContext context) {
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-        FirebaseAuth auth = FirebaseAuth.instance;
+    FirebaseAuth auth = FirebaseAuth.instance;
 
     final User? user = auth.currentUser;
-  getData() async {
-    final DocumentSnapshot snapshot =
-        await firestore.collection("users").doc(user?.uid).get();
-    // storage.write(key: "UID", value: user.user?.uid);
-    if (snapshot.exists) {
-      return snapshot.data();
+    get_Data() async {
+      final DocumentSnapshot snapshot =
+          await firestore.collection("users").doc(user?.uid).get();
+      // storage.write(key: "UID", value: user.user?.uid);
+      if (snapshot.exists) {
+        return snapshot.data();
+      }
+      return null;
     }
-    return null;
-  }
 
     return FutureBuilder(
-      future: getData(),
+      future: get_Data(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return const Text("Some thing Went Wrong");

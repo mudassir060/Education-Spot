@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 snackBar(context, e) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    content:  Text(e),
+    content: Text(e),
+    duration: Duration(seconds: 5),
     // action: SnackBarAction(
     //   label: 'Undo',
     //   onPressed: () {

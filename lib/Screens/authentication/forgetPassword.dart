@@ -1,4 +1,5 @@
 import 'package:education_spot/Screens/authentication/signInScreen.dart';
+import 'package:education_spot/Widgets/snackBar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -19,20 +20,14 @@ Future<void> _resetPassword(context) async {
   try {
     await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
 
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text('Password reset email sent to $email'),
-      duration: Duration(seconds: 5),
-    ));
-
+  
+    snackBar(context, 'Password reset email sent to $email');
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => signInScreen()),
     );
   } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text("Something went wrong please try again later"),
-      duration: Duration(seconds: 5),
-    ));
+    snackBar(context, e);
   }
 }
 
@@ -82,13 +77,15 @@ class _forgetPasswordState extends State<forgetPassword> {
                   children: [
                     Text(
                       "Reset Password",
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "No problem! Just enter your email address and we'll send you a one-time password to recover your password.",
                       textAlign: TextAlign.left,
                     ),
                     SizedBox(
-                      height: 3,
+                      height: 13,
                     ),
                     myTextfield(
                       titel: 'Email Address',
@@ -96,7 +93,7 @@ class _forgetPasswordState extends State<forgetPassword> {
                       textcontroler: emailController,
                     ),
                     SizedBox(
-                      height: 4,
+                      height: 14,
                     ),
                     myButton(
                         width: w,

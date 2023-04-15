@@ -164,99 +164,102 @@ class _profileScreenState extends State<profileScreen> {
             // // // // // // // // // // // Education // // // // // // // // //
 
             h1("Education"),
-
-            ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: education.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Slidable(
-                    key: const ValueKey(0),
-                    endActionPane: ActionPane(
-                      motion: ScrollMotion(),
-                      children: [
-                        SlidableAction(
-                          icon: Icons.delete,
-                          foregroundColor: Colors.red,
-                          onPressed: (BuildContext context) async {
-                            setState(() {
-                              education.removeAt(index);
-                            });
-                            await firestore
-                                .collection("users")
-                                .doc(widget.UserData["UID"])
-                                .update({
-                              "Education": education,
-                            });
-                          },
+            widget.UserData["Education"] != null
+                ? ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: education.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Slidable(
+                        key: const ValueKey(0),
+                        endActionPane: ActionPane(
+                          motion: ScrollMotion(),
+                          children: [
+                            SlidableAction(
+                              icon: Icons.delete,
+                              foregroundColor: Colors.red,
+                              onPressed: (BuildContext context) async {
+                                setState(() {
+                                  education.removeAt(index);
+                                });
+                                await firestore
+                                    .collection("users")
+                                    .doc(widget.UserData["UID"])
+                                    .update({
+                                  "Education": education,
+                                });
+                              },
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(left: 38.0, right: 8.0),
-                          child: Icon(
-                            Icons.star,
-                            size: 18,
-                          ),
+                        child: Row(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(left: 38.0, right: 8.0),
+                              child: Icon(
+                                Icons.star,
+                                size: 18,
+                              ),
+                            ),
+                            Text(
+                              "${education[index]["name"]}  (${education[index]["startDate"]} - ${education[index]["endDate"]})",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ],
                         ),
-                        Text(
-                          "${education[index]["name"]}  (${education[index]["startDate"]} - ${education[index]["endDate"]})",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ],
-                    ),
-                  );
-                }),
+                      );
+                    })
+                : Text("No Education"),
             mySpacer(10.0, 0.0),
 
             // // // // // // // // // // // Education // // // // // // // // //
             h1("Experiences"),
-            ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: experiences.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Slidable(
-                    key: const ValueKey(0),
-                    endActionPane: ActionPane(
-                      motion: ScrollMotion(),
-                      children: [
-                        SlidableAction(
-                          icon: Icons.delete,
-                          foregroundColor: Colors.red,
-                          onPressed: (BuildContext context) async {
-                            setState(() {
-                              experiences.removeAt(index);
-                            });
-                            await firestore
-                                .collection("users")
-                                .doc(widget.UserData["UID"])
-                                .update({
-                              "experiences": experiences,
-                            });
-                          },
+            widget.UserData["Experiences"] != null
+                ? ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: experiences.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Slidable(
+                        key: const ValueKey(0),
+                        endActionPane: ActionPane(
+                          motion: ScrollMotion(),
+                          children: [
+                            SlidableAction(
+                              icon: Icons.delete,
+                              foregroundColor: Colors.red,
+                              onPressed: (BuildContext context) async {
+                                setState(() {
+                                  experiences.removeAt(index);
+                                });
+                                await firestore
+                                    .collection("users")
+                                    .doc(widget.UserData["UID"])
+                                    .update({
+                                  "experiences": experiences,
+                                });
+                              },
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(left: 38.0, right: 8.0),
-                          child: Icon(
-                            Icons.star,
-                            size: 18,
-                          ),
+                        child: Row(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(left: 38.0, right: 8.0),
+                              child: Icon(
+                                Icons.star,
+                                size: 18,
+                              ),
+                            ),
+                            Text(
+                              "${experiences[index]["name"]}  (${experiences[index]["startDate"]} - ${experiences[index]["endDate"]})",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ],
                         ),
-                        Text(
-                          "${experiences[index]["name"]}  (${experiences[index]["startDate"]} - ${experiences[index]["endDate"]})",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ],
-                    ),
-                  );
-                }),
+                      );
+                    })
+                : Text("No Experiences"),
             mySpacer(10.0, 0.0),
             // // // // // // // // // // // Skill // // // // // // // // //
             // h1("Skills", context, widget.UserData),

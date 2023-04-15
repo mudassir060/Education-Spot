@@ -11,6 +11,8 @@ import '../Quizz/QuizzScreen.dart';
 import '../Scholarships/sholarshipsScreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'menuButton/abouteScreen.dart';
+
 class homeScreen extends StatefulWidget {
   final Map UserData;
   const homeScreen({Key? key, required this.UserData}) : super(key: key);
@@ -21,15 +23,17 @@ class homeScreen extends StatefulWidget {
 
 class _homeScreenState extends State<homeScreen> {
   var sliderImg = [Banner_1, Banner_2, Banner_3];
-                      final Uri _url0 = Uri.parse('https://chat.whatsapp.com/HJCDYV4WR5h6fXw7Ut3iDe');
-                      final Uri _url1 = Uri.parse('wa.me/923454335400');
-                      final Uri _url2 = Uri.parse('wa.me/923440747466');
+  final Uri _url0 =
+      Uri.parse('https://chat.whatsapp.com/HJCDYV4WR5h6fXw7Ut3iDe');
+  final Uri _url1 = Uri.parse('wa.me/923454335400');
+  final Uri _url2 = Uri.parse('wa.me/923440747466');
 
-                    Future<void> _launchUrl(_url) async {
-                      if (!await launchUrl(_url)) {
-                        throw Exception('Could not launch $_url');
-                      }
-                    }
+  Future<void> _launchUrl(_url) async {
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var buttonList = [
@@ -88,18 +92,31 @@ class _homeScreenState extends State<homeScreen> {
                     // Handle the selection of a menu item
                   },
                   itemBuilder: (context) => [
-                    const PopupMenuItem(
+                    PopupMenuItem(
                       value: 'item1',
                       child: Text('Rate us'),
+                      onTap: () {},
                     ),
-                    const PopupMenuItem(
+                    PopupMenuItem(
                       value: 'item2',
                       child: Text('About us'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => abouteScreen()),
+                        );
+                      },
                     ),
                     // ignore: prefer_const_constructors
                     PopupMenuItem(
                       value: 'item3',
                       child: const Text('Contact us'),
+                      onTap: (){   Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => abouteScreen()),
+                        );},
                     ),
                   ],
                 ),
@@ -112,7 +129,6 @@ class _homeScreenState extends State<homeScreen> {
                   // key: _sliderKey,
                   unlimitedMode: true,
                   slideBuilder: (index) {
-                   
                     return InkWell(
                         onTap: () {
                           if (index == 0) {
@@ -121,7 +137,7 @@ class _homeScreenState extends State<homeScreen> {
                           if (index == 2) {
                             _launchUrl(_url1);
                           }
-                           if (index == 2) {
+                          if (index == 2) {
                             _launchUrl(_url2);
                           }
                         },

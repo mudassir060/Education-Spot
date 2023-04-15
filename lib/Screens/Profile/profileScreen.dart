@@ -1,13 +1,17 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education_spot/Screens/Profile/educationUpdate.dart';
 import 'package:education_spot/Screens/Profile/skillUpdate.dart';
 import 'package:education_spot/Widgets/myAppBar.dart';
 import 'package:education_spot/Widgets/mySpacer.dart';
 import 'package:education_spot/constants/style.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-
+import 'package:image_picker/image_picker.dart';
+import '../../Widgets/snackBar.dart';
 import '../../constants/images.dart';
 
 class profileScreen extends StatefulWidget {
@@ -28,6 +32,43 @@ class _profileScreenState extends State<profileScreen> {
   // ];
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  bool imageLooding = false;
+  String url = "null";
+  var progressshow = 0.0;
+
+  late final XFile? image;
+  pickImage() async {
+    setState(() {
+      imageLooding = true;
+    });
+    image = await ImagePicker()
+        .pickImage(source: ImageSource.gallery, imageQuality: 45);
+    FirebaseStorage storage = FirebaseStorage.instance;
+    Reference ref =
+        storage.ref().child("${DateTime.now().microsecondsSinceEpoch}");
+    UploadTask uploadTask = ref.putFile(File(image!.path));
+    uploadTask.snapshotEvents.listen((TaskSnapshot snapshot) {
+      double progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      setState(() {
+        progressshow = progress;
+      });
+    });
+    uploadTask.whenComplete(() async {
+      url = await ref.getDownloadURL();
+      setState(() {
+        url = url;
+        imageLooding = false;
+      });
+      await firestore.collection("users").doc(widget.UserData["UID"]).update({
+        "profile": url,
+      });
+      setState(() {
+        widget.UserData["profile"] = url;
+      });
+    }).catchError((onError) {
+      snackBar(context, onError.toString());
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,12 +131,16 @@ class _profileScreenState extends State<profileScreen> {
                   ),
                   Stack(
                     children: [
-                      const CircleAvatar(
+                      CircleAvatar(
                         radius: 55,
-                        child: CircleAvatar(
-                          radius: 55,
-                          backgroundImage: AssetImage(Profile),
-                        ),
+                        child: widget.UserData["profile"] == null
+                            ? CircleAvatar(
+                                radius: 55,
+                                backgroundImage: AssetImage(Profile))
+                            : CircleAvatar(
+                                radius: 55,
+                                backgroundImage:
+                                    NetworkImage(widget.UserData["profile"])),
                       ),
                       Positioned(
                           bottom: 3,
@@ -104,7 +149,9 @@ class _profileScreenState extends State<profileScreen> {
                               radius: 20,
                               backgroundColor: Colors.white,
                               child: IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    pickImage();
+                                  },
                                   icon: const Icon(Icons.camera_alt)))),
                     ],
                   )

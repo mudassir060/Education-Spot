@@ -33,6 +33,7 @@ class _profileScreenState extends State<profileScreen> {
   Widget build(BuildContext context) {
     var Skills = widget.UserData["Skills"];
     var education = widget.UserData["Education"];
+    var experiences = widget.UserData["experiences"];
     var vwidth = MediaQuery.of(context).size.width;
     var vheight = MediaQuery.of(context).size.height;
     return SafeArea(
@@ -212,14 +213,14 @@ class _profileScreenState extends State<profileScreen> {
 
               // h1("Education", context, widget.UserData),
               Text(
-                "Education",
+                "Experiences",
                 style:
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: education.length,
+                  itemCount: experiences.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Slidable(
                       key: const ValueKey(0),
@@ -231,13 +232,13 @@ class _profileScreenState extends State<profileScreen> {
                             foregroundColor: Colors.red,
                             onPressed: (BuildContext context) async {
                               setState(() {
-                                education.removeAt(index);
+                                experiences.removeAt(index);
                               });
                               await firestore
                                   .collection("users")
                                   .doc(widget.UserData["UID"])
                                   .update({
-                                "Education": education,
+                                "experiences": experiences,
                               });
                             },
                           ),

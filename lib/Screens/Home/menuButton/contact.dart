@@ -1,7 +1,8 @@
-import 'package:app_screen/constant/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+
+import '../../../constants/images.dart';
 
 class contact extends StatefulWidget {
   const contact({super.key});
@@ -35,8 +36,8 @@ class _contactState extends State<contact> {
               decoration: BoxDecoration(
                   color: Color.fromARGB(255, 240, 235, 235),
                   borderRadius: BorderRadius.circular(10)),
-               height: isSmallScreen ? 300 : 290,
-               width: isSmallScreen ? 300 : 300,
+              height: isSmallScreen ? 300 : 290,
+              width: isSmallScreen ? 300 : 300,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -118,14 +119,14 @@ class _contactState extends State<contact> {
                       Container(
                           height: 50,
                           width: 50,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 10),
+                          child: const Padding(
+                            padding: EdgeInsets.only(left: 10),
                             child: Image(image: AssetImage(send)),
                           )),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
-                      Text(
+                      const Text(
                         "SEND",
                         style: TextStyle(
                             color: Color.fromRGBO(158, 92, 233, 1),
@@ -137,15 +138,14 @@ class _contactState extends State<contact> {
               ),
             ),
           ),
-
-         Positioned(
-          left:100,
-          top: 600,
-          child: Container(
-            height: 200,
-            width: 200,
-            child: Center(child: Image(image: AssetImage(number)))),)  
-        
+          const Positioned(
+            left: 100,
+            top: 600,
+            child: SizedBox(
+                height: 200,
+                width: 200,
+                child: Center(child: Image(image: AssetImage(number)))),
+          )
         ],
       ),
     );

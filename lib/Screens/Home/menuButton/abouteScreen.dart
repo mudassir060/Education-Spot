@@ -17,11 +17,8 @@ class _abouteScreenState extends State<abouteScreen> {
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            child: Center(child: Image(image: AssetImage(group_pic))),
-            // color: Colors.black,
-          ),
+        children: const [
+          Center(child: Image(image: AssetImage(group_pic))),
           Text(
             "About Us",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
@@ -30,7 +27,7 @@ class _abouteScreenState extends State<abouteScreen> {
             height: 20,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
+            padding: EdgeInsets.only(left: 20, right: 20),
             child: Text(
               "Education support is a mobile application that provide latest information on scholarship,job opportunties and addmission in pakistan universtites.You can create cv from this app and get expert help in the community.Our goal is empower student with necessary recources and guidance to achieve their academic and professional expiration",
               textAlign: TextAlign.justify,

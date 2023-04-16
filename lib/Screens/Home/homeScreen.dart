@@ -12,6 +12,7 @@ import '../Scholarships/sholarshipsScreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'menuButton/abouteScreen.dart';
+import 'menuButton/contact.dart';
 
 class homeScreen extends StatefulWidget {
   final Map UserData;

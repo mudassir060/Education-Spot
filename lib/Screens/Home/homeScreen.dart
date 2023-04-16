@@ -97,17 +97,7 @@ class _homeScreenState extends State<homeScreen> {
                       child: Text('Rate us'),
                       onTap: () {},
                     ),
-                    PopupMenuItem(
-                      value: 'item2',
-                      child: Text('About us'),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => abouteScreen()),
-                        );
-                      },
-                    ),
+                   
                     // ignore: prefer_const_constructors
                     PopupMenuItem(
                       value: 'item3',
@@ -115,7 +105,7 @@ class _homeScreenState extends State<homeScreen> {
                       onTap: (){   Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => abouteScreen()),
+                              builder: (context) => contact()),
                         );},
                     ),
                   ],

@@ -35,6 +35,11 @@ class _QuizzScreenState extends State<QuizzScreen> {
           title: 'ECAT',
           question: ECAT,
           data: ECAT,
+        ),        rowCard(
+          img: Quiz,
+          title: 'CSS',
+          question: CSS,
+          data: CSS,
         ),
         rowCard(
           img: Quiz,

@@ -1237,7 +1237,7 @@ var ECAT = [
 ];
 var MDCAT = [
   {
-    "question": "1 Which general formula satisfies for monosaccharides?",
+    "question": "Which general formula satisfies for monosaccharides?",
     "A": "Cn(H2O)2n",
     "B": "(CH2O)n",
     "C": "C2n(H2O)n",
@@ -1246,7 +1246,7 @@ var MDCAT = [
   },
   {
     "question":
-        "2 The type of carbohydrate which has high molecular weight and is sparingly soluble in water",
+        "The type of carbohydrate which has high molecular weight and is sparingly soluble in water",
     "A": " Monosaccharides",
     "B": "Polysaccharides",
     "C": "Maltose",
@@ -1254,7 +1254,7 @@ var MDCAT = [
     "correctIndex": 4,
   },
   {
-    "question": "3 Among the following, which acid is an unsaturated acid:",
+    "question": "Among the following, which acid is an unsaturated acid:",
     "A": "Butyric Acid ",
     "B": "Palmitic Acid",
     "C": "Oleic Acid",
@@ -1262,7 +1262,7 @@ var MDCAT = [
     "correctIndex": 3,
   },
   {
-    "question": "4 Back bone of amino acids comprises of:",
+    "question": "Back bone of amino acids comprises of:",
     "A": " R group",
     "B": "Peptide bond",
     "C": "Amino group ",
@@ -1271,7 +1271,7 @@ var MDCAT = [
   },
   {
     "question":
-        "5 The sequence of amino acids is major factor in which type of protein classification:",
+        "The sequence of amino acids is major factor in which type of protein classification:",
     "A": "Primary Proteins ",
     "B": "Tertiary Proteins",
     "C": "Secondary Proteins ",
@@ -1279,7 +1279,7 @@ var MDCAT = [
     "correctIndex": 1,
   },
   {
-    "question": "6 What is the subunit of DNA:",
+    "question": "What is the subunit of DNA:",
     "A": " Phosphoric Acid ",
     "B": "Nucleotide",
     "C": "Base ",
@@ -1287,7 +1287,7 @@ var MDCAT = [
     "correctIndex": 3,
   },
   {
-    "question": "7 The type of bonding in α-Helix:",
+    "question": "The type of bonding in α-Helix:",
     "A": "1,2 Glycosidic linkage",
     "B": "Disulfide bond",
     "C": "Ionic bond",
@@ -1295,7 +1295,7 @@ var MDCAT = [
     "correctIndex": 1,
   },
   {
-    "question": "8 Enzymes has what effect on the end-product",
+    "question": "Enzymes has what effect on the end-product",
     "A": "They altered the product",
     "B": "No effect",
     "C": "The nature of product is completely changed",
@@ -1303,7 +1303,7 @@ var MDCAT = [
     "correctIndex": 3,
   },
   {
-    "question": "9 Lock and Key model was explained by:",
+    "question": "Lock and Key model was explained by:",
     "A": "Koshland",
     "B": "De Duve",
     "C": "Emil Fischer",
@@ -1312,7 +1312,7 @@ var MDCAT = [
   },
   {
     "question":
-        "10 Name the inhibitors which can be neutralized by adding more substrate",
+        "Name the inhibitors which can be neutralized by adding more substrate",
     "A": " Competitive inhibitors",
     "B": "Non-competitive inhibitors",
     "C": "Permanent Inhibitors",
@@ -1321,7 +1321,7 @@ var MDCAT = [
   },
   {
     "question":
-        "1 What is the percentage of lipids in chemical composition of plasma membrane?",
+        "What is the percentage of lipids in chemical composition of plasma membrane?",
     "A": "60-80%",
     "B": "40-80%",
     "C": "20-40%",
@@ -1330,7 +1330,7 @@ var MDCAT = [
   },
   {
     "question":
-        "2 A complex network of channels extending from plasma membrane to nuclear membrane:",
+        "A complex network of channels extending from plasma membrane to nuclear membrane:",
     "A": "Mitochondria",
     "B": "Endoplasmic reticulum",
     "C": "Lysosomes ",
@@ -1338,7 +1338,7 @@ var MDCAT = [
     "correctIndex": 4,
   },
   {
-    "question": "3 Group of ribosomes attached with mRNA is called:",
+    "question": "Group of ribosomes attached with mRNA is called:",
     "A": "Monosome",
     "B": " Polypeptide",
     "C": "Polysome",
@@ -1346,7 +1346,7 @@ var MDCAT = [
     "correctIndex": 3,
   },
   {
-    "question": "4 Which organelle has two Subunits:",
+    "question": "Which organelle has two Subunits:",
     "A": "Endoplasmic reticulum ",
     "B": "Nucleus",
     "C": "Ribosomes",
@@ -1354,7 +1354,7 @@ var MDCAT = [
     "correctIndex": 3,
   },
   {
-    "question": "5 Ribosomes in prokaryotes sediments at:",
+    "question": "Ribosomes in prokaryotes sediments at:",
     "A": "40S ",
     "B": "80S",
     "C": "70S ",
@@ -1362,7 +1362,7 @@ var MDCAT = [
     "correctIndex": 1,
   },
   {
-    "question": "6 Identify the common organelle in plant and animals:",
+    "question": "Identify the common organelle in plant and animals:",
     "A": "Plastids ",
     "B": "Mitochondria",
     "C": "Leucoplasts",
@@ -1370,7 +1370,7 @@ var MDCAT = [
     "correctIndex": 2,
   },
   {
-    "question": "7 Which function is associated with lysosomes:?",
+    "question": "Which function is associated with lysosomes:?",
     "A": "Oxidative enzymes production",
     "B": "Phagocytosis",
     "C": "Conversion of fatty acids to carbohydrates",
@@ -1378,7 +1378,7 @@ var MDCAT = [
     "correctIndex": 1,
   },
   {
-    "question": "8 Engulfing of solid particle is termed as:",
+    "question": "Engulfing of solid particle is termed as:",
     "A": "Engulfing",
     "B": "Phagocytosis",
     "C": "Pinocytosis",
@@ -1386,7 +1386,7 @@ var MDCAT = [
     "correctIndex": 2,
   },
   {
-    "question": "9 Site for the synthesis of ribosomal RNA:?",
+    "question": "Site for the synthesis of ribosomal RNA:?",
     "A": "Nucleus",
     "B": " Nucleolus",
     "C": "Mitochondria",
@@ -1395,7 +1395,7 @@ var MDCAT = [
   },
   {
     "question":
-        "10 Among the following which organelle has an outer membrane in it:",
+        "Among the following which organelle has an outer membrane in it:",
     "A": "Cell membrane",
     "B": "Lysosome",
     "C": "Formicidae",
@@ -1403,7 +1403,7 @@ var MDCAT = [
     "correctIndex": 2,
   },
   {
-    "question": "1 Size of virus ranges in:",
+    "question": "Size of virus ranges in:",
     "A": "20 to 250 nm",
     "B": "25 to 250 nm",
     "C": "25 to 300 nm",
@@ -1411,7 +1411,7 @@ var MDCAT = [
     "correctIndex": 1,
   },
   {
-    "question": "2 Reverse transcriptase is the function of:",
+    "question": "Reverse transcriptase is the function of:",
     "A": "Pox virus ",
     "B": "Paramyxovirus",
     "C": "HIV",
@@ -1420,7 +1420,7 @@ var MDCAT = [
   },
   {
     "question":
-        "3 When cocci form long chain of cells, the arrangement is termed as:",
+        "When cocci form long chain of cells, the arrangement is termed as:",
     "A": "Staphylococcus",
     "B": "Streptococci",
     "C": "Sarcina ",
@@ -1428,7 +1428,7 @@ var MDCAT = [
     "correctIndex": 1,
   },
   {
-    "question": "4 Which type of bacteria has less amount of lipids in them:",
+    "question": "Which type of bacteria has less amount of lipids in them:",
     "A": "Gram negative bacteria",
     "B": "Positive bacteria",
     "C": "Negative bacteria",
@@ -1436,8 +1436,7 @@ var MDCAT = [
     "correctIndex": 2,
   },
   {
-    "question":
-        "5 Which of the following characteristics belong to mycorrhizae:",
+    "question": "Which of the following characteristics belong to mycorrhizae:",
     "A": "Fungi and algae ",
     "B": "Fungi and lichen",
     "C": "Algae and root ",
@@ -1445,7 +1444,7 @@ var MDCAT = [
     "correctIndex": 1,
   },
   {
-    "question": "6 The site where Iscaris is present:",
+    "question": "The site where Iscaris is present:",
     "A": " Intestine",
     "B": "Stomach",
     "C": "Caecum",
@@ -1453,7 +1452,7 @@ var MDCAT = [
     "correctIndex": 2,
   },
   {
-    "question": "7 The intermediate host for Taenia (tape worm) is:?",
+    "question": "The intermediate host for Taenia (tape worm) is:?",
     "A": "Apis",
     "B": "Anemone",
     "C": "Pig",
@@ -1461,7 +1460,7 @@ var MDCAT = [
     "correctIndex": 1,
   },
   {
-    "question": "8 Which one is correctly matched with tail of chlorophyll:",
+    "question": "Which one is correctly matched with tail of chlorophyll:",
     "A": "Hydrophilic ",
     "B": "Coleoptera",
     "C": "Hydrophobic",
@@ -1469,8 +1468,7 @@ var MDCAT = [
     "correctIndex": 2,
   },
   {
-    "question":
-        "9 Graph which shows effectiveness of absorbed light is called:",
+    "question": "Graph which shows effectiveness of absorbed light is called:",
     "A": "Emission Spectrum",
     "B": "Absorption Spectrum",
     "C": "Effective Spectrum",
@@ -1478,7 +1476,7 @@ var MDCAT = [
     "correctIndex": 2,
   },
   {
-    "question": "10 What is the scientific name of a butterfly?",
+    "question": "What is the scientific name of a butterfly?",
     "A": "Violet light ",
     "B": "Red light",
     "C": "Green light ",
@@ -1486,7 +1484,7 @@ var MDCAT = [
     "correctIndex": 2,
   },
   {
-    "question": "1 Which one is correctly matched with tail of chlorophyll:",
+    "question": "Which one is correctly matched with tail of chlorophyll:",
     "A": "Hydrophilic ",
     "B": "Coleoptera",
     "C": "Hydrophobic",
@@ -1494,7 +1492,7 @@ var MDCAT = [
     "correctIndex": 2,
   },
   {
-    "question": "2 Size of virus ranges in:",
+    "question": "Size of virus ranges in:",
     "A": "20 to 250 nm",
     "B": "25 to 250 nm",
     "C": "25 to 300 nm",
@@ -1502,7 +1500,7 @@ var MDCAT = [
     "correctIndex": 1,
   },
   {
-    "question": "3 Engulfing of solid particle is termed as:",
+    "question": "Engulfing of solid particle is termed as:",
     "A": "Engulfing",
     "B": "Phagocytosis",
     "C": "Pinocytosis",
@@ -1511,7 +1509,7 @@ var MDCAT = [
   },
   {
     "question":
-        "4 A complex network of channels extending from plasma membrane to nuclear membrane:",
+        "A complex network of channels extending from plasma membrane to nuclear membrane:",
     "A": "Mitochondria",
     "B": "Endoplasmic reticulum",
     "C": "Lysosomes ",
@@ -1519,7 +1517,7 @@ var MDCAT = [
     "correctIndex": 4,
   },
   {
-    "question": "5 Which organelle has two Subunits:",
+    "question": "Which organelle has two Subunits:",
     "A": "Endoplasmic reticulum ",
     "B": "Nucleus",
     "C": "Ribosomes",
@@ -1527,7 +1525,7 @@ var MDCAT = [
     "correctIndex": 3,
   },
   {
-    "question": "6 Which general formula satisfies for monosaccharides?",
+    "question": "Which general formula satisfies for monosaccharides?",
     "A": "Cn(H2O)2n",
     "B": "(CH2O)n",
     "C": "C2n(H2O)n",
@@ -1535,7 +1533,7 @@ var MDCAT = [
     "correctIndex": 4,
   },
   {
-    "question": "7 Ribosomes in prokaryotes sediments at:",
+    "question": "Ribosomes in prokaryotes sediments at:",
     "A": "40S ",
     "B": "80S",
     "C": "70S ",
@@ -1544,7 +1542,7 @@ var MDCAT = [
   },
   {
     "question":
-        "8 A complex network of channels extending from plasma membrane to nuclear membrane:",
+        "A complex network of channels extending from plasma membrane to nuclear membrane:",
     "A": "Mitochondria",
     "B": "Endoplasmic reticulum",
     "C": "Lysosomes ",
@@ -1553,7 +1551,7 @@ var MDCAT = [
   },
   {
     "question":
-        "9 What is the percentage of lipids in chemical composition of plasma membrane?",
+        "What is the percentage of lipids in chemical composition of plasma membrane?",
     "A": "60-80%",
     "B": "40-80%",
     "C": "20-40%",
@@ -1562,7 +1560,7 @@ var MDCAT = [
   },
   {
     "question":
-        "10 Among the following which organelle has an outer membrane in it:",
+        "Among the following which organelle has an outer membrane in it:",
     "A": "Cell membrane",
     "B": "Lysosome",
     "C": "Formicidae",
@@ -1570,7 +1568,7 @@ var MDCAT = [
     "correctIndex": 2,
   },
   {
-    "question": "1 The term glycolysis refers to the conversions of:",
+    "question": "The term glycolysis refers to the conversions of:",
     "A": "Pyruvate to Glucose",
     "B": "Citric Acid to CO2",
     "C": "Glucose to Pyruvate",
@@ -1578,7 +1576,7 @@ var MDCAT = [
     "correctIndex": 1,
   },
   {
-    "question": "2 In Citric Acid Cycle Acetyl CoA combines with ________.:",
+    "question": "In Citric Acid Cycle Acetyl CoA combines with ________.:",
     "A": "Glucose ",
     "B": "Rubisco",
     "C": " CO2",
@@ -1586,7 +1584,7 @@ var MDCAT = [
     "correctIndex": 2,
   },
   {
-    "question": "3 Which one is CO2 acceptor:",
+    "question": "Which one is CO2 acceptor:",
     "A": "Water",
     "B": " CO2",
     "C": "Chlorophyll",
@@ -2063,3 +2061,871 @@ var MDCAT = [
     "correctIndex": 2,
   },
 ];
+
+var CSS = {
+  {
+    "question": "When Hajj falls on a Friday it is called?",
+    "A": "Hajj-e-Qiran",
+    "B": "Hajj-e-Tamattu",
+    "C": "Hajj-e-Ifrad",
+    "D": "Hajj al-Akbar",
+    "correctIndex": 4,
+  },
+  {
+    "question":
+        " The prayer offered at the shortage of rain is called  (CSS 2021)",
+    "A": "Namaz-e-Khasoof",
+    "B": "Namaz-e-Kasoof",
+    "C": "Namaz-ul-Khauf",
+    "D": "Namaz-e-Istasqa",
+    "correctIndex": 4,
+  },
+  {
+    "question":
+        "Who served the Prophet Muhammad (peace be upon him) for ten years as his personal attendant? (CSS 2021)",
+    "A": "Hazrat Hamzah (RA)",
+    "B": "Hazrat Zaid bin Haris (RA)",
+    "C": "Hazrat Anas bin Malik (RA)",
+    "D": "Hazrat Khalid ibn al-Walid (RA)",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "What was the name of foster-sister of the Prophet Muhammad (PBUH)? (CSS 2021)",
+    "A": "Hazrat Halimah (RA)",
+    "B": "Hazrat al-Shemaa (RA)",
+    "C": "Hazrat Mariah Qibtiyah (RA)",
+    "D": "None of these options",
+    "correctIndex": 2,
+  },
+  {
+    "question":
+        "The story of the accusation of adultery levied against Hazrat Aisha (RA), known as the event of Ifk, can also be traced in  (CSS 2021)",
+    "A": "Surah 24. An-Nur (the Light)",
+    "B": "Surah 28. Al-Qasas (the Stories)",
+    "C": "Surah 40. Ghafar (the Forgiver)",
+    "D": "Surah 48. Al-Fat’h (the Victory)",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Essay (CSS 2020)",
+    "A": "Direct",
+    "B": "Compose",
+    "C": "Attempt",
+    "D": "Effort",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Inception (CSS 2020)",
+    "A": "Beginning",
+    "B": "Unending",
+    "C": "Incision",
+    "D": "Growth",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Expatriate  (CSS 2020)",
+    "A": "Infirm",
+    "B": "Displaced",
+    "C": "Emigrant",
+    "D": "Male",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Sinister (CSS 2020)",
+    "A": "Ill-famed",
+    "B": "Occult",
+    "C": "Malevolent",
+    "D": "Sinful",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Contraption (CSS 2020)",
+    "A": "Trend",
+    "B": "Intrigue",
+    "C": "Device",
+    "D": "Sticker",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "Which province of Afghanistan accounted for 39% of the world’s illicit opium production? (as of August 2021) (CSS 2010)",
+    "A": "Helmand",
+    "B": "Kandahar",
+    "C": "Herat",
+    "D": "Kabul",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "Who served as Prime Minister of France from 2007 to 2012 under President Nicolas Sarkozy? (CSS 2010)",
+    "A": "Manuel Valls",
+    "B": "ernard Cazeneuve",
+    "C": "Édouard Philippe",
+    "D": "Jean Castex",
+    "correctIndex": 4,
+  },
+  {
+    "question": "Which is the oldest search engine of the internet? (CSS 2010)",
+    "A": "Google",
+    "B": "AltaVista",
+    "C": "WebCrawler",
+    "D": "Yahoo",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "There were five categories in Nobel Prizes in beginning. Which among the following is the sixth which was added later in 1968? (CSS 2010)",
+    "A": "Literature",
+    "B": "Medical Science",
+    "C": "Economics",
+    "D": "Peace",
+    "correctIndex": 3,
+  },
+  {
+    "question": "ANTARA is the news agency of (CSS 2010)",
+    "A": "Indonesia",
+    "B": "Malaysia",
+    "C": "Kyrgyzstan",
+    "D": "Kazakhstan",
+    "correctIndex": 1,
+  },
+  {
+    "question": "The biggest species of the cat family is: (CSS 2013)?",
+    "A": "Tiger",
+    "B": "Lion",
+    "C": "Leopard",
+    "D": "None of these",
+    "correctIndex": 1,
+  },
+  {
+    "question": "Which group of animals has heterogametic females? (CSS 2013)",
+    "A": "Domestic fowll",
+    "B": "Earthworm",
+    "C": "Rabbit",
+    "D": "None of these",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "The dominant phase of life cycle in these organisms is haploid: (CSS 2013)",
+    "A": "Mosses",
+    "B": "Bacteria",
+    "C": "Protozoa",
+    "D": "None of these",
+    "correctIndex": 4,
+  },
+  {
+    "question":
+        "Which month of a calendar year can lack a new moon? (CSS 2013)",
+    "A": "December",
+    "B": "February",
+    "C": "May",
+    "D": "None of these",
+    "correctIndex": 2,
+  },
+  {
+    "question": "One of the following is a water soluble vitamin: (CSS 2013)",
+    "A": "Vitamin A",
+    "B": "Vitamin B",
+    "C": "Vitamin C",
+    "D": "None of these",
+    "correctIndex": 4,
+  },
+  {
+    "question": "Basha Dam is to be constructed on: (CSS 2013)",
+    "A": "River Sutlaj",
+    "B": "River Jhelum",
+    "C": "Indus River",
+    "D": "None on these",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "The earth’s _____ is divided into 15 major plates of various sizes: (CSS 2013)",
+    "A": "Mesosphere",
+    "B": "Stratosphere",
+    "C": "Lithosphere",
+    "D": "None of these",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "One of these scientists formulated basic laws of Geometry: (CSS 2013)",
+    "A": "Pythagorus",
+    "B": "Archimedes",
+    "C": "Aristotle",
+    "D": "None of these",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "He was the first scientist to prove that planets move around the sun: (CSS 2013)",
+    "A": "Archimedes",
+    "B": "Galileo Galilei",
+    "C": "John Kepler",
+    "D": "None of these",
+    "correctIndex": 2,
+  },
+  {
+    "question":
+        "Uranium is best used as nuclear fuel in one of the following forms: (CSS 2013)",
+    "A": "U235",
+    "B": "U238",
+    "C": "U237",
+    "D": "None of these",
+    "correctIndex": 2,
+  },
+  {
+    "question": "The Beta particles are fast moving: (CSS 2013)",
+    "A": "Protons",
+    "B": "Neutrons",
+    "C": "Electrons",
+    "D": "None of these",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "One of the following countries produces maximum energy from atomic reactors: (CSS 2013)",
+    "A": "France",
+    "B": "United States",
+    "C": "United Kingdom",
+    "D": "None of these",
+    "correctIndex": 2,
+  },
+  {
+    "question":
+        "The severity of 2005 earthquake of Pakistan on Richter Scale was: (CSS 2013)",
+    "A": "9.5",
+    "B": "6.5",
+    "C": "5.5",
+    "D": "7.6",
+    "correctIndex": 4,
+  },
+  {
+    "question": "Vacuum tubes have been replaced by: (CSS 2013)",
+    "A": "Conductors",
+    "B": "Diodes",
+    "C": "Transistors",
+    "D": "None of these",
+    "correctIndex": 3,
+  },
+  {
+    "question": "Dacron is: (CSS 2013)",
+    "A": "Polyethylene",
+    "B": "Epoxy",
+    "C": "Polyamide",
+    "D": "None of these",
+    "correctIndex": 1,
+  },
+  {
+    "question": "It is a secondary plant nutrient: (CSS 2013)",
+    "A": "Nitrogen",
+    "B": "Phosphorus",
+    "C": "Sulphur",
+    "D": "None of these",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "The number of electrons of a neutral atom is automatically known if one knows the: (CSS 2013)",
+    "A": "Atomic number",
+    "B": "Atomic weight",
+    "C": "Number of orbitals",
+    "D": "None of these",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Nabob (CSS 2016)",
+    "A": "Converse",
+    "B": "Frolic",
+    "C": "Doubter",
+    "D": "Bigwig",
+    "correctIndex": 4,
+  },
+  {
+    "question": "Select the correct SYNONYM of the given word: Pall (CSS 2016)",
+    "A": "Satiate",
+    "B": "Light",
+    "C": "Horror",
+    "D": "Carry",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Sacrosanct (CSS 2016)",
+    "A": "Prayer",
+    "B": "Sanctuary",
+    "C": "Pious",
+    "D": "Sacred",
+    "correctIndex": 4,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Louche (CSS 2016)",
+    "A": "Brilliant",
+    "B": "Gauche",
+    "C": "Fine",
+    "D": "Indecent",
+    "correctIndex": 4,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Stentorian (CSS 2016)",
+    "A": "Loud",
+    "B": "Misbegotten",
+    "C": "Stealthy",
+    "D": "Violent",
+    "correctIndex": 1,
+  },
+  {
+    "question": "8What is the scientific name of a butterfly?",
+    "A": "Apis",
+    "B": "Coleoptera",
+    "C": "Formicidae",
+    "D": "Rhopalocera",
+    "correctIndex": 2,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Loquacious (CSS 2016)",
+    "A": "Talkative",
+    "B": "Complicated",
+    "C": "Thirsty",
+    "D": "Beautiful",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Chimera (CSS 2016)",
+    "A": "Chimney",
+    "B": "Protest",
+    "C": "Illusion",
+    "D": "Panache",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        " Select the correct SYNONYM of the given word: Temerity (CSS 2016)",
+    "A": "Fearfulness",
+    "B": "Stupidity",
+    "C": "Shyness",
+    "D": "Audacity",
+    "correctIndex": 4,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Vociferous (CSS 2016)",
+    "A": "Bountiful",
+    "B": "Strident",
+    "C": "Garrulous",
+    "D": "Numerous",
+    "correctIndex": 2,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Propinquity (CSS 2016)",
+    "A": "Habit",
+    "B": "Nearness",
+    "C": "Capacity",
+    "D": "Tendency",
+    "correctIndex": 2,
+  },
+  {
+    "question": "Slapstick : Laughter (CSS 2016)",
+    "A": "Fallacy : Dismay",
+    "B": "Genre : Mystery",
+    "C": "Mimicry : Tears",
+    "D": "Horror : Fear",
+    "correctIndex": 4,
+  },
+  {
+    "question": "Conviction : Incarceration (CSS 2016)",
+    "A": "Marginalization : Intimidation",
+    "B": "Radicalization : Estimation",
+    "C": "Induction : Amelioration",
+    "D": "Reduction : Diminution",
+    "correctIndex": 4,
+  },
+  {
+    "question": "Professor : Erudite (CSS 2016)",
+    "A": "Inventor: Imaginative",
+    "B": "Aviator: Licensed",
+    "C": "Procrastinator: Conscientious",
+    "D": "Moderator: Vicious",
+    "correctIndex": 1,
+  },
+  {
+    "question": "ANTARA is the news agency of (CSS 2010)",
+    "A": "Indonesia",
+    "B": "Malaysia",
+    "C": "Kyrgyzstan",
+    "D": "Kazakhstan",
+    "correctIndex": 1,
+  },
+  {
+    "question": "Silk Air is the airline of which country?  (CSS 2010)",
+    "A": "Singapore",
+    "B": "United States",
+    "C": "South Korea",
+    "D": "New Zealand",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "World Press Freedom Day was proclaimed by the UN General Assembly in (CSS 2010)",
+    "A": "December 2000",
+    "B": "December 1997",
+    "C": "December 1990",
+    "D": "December 1993",
+    "correctIndex": 4,
+  },
+  {
+    "question":
+        "The country has the world’s largest contiguous irrigation system with almost 80 percent of the cultivated area irrigated. (CSS 2010)",
+    "A": "Pakistan",
+    "B": "India",
+    "C": "Sri Lanka",
+    "D": "Bhutan",
+    "correctIndex": 1,
+  },
+  //copy next 50
+  {
+    "question": "When Hajj falls on a Friday it is called?",
+    "A": "Hajj-e-Qiran",
+    "B": "Hajj-e-Tamattu",
+    "C": "Hajj-e-Ifrad",
+    "D": "Hajj al-Akbar",
+    "correctIndex": 4,
+  },
+  {
+    "question":
+        " The prayer offered at the shortage of rain is called  (CSS 2021)",
+    "A": "Namaz-e-Khasoof",
+    "B": "Namaz-e-Kasoof",
+    "C": "Namaz-ul-Khauf",
+    "D": "Namaz-e-Istasqa",
+    "correctIndex": 4,
+  },
+  {
+    "question":
+        "Who served the Prophet Muhammad (peace be upon him) for ten years as his personal attendant? (CSS 2021)",
+    "A": "Hazrat Hamzah (RA)",
+    "B": "Hazrat Zaid bin Haris (RA)",
+    "C": "Hazrat Anas bin Malik (RA)",
+    "D": "Hazrat Khalid ibn al-Walid (RA)",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "What was the name of foster-sister of the Prophet Muhammad (PBUH)? (CSS 2021)",
+    "A": "Hazrat Halimah (RA)",
+    "B": "Hazrat al-Shemaa (RA)",
+    "C": "Hazrat Mariah Qibtiyah (RA)",
+    "D": "None of these options",
+    "correctIndex": 2,
+  },
+  {
+    "question":
+        "The story of the accusation of adultery levied against Hazrat Aisha (RA), known as the event of Ifk, can also be traced in  (CSS 2021)",
+    "A": "Surah 24. An-Nur (the Light)",
+    "B": "Surah 28. Al-Qasas (the Stories)",
+    "C": "Surah 40. Ghafar (the Forgiver)",
+    "D": "Surah 48. Al-Fat’h (the Victory)",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Essay (CSS 2020)",
+    "A": "Direct",
+    "B": "Compose",
+    "C": "Attempt",
+    "D": "Effort",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Inception (CSS 2020)",
+    "A": "Beginning",
+    "B": "Unending",
+    "C": "Incision",
+    "D": "Growth",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Expatriate  (CSS 2020)",
+    "A": "Infirm",
+    "B": "Displaced",
+    "C": "Emigrant",
+    "D": "Male",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Sinister (CSS 2020)",
+    "A": "Ill-famed",
+    "B": "Occult",
+    "C": "Malevolent",
+    "D": "Sinful",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Contraption (CSS 2020)",
+    "A": "Trend",
+    "B": "Intrigue",
+    "C": "Device",
+    "D": "Sticker",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "Which province of Afghanistan accounted for 39% of the world’s illicit opium production? (as of August 2021) (CSS 2010)",
+    "A": "Helmand",
+    "B": "Kandahar",
+    "C": "Herat",
+    "D": "Kabul",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "Who served as Prime Minister of France from 2007 to 2012 under President Nicolas Sarkozy? (CSS 2010)",
+    "A": "Manuel Valls",
+    "B": "ernard Cazeneuve",
+    "C": "Édouard Philippe",
+    "D": "Jean Castex",
+    "correctIndex": 4,
+  },
+  {
+    "question": "Which is the oldest search engine of the internet? (CSS 2010)",
+    "A": "Google",
+    "B": "AltaVista",
+    "C": "WebCrawler",
+    "D": "Yahoo",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "There were five categories in Nobel Prizes in beginning. Which among the following is the sixth which was added later in 1968? (CSS 2010)",
+    "A": "Literature",
+    "B": "Medical Science",
+    "C": "Economics",
+    "D": "Peace",
+    "correctIndex": 3,
+  },
+  {
+    "question": "ANTARA is the news agency of (CSS 2010)",
+    "A": "Indonesia",
+    "B": "Malaysia",
+    "C": "Kyrgyzstan",
+    "D": "Kazakhstan",
+    "correctIndex": 1,
+  },
+  {
+    "question": "The biggest species of the cat family is: (CSS 2013)?",
+    "A": "Tiger",
+    "B": "Lion",
+    "C": "Leopard",
+    "D": "None of these",
+    "correctIndex": 1,
+  },
+  {
+    "question": "Which group of animals has heterogametic females? (CSS 2013)",
+    "A": "Domestic fowll",
+    "B": "Earthworm",
+    "C": "Rabbit",
+    "D": "None of these",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "The dominant phase of life cycle in these organisms is haploid: (CSS 2013)",
+    "A": "Mosses",
+    "B": "Bacteria",
+    "C": "Protozoa",
+    "D": "None of these",
+    "correctIndex": 4,
+  },
+  {
+    "question":
+        "Which month of a calendar year can lack a new moon? (CSS 2013)",
+    "A": "December",
+    "B": "February",
+    "C": "May",
+    "D": "None of these",
+    "correctIndex": 2,
+  },
+  {
+    "question": "One of the following is a water soluble vitamin: (CSS 2013)",
+    "A": "Vitamin A",
+    "B": "Vitamin B",
+    "C": "Vitamin C",
+    "D": "None of these",
+    "correctIndex": 4,
+  },
+  {
+    "question": "Basha Dam is to be constructed on: (CSS 2013)",
+    "A": "River Sutlaj",
+    "B": "River Jhelum",
+    "C": "Indus River",
+    "D": "None on these",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "The earth’s _____ is divided into 15 major plates of various sizes: (CSS 2013)",
+    "A": "Mesosphere",
+    "B": "Stratosphere",
+    "C": "Lithosphere",
+    "D": "None of these",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "One of these scientists formulated basic laws of Geometry: (CSS 2013)",
+    "A": "Pythagorus",
+    "B": "Archimedes",
+    "C": "Aristotle",
+    "D": "None of these",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "He was the first scientist to prove that planets move around the sun: (CSS 2013)",
+    "A": "Archimedes",
+    "B": "Galileo Galilei",
+    "C": "John Kepler",
+    "D": "None of these",
+    "correctIndex": 2,
+  },
+  {
+    "question":
+        "Uranium is best used as nuclear fuel in one of the following forms: (CSS 2013)",
+    "A": "U235",
+    "B": "U238",
+    "C": "U237",
+    "D": "None of these",
+    "correctIndex": 2,
+  },
+  {
+    "question": "The Beta particles are fast moving: (CSS 2013)",
+    "A": "Protons",
+    "B": "Neutrons",
+    "C": "Electrons",
+    "D": "None of these",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "One of the following countries produces maximum energy from atomic reactors: (CSS 2013)",
+    "A": "France",
+    "B": "United States",
+    "C": "United Kingdom",
+    "D": "None of these",
+    "correctIndex": 2,
+  },
+  {
+    "question":
+        "The severity of 2005 earthquake of Pakistan on Richter Scale was: (CSS 2013)",
+    "A": "9.5",
+    "B": "6.5",
+    "C": "5.5",
+    "D": "7.6",
+    "correctIndex": 4,
+  },
+  {
+    "question": "Vacuum tubes have been replaced by: (CSS 2013)",
+    "A": "Conductors",
+    "B": "Diodes",
+    "C": "Transistors",
+    "D": "None of these",
+    "correctIndex": 3,
+  },
+  {
+    "question": "Dacron is: (CSS 2013)",
+    "A": "Polyethylene",
+    "B": "Epoxy",
+    "C": "Polyamide",
+    "D": "None of these",
+    "correctIndex": 1,
+  },
+  {
+    "question": "It is a secondary plant nutrient: (CSS 2013)",
+    "A": "Nitrogen",
+    "B": "Phosphorus",
+    "C": "Sulphur",
+    "D": "None of these",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        "The number of electrons of a neutral atom is automatically known if one knows the: (CSS 2013)",
+    "A": "Atomic number",
+    "B": "Atomic weight",
+    "C": "Number of orbitals",
+    "D": "None of these",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Nabob (CSS 2016)",
+    "A": "Converse",
+    "B": "Frolic",
+    "C": "Doubter",
+    "D": "Bigwig",
+    "correctIndex": 4,
+  },
+  {
+    "question": "Select the correct SYNONYM of the given word: Pall (CSS 2016)",
+    "A": "Satiate",
+    "B": "Light",
+    "C": "Horror",
+    "D": "Carry",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Sacrosanct (CSS 2016)",
+    "A": "Prayer",
+    "B": "Sanctuary",
+    "C": "Pious",
+    "D": "Sacred",
+    "correctIndex": 4,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Louche (CSS 2016)",
+    "A": "Brilliant",
+    "B": "Gauche",
+    "C": "Fine",
+    "D": "Indecent",
+    "correctIndex": 4,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Stentorian (CSS 2016)",
+    "A": "Loud",
+    "B": "Misbegotten",
+    "C": "Stealthy",
+    "D": "Violent",
+    "correctIndex": 1,
+  },
+  {
+    "question": "8What is the scientific name of a butterfly?",
+    "A": "Apis",
+    "B": "Coleoptera",
+    "C": "Formicidae",
+    "D": "Rhopalocera",
+    "correctIndex": 2,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Loquacious (CSS 2016)",
+    "A": "Talkative",
+    "B": "Complicated",
+    "C": "Thirsty",
+    "D": "Beautiful",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Chimera (CSS 2016)",
+    "A": "Chimney",
+    "B": "Protest",
+    "C": "Illusion",
+    "D": "Panache",
+    "correctIndex": 3,
+  },
+  {
+    "question":
+        " Select the correct SYNONYM of the given word: Temerity (CSS 2016)",
+    "A": "Fearfulness",
+    "B": "Stupidity",
+    "C": "Shyness",
+    "D": "Audacity",
+    "correctIndex": 4,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Vociferous (CSS 2016)",
+    "A": "Bountiful",
+    "B": "Strident",
+    "C": "Garrulous",
+    "D": "Numerous",
+    "correctIndex": 2,
+  },
+  {
+    "question":
+        "Select the correct SYNONYM of the given word: Propinquity (CSS 2016)",
+    "A": "Habit",
+    "B": "Nearness",
+    "C": "Capacity",
+    "D": "Tendency",
+    "correctIndex": 2,
+  },
+  {
+    "question": "Slapstick : Laughter (CSS 2016)",
+    "A": "Fallacy : Dismay",
+    "B": "Genre : Mystery",
+    "C": "Mimicry : Tears",
+    "D": "Horror : Fear",
+    "correctIndex": 4,
+  },
+  {
+    "question": "Conviction : Incarceration (CSS 2016)",
+    "A": "Marginalization : Intimidation",
+    "B": "Radicalization : Estimation",
+    "C": "Induction : Amelioration",
+    "D": "Reduction : Diminution",
+    "correctIndex": 4,
+  },
+  {
+    "question": "Professor : Erudite (CSS 2016)",
+    "A": "Inventor: Imaginative",
+    "B": "Aviator: Licensed",
+    "C": "Procrastinator: Conscientious",
+    "D": "Moderator: Vicious",
+    "correctIndex": 1,
+  },
+  {
+    "question": "ANTARA is the news agency of (CSS 2010)",
+    "A": "Indonesia",
+    "B": "Malaysia",
+    "C": "Kyrgyzstan",
+    "D": "Kazakhstan",
+    "correctIndex": 1,
+  },
+  {
+    "question": "Silk Air is the airline of which country?  (CSS 2010)",
+    "A": "Singapore",
+    "B": "United States",
+    "C": "South Korea",
+    "D": "New Zealand",
+    "correctIndex": 1,
+  },
+  {
+    "question":
+        "World Press Freedom Day was proclaimed by the UN General Assembly in (CSS 2010)",
+    "A": "December 2000",
+    "B": "December 1997",
+    "C": "December 1990",
+    "D": "December 1993",
+    "correctIndex": 4,
+  },
+  {
+    "question":
+        "The country has the world’s largest contiguous irrigation system with almost 80 percent of the cultivated area irrigated. (CSS 2010)",
+    "A": "Pakistan",
+    "B": "India",
+    "C": "Sri Lanka",
+    "D": "Bhutan",
+    "correctIndex": 1,
+  },
+};

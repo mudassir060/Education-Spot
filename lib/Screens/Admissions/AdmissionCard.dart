@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../Widgets/ImageCasha.dart';
 import '../../Widgets/mySpacer.dart';
 import '../../Widgets/webView.dart';
-import '../../constants/images.dart';
 import '../../constants/style.dart';
 
 class AdmissionCard extends StatelessWidget {
@@ -144,7 +143,7 @@ class AdmissionCard extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => webView(
+                            builder: (context) => WebViewPage(
                                   url: url,
                                 )),
                       );

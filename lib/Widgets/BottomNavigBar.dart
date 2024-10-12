@@ -1,6 +1,5 @@
 import 'package:education_spot/Screens/Community/communityScreen.dart';
 import 'package:education_spot/Screens/Home/homeScreen.dart';
-import 'package:education_spot/Screens/Notification/notificationScreen.dart';
 import 'package:education_spot/Screens/Profile/profileScreen.dart';
 import 'package:education_spot/constants/style.dart';
 import 'package:flutter/material.dart';

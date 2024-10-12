@@ -1,23 +1,31 @@
 import 'dart:io';
-import 'package:education_spot/constants/style.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class webView extends StatefulWidget {
+class WebViewPage extends StatefulWidget {
   final String url;
 
-  const webView({super.key, required this.url});
+  const WebViewPage({Key? key, required this.url}) : super(key: key);
 
   @override
-  webViewState createState() => webViewState();
+  WebViewPageState createState() => WebViewPageState();
 }
 
-class webViewState extends State<webView> {
+class WebViewPageState extends State<WebViewPage> {
+  late final WebViewController _controller;
+
   @override
   void initState() {
     super.initState();
-    // Enable virtual display.
-    if (Platform.isAndroid) WebView.platform = AndroidWebView();
+
+    // Initialize params based on platform with a fallback for Android.
+    final PlatformWebViewControllerCreationParams params =
+        const PlatformWebViewControllerCreationParams();
+
+    // Create the controller with the platform-specific params.
+    _controller = WebViewController.fromPlatformCreationParams(params)
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..loadRequest(Uri.parse(widget.url));
   }
 
   @override
@@ -29,11 +37,9 @@ class webViewState extends State<webView> {
           style: TextStyle(color: Colors.white),
         ),
         iconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: primaryColor,
+        backgroundColor: Colors.blue, // Change to your primaryColor
       ),
-      body: WebView(
-        initialUrl: widget.url,
-      ),
+      body: WebViewWidget(controller: _controller),
     );
   }
 }

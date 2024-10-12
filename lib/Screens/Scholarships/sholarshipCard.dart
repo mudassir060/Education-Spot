@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../Widgets/ImageCasha.dart';
 import '../../Widgets/mySpacer.dart';
-import '../../Widgets/smallButton.dart';
 import '../../Widgets/webView.dart';
-import '../../constants/images.dart';
 import '../../constants/style.dart';
 
 class sholarshipCard extends StatelessWidget {
@@ -42,7 +40,7 @@ class sholarshipCard extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => webView(
+                builder: (context) => WebViewPage(
                       url: url,
                     )),
           );

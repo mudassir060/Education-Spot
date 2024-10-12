@@ -43,7 +43,7 @@ class recomendedCard extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => webView(
+                builder: (context) => WebViewPage(
                       url: url,
                     )),
           );

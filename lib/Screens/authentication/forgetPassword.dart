@@ -24,7 +24,7 @@ Future<void> _resetPassword(context) async {
     snackBar(context, 'Password reset email sent to $email');
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => signInScreen()),
+      MaterialPageRoute(builder: (context) => const signInScreen()),
     );
   } catch (e) {
     snackBar(context, e);
@@ -52,10 +52,10 @@ class _forgetPasswordState extends State<forgetPassword> {
             Navigator.pop(context);
           },
           child: Container(
-            margin: EdgeInsets.only(left: 4, top: 4),
+            margin: const EdgeInsets.only(left: 4, top: 4),
             decoration: BoxDecoration(
                 shape: BoxShape.circle, color: primaryColor.withOpacity(0.2)),
-            child: Center(
+            child: const Center(
               child: Icon(
                 Icons.chevron_left_outlined,
                 color: primaryColor,
@@ -67,7 +67,7 @@ class _forgetPasswordState extends State<forgetPassword> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -82,7 +82,7 @@ class _forgetPasswordState extends State<forgetPassword> {
                   "No problem! Just enter your email address and we'll send you a one-time password to recover your password.",
                   // textAlign: TextAlign.left,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 13,
                 ),
                 myTextfield(
@@ -90,7 +90,7 @@ class _forgetPasswordState extends State<forgetPassword> {
                   hint: 'Email Address',
                   textcontroler: emailController,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 14,
                 ),
                 myButton(
@@ -100,7 +100,7 @@ class _forgetPasswordState extends State<forgetPassword> {
                     },
                     name: "Reset Password",
                     loading: false),
-                SizedBox(
+                const SizedBox(
                   height: 36,
                 ),
                 // AppRichText(

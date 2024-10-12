@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 import 'dart:typed_data';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:pdf/pdf.dart';
@@ -13,11 +12,11 @@ const PdfColor green = PdfColor.fromInt(0xFF414443);
 const PdfColor lightGreen = PdfColor.fromInt(0xFF808583);
 const PdfColor black = PdfColor.fromInt(0xFF333131);
 const PdfColor yellow = PdfColor.fromInt(0xB4F3B020);
-const PdfColor light_black = PdfColor.fromInt(0xB41B1B1A);
+const PdfColor lightBlack = PdfColor.fromInt(0xB41B1B1A);
 const PdfColor white = PdfColor.fromInt(0xB4FAFAF3);
 const sep = 150.0;
 
-Future<Uint8List> CV_4(data) async {
+Future<Uint8List> cV_4(data) async {
   final doc = pw.Document(title: 'My Résumé', author: '${data["username"]}');
 
   final profileImage = pw.MemoryImage(
@@ -65,12 +64,12 @@ Future<Uint8List> CV_4(data) async {
                             Container(
                               height: 15,
                               width: 120,
-                              color: light_black,
+                              color: lightBlack,
                               padding:
                                   const pw.EdgeInsets.only(left: 10, bottom: 5),
                               child: Text(
                                 'Phone:',
-                                style: TextStyle(color: white, fontSize: 10),
+                                style: const TextStyle(color: white, fontSize: 10),
                               ),
                             )
                           ],
@@ -80,7 +79,7 @@ Future<Uint8List> CV_4(data) async {
                             left: 40,
                           ),
                           child: pw.Text('${data["PhoneNo"]}',
-                              style: TextStyle(color: white)),
+                              style: const TextStyle(color: white)),
                         ),
                         SizedBox(height: 10),
                         pw.Row(
@@ -89,12 +88,12 @@ Future<Uint8List> CV_4(data) async {
                             Container(
                               height: 15,
                               width: 120,
-                              color: light_black,
+                              color: lightBlack,
                               padding:
                                   const pw.EdgeInsets.only(left: 10, bottom: 5),
                               child: Text(
                                 'Email:',
-                                style: TextStyle(color: white, fontSize: 10),
+                                style: const TextStyle(color: white, fontSize: 10),
                               ),
                             )
                           ],
@@ -104,7 +103,7 @@ Future<Uint8List> CV_4(data) async {
                             left: 40,
                           ),
                           child: pw.Text('${data["email"]}',
-                              style: TextStyle(color: white)),
+                              style: const TextStyle(color: white)),
                         ),
                         SizedBox(height: 10),
                         pw.Row(
@@ -113,12 +112,12 @@ Future<Uint8List> CV_4(data) async {
                             Container(
                               height: 15,
                               width: 120,
-                              color: light_black,
+                              color: lightBlack,
                               padding:
                                   const pw.EdgeInsets.only(left: 10, bottom: 5),
                               child: Text(
                                 'Website:',
-                                style: TextStyle(color: white, fontSize: 10),
+                                style: const TextStyle(color: white, fontSize: 10),
                               ),
                             )
                           ],
@@ -128,7 +127,7 @@ Future<Uint8List> CV_4(data) async {
                             left: 30,
                           ),
                           child: pw.Text('${data["web"]}',
-                              style: TextStyle(color: white, fontSize: 10)),
+                              style: const TextStyle(color: white, fontSize: 10)),
                         ),
                         SizedBox(height: 10),
                         pw.Row(
@@ -137,12 +136,12 @@ Future<Uint8List> CV_4(data) async {
                             Container(
                               height: 15,
                               width: 120,
-                              color: light_black,
+                              color: lightBlack,
                               padding:
                                   const pw.EdgeInsets.only(left: 10, bottom: 5),
                               child: Text(
                                 'Address:',
-                                style: TextStyle(color: white, fontSize: 10),
+                                style: const TextStyle(color: white, fontSize: 10),
                               ),
                             )
                           ],
@@ -152,7 +151,7 @@ Future<Uint8List> CV_4(data) async {
                             left: 30,
                           ),
                           child: pw.Text('${data["address"]}',
-                              style: TextStyle(color: white, fontSize: 10)),
+                              style: const TextStyle(color: white, fontSize: 10)),
                         ),
                         if (data["Hobbies"].length != null)
                           SideBar_H1(title: 'Hobbies'),
@@ -199,7 +198,7 @@ Future<Uint8List> CV_4(data) async {
                 ),
                 if (data["about_me"] != null) Page_H1(title: 'About Me'),
                 pw.Container(
-                  margin: EdgeInsets.only(left: 30, right: 30, top: 10),
+                  margin: const EdgeInsets.only(left: 30, right: 30, top: 10),
                   child: data["about_me"] != null
                       ? pw.Text(data["about_me"])
                       : pw.Text("No data available"),
@@ -222,7 +221,7 @@ Future<Uint8List> CV_4(data) async {
                     if (data["Skills"].length != null)
                       Page_H1(title: 'Software Skills'),
                     Container(
-                      margin: EdgeInsets.only(top: 20),
+                      margin: const EdgeInsets.only(top: 20),
                       child: data["Skills"].length != null
                           ? pw.ListView.builder(
                               itemCount: data["Skills"].length,
@@ -246,7 +245,6 @@ Future<Uint8List> CV_4(data) async {
 }
 
 Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
-  final bgShape = await rootBundle.loadString(cvBg_1);
 
   format = format.applyMargin(
       left: 2.0 * PdfPageFormat.cm,
@@ -255,7 +253,7 @@ Future<pw.PageTheme> _myPageTheme(PdfPageFormat format) async {
       bottom: 2.0 * PdfPageFormat.cm);
   return pw.PageTheme(
     pageFormat: format,
-    margin: EdgeInsets.all(5),
+    margin: const EdgeInsets.all(5),
     theme: pw.ThemeData.withFont(
       base: await PdfGoogleFonts.openSansRegular(),
       bold: await PdfGoogleFonts.openSansBold(),
@@ -288,7 +286,7 @@ class Education_Block extends pw.StatelessWidget {
                             fontSize: 12)),
                   ),
                   pw.SizedBox(width: 10),
-                  pw.Text(eduData["uni"], style: TextStyle(color: white)),
+                  pw.Text(eduData["uni"], style: const TextStyle(color: white)),
                   //pw.Spacer(),
                 ]),
                 Container(
@@ -324,7 +322,7 @@ class Exp_Block extends pw.StatelessWidget {
           pw.Row(
             children: <pw.Widget>[
               pw.Container(
-                padding: pw.EdgeInsets.only(left: 30, top: 20),
+                padding: const pw.EdgeInsets.only(left: 30, top: 20),
                 child: pw.Text(expData['endDate'],
                     style: pw.Theme.of(context)
                         .defaultTextStyle
@@ -332,7 +330,7 @@ class Exp_Block extends pw.StatelessWidget {
               ),
               SizedBox(width: 10),
               pw.Container(
-                  padding: pw.EdgeInsets.only(left: 10, top: 20, right: 20),
+                  padding: const pw.EdgeInsets.only(left: 10, top: 20, right: 20),
                   child: pw.Text(
                     expData['name'],
                     style: pw.Theme.of(context)
@@ -342,7 +340,7 @@ class Exp_Block extends pw.StatelessWidget {
             ],
           ),
           Container(
-            padding: pw.EdgeInsets.only(left: 110, right: 20),
+            padding: const pw.EdgeInsets.only(left: 110, right: 20),
             child: pw.Text(expData['des'],
                 style: pw.Theme.of(context).defaultTextStyle),
           ),
@@ -366,7 +364,7 @@ class Page_H1 extends pw.StatelessWidget {
             ),
           ),
           pw.Container(
-              margin: EdgeInsets.only(left: 30),
+              margin: const EdgeInsets.only(left: 30),
               height: 1,
               width: 350,
               color: black),
@@ -389,7 +387,7 @@ class Hob_Block extends pw.StatelessWidget {
           width: 80,
           child: Text(
             "${hobData["name"]}",
-            style: TextStyle(color: white),
+            style: const TextStyle(color: white),
           ),
         ),
         pw.SizedBox(width: 10),
@@ -414,7 +412,7 @@ class SideBar_H1 extends pw.StatelessWidget {
       pw.Container(
         child: Text(
           title,
-          style: TextStyle(color: white, fontSize: 16),
+          style: const TextStyle(color: white, fontSize: 16),
         ),
       ),
       pw.SizedBox(height: 10),

@@ -28,43 +28,61 @@ class _signInScreenState extends State<signInScreen> {
 
   // FlutterSecureStorage storage = const FlutterSecureStorage();
 
-  void register() async {
-    setState(() {
-      looding = true;
-    });
-    var UserData;
-    FirebaseAuth auth = FirebaseAuth.instance;
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
-    final String useremail = emailCTRL.text.trim();
-    final String userpassword = passwordCTRL.text;
-    try {
-      if (useremail != '' && userpassword != '') {
-        final UserCredential user = await auth.signInWithEmailAndPassword(
-            email: useremail, password: userpassword);
-        final DocumentSnapshot snapshot =
-            await firestore.collection("users").doc(user.user?.uid).get();
-        // storage.write(key: "UID", value: user.user?.uid);
-        final data = snapshot.data();
-        setState(() {
-          UserData = data;
-        });
-        Navigator.push(
-          context,
-          MaterialPageRoute(
+void register() async {
+  setState(() {
+    looding = true;
+  });
+
+  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final String useremail = emailCTRL.text.trim();
+  final String userpassword = passwordCTRL.text;
+
+  try {
+    if (useremail.isNotEmpty && userpassword.isNotEmpty) {
+      final UserCredential userCredential = await auth.signInWithEmailAndPassword(
+        email: useremail,
+        password: userpassword,
+      );
+
+      final userId = userCredential.user?.uid;
+      if (userId != null) {
+        final DocumentSnapshot<Map<String, dynamic>> snapshot =
+            await firestore.collection("users").doc(userId).get();
+
+        final UserData = snapshot.data();
+
+        if (UserData != null) {
+          setState(() {
+            // Assign the data to a state variable if needed
+          });
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(
               builder: (context) => BottomNavigBar(
-                    UserData: UserData,
-                  )),
-        );
-      } else {
-        // snackbar("Please fill all text field");
+                UserData: UserData,
+              ),
+            ),
+          );
+        } else {
+          // Show an error if no data was found
+          // snackbar("User data not found.");
+        }
       }
-    } catch (e) {
-      // snackbar(e.toString());
+    } else {
+      // Show an error if fields are empty
+      // snackbar("Please fill all text fields");
     }
-    setState(() {
-      looding = false;
-    });
+  } catch (e) {
+    // Handle the error by displaying a message
+    // snackbar("Error: ${e.toString()}");
   }
+
+  setState(() {
+    looding = false;
+  });
+}
 
   @override
   Widget build(BuildContext context) {
